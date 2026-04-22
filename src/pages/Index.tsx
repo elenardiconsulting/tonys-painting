@@ -3,6 +3,7 @@ import Hero from "@/components/site/Hero";
 import TrustBar from "@/components/site/TrustBar";
 import ServicesPreview from "@/components/site/ServicesPreview";
 import PortfolioPreview from "@/components/site/PortfolioPreview";
+import PartnersSection from "@/components/site/PartnersSection";
 import Reviews from "@/components/site/Reviews";
 import AboutSnippet from "@/components/site/AboutSnippet";
 import FinalCTA from "@/components/site/FinalCTA";
@@ -17,6 +18,7 @@ const Index = () => {
         <TrustBar />
         <ServicesPreview />
         <PortfolioPreview />
+        <PartnersSection />
         <Reviews />
         <AboutSnippet />
         <FinalCTA />

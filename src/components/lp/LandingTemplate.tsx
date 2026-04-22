@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Star, Shield, Calendar, Home, Check } from "lucide-react";
 import LPForm from "./LPForm";
 import LPMiniForm from "./LPMiniForm";
+import PartnersSection from "@/components/site/PartnersSection";
 
 interface Review {
   name: string;
@@ -275,6 +276,9 @@ const LandingTemplate = ({
           </div>
         </div>
       </section>
+
+      {/* Partners and certifications */}
+      <PartnersSection />
 
       {/* SECTION 6: Reviews */}
       <section style={{ backgroundColor: "#FFFFFF", padding: "80px 24px" }}>
