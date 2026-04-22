@@ -162,15 +162,6 @@ const LandingTemplate = ({
           style={{ backgroundColor: "#F5F1EB" }}
         >
           <div className="w-full max-w-md mx-auto">
-            <h2
-              className="font-display"
-              style={{ fontWeight: 700, fontSize: "24px", color: "#1A1A1A", letterSpacing: "-0.02em" }}
-            >
-              Get your free estimate
-            </h2>
-            <p style={{ fontSize: "13px", color: "#6B6560", marginTop: "4px", marginBottom: "20px" }}>
-              No commitment. We respond within one business day.
-            </p>
             <LPForm service={service} />
           </div>
         </div>
