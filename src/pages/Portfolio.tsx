@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import PageLayout from "@/components/site/PageLayout";
 import InnerHero from "@/components/site/InnerHero";
-import { Button } from "@/components/ui/button";
+import FadeUpSection from "@/components/site/FadeUpSection";
+import RippleButton from "@/components/site/RippleButton";
 import { cn } from "@/lib/utils";
 
 type Category = "All Projects" | "Interior" | "Exterior" | "Remodeling" | "Commercial";
@@ -122,34 +123,35 @@ const Portfolio = () => {
       <section className="bg-background">
         <div className="container py-12 md:py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            {filtered.map((p) => (
-              <button
-                key={p.id}
-                onClick={() => setLightboxId(p.id)}
-                className="group relative aspect-[4/3] overflow-hidden text-left animate-fade-in"
-              >
-                <div
-                  className={cn(
-                    "absolute inset-0 bg-gradient-to-br transition-transform duration-500 group-hover:scale-105",
-                    placeholderTone(p.id),
-                  )}
-                  aria-hidden
-                />
-                <div className="absolute inset-0 flex items-center justify-center text-foreground/30 font-display text-base">
-                  {p.category}
-                </div>
-                <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/60 transition-colors duration-300 flex flex-col items-center justify-center text-center p-6">
-                  <p className="text-xs uppercase tracking-[0.2em] text-primary mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            {filtered.map((p, i) => (
+              <FadeUpSection key={p.id} delay={(i % 3) * 0.1}>
+                <button
+                  onClick={() => setLightboxId(p.id)}
+                  className="portfolio-item group relative aspect-[4/3] overflow-hidden text-left w-full"
+                >
+                  <div
+                    className={cn(
+                      "absolute inset-0 bg-gradient-to-br transition-transform duration-500 group-hover:scale-105",
+                      placeholderTone(p.id),
+                    )}
+                    aria-hidden
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center text-foreground/30 font-display text-base">
                     {p.category}
-                  </p>
-                  <h3 className="font-display text-2xl md:text-3xl text-background opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {p.title}
-                  </h3>
-                  <p className="text-sm text-background/70 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {p.location}
-                  </p>
-                </div>
-              </button>
+                  </div>
+                  <div className="portfolio-overlay absolute inset-0 flex flex-col items-center justify-center text-center p-6">
+                    <div className="portfolio-caption">
+                      <p className="text-xs uppercase tracking-[0.2em] text-primary mb-2">
+                        {p.category}
+                      </p>
+                      <h3 className="font-display text-2xl md:text-3xl text-background">
+                        {p.title}
+                      </h3>
+                      <p className="text-sm text-background/70 mt-1">{p.location}</p>
+                    </div>
+                  </div>
+                </button>
+              </FadeUpSection>
             ))}
           </div>
         </div>
@@ -158,16 +160,18 @@ const Portfolio = () => {
       {/* CTA */}
       <section className="bg-dark">
         <div className="container py-16 md:py-24 text-center">
-          <h2 className="font-display text-3xl md:text-5xl text-background leading-tight max-w-2xl mx-auto">
-            Like what you see? Let&apos;s talk about your project.
-          </h2>
-          <Button
-            asChild
-            size="lg"
-            className="mt-8 bg-primary text-primary-foreground hover:bg-primary-dark rounded-sm h-12 px-10"
-          >
-            <Link to="/#contact">Get Free Estimate</Link>
-          </Button>
+          <FadeUpSection>
+            <h2 className="font-display text-3xl md:text-5xl text-background leading-tight max-w-2xl mx-auto">
+              Like what you see? Let&apos;s talk about your project.
+            </h2>
+            <RippleButton
+              asChild
+              size="lg"
+              className="mt-8 bg-primary text-primary-foreground hover:bg-primary-dark rounded-sm h-12 px-10"
+            >
+              <Link to="/contact">Get Free Estimate</Link>
+            </RippleButton>
+          </FadeUpSection>
         </div>
       </section>
 

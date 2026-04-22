@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { Brush, Home, Hammer, Wrench, ArrowRight } from "lucide-react";
 import PageLayout from "@/components/site/PageLayout";
 import InnerHero from "@/components/site/InnerHero";
-import { Button } from "@/components/ui/button";
+import FadeUpSection from "@/components/site/FadeUpSection";
+import RippleButton from "@/components/site/RippleButton";
 
 const services = [
   {
@@ -34,28 +35,31 @@ const services = [
 const Services = () => {
   return (
     <PageLayout>
-      <InnerHero
-        title="Everything your space needs."
-        subtitle="From a fresh coat of paint to a full remodel, we handle it all."
-        crumbs={[{ label: "Home", to: "/" }, { label: "Services" }]}
-      />
+      <FadeUpSection>
+        <InnerHero
+          title="Everything your space needs."
+          subtitle="From a fresh coat of paint to a full remodel, we handle it all."
+          crumbs={[{ label: "Home", to: "/" }, { label: "Services" }]}
+        />
+      </FadeUpSection>
 
       <section className="bg-background">
         <div className="container py-16 md:py-24">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {services.map(({ icon: Icon, name, desc, to }) => (
-              <Link
-                key={to}
-                to={to}
-                className="group relative bg-surface border border-stone p-8 md:p-10 transition-all hover:border-l-[3px] hover:border-l-primary hover:shadow-sm"
-              >
-                <Icon className="text-primary" size={32} strokeWidth={1.5} />
-                <h2 className="mt-6 font-display text-2xl md:text-3xl text-foreground">{name}</h2>
-                <p className="mt-3 text-muted-foreground leading-relaxed max-w-md">{desc}</p>
-                <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:gap-3 transition-all">
-                  Learn more <ArrowRight size={14} />
-                </span>
-              </Link>
+            {services.map(({ icon: Icon, name, desc, to }, i) => (
+              <FadeUpSection key={to} delay={i * 0.1}>
+                <Link
+                  to={to}
+                  className="service-card group relative bg-surface border border-stone p-8 md:p-10 block hover:shadow-sm"
+                >
+                  <Icon className="text-primary" size={32} strokeWidth={1.5} />
+                  <h2 className="mt-6 font-display text-2xl md:text-3xl text-foreground">{name}</h2>
+                  <p className="mt-3 text-muted-foreground leading-relaxed max-w-md">{desc}</p>
+                  <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:gap-3 transition-all">
+                    Learn more <ArrowRight size={14} />
+                  </span>
+                </Link>
+              </FadeUpSection>
             ))}
           </div>
         </div>
@@ -63,16 +67,18 @@ const Services = () => {
 
       <section className="bg-dark">
         <div className="container py-16 md:py-24 text-center">
-          <h2 className="font-display text-3xl md:text-5xl text-background leading-tight max-w-2xl mx-auto">
-            Not sure which service you need? We can help.
-          </h2>
-          <Button
-            asChild
-            size="lg"
-            className="mt-8 bg-primary text-primary-foreground hover:bg-primary-dark rounded-sm h-12 px-10"
-          >
-            <Link to="/#contact">Get Free Estimate</Link>
-          </Button>
+          <FadeUpSection>
+            <h2 className="font-display text-3xl md:text-5xl text-background leading-tight max-w-2xl mx-auto">
+              Not sure which service you need? We can help.
+            </h2>
+            <RippleButton
+              asChild
+              size="lg"
+              className="mt-8 bg-primary text-primary-foreground hover:bg-primary-dark rounded-sm h-12 px-10"
+            >
+              <Link to="/contact">Get Free Estimate</Link>
+            </RippleButton>
+          </FadeUpSection>
         </div>
       </section>
     </PageLayout>
