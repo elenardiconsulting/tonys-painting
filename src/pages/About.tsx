@@ -59,13 +59,15 @@ const About = () => {
       {/* Company history */}
       <section className="bg-background">
         <div className="container py-20 md:py-28 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <FadeUpSection className="relative aspect-[4/5] bg-stone overflow-hidden">
-            <img
-              src={otonielSantos}
-              alt="Otoniel Santos, Founder of Tony's Painting"
-              className="absolute inset-0 w-full h-full object-cover"
-              loading="lazy"
-            />
+          <FadeUpSection className="relative aspect-[4/5] bg-stone overflow-visible">
+            <AnimatedPhotoBorder className="absolute inset-0">
+              <img
+                src={otonielSantos}
+                alt="Otoniel Santos, Founder of Tony's Painting"
+                className="absolute inset-0 w-full h-full object-cover rounded-[4px]"
+                loading="lazy"
+              />
+            </AnimatedPhotoBorder>
           </FadeUpSection>
 
           <FadeUpSection delay={0.1}>
