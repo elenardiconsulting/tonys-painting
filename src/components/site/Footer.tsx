@@ -12,10 +12,15 @@ const Footer = () => {
         <div>
           <div className="text-xs uppercase tracking-[0.2em] text-background/50 mb-4">Explore</div>
           <ul className="space-y-2 text-sm">
-            {["Services", "Portfolio", "About", "Reviews"].map((l) => (
-              <li key={l}>
-                <a href={`#${l.toLowerCase()}`} className="text-background/80 hover:text-primary transition-colors">
-                  {l}
+            {[
+              { label: "Services", href: "/services" },
+              { label: "Portfolio", href: "/portfolio" },
+              { label: "About", href: "/#about" },
+              { label: "Reviews", href: "/#reviews" },
+            ].map((l) => (
+              <li key={l.label}>
+                <a href={l.href} className="text-background/80 hover:text-primary transition-colors">
+                  {l.label}
                 </a>
               </li>
             ))}
