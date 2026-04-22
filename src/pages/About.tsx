@@ -3,6 +3,7 @@ import PageLayout from "@/components/site/PageLayout";
 import InnerHero from "@/components/site/InnerHero";
 import FadeUpSection from "@/components/site/FadeUpSection";
 import RippleButton from "@/components/site/RippleButton";
+import AnimatedPhotoBorder from "@/components/site/AnimatedPhotoBorder";
 import otonielSantos from "@/assets/otoniel-santos-founder.png";
 
 const values = [
@@ -58,13 +59,15 @@ const About = () => {
       {/* Company history */}
       <section className="bg-background">
         <div className="container py-20 md:py-28 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <FadeUpSection className="relative aspect-[4/5] bg-stone overflow-hidden">
-            <img
-              src={otonielSantos}
-              alt="Otoniel Santos, Founder of Tony's Painting"
-              className="absolute inset-0 w-full h-full object-cover"
-              loading="lazy"
-            />
+          <FadeUpSection className="relative aspect-[4/5] bg-stone overflow-visible">
+            <AnimatedPhotoBorder className="absolute inset-0">
+              <img
+                src={otonielSantos}
+                alt="Otoniel Santos, Founder of Tony's Painting"
+                className="absolute inset-0 w-full h-full object-cover rounded-[4px]"
+                loading="lazy"
+              />
+            </AnimatedPhotoBorder>
           </FadeUpSection>
 
           <FadeUpSection delay={0.1}>
