@@ -66,7 +66,7 @@ const PartnersSection = () => {
               loading="lazy"
               className="w-full h-auto"
               style={{
-                maxWidth: "720px",
+                maxWidth: "560px",
                 objectFit: "contain",
               }}
             />
