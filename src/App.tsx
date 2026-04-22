@@ -11,6 +11,7 @@ import Portfolio from "./pages/Portfolio.tsx";
 import About from "./pages/About.tsx";
 import Reviews from "./pages/Reviews.tsx";
 import Contact from "./pages/Contact.tsx";
+import ThankYou from "./pages/ThankYou.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -35,6 +36,7 @@ const AnimatedRoutes = () => {
           <Route path="/about" element={<About />} />
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/thank-you" element={<ThankYou />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
