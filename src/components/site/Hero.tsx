@@ -40,14 +40,10 @@ const Hero = () => {
         aria-hidden="true"
       />
 
-      <div className="container relative min-h-[calc(100vh-5rem)] py-12 md:py-0 md:grid md:grid-cols-100 md:gap-0">
+      <div className="container relative min-h-[calc(100vh-5rem)] py-12 md:py-0 md:grid md:grid-cols-[55fr_45fr] md:gap-0">
         {/* Left panel: existing content */}
-        <div
-          className="relative z-10 flex flex-col justify-center md:col-span-55 md:py-20 md:pr-12 lg:pr-16"
-          style={{
-            // Desktop padding override per spec (80px vertical, 60px horizontal-ish via container + pr above)
-          }}
-        >
+        <div className="relative z-10 flex flex-col justify-center md:py-20 md:pr-12 lg:pr-16">
+
           <div className="max-w-5xl">
             <motion.h1 {...fadeUp(0)} className="hero-headline">
               Transforming spaces across Martha&apos;s Vineyard and New England.
