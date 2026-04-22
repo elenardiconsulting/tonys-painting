@@ -15,7 +15,7 @@ const SectionTitle = ({ children, className, ...rest }: SectionTitleProps) => {
 
   if (reduce) {
     return (
-      <h2 className={className} {...(rest as React.HTMLAttributes<HTMLHeadingElement>)}>
+      <h2 className={className}>
         {children}
       </h2>
     );
