@@ -16,7 +16,7 @@ const Footer = () => {
               { label: "Services", href: "/services" },
               { label: "Portfolio", href: "/portfolio" },
               { label: "About", href: "/about" },
-              { label: "Reviews", href: "/#reviews" },
+              { label: "Reviews", href: "/reviews" },
             ].map((l) => (
               <li key={l.label}>
                 <a href={l.href} className="text-background/80 hover:text-primary transition-colors">
