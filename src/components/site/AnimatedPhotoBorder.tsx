@@ -11,6 +11,9 @@ const AnimatedPhotoBorder = ({ children, className }: AnimatedPhotoBorderProps) 
   const inView = useInView(ref, { amount: 0.2 });
   const prefersReducedMotion = useReducedMotion();
 
+  const offset = 6;
+  const stroke = 2.5;
+
   return (
     <div ref={ref} className={`relative ${className ?? ""}`}>
       {/* Image layer */}
@@ -22,31 +25,27 @@ const AnimatedPhotoBorder = ({ children, className }: AnimatedPhotoBorderProps) 
       <svg
         className="pointer-events-none absolute"
         style={{
-          top: "-6px",
-          left: "-6px",
-          width: "calc(100% + 12px)",
-          height: "calc(100% + 12px)",
-          overflow: "visible",
+          top: -offset,
+          left: -offset,
+          width: `calc(100% + ${offset * 2}px)`,
+          height: `calc(100% + ${offset * 2}px)`,
           zIndex: 2,
         }}
-        preserveAspectRatio="none"
-        viewBox="0 0 100 100"
         aria-hidden="true"
       >
         <motion.rect
-          x="1"
-          y="1"
-          width="98"
-          height="98"
-          rx="1.2"
-          ry="1.2"
+          x={stroke / 2}
+          y={stroke / 2}
+          width={`calc(100% - ${stroke}px)`}
+          height={`calc(100% - ${stroke}px)`}
+          rx={6}
+          ry={6}
           fill="none"
           stroke="#C4291C"
-          strokeWidth="2"
+          strokeWidth={stroke}
           strokeLinecap="round"
           strokeLinejoin="round"
-          vectorEffect="non-scaling-stroke"
-          initial={{ pathLength: prefersReducedMotion ? 1 : 0, opacity: 1 }}
+          initial={{ pathLength: prefersReducedMotion ? 1 : 0 }}
           animate={
             prefersReducedMotion
               ? { pathLength: 1 }

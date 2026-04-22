@@ -7,13 +7,12 @@ const AboutSnippet = () => {
   return (
     <section id="about" className="bg-stone">
       <div className="container py-20 md:py-28 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-        <FadeUpSection className="relative aspect-[4/5] bg-background overflow-visible order-1 lg:order-none">
+        <FadeUpSection className="relative aspect-[4/5] overflow-visible order-1 lg:order-none">
           <AnimatedPhotoBorder className="absolute inset-0">
             <img
               src={otonielSantos}
               alt="Otoniel Santos, Founder of Tony's Painting"
-              className="absolute inset-0 w-full h-full object-cover rounded-[4px]"
-              loading="lazy"
+              className="block w-full h-full object-cover rounded-[4px]"
             />
           </AnimatedPhotoBorder>
         </FadeUpSection>
