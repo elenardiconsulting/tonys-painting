@@ -1,81 +1,5 @@
-import { useState } from "react";
 import FadeUpSection from "@/components/site/FadeUpSection";
-
-interface Partner {
-  name: string;
-  src: string;
-}
-
-const PARTNERS: Partner[] = [
-  {
-    name: "Benjamin Moore",
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Benjamin_Moore_%26_Co_logo.svg/320px-Benjamin_Moore_%26_Co_logo.svg.png",
-  },
-  {
-    name: "Sherwin-Williams",
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Sherwin-Williams_logo.svg/320px-Sherwin-Williams_logo.svg.png",
-  },
-  {
-    name: "Cabot Stains",
-    src: "https://www.cabotstain.com/content/dam/cabot/global/logos/cabot-logo.png",
-  },
-  {
-    name: "EPA Lead-Safe Certified",
-    src: "https://www.epa.gov/sites/default/files/2014-05/lead_safe_logo.png",
-  },
-];
-
-const PartnerLogo = ({ partner, delay }: { partner: Partner; delay: number }) => {
-  const [failed, setFailed] = useState(false);
-
-  return (
-    <FadeUpSection
-      delay={delay}
-      className="group"
-      style={{
-        padding: "16px 28px",
-        backgroundColor: "rgba(245,241,235,0.05)",
-        border: "0.5px solid rgba(245,241,235,0.08)",
-        borderRadius: "10px",
-        transition: "background-color 0.25s ease, border-color 0.25s ease",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.backgroundColor = "rgba(245,241,235,0.1)";
-        e.currentTarget.style.borderColor = "rgba(245,241,235,0.15)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.backgroundColor = "rgba(245,241,235,0.05)";
-        e.currentTarget.style.borderColor = "rgba(245,241,235,0.08)";
-      }}
-    >
-      {failed ? (
-        <span
-          style={{
-            color: "#F5F1EB",
-            fontWeight: 700,
-            fontSize: "14px",
-            display: "inline-block",
-            lineHeight: "40px",
-          }}
-        >
-          {partner.name}
-        </span>
-      ) : (
-        <img
-          src={partner.src}
-          alt={partner.name}
-          onError={() => setFailed(true)}
-          loading="lazy"
-          style={{
-            height: "40px",
-            objectFit: "contain",
-            filter: "brightness(0) invert(1) opacity(0.85)",
-          }}
-        />
-      )}
-    </FadeUpSection>
-  );
-};
+import partnersLogos from "@/assets/partners-logos.png";
 
 const PartnersSection = () => {
   return (
@@ -134,11 +58,20 @@ const PartnersSection = () => {
           </p>
         </FadeUpSection>
 
-        <div className="grid grid-cols-2 md:flex md:flex-wrap md:justify-center gap-3 md:gap-6">
-          {PARTNERS.map((p, i) => (
-            <PartnerLogo key={p.name} partner={p} delay={0.2 + i * 0.05} />
-          ))}
-        </div>
+        <FadeUpSection delay={0.2}>
+          <div className="flex justify-center">
+            <img
+              src={partnersLogos}
+              alt="Cabot Stains, Benjamin Moore, Sherwin-Williams, and EPA Lead-Safe Certified Firm"
+              loading="lazy"
+              className="w-full h-auto"
+              style={{
+                maxWidth: "720px",
+                objectFit: "contain",
+              }}
+            />
+          </div>
+        </FadeUpSection>
       </div>
     </section>
   );
