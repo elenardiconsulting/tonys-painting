@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import RippleButton from "@/components/site/RippleButton";
 
 const Hero = () => {
   return (
@@ -11,22 +11,25 @@ const Hero = () => {
           <h1 className="font-display text-4xl md:text-6xl lg:text-7xl leading-[1.05] text-foreground">
             Transforming spaces across Martha&apos;s Vineyard and New England.
           </h1>
+
+          <div className="mt-6 mx-auto lg:mx-0 h-[2px] bg-primary animate-hero-line" />
+
           <p className="mt-6 text-base md:text-lg text-muted-foreground max-w-xl leading-relaxed">
             Since 2004, Tony&apos;s team has brought precision and care to every project in the region.
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
-            <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary-dark rounded-sm h-12 px-8">
-              <a href="#contact">Get Free Estimate</a>
-            </Button>
-            <Button
+            <RippleButton asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary-dark rounded-sm h-12 px-8">
+              <a href="/contact">Get Free Estimate</a>
+            </RippleButton>
+            <RippleButton
               asChild
               size="lg"
               variant="outline"
               className="rounded-sm h-12 px-8 border-foreground text-foreground hover:bg-foreground hover:text-background"
             >
-              <a href="#portfolio">See Our Work</a>
-            </Button>
+              <a href="/portfolio">See Our Work</a>
+            </RippleButton>
           </div>
 
           <p className="mt-10 text-xs uppercase tracking-[0.2em] text-muted-foreground">

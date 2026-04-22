@@ -90,3 +90,53 @@
     font-feature-settings: "lnum";
   }
 }
+
+@layer utilities {
+  /* Service card hover: left red border + lift */
+  .service-card {
+    border-left: 0px solid transparent;
+    transition: transform 0.25s ease, border-left-color 0.25s ease, border-left-width 0.25s ease, background-color 0.25s ease;
+  }
+  .service-card:hover {
+    transform: translateY(-4px);
+    border-left: 3px solid hsl(var(--primary));
+  }
+
+  /* Portfolio overlay */
+  .portfolio-item .portfolio-overlay {
+    background-color: hsla(0, 0%, 10%, 0.75);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+  .portfolio-item:hover .portfolio-overlay,
+  .portfolio-item:focus-visible .portfolio-overlay {
+    opacity: 1;
+  }
+  .portfolio-item .portfolio-caption {
+    transform: translateY(12px);
+    opacity: 0;
+    transition: transform 0.35s ease 0.05s, opacity 0.35s ease 0.05s;
+  }
+  .portfolio-item:hover .portfolio-caption,
+  .portfolio-item:focus-visible .portfolio-caption {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .portfolio-item:hover {
+    cursor: crosshair;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .service-card:hover {
+    transform: none;
+  }
+}

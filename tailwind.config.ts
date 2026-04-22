@@ -84,11 +84,26 @@ export default {
           from: { opacity: "0", transform: "translateY(12px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
+        "fade-in": {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+        "hero-line": {
+          from: { width: "0px", opacity: "0" },
+          to: { width: "80px", opacity: "1" },
+        },
+        ripple: {
+          from: { transform: "scale(0)", opacity: "0.3" },
+          to: { transform: "scale(4)", opacity: "0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-up": "fade-up 0.6s ease-out both",
+        "fade-in": "fade-in 0.3s ease-out both",
+        "hero-line": "hero-line 0.8s ease-out 0.4s both",
+        ripple: "ripple 0.5s ease-out forwards",
       },
     },
   },

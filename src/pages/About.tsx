@@ -1,7 +1,8 @@
 import { Check, Wrench, Handshake } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import PageLayout from "@/components/site/PageLayout";
 import InnerHero from "@/components/site/InnerHero";
+import FadeUpSection from "@/components/site/FadeUpSection";
+import RippleButton from "@/components/site/RippleButton";
 
 const values = [
   {
@@ -56,13 +57,13 @@ const About = () => {
       {/* Company history */}
       <section className="bg-background">
         <div className="container py-20 md:py-28 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <div className="relative aspect-[4/5] bg-stone overflow-hidden">
+          <FadeUpSection className="relative aspect-[4/5] bg-stone overflow-hidden">
             <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/60 font-display text-lg">
               Photo of Tony
             </div>
-          </div>
+          </FadeUpSection>
 
-          <div>
+          <FadeUpSection delay={0.1}>
             <p className="text-xs uppercase tracking-[0.25em] text-primary mb-4">Our Story</p>
             <h2 className="font-display text-3xl md:text-5xl text-foreground leading-tight">
               Built on trust, proven by results.
@@ -80,24 +81,25 @@ const About = () => {
                 clearly, and never cut corners.
               </p>
             </div>
-          </div>
+          </FadeUpSection>
         </div>
       </section>
 
       {/* Values */}
       <section className="bg-stone">
         <div className="container py-20 md:py-28">
-          <div className="max-w-2xl mb-12 md:mb-16">
+          <FadeUpSection className="max-w-2xl mb-12 md:mb-16">
             <p className="text-xs uppercase tracking-[0.25em] text-primary mb-4">Our Values</p>
             <h2 className="font-display text-3xl md:text-5xl text-foreground leading-tight">
               What we stand for.
             </h2>
-          </div>
+          </FadeUpSection>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {values.map((v) => (
-              <div
+            {values.map((v, i) => (
+              <FadeUpSection
                 key={v.title}
+                delay={i * 0.1}
                 className="bg-surface p-8 md:p-10 border border-border"
               >
                 <div className="w-12 h-12 flex items-center justify-center bg-stone text-primary mb-6">
@@ -105,7 +107,7 @@ const About = () => {
                 </div>
                 <h3 className="font-display text-2xl text-foreground mb-3">{v.title}</h3>
                 <p className="text-muted-foreground leading-relaxed">{v.description}</p>
-              </div>
+              </FadeUpSection>
             ))}
           </div>
         </div>
@@ -114,20 +116,20 @@ const About = () => {
       {/* Timeline */}
       <section className="bg-background">
         <div className="container py-20 md:py-28">
-          <div className="max-w-2xl mb-12 md:mb-16">
+          <FadeUpSection className="max-w-2xl mb-12 md:mb-16">
             <p className="text-xs uppercase tracking-[0.25em] text-primary mb-4">Timeline</p>
             <h2 className="font-display text-3xl md:text-5xl text-foreground leading-tight">
               Our story.
             </h2>
-          </div>
+          </FadeUpSection>
 
           <ol className="relative max-w-3xl">
             <div
               className="absolute left-[7px] top-2 bottom-2 w-px bg-primary"
               aria-hidden
             />
-            {timeline.map((item) => (
-              <li key={item.year} className="relative pl-10 pb-10 last:pb-0">
+            {timeline.map((item, i) => (
+              <FadeUpSection key={item.year} delay={i * 0.1} as="li" className="relative pl-10 pb-10 last:pb-0 block">
                 <span className="absolute left-0 top-2 w-4 h-4 rounded-full bg-primary ring-4 ring-background" />
                 <div className="font-display text-2xl md:text-3xl text-primary leading-none">
                   {item.year}
@@ -135,7 +137,7 @@ const About = () => {
                 <p className="mt-2 text-base md:text-lg text-foreground leading-relaxed">
                   {item.text}
                 </p>
-              </li>
+              </FadeUpSection>
             ))}
           </ol>
         </div>
@@ -181,18 +183,20 @@ const About = () => {
       {/* CTA */}
       <section className="bg-dark">
         <div className="container py-20 md:py-28 text-center">
-          <h2 className="font-display text-3xl md:text-5xl text-background leading-tight max-w-2xl mx-auto">
-            We would love to work on your next project.
-          </h2>
-          <div className="mt-10">
-            <Button
-              asChild
-              size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary-dark rounded-sm h-12 px-10"
-            >
-              <a href="/#contact">Get Free Estimate</a>
-            </Button>
-          </div>
+          <FadeUpSection>
+            <h2 className="font-display text-3xl md:text-5xl text-background leading-tight max-w-2xl mx-auto">
+              We would love to work on your next project.
+            </h2>
+            <div className="mt-10">
+              <RippleButton
+                asChild
+                size="lg"
+                className="bg-primary text-primary-foreground hover:bg-primary-dark rounded-sm h-12 px-10"
+              >
+                <a href="/contact">Get Free Estimate</a>
+              </RippleButton>
+            </div>
+          </FadeUpSection>
         </div>
       </section>
     </PageLayout>

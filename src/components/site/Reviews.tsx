@@ -1,4 +1,5 @@
 import { Star } from "lucide-react";
+import FadeUpSection from "@/components/site/FadeUpSection";
 
 const reviews = [
   {
@@ -25,22 +26,24 @@ const Reviews = () => {
   return (
     <section id="reviews" className="bg-background">
       <div className="container py-20 md:py-28">
-        <div className="max-w-2xl mb-12 md:mb-16">
+        <FadeUpSection className="max-w-2xl mb-12 md:mb-16">
           <p className="text-xs uppercase tracking-[0.25em] text-primary mb-4">Client Reviews</p>
           <h2 className="font-display text-3xl md:text-5xl text-foreground leading-tight">
             What our clients say.
           </h2>
-        </div>
+        </FadeUpSection>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {reviews.map((r) => (
-            <article
+          {reviews.map((r, i) => (
+            <FadeUpSection
               key={r.name}
+              delay={i * 0.1}
+              as="article"
               className="bg-stone p-8 md:p-10 flex flex-col"
             >
               <div className="flex gap-1 text-primary mb-6">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={16} fill="currentColor" strokeWidth={0} />
+                {Array.from({ length: 5 }).map((_, j) => (
+                  <Star key={j} size={16} fill="currentColor" strokeWidth={0} />
                 ))}
               </div>
               <p className="font-display text-xl md:text-2xl text-foreground leading-snug flex-1">
@@ -50,7 +53,7 @@ const Reviews = () => {
                 <div className="font-medium text-foreground">{r.name}</div>
                 <div className="text-sm text-muted-foreground">{r.location}</div>
               </div>
-            </article>
+            </FadeUpSection>
           ))}
         </div>
       </div>
