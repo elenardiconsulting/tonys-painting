@@ -1,7 +1,8 @@
 import { Star } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import PageLayout from "@/components/site/PageLayout";
 import InnerHero from "@/components/site/InnerHero";
+import FadeUpSection from "@/components/site/FadeUpSection";
+import RippleButton from "@/components/site/RippleButton";
 
 const reviews = [
   {
@@ -62,15 +63,17 @@ const Reviews = () => {
       {/* Score summary */}
       <section className="bg-dark">
         <div className="container py-20 md:py-28 flex flex-col items-center text-center">
-          <div className="font-display text-7xl md:text-8xl text-background leading-none">
-            5.0
-          </div>
-          <div className="mt-6">
-            <Stars size={24} />
-          </div>
-          <p className="mt-6 text-sm uppercase tracking-[0.25em] text-background/60">
-            Based on Google Reviews
-          </p>
+          <FadeUpSection className="flex flex-col items-center">
+            <div className="font-display text-7xl md:text-8xl text-background leading-none">
+              5.0
+            </div>
+            <div className="mt-6">
+              <Stars size={24} />
+            </div>
+            <p className="mt-6 text-sm uppercase tracking-[0.25em] text-background/60">
+              Based on Google Reviews
+            </p>
+          </FadeUpSection>
         </div>
       </section>
 
@@ -78,9 +81,11 @@ const Reviews = () => {
       <section className="bg-background">
         <div className="container py-20 md:py-28">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {reviews.map((r) => (
-              <article
+            {reviews.map((r, i) => (
+              <FadeUpSection
                 key={r.name}
+                delay={(i % 3) * 0.1}
+                as="article"
                 className="bg-surface border border-border p-8 md:p-10 flex flex-col"
               >
                 <div className="font-semibold text-foreground">{r.name}</div>
@@ -93,7 +98,7 @@ const Reviews = () => {
                 >
                   {r.text}
                 </p>
-              </article>
+              </FadeUpSection>
             ))}
           </div>
         </div>
@@ -102,18 +107,20 @@ const Reviews = () => {
       {/* CTA */}
       <section className="bg-dark">
         <div className="container py-20 md:py-28 text-center">
-          <h2 className="font-display text-3xl md:text-5xl text-background leading-tight max-w-2xl mx-auto">
-            Ready to be our next happy client?
-          </h2>
-          <div className="mt-10">
-            <Button
-              asChild
-              size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary-dark rounded-sm h-12 px-10"
-            >
-              <a href="/#contact">Get Free Estimate</a>
-            </Button>
-          </div>
+          <FadeUpSection>
+            <h2 className="font-display text-3xl md:text-5xl text-background leading-tight max-w-2xl mx-auto">
+              Ready to be our next happy client?
+            </h2>
+            <div className="mt-10">
+              <RippleButton
+                asChild
+                size="lg"
+                className="bg-primary text-primary-foreground hover:bg-primary-dark rounded-sm h-12 px-10"
+              >
+                <a href="/contact">Get Free Estimate</a>
+              </RippleButton>
+            </div>
+          </FadeUpSection>
         </div>
       </section>
     </PageLayout>
