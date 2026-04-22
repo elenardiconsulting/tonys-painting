@@ -111,7 +111,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: shimmerText 3.5s linear infinite;
+    animation: shimmerText 10s linear infinite;
     font-family: 'Playfair Display', serif;
     font-weight: 900;
     font-size: clamp(56px, 8vw, 96px);
