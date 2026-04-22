@@ -173,4 +173,10 @@
   .service-card:hover {
     transform: none;
   }
+  .hero-headline {
+    background: none;
+    -webkit-text-fill-color: hsl(var(--background));
+    color: hsl(var(--background));
+    animation: none;
+  }
 }
