@@ -1,14 +1,18 @@
 import { Button } from "@/components/ui/button";
 import FadeUpSection from "@/components/site/FadeUpSection";
+import otonielSantos from "@/assets/otoniel-santos-founder.png";
 
 const AboutSnippet = () => {
   return (
     <section id="about" className="bg-stone">
       <div className="container py-20 md:py-28 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <FadeUpSection className="relative aspect-[4/5] bg-background overflow-hidden order-1 lg:order-none">
-          <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/50 font-display text-lg">
-            Otoniel Santos, Founder
-          </div>
+          <img
+            src={otonielSantos}
+            alt="Otoniel Santos, Founder of Tony's Painting"
+            className="absolute inset-0 w-full h-full object-cover"
+            loading="lazy"
+          />
         </FadeUpSection>
 
         <FadeUpSection delay={0.1}>
