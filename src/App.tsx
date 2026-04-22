@@ -24,9 +24,8 @@ const AnimatedRoutes = () => {
       <motion.div
         key={location.pathname}
         initial={reduce ? false : { opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={reduce ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: reduce ? 0 : 0.25, ease: "easeOut" }}
+        animate={{ opacity: 1, transition: { duration: reduce ? 0 : 0.25, ease: "easeOut" } }}
+        exit={reduce ? { opacity: 1 } : { opacity: 0, transition: { duration: 0.15, ease: "easeOut" } }}
       >
         <Routes location={location}>
           <Route path="/" element={<Index />} />
