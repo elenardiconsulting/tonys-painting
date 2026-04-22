@@ -2,12 +2,46 @@ import LandingTemplate from "@/components/lp/LandingTemplate";
 
 const LPExteriorPainting = () => (
   <LandingTemplate
-    tag="Exterior Painting"
+    tag="EXTERIOR PAINTING"
     headline="Exterior painting built to handle New England weather."
     subline="We prep every surface properly and use premium paints that hold up season after season."
     service="Exterior Painting"
-    reviewText="Tony's Painting is the real deal. They flawlessly transformed my 1920s home with Benjamin Moore paint. Punctuality and work ethic were impressive."
-    reviewName="Mark Duffy"
+    heroReview={{
+      name: "Mark Duffy",
+      text: "Tony's Painting is the real deal. They flawlessly transformed my 1920s home with Benjamin Moore paint. Punctuality and work ethic were impressive.",
+    }}
+    reviews={[
+      {
+        name: "Mark Duffy",
+        text: "Tony's Painting is the real deal. They flawlessly transformed my 1920s home with Benjamin Moore paint. Punctuality and work ethic were impressive.",
+      },
+      {
+        name: "Curtis Highsmith",
+        text: "Clean, reliable, and professional. If you are looking for a master painter, call Tony's Painting.",
+      },
+      {
+        name: "Edwina Hawes",
+        text: "Excellent painting for any circumstance. Tony's team of professionals gets it done right.",
+      },
+    ]}
+    included={[
+      { title: "Full exterior walls and siding", description: "" },
+      { title: "Porches and decks", description: "" },
+      { title: "Fences and gates", description: "" },
+      { title: "Trim and shutters", description: "" },
+      { title: "Commercial buildings", description: "" },
+      { title: "Power washing and surface prep", description: "" },
+      { title: "Benjamin Moore premium paints", description: "" },
+      { title: "Multi-season durability guarantee", description: "" },
+    ]}
+    portfolioLocations={[
+      "Edgartown",
+      "Chilmark",
+      "West Tisbury",
+      "Vineyard Haven",
+      "Boston",
+      "Newton",
+    ]}
   />
 );
 
