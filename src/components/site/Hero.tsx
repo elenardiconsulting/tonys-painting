@@ -95,7 +95,7 @@ const Hero = () => {
         </div>
 
         {/* Right panel: image with overlays (desktop/tablet only) */}
-        <div className="hidden md:block md:col-span-45 relative overflow-hidden">
+        <div className="hidden md:block relative overflow-hidden">
           <motion.img
             {...imageMotion}
             src={HERO_IMAGE}
