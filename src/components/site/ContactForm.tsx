@@ -1,5 +1,5 @@
 import { useState, FormEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -49,6 +49,7 @@ const emptyForm: FormState = {
 
 const ContactForm = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<FormState>(emptyForm);
   const [errors, setErrors] = useState<Errors>({});
   const [submitting, setSubmitting] = useState(false);
@@ -95,6 +96,7 @@ const ContactForm = () => {
         await new Promise((r) => setTimeout(r, 600));
       }
       setSubmitted(true);
+      navigate("/thank-you");
     } catch {
       toast({
         title: "Something went wrong",
