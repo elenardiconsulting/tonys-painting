@@ -34,7 +34,7 @@ const Navbar = () => {
 
         <div className="hidden md:block">
           <Button asChild className="bg-primary text-primary-foreground hover:bg-primary-dark rounded-sm">
-            <a href="#contact">Get Free Estimate</a>
+            <a href="/contact">Get Free Estimate</a>
           </Button>
         </div>
 
@@ -63,7 +63,7 @@ const Navbar = () => {
             ))}
             <li>
               <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary-dark rounded-sm">
-                <a href="#contact" onClick={() => setOpen(false)}>Get Free Estimate</a>
+                <a href="/contact" onClick={() => setOpen(false)}>Get Free Estimate</a>
               </Button>
             </li>
           </ul>
