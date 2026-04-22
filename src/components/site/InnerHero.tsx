@@ -55,6 +55,7 @@ const InnerHero = ({ title, subtitle, crumbs, variant = "stone", height }: Inner
 
         <h1
           className={`font-display text-4xl md:text-6xl leading-tight ${isImage ? "text-background" : "text-foreground"}`}
+          style={{ fontWeight: 900, letterSpacing: "-0.02em" }}
         >
           {title}
         </h1>

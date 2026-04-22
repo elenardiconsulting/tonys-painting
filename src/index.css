@@ -85,9 +85,43 @@
     font-feature-settings: "ss01", "cv11";
   }
 
-  h1, h2, h3, h4, h5 {
+  h1, h2 {
     @apply font-display;
+    font-weight: 900;
+    letter-spacing: -0.02em;
     font-feature-settings: "lnum";
+  }
+  h3, h4, h5 {
+    @apply font-sans;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer utilities {
+  .hero-headline {
+    background: linear-gradient(
+      90deg,
+      #F5F1EB 0%,
+      #C4291C 35%,
+      #F5F1EB 60%,
+      #E8E2D8 100%
+    );
+    background-size: 600px 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmerText 3.5s linear infinite;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(56px, 8vw, 96px);
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+  }
+
+  @keyframes shimmerText {
+    0% { background-position: -600px 0; }
+    100% { background-position: 600px 0; }
   }
 }
 
@@ -138,5 +172,11 @@
   }
   .service-card:hover {
     transform: none;
+  }
+  .hero-headline {
+    background: none;
+    -webkit-text-fill-color: hsl(var(--background));
+    color: hsl(var(--background));
+    animation: none;
   }
 }
