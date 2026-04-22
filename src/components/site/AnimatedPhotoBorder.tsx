@@ -8,21 +8,24 @@ interface AnimatedPhotoBorderProps {
 
 const AnimatedPhotoBorder = ({ children, className }: AnimatedPhotoBorderProps) => {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { amount: 0.3 });
+  const inView = useInView(ref, { amount: 0.2 });
   const prefersReducedMotion = useReducedMotion();
 
   return (
     <div ref={ref} className={`relative ${className ?? ""}`}>
-      <div className="relative overflow-hidden rounded-[4px] w-full h-full">
+      {/* Image layer */}
+      <div className="relative w-full h-full overflow-hidden rounded-[4px]">
         {children}
       </div>
 
+      {/* Animated border layer */}
       <svg
         className="pointer-events-none absolute"
         style={{
-          inset: "-4px",
-          width: "calc(100% + 8px)",
-          height: "calc(100% + 8px)",
+          top: "-6px",
+          left: "-6px",
+          width: "calc(100% + 12px)",
+          height: "calc(100% + 12px)",
           overflow: "visible",
           zIndex: 2,
         }}
@@ -36,27 +39,29 @@ const AnimatedPhotoBorder = ({ children, className }: AnimatedPhotoBorderProps) 
           width="98"
           height="98"
           rx="1.2"
+          ry="1.2"
           fill="none"
           stroke="#C4291C"
-          strokeWidth="0.6"
+          strokeWidth="2"
           strokeLinecap="round"
+          strokeLinejoin="round"
           vectorEffect="non-scaling-stroke"
-          initial={prefersReducedMotion ? { pathLength: 1 } : { pathLength: 0 }}
+          initial={{ pathLength: prefersReducedMotion ? 1 : 0, opacity: 1 }}
           animate={
             prefersReducedMotion
               ? { pathLength: 1 }
               : inView
-              ? { pathLength: [0, 1, 0] }
+              ? { pathLength: 1 }
               : { pathLength: 0 }
           }
           transition={
             prefersReducedMotion
               ? { duration: 0 }
               : {
-                  duration: 5,
+                  duration: 2.5,
                   ease: "easeInOut",
                   repeat: Infinity,
-                  repeatType: "loop",
+                  repeatType: "reverse",
                 }
           }
         />
