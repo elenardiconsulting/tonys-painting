@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const links = [
   { label: "Services", href: "/services" },
@@ -11,11 +13,32 @@ const links = [
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
+  useEffect(() => {
+    if (!isHome) return;
+    const onScroll = () => setScrolled(window.scrollY > 80);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [isHome]);
+
+  // On non-home pages: always solid. On home: transparent until 80px scroll.
+  const solid = !isHome || scrolled || open;
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-dark/95 backdrop-blur supports-[backdrop-filter]:bg-dark/80 border-b border-white/5">
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-all duration-300 ease-out border-b",
+        solid
+          ? "bg-dark/95 backdrop-blur supports-[backdrop-filter]:bg-dark/80 border-white/5 shadow-[0_2px_20px_rgba(0,0,0,0.15)]"
+          : "bg-transparent border-transparent shadow-none",
+      )}
+    >
       <nav className="container flex h-16 md:h-20 items-center justify-between">
-        <a href="#top" className="font-display text-xl md:text-2xl font-semibold tracking-tight text-background">
+        <a href="/" className="font-display text-xl md:text-2xl font-semibold tracking-tight text-background">
           Tony&apos;s Painting
         </a>
 
