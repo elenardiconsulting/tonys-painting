@@ -33,7 +33,7 @@ const Footer = () => {
             <li>Martha&apos;s Vineyard, MA</li>
             <li>Boston, MA</li>
             <li>
-              <a href="#contact" className="hover:text-primary transition-colors">
+              <a href="/contact" className="hover:text-primary transition-colors">
                 Request an estimate
               </a>
             </li>
