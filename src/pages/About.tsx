@@ -3,6 +3,7 @@ import PageLayout from "@/components/site/PageLayout";
 import InnerHero from "@/components/site/InnerHero";
 import FadeUpSection from "@/components/site/FadeUpSection";
 import RippleButton from "@/components/site/RippleButton";
+import AnimatedPhotoBorder from "@/components/site/AnimatedPhotoBorder";
 import otonielSantos from "@/assets/otoniel-santos-founder.png";
 
 const values = [
