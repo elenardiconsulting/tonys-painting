@@ -12,6 +12,9 @@ import About from "./pages/About.tsx";
 import Reviews from "./pages/Reviews.tsx";
 import Contact from "./pages/Contact.tsx";
 import ThankYou from "./pages/ThankYou.tsx";
+import LPInteriorPainting from "./pages/lp/InteriorPainting.tsx";
+import LPExteriorPainting from "./pages/lp/ExteriorPainting.tsx";
+import LPRemodeling from "./pages/lp/Remodeling.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -37,6 +40,9 @@ const AnimatedRoutes = () => {
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/thank-you" element={<ThankYou />} />
+          <Route path="/lp/interior-painting" element={<LPInteriorPainting />} />
+          <Route path="/lp/exterior-painting" element={<LPExteriorPainting />} />
+          <Route path="/lp/remodeling" element={<LPRemodeling />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
