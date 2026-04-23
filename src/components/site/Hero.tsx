@@ -28,6 +28,20 @@ const Hero = () => {
       id="top"
       className="relative pt-24 md:pt-28 bg-[#1A1A1A] overflow-hidden"
     >
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          pointerEvents: "none",
+          zIndex: 1,
+          backgroundImage: `
+            linear-gradient(to right, rgba(232,25,106,0.04) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(232,25,106,0.04) 1px, transparent 1px)
+          `,
+          backgroundSize: "32px 32px",
+        }}
+      />
+
       {/* Layer 1: background image */}
       <motion.img
         {...imageMotion}
