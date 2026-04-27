@@ -76,8 +76,8 @@ const GlassForm = () => {
       onSubmit={handleSubmit}
       style={{
         background: "rgba(196, 41, 28, 0.056)",
-        backdropFilter: "blur(10px)",
-        WebkitBackdropFilter: "blur(10px)",
+        backdropFilter: "blur(4px)",
+        WebkitBackdropFilter: "blur(4px)",
         border: "1px solid rgba(196, 41, 28, 0.144)",
         borderRadius: "16px",
         padding: "28px",
