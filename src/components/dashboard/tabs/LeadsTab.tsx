@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Phone, Mail } from "lucide-react";
+import { Phone, Mail, Trash2 } from "lucide-react";
 import type { Lead, LeadStatus } from "@/types/lead";
 import { getStatusBadge } from "@/types/lead";
 import { supabase } from "@/integrations/supabase/client";
@@ -7,6 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 interface Props {
   leads: Lead[];
   updateLead: (id: string, updates: Partial<Lead>) => Promise<void>;
+  deleteLead: (id: string) => Promise<void>;
 }
 
 const STATUSES: LeadStatus[] = [
@@ -22,14 +23,18 @@ const STATUSES: LeadStatus[] = [
 const LeadCard = ({
   lead,
   updateLead,
+  deleteLead,
   onScheduleNeeded,
 }: {
   lead: Lead;
   updateLead: (id: string, updates: Partial<Lead>) => Promise<void>;
+  deleteLead: (id: string) => Promise<void>;
   onScheduleNeeded: (lead: Lead) => void;
 }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [notes, setNotes] = useState(lead.notes || "");
+  const [confirming, setConfirming] = useState(false);
+  const [removing, setRemoving] = useState(false);
   const badge = getStatusBadge(lead.status);
 
   const handleStatusChange = (newStatus: LeadStatus) => {
@@ -38,6 +43,14 @@ const LeadCard = ({
     if (newStatus === "scheduled") {
       onScheduleNeeded({ ...lead, status: newStatus });
     }
+  };
+
+  const handleDelete = () => {
+    setRemoving(true);
+    setConfirming(false);
+    setTimeout(() => {
+      deleteLead(lead.id);
+    }, 300);
   };
 
   const saveNotes = async () => {
@@ -55,6 +68,8 @@ const LeadCard = ({
         overflow: "hidden",
         display: "flex",
         flexDirection: "column",
+        opacity: removing ? 0 : 1,
+        transition: "opacity 300ms ease",
       }}
     >
       <div
