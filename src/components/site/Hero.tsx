@@ -97,10 +97,8 @@ const Hero = () => {
               maxWidth: "640px"
             }}
           >
-            Transforming spaces across{" "}
-            <span style={{ color: "#C4291C" }}>Martha's Vineyard</span>{" "}
-            and{" "}
-            <span style={{ color: "#C4291C" }}>New England.</span>
+            Painting and remodeling <br className="hidden md:block" />
+            you can actually <span style={{ color: "#C4291C" }}>trust.</span>
           </motion.h1>
 
           <motion.p
