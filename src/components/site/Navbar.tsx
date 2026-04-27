@@ -126,74 +126,53 @@ const Navbar = () => {
 
         <button
           aria-label="Toggle menu"
-          className="md:hidden text-white"
+          className="md:hidden text-white relative z-[60]"
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? <X /> : <Menu />}
+          {open ? <X size={28} /> : <Menu size={28} />}
         </button>
       </nav>
 
-      {open && (
-        <div className="md:hidden border-t border-white/10 bg-[#1A1A1A] max-h-[calc(100vh-4rem)] overflow-y-auto">
-          <ul className="container py-4 flex flex-col gap-2">
+      {/* Fullscreen Mobile Menu Overlay */}
+      <div 
+        className={cn(
+          "fixed inset-0 z-[55] bg-[#1A1A1A] transition-transform duration-500 ease-in-out md:hidden",
+          open ? "translate-y-0" : "-translate-y-full"
+        )}
+      >
+        <div className="flex flex-col items-center justify-center h-full px-8 gap-8">
+          <ul className="flex flex-col items-center gap-6">
             <li>
-              <button
-                onClick={() => setMobileServicesOpen((v) => !v)}
-                className="w-full flex items-center justify-between py-2 text-white/80 hover:text-primary"
+              <a 
+                href="/services" 
+                onClick={() => setOpen(false)}
+                className="font-['Playfair_Display'] font-bold text-2xl text-white hover:text-primary transition-colors"
               >
-                <span>Services</span>
-                <ChevronDown
-                  size={16}
-                  className={cn("transition-transform", mobileServicesOpen && "rotate-180")}
-                />
-              </button>
-              {mobileServicesOpen && (
-                <ul className="pl-4 mt-1 mb-2 flex flex-col gap-1 border-l border-white/10">
-                  <li>
-                    <a
-                      href="/services"
-                       onClick={() => setOpen(false)}
-                      className="block px-3 py-1.5 text-sm text-white/60 hover:text-primary"
-                    >
-                      All Services
-                    </a>
-                  </li>
-                  {services.map((s) => (
-                    <li key={s.href}>
-                      <a
-                        href={s.href}
-                         onClick={() => setOpen(false)}
-                        className="block px-3 py-1.5 text-sm text-white/80 hover:text-primary"
-                      >
-                        {s.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              )}
+                Services
+              </a>
             </li>
             {links.map((l) => (
               <li key={l.href}>
                 <a
                   href={l.href}
-                   onClick={() => setOpen(false)}
-                  className="block py-2 text-white/80 hover:text-primary"
+                  onClick={() => setOpen(false)}
+                  className="font-['Playfair_Display'] font-bold text-2xl text-white hover:text-primary transition-colors"
                 >
                   {l.label}
                 </a>
               </li>
             ))}
-            <li className="pt-2">
-              <Button asChild className="group w-full bg-primary text-white hover:bg-primary-dark rounded-lg py-3 transition-all duration-200">
-                <a href="/contact" onClick={() => setOpen(false)} className="flex items-center justify-center gap-2">
-                  Get Free Estimate
-                  <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
-                </a>
-              </Button>
-            </li>
           </ul>
+          
+          <div className="w-full max-w-[280px] pt-4">
+            <Button asChild className="w-full bg-primary text-white hover:bg-primary-dark rounded-lg py-6 h-auto transition-all duration-200">
+              <a href="/contact" onClick={() => setOpen(false)} className="flex items-center justify-center gap-2 text-lg font-bold">
+                Get Free Estimate
+              </a>
+            </Button>
+          </div>
         </div>
-      )}
+      </div>
     </header>
   );
 };
