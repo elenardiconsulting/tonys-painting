@@ -77,19 +77,19 @@ const About = () => {
 
             {/* Tony */}
             <FadeUpSection className="flex flex-col items-center text-center gap-4">
-              <div className="w-[200px] aspect-[3/4]">
+              <div className="w-[160px] h-[200px] md:w-[260px] md:h-[320px]">
                 <AnimatedPhotoBorder className="w-full h-full">
                   <img
                     src={otonielSantos}
                     alt="Otoniel Santos, Founder and CEO of Tony's Painting"
-                    className="block w-full h-full object-cover rounded-[6px]"
+                    className="block w-full h-full object-cover object-[top_center] rounded-[6px]"
                   />
                 </AnimatedPhotoBorder>
               </div>
-              <h3 className="font-display font-bold text-[22px] text-foreground leading-tight mt-2">
+              <h3 className="font-sans font-semibold text-[15px] md:text-[18px] text-foreground leading-tight mt-2">
                 Otoniel Santos
               </h3>
-              <p className="text-[13px] font-medium uppercase tracking-[0.08em] text-primary">
+              <p className="text-[10px] md:text-[12px] font-medium uppercase tracking-[0.08em] text-primary">
                 Founder and CEO
               </p>
               <p className="text-sm text-muted-foreground leading-[1.7] max-w-[280px]">
@@ -99,19 +99,19 @@ const About = () => {
 
             {/* Marcela */}
             <FadeUpSection delay={0.1} className="flex flex-col items-center text-center gap-4">
-              <div className="w-[200px] aspect-[3/4]">
-                <AnimatedPhotoBorder className="w-full h-full">
+              <div className="w-[160px] h-[200px] md:w-[260px] md:h-[320px]">
+                <AnimatedPhotoBorder className="w-full h-full" delay={1.2}>
                   <img
                     src="/images/co_ceo.png"
                     alt="Marcela S., Co-CEO of Tony's Painting"
-                    className="block w-full h-full object-cover rounded-[6px]"
+                    className="block w-full h-full object-cover object-[top_center] rounded-[6px]"
                   />
                 </AnimatedPhotoBorder>
               </div>
-              <h3 className="font-display font-bold text-[22px] text-foreground leading-tight mt-2">
+              <h3 className="font-sans font-semibold text-[15px] md:text-[18px] text-foreground leading-tight mt-2">
                 Marcela S.
               </h3>
-              <p className="text-[13px] font-medium uppercase tracking-[0.08em] text-primary">
+              <p className="text-[10px] md:text-[12px] font-medium uppercase tracking-[0.08em] text-primary">
                 Co-CEO
               </p>
               <p className="text-sm text-muted-foreground leading-[1.7] max-w-[280px]">

@@ -8,10 +8,10 @@ const AboutSnippet = () => {
     <section id="about" className="bg-stone">
       <div className="container py-20 md:py-28 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         {/* LEFT PANEL: TWO PORTRAITS */}
-        <FadeUpSection className="flex flex-row items-end justify-center lg:justify-start gap-5 order-1 lg:order-none">
+        <FadeUpSection className="flex flex-row items-end justify-center lg:justify-start gap-[28px] order-1 lg:order-none">
           {/* Portrait 1: Tony */}
           <div className="flex flex-col items-center gap-[10px]">
-            <div className="w-[140px] h-[170px] md:w-[180px] md:h-[220px]">
+            <div className="w-[160px] h-[200px] md:w-[260px] md:h-[320px]">
               <AnimatedPhotoBorder className="w-full h-full">
                 <img
                   src={otonielSantos}
@@ -21,10 +21,10 @@ const AboutSnippet = () => {
               </AnimatedPhotoBorder>
             </div>
             <div className="text-center">
-              <h4 className="font-sans font-semibold text-[13px] md:text-[15px] text-[#1A1A1A] leading-tight">
+              <h4 className="font-sans font-semibold text-[13px] md:text-[17px] text-[#1A1A1A] leading-tight">
                 Otoniel Santos
               </h4>
-              <p className="font-sans font-medium text-[10px] md:text-[11px] text-[#C4291C] uppercase tracking-[0.08em] mt-1">
+              <p className="font-sans font-medium text-[10px] md:text-[12px] text-[#C4291C] uppercase tracking-[0.08em] mt-1">
                 Founder and CEO
               </p>
             </div>
@@ -32,7 +32,7 @@ const AboutSnippet = () => {
 
           {/* Portrait 2: Marcela */}
           <div className="flex flex-col items-center gap-[10px]">
-            <div className="w-[140px] h-[170px] md:w-[180px] md:h-[220px]">
+            <div className="w-[160px] h-[200px] md:w-[260px] md:h-[320px]">
               <AnimatedPhotoBorder className="w-full h-full" delay={1.2}>
                 <img
                   src="/images/co_ceo.png"
@@ -42,10 +42,10 @@ const AboutSnippet = () => {
               </AnimatedPhotoBorder>
             </div>
             <div className="text-center">
-              <h4 className="font-sans font-semibold text-[13px] md:text-[15px] text-[#1A1A1A] leading-tight">
+              <h4 className="font-sans font-semibold text-[13px] md:text-[17px] text-[#1A1A1A] leading-tight">
                 Marcela S.
               </h4>
-              <p className="font-sans font-medium text-[10px] md:text-[11px] text-[#C4291C] uppercase tracking-[0.08em] mt-1">
+              <p className="font-sans font-medium text-[10px] md:text-[12px] text-[#C4291C] uppercase tracking-[0.08em] mt-1">
                 Co-CEO
               </p>
             </div>
