@@ -254,6 +254,21 @@
 }
 
 @media (max-width: 767px) {
+  .trust-bar-desktop {
+    display: none;
+  }
+  .trust-bar-mobile {
+    display: flex;
+  }
+}
+
+@media (min-width: 768px) {
+  .trust-bar-mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
   .video-section {
     min-height: auto;
     max-height: 100dvh;
