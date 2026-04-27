@@ -287,9 +287,9 @@
 
   .video-element-container {
     width: 100%;
-    max-width: 200px;
+    max-width: 300px;
     aspect-ratio: 9/16;
-    max-height: 260px;
+    max-height: 390px;
     margin: 0 auto;
     border-radius: 12px;
   }
