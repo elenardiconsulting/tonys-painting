@@ -126,7 +126,7 @@ const Navbar = () => {
 
         <button
           aria-label="Toggle menu"
-          className="md:hidden text-background"
+          className="md:hidden text-white"
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X /> : <Menu />}
@@ -134,12 +134,12 @@ const Navbar = () => {
       </nav>
 
       {open && (
-        <div className="md:hidden border-t border-white/10 bg-dark max-h-[calc(100vh-4rem)] overflow-y-auto">
+        <div className="md:hidden border-t border-white/10 bg-[#1A1A1A] max-h-[calc(100vh-4rem)] overflow-y-auto">
           <ul className="container py-4 flex flex-col gap-2">
             <li>
               <button
                 onClick={() => setMobileServicesOpen((v) => !v)}
-                className="w-full flex items-center justify-between py-2 text-background/80 hover:text-primary"
+                className="w-full flex items-center justify-between py-2 text-white/80 hover:text-primary"
               >
                 <span>Services</span>
                 <ChevronDown
@@ -152,8 +152,8 @@ const Navbar = () => {
                   <li>
                     <a
                       href="/services"
-                      onClick={() => setOpen(false)}
-                      className="block px-3 py-1.5 text-sm text-background/60 hover:text-primary"
+                       onClick={() => setOpen(false)}
+                      className="block px-3 py-1.5 text-sm text-white/60 hover:text-primary"
                     >
                       All Services
                     </a>
@@ -162,8 +162,8 @@ const Navbar = () => {
                     <li key={s.href}>
                       <a
                         href={s.href}
-                        onClick={() => setOpen(false)}
-                        className="block px-3 py-1.5 text-sm text-background/80 hover:text-primary"
+                         onClick={() => setOpen(false)}
+                        className="block px-3 py-1.5 text-sm text-white/80 hover:text-primary"
                       >
                         {s.label}
                       </a>
@@ -176,8 +176,8 @@ const Navbar = () => {
               <li key={l.href}>
                 <a
                   href={l.href}
-                  onClick={() => setOpen(false)}
-                  className="block py-2 text-background/80 hover:text-primary"
+                   onClick={() => setOpen(false)}
+                  className="block py-2 text-white/80 hover:text-primary"
                 >
                   {l.label}
                 </a>
