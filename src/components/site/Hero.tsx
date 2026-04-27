@@ -495,7 +495,7 @@ const Hero = () => {
           }
 
           .hero-bg-image {
-            object-position: 65% 20% !important;
+            object-position: 85% 20% !important;
             height: 100dvh;
             height: calc(var(--vh, 1vh) * 100);
           }
