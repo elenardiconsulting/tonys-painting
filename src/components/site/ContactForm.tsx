@@ -13,10 +13,7 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
-
-// Endpoint configured via VITE_FORMSPREE_ENDPOINT env var.
-// When unset, the form simulates a successful submission (mock mode).
-const ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT as string | undefined;
+import { supabase } from "@/integrations/supabase/client";
 
 const SERVICES = [
   "Interior Painting",
@@ -81,31 +78,29 @@ const ContactForm = () => {
     if (Object.keys(v).length > 0) return;
 
     setSubmitting(true);
-    try {
-      if (ENDPOINT) {
-        const res = await fetch(ENDPOINT, {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        });
-        if (!res.ok) throw new Error("Request failed");
-      } else {
-        await new Promise((r) => setTimeout(r, 600));
-      }
-      setSubmitted(true);
-      navigate("/thank-you");
-    } catch {
+    const { error } = await supabase.from("leads").insert({
+      name: formData.fullName,
+      phone: formData.phone,
+      email: formData.email,
+      service_type: formData.service,
+      message: [formData.address ? `Address: ${formData.address}` : "", formData.project]
+        .filter(Boolean)
+        .join("\n\n"),
+      prefer_phone: false,
+      status: "new",
+    });
+    setSubmitting(false);
+
+    if (error) {
       toast({
         title: "Something went wrong",
         description: "Please try again or call us directly.",
         variant: "destructive",
       });
-    } finally {
-      setSubmitting(false);
+      return;
     }
+    setSubmitted(true);
+    navigate("/thank-you");
   };
 
   if (submitted) {
