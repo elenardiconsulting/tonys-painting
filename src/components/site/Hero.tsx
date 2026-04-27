@@ -264,6 +264,7 @@ const Hero = () => {
         src={HERO_IMAGE}
         alt="Tony's Painting professional painting exterior"
         loading="eager"
+        className="hero-background-image"
         style={{
           position: "absolute",
           inset: 0,
@@ -277,6 +278,7 @@ const Hero = () => {
 
       {/* Overlays */}
       <div
+        className="hero-overlay-1"
         style={{
           position: "absolute",
           inset: 0,
@@ -359,6 +361,7 @@ const Hero = () => {
 
           <motion.div
             {...fadeUp(0.7)}
+            className="hero-stats-container"
             style={{
               display: "flex",
               alignItems: "center",
@@ -405,6 +408,30 @@ const Hero = () => {
               </div>
             ))}
           </motion.div>
+
+          {/* Mobile CTA Button */}
+          <motion.a
+            {...fadeUp(0.9)}
+            href="/contact"
+            className="hero-mobile-cta"
+            style={{
+              display: "none",
+              width: "100%",
+              height: "50px",
+              background: "#C4291C",
+              color: "white",
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 600,
+              fontSize: "14px",
+              borderRadius: "8px",
+              alignItems: "center",
+              justifyContent: "center",
+              marginTop: "16px",
+              textDecoration: "none"
+            }}
+          >
+            Get Free Estimate
+          </motion.a>
         </div>
 
         {/* Right Panel (Form) */}
@@ -424,23 +451,38 @@ const Hero = () => {
           font-size: clamp(36px, 4.2vw, 64px);
         }
         @media (max-width: 767px) {
+          .hero-background-image {
+            object-position: 70% center !important;
+          }
+          .hero-overlay-1 {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.60) 50%, rgba(0,0,0,0.80) 100%) !important;
+          }
           .hero-layout-container {
-            flex-direction: column;
-            padding: 100px 24px 40px 24px;
-            min-height: auto;
-            align-items: flex-start;
+            padding: 100px 24px 48px 24px;
+            min-height: 100vh;
+            justify-content: flex-end;
           }
           .hero-left-panel {
+            width: 100%;
             max-width: 100%;
+            flex: none;
           }
           .hero-right-panel {
-            width: 100%;
+            display: none;
           }
           .hero-headline {
             font-size: clamp(32px, 8vw, 48px);
           }
+          .hero-stats-container {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px !important;
+          }
           .hero-stat-divider {
             display: none;
+          }
+          .hero-mobile-cta {
+            display: flex !important;
           }
         }
       `}</style>

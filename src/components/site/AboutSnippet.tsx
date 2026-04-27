@@ -6,12 +6,12 @@ import otonielSantos from "@/assets/otoniel-santos-founder.png";
 const AboutSnippet = () => {
   return (
     <section id="about" className="bg-stone">
-      <div className="container py-20 md:py-28 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-        {/* LEFT PANEL: TWO PORTRAITS */}
-        <FadeUpSection className="flex flex-row items-end justify-center lg:justify-start gap-[28px] order-1 lg:order-none">
+      <div className="container py-20 md:py-28 flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        {/* TOP PANEL ON MOBILE / LEFT PANEL ON DESKTOP */}
+        <FadeUpSection className="flex flex-row items-end justify-center lg:justify-start gap-4 md:gap-[28px] order-1 lg:order-none w-full">
           {/* Portrait 1: Tony */}
           <div className="flex flex-col items-center gap-[10px]">
-            <div className="w-[160px] h-[200px] md:w-[260px] md:h-[320px]">
+            <div className="w-[140px] h-[175px] md:w-[260px] md:h-[320px]">
               <AnimatedPhotoBorder className="w-full h-full">
                 <img
                   src={otonielSantos}
@@ -21,10 +21,10 @@ const AboutSnippet = () => {
               </AnimatedPhotoBorder>
             </div>
             <div className="text-center">
-              <h4 className="font-sans font-semibold text-[13px] md:text-[17px] text-[#1A1A1A] leading-tight">
+              <h4 className="font-sans font-semibold text-[14px] md:text-[17px] text-[#1A1A1A] leading-tight">
                 Otoniel Santos
               </h4>
-              <p className="font-sans font-medium text-[10px] md:text-[12px] text-[#C4291C] uppercase tracking-[0.08em] mt-1">
+              <p className="font-sans font-medium text-[11px] md:text-[12px] text-[#C4291C] uppercase tracking-[0.08em] mt-1">
                 Founder and CEO
               </p>
             </div>
@@ -32,7 +32,7 @@ const AboutSnippet = () => {
 
           {/* Portrait 2: Marcela */}
           <div className="flex flex-col items-center gap-[10px]">
-            <div className="w-[160px] h-[200px] md:w-[260px] md:h-[320px]">
+            <div className="w-[140px] h-[175px] md:w-[260px] md:h-[320px]">
               <AnimatedPhotoBorder className="w-full h-full" delay={1.2}>
                 <img
                   src="/images/co_ceo.png"
@@ -42,22 +42,23 @@ const AboutSnippet = () => {
               </AnimatedPhotoBorder>
             </div>
             <div className="text-center">
-              <h4 className="font-sans font-semibold text-[13px] md:text-[17px] text-[#1A1A1A] leading-tight">
+              <h4 className="font-sans font-semibold text-[14px] md:text-[17px] text-[#1A1A1A] leading-tight">
                 Marcela S.
               </h4>
-              <p className="font-sans font-medium text-[10px] md:text-[12px] text-[#C4291C] uppercase tracking-[0.08em] mt-1">
+              <p className="font-sans font-medium text-[11px] md:text-[12px] text-[#C4291C] uppercase tracking-[0.08em] mt-1">
                 Co-CEO
               </p>
             </div>
           </div>
         </FadeUpSection>
 
-        <FadeUpSection delay={0.1}>
-          <p className="text-xs uppercase tracking-[0.25em] text-primary mb-4">About Us</p>
-          <h2 className="font-display text-3xl md:text-5xl text-foreground leading-tight">
+        {/* BOTTOM PANEL ON MOBILE / RIGHT PANEL ON DESKTOP */}
+        <FadeUpSection delay={0.1} className="w-full flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-none">
+          <p className="text-xs uppercase tracking-[0.25em] text-primary mb-4 w-full">About Us</p>
+          <h2 className="font-display text-[28px] md:text-5xl text-foreground leading-tight">
             Built on trust, proven by results.
           </h2>
-          <p className="mt-6 text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
+          <p className="mt-6 text-sm md:text-lg text-muted-foreground leading-relaxed max-w-full md:max-w-xl">
             Tony started this company in 2004 with one goal: to do the work right. Two decades
             later, that standard still defines every brushstroke and every project we deliver.
           </p>
@@ -65,7 +66,7 @@ const AboutSnippet = () => {
           <Button
             asChild
             variant="outline"
-            className="mt-8 rounded-sm h-12 px-8 border-foreground text-foreground hover:bg-foreground hover:text-background"
+            className="mt-8 rounded-sm h-12 px-8 border-foreground text-foreground hover:bg-foreground hover:text-background w-full md:w-auto flex justify-center items-center"
           >
             <a href="/about">Read our story</a>
           </Button>
