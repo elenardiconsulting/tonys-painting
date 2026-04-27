@@ -56,38 +56,69 @@ const About = () => {
         crumbs={[{ label: "Home", to: "/" }, { label: "About Us" }]}
       />
 
-      {/* Company history */}
+      {/* Leadership */}
       <section className="bg-background">
-        <div className="container py-20 md:py-28 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <FadeUpSection className="relative aspect-[4/5] overflow-visible">
-            <AnimatedPhotoBorder className="absolute inset-0">
-              <img
-                src={otonielSantos}
-                alt="Otoniel Santos, Founder of Tony's Painting"
-                className="block w-full h-full object-cover rounded-[4px]"
-              />
-            </AnimatedPhotoBorder>
+        <div className="container py-20 md:py-28">
+          <FadeUpSection className="max-w-2xl mx-auto text-center mb-12 md:mb-16">
+            <h2 className="font-display text-3xl md:text-5xl text-foreground leading-tight">
+              The people behind the work.
+            </h2>
+            <p className="mt-6 text-base text-muted-foreground leading-relaxed max-w-xl mx-auto">
+              Tony's Painting was built on a simple belief: show up, do the work right, and treat every client the way you would want to be treated.
+            </p>
           </FadeUpSection>
 
-          <FadeUpSection delay={0.1}>
-            <p className="text-xs uppercase tracking-[0.25em] text-primary mb-4">Our Story</p>
-            <h2 className="font-display text-3xl md:text-5xl text-foreground leading-tight">
-              Built on trust, proven by results.
-            </h2>
-            <div className="mt-6 space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed">
-              <p>
-                Otoniel Santos founded Tony's Painting in 2004 on Martha's Vineyard with a small
-                team and a big commitment to quality work. What started as a local residential
-                painting service grew steadily into a full remodeling company trusted by homeowners
-                and businesses across the island and throughout New England.
+          <div className="relative max-w-[720px] mx-auto grid md:grid-cols-2 gap-12">
+            {/* Vertical divider, desktop only */}
+            <div
+              className="hidden md:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-stone"
+              aria-hidden
+            />
+
+            {/* Tony */}
+            <FadeUpSection className="flex flex-col items-center text-center gap-4">
+              <div className="w-[200px] aspect-[3/4]">
+                <AnimatedPhotoBorder className="w-full h-full">
+                  <img
+                    src={otonielSantos}
+                    alt="Otoniel Santos, Founder and CEO of Tony's Painting"
+                    className="block w-full h-full object-cover rounded-[6px]"
+                  />
+                </AnimatedPhotoBorder>
+              </div>
+              <h3 className="font-display font-bold text-[22px] text-foreground leading-tight mt-2">
+                Otoniel Santos
+              </h3>
+              <p className="text-[13px] font-medium uppercase tracking-[0.08em] text-primary">
+                Founder and CEO
               </p>
-              <p>
-                Over the past 20 years, we have completed more than 500 projects from Edgartown to
-                Boston, always with the same values we started with: show up on time, communicate
-                clearly, and never cut corners.
+              <p className="text-sm text-muted-foreground leading-[1.7] max-w-[280px]">
+                Tony started this company in 2004 with one goal: to do the work right. Two decades later, that standard still defines every project we deliver.
               </p>
-            </div>
-          </FadeUpSection>
+            </FadeUpSection>
+
+            {/* Marcela */}
+            <FadeUpSection delay={0.1} className="flex flex-col items-center text-center gap-4">
+              <div className="w-[200px] aspect-[3/4]">
+                <AnimatedPhotoBorder className="w-full h-full">
+                  <img
+                    src="/images/co_ceo.png"
+                    alt="Marcela S., Co-CEO of Tony's Painting"
+                    className="block w-full h-full object-cover rounded-[6px]"
+                  />
+                </AnimatedPhotoBorder>
+              </div>
+              <h3 className="font-display font-bold text-[22px] text-foreground leading-tight mt-2">
+                Marcela S.
+              </h3>
+              <p className="text-[13px] font-medium uppercase tracking-[0.08em] text-primary">
+                Co-CEO
+              </p>
+              <p className="text-sm text-muted-foreground leading-[1.7] max-w-[280px]">
+                Marcela leads operations and client relationships at Tony's, making sure every project runs smoothly from the first call to the final walkthrough.
+              </p>
+            </FadeUpSection>
+          </div>
         </div>
       </section>
 
