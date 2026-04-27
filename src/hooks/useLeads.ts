@@ -25,7 +25,11 @@ export const useLeads = () => {
         "postgres_changes",
         { event: "INSERT", schema: "public", table: "leads" },
         (payload) => {
-          setLeads((prev) => [payload.new as unknown as Lead, ...prev]);
+          const newLead = payload.new as unknown as Lead;
+          setLeads((prev) => [newLead, ...prev]);
+          if (typeof window !== "undefined") {
+            window.dispatchEvent(new CustomEvent("new-lead", { detail: newLead }));
+          }
         },
       )
       .on(
