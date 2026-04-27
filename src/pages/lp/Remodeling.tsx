@@ -1,7 +1,15 @@
+import SEO from "@/components/SEO";
 import LandingTemplate from "@/components/lp/LandingTemplate";
 
 const LPRemodeling = () => (
-  <LandingTemplate
+  <>
+    <SEO
+      title="Home Remodeling in Martha's Vineyard and Boston"
+      description="Flooring, tile, carpentry and more. One team for every job in Martha's Vineyard and Boston. Licensed and insured. Free estimate."
+      canonical="/lp/remodeling"
+      keywords="remodeling Martha's Vineyard, home remodeling Boston, flooring tile carpentry MA"
+    />
+    <LandingTemplate
     tag="REMODELING"
     headline="Flooring, tile, carpentry and more. One team for every job."
     subline="You should not need to coordinate multiple contractors for your project. We handle it all."

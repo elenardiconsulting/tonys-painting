@@ -1,7 +1,15 @@
+import SEO from "@/components/SEO";
 import LandingTemplate from "@/components/lp/LandingTemplate";
 
 const LPExteriorPainting = () => (
-  <LandingTemplate
+  <>
+    <SEO
+      title="Exterior Painting in Martha's Vineyard and Boston"
+      description="Exterior painting built for New England weather. Serving Martha's Vineyard and Boston since 2004. Benjamin Moore certified. Free estimate."
+      canonical="/lp/exterior-painting"
+      keywords="exterior painting Martha's Vineyard, exterior painters Boston, exterior house painting MA"
+    />
+    <LandingTemplate
     tag="EXTERIOR PAINTING"
     headline="Exterior painting built to handle New England weather."
     subline="We prep every surface properly and use premium paints that hold up season after season."
