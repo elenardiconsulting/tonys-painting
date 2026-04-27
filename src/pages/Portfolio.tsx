@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import PageLayout from "@/components/site/PageLayout";
@@ -37,6 +37,8 @@ const FILTERS: Category[] = ["All Projects", "Interior", "Exterior", "Remodeling
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState<Category>("All Projects");
   const [lightboxId, setLightboxId] = useState<number | null>(null);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const filtered =
     activeFilter === "All Projects"
@@ -71,8 +73,20 @@ const Portfolio = () => {
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lightboxId, activeFilter]);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const handleScroll = () => {
+      const index = Math.round(el.scrollLeft / el.offsetWidth);
+      setActiveSlide(index);
+    };
+
+    el.addEventListener("scroll", handleScroll);
+    return () => el.removeEventListener("scroll", handleScroll);
+  }, [filtered]);
 
   return (
     <PageLayout>
@@ -110,7 +124,8 @@ const Portfolio = () => {
       {/* Gallery */}
       <section className="bg-background">
         <div className="container py-12 md:py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          {/* Desktop Grid */}
+          <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((p, i) => (
               <FadeUpSection key={p.id} delay={(i % 3) * 0.1}>
                 <button
@@ -137,6 +152,48 @@ const Portfolio = () => {
                 </button>
               </FadeUpSection>
             ))}
+          </div>
+
+          {/* Mobile Slider */}
+          <div className="md:hidden -mx-6">
+            <div
+              ref={scrollRef}
+              className="flex overflow-x-auto snap-x snap-mandatory scrollbar-none px-6 gap-0"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {filtered.map((p) => (
+                <div
+                  key={p.id}
+                  className="snap-center shrink-0 w-[calc(100vw-48px)] h-[260px] relative rounded-[10px] overflow-hidden"
+                  onClick={() => setLightboxId(p.id)}
+                >
+                  <img
+                    src={p.src}
+                    alt={`${p.title}, ${p.location}`}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-4">
+                    <h3 className="font-sans font-semibold text-white text-[14px]">
+                      {p.title}
+                    </h3>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Dots */}
+            <div className="flex justify-center items-center gap-2 mt-4">
+              {filtered.map((_, i) => (
+                <div
+                  key={i}
+                  className={`transition-all duration-300 ${
+                    activeSlide === i 
+                      ? "bg-[#C4291C] w-[20px] h-[6px] rounded-[3px]" 
+                      : "bg-black/20 w-[6px] h-[6px] rounded-full"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>

@@ -1,3 +1,4 @@
+import { useState, useRef, useEffect } from "react";
 import FadeUpSection from "@/components/site/FadeUpSection";
 
 const projects = [
@@ -10,8 +11,24 @@ const projects = [
 ];
 
 const PortfolioPreview = () => {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const handleScroll = () => {
+      const index = Math.round(el.scrollLeft / el.offsetWidth);
+      setActiveSlide(index);
+    };
+
+    el.addEventListener("scroll", handleScroll);
+    return () => el.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <section id="portfolio" className="bg-stone">
+    <section id="portfolio" className="bg-stone overflow-hidden">
       <div className="container py-20 md:py-28">
         <FadeUpSection className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
           <div className="max-w-2xl">
@@ -28,7 +45,8 @@ const PortfolioPreview = () => {
           </a>
         </FadeUpSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        {/* Desktop Grid */}
+        <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((p, i) => (
             <FadeUpSection
               key={p.name}
@@ -50,6 +68,47 @@ const PortfolioPreview = () => {
               </div>
             </FadeUpSection>
           ))}
+        </div>
+
+        {/* Mobile Slider */}
+        <div className="md:hidden -mx-6">
+          <div
+            ref={scrollRef}
+            className="flex overflow-x-auto snap-x snap-mandatory scrollbar-none px-6 gap-0"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {projects.map((p) => (
+              <div
+                key={p.name}
+                className="snap-center shrink-0 w-[calc(100vw-48px)] h-[260px] relative rounded-[10px] overflow-hidden"
+              >
+                <img
+                  src={p.src}
+                  alt={p.alt}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-4">
+                  <h3 className="font-sans font-semibold text-white text-[14px]">
+                    {p.name}
+                  </h3>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Dots */}
+          <div className="flex justify-center items-center gap-2 mt-4">
+            {projects.map((_, i) => (
+              <div
+                key={i}
+                className={`transition-all duration-300 ${
+                  activeSlide === i 
+                    ? "bg-[#C4291C] w-[20px] h-[6px] rounded-[3px]" 
+                    : "bg-black/20 w-[6px] h-[6px] rounded-full"
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
