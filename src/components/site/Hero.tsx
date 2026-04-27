@@ -85,15 +85,23 @@ const Hero = () => {
         <div className="max-w-[720px]">
           <motion.h1 
             {...fadeUp(0)}
-            className="hero-headline text-[#F5F1EB] tracking-[-0.02em]"
+            className="hero-headline"
             style={{ 
               fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(44px, 6vw, 80px)",
               fontWeight: 900,
-              lineHeight: 1.0
+              fontSize: "clamp(48px, 6.5vw, 88px)",
+              lineHeight: "0.97",
+              letterSpacing: "-0.03em",
+              color: "#F5F1EB",
+              maxWidth: "680px"
             }}
           >
-            Transforming spaces across <span className="text-[#C4291C] [-webkit-text-fill-color:#C4291C]">Martha's Vineyard</span> and <span className="text-[#C4291C] [-webkit-text-fill-color:#C4291C]">New England</span>.
+            Transforming spaces across{" "}
+            <br className="hidden md:block" />
+            <span style={{ color: "#C4291C" }}>Martha's Vineyard</span>{" "}
+            <br className="hidden md:block" />
+            and{" "}
+            <span style={{ color: "#C4291C" }}>New England.</span>
           </motion.h1>
 
           <motion.p
