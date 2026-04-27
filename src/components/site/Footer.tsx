@@ -9,7 +9,7 @@ const Footer = () => {
             <img
               src={tonysLogo}
               alt="Tony's Remodeling - Painting and Carpentry"
-              className="h-12 w-auto object-contain brightness-0 invert"
+              className="h-[42px] md:h-[56px] w-auto object-contain"
             />
           </a>
           <p className="mt-4 text-sm text-background/60 max-w-xs leading-relaxed">

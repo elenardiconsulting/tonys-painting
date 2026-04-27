@@ -49,7 +49,7 @@ const Navbar = () => {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300 ease-out border-b",
         solid
-          ? "bg-[#1A1A1A] border-white/5 shadow-[0_2px_20px_rgba(0,0,0,0.15)]"
+          ? "bg-[#2A2A28] border-white/5 shadow-[0_2px_20px_rgba(0,0,0,0.15)]"
           : "bg-transparent border-transparent shadow-none",
       )}
     >
@@ -59,7 +59,7 @@ const Navbar = () => {
             <img
               src={tonysLogo}
               alt="Tony's Remodeling - Painting and Carpentry"
-              className="h-[52px] md:h-[62px] w-auto object-contain"
+              className="h-[42px] md:h-[56px] w-auto object-contain"
             />
           </a>
         </div>
@@ -89,7 +89,7 @@ const Navbar = () => {
                   : "opacity-0 invisible -translate-y-1 pointer-events-none",
               )}
             >
-              <div className="bg-[#1A1A1A] border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.3)] rounded-sm grid grid-cols-2 gap-x-2 py-3 min-w-[460px]">
+              <div className="bg-[#2A2A28] border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.3)] rounded-sm grid grid-cols-2 gap-x-2 py-3 min-w-[460px]">
                 {services.map((s) => (
                   <a
                     key={s.href}
@@ -136,7 +136,7 @@ const Navbar = () => {
       {/* Fullscreen Mobile Menu Overlay */}
       <div 
         className={cn(
-          "fixed inset-0 z-[55] bg-[#1A1A1A] transition-transform duration-500 ease-in-out md:hidden",
+          "fixed inset-0 z-[55] bg-[#2A2A28] transition-transform duration-500 ease-in-out md:hidden",
           open ? "translate-y-0" : "-translate-y-full"
         )}
       >
