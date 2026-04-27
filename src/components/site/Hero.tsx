@@ -301,8 +301,8 @@ const Hero = () => {
             {...fadeUp(0.6)}
             href="/contact"
             className="mobile-only hero-cta-btn"
-            style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
           >
+            <Calendar className="hero-cta-icon" />
             <span className="hero-cta-text">Get Free Estimate</span>
           </motion.a>
 
@@ -547,6 +547,7 @@ const Hero = () => {
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 12px;
             width: 100%;
             height: 58px;
             background: #C4291C;
