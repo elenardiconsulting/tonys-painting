@@ -59,6 +59,7 @@ const LPInteriorPainting = () => (
       "/images/project-02.jpg"
     ]}
   />
+  </>
 );
 
 export default LPInteriorPainting;

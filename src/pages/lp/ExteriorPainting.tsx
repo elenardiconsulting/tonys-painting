@@ -60,6 +60,7 @@ const LPExteriorPainting = () => (
       "/images/project-01.jpg"
     ]}
   />
+  </>
 );
 
 export default LPExteriorPainting;

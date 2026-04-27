@@ -57,6 +57,7 @@ const LPRemodeling = () => (
       "/images/project-07.jpg"
     ]}
   />
+  </>
 );
 
 export default LPRemodeling;
