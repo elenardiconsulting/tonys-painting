@@ -1,4 +1,4 @@
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Shield, Star, CheckCircle2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -228,6 +228,16 @@ const GlassForm = () => {
 
 const Hero = () => {
   const reduce = useReducedMotion();
+
+  useEffect(() => {
+    const setVh = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+    setVh();
+    window.addEventListener('resize', setVh);
+    return () => window.removeEventListener('resize', setVh);
+  }, []);
 
   const fadeUp = (delay: number) =>
     reduce
@@ -477,10 +487,17 @@ const Hero = () => {
           .hero-section {
             flex-direction: column;
             justify-content: flex-end;
+            min-height: 100dvh;
+            min-height: calc(var(--vh, 1vh) * 100);
+            padding-top: 0;
+            margin-top: 0;
+            overflow: hidden;
           }
 
           .hero-bg-image {
             object-position: 65% 20% !important;
+            height: 100dvh;
+            height: calc(var(--vh, 1vh) * 100);
           }
 
           .hero-overlay-main {
@@ -514,7 +531,7 @@ const Hero = () => {
 
           .hero-content {
             gap: 16px;
-            padding: 0 24px 44px 24px;
+            padding: 0 24px max(40px, env(safe-area-inset-bottom, 40px)) 24px;
             max-width: 100%;
             margin: 0;
           }
