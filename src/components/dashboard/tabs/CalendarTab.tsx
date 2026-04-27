@@ -126,6 +126,7 @@ const CalendarTab = ({ leads }: Props) => {
             }}
           >
             <button
+              className="calendar-nav-btn"
               onClick={() => setCurrentMonth(new Date(year, month - 1, 1))}
               style={{
                 background: "transparent",
@@ -139,6 +140,7 @@ const CalendarTab = ({ leads }: Props) => {
             </button>
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
               <h2
+                className="calendar-month-label"
                 style={{
                   fontFamily: "'Playfair Display', serif",
                   fontWeight: 700,
@@ -151,6 +153,7 @@ const CalendarTab = ({ leads }: Props) => {
               </h2>
               {!isCurrentMonth && (
                 <button
+                  className="calendar-today-btn"
                   onClick={() => {
                     setCurrentMonth(new Date());
                     setSelectedDate(new Date());
@@ -171,6 +174,7 @@ const CalendarTab = ({ leads }: Props) => {
               )}
             </div>
             <button
+              className="calendar-nav-btn"
               onClick={() => setCurrentMonth(new Date(year, month + 1, 1))}
               style={{
                 background: "transparent",
@@ -188,6 +192,7 @@ const CalendarTab = ({ leads }: Props) => {
             {DAY_LABELS.map((d) => (
               <div
                 key={d}
+                className="calendar-day-label"
                 style={{
                   textAlign: "center",
                   fontFamily: "'Inter', sans-serif",
