@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import tonysLogo from "@/assets/tonys-logo.png";
 
 const links = [
   { label: "Services", href: "/services" },
@@ -38,8 +39,12 @@ const Navbar = () => {
       )}
     >
       <nav className="container flex h-16 md:h-20 items-center justify-between">
-        <a href="/" className="font-display text-xl md:text-2xl font-semibold tracking-tight text-background">
-          Tony&apos;s Painting
+        <a href="/" className="flex items-center" aria-label="Tony's Remodeling home">
+          <img
+            src={tonysLogo}
+            alt="Tony's Remodeling - Painting and Carpentry"
+            className="h-10 md:h-12 w-auto object-contain"
+          />
         </a>
 
         <ul className="hidden md:flex items-center gap-8">
