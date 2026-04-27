@@ -382,17 +382,85 @@ const LeadCard = ({
       <div
         style={{
           padding: "12px 16px 16px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 8,
           fontFamily: "'Inter', sans-serif",
           fontSize: 12,
           color: "#9CA3AF",
         }}
       >
-        {new Date(lead.created_at).toLocaleString("en-US", {
-          month: "short",
-          day: "numeric",
-          hour: "numeric",
-          minute: "2-digit",
-        })}
+        {!confirming ? (
+          <button
+            onClick={() => setConfirming(true)}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 4,
+              background: "transparent",
+              border: "none",
+              cursor: "pointer",
+              color: "#9CA3AF",
+              fontSize: 12,
+              fontFamily: "'Inter', sans-serif",
+              padding: "4px 8px",
+              borderRadius: 6,
+              minHeight: 36,
+            }}
+            title="Delete lead"
+          >
+            <Trash2 size={14} />
+            Delete
+          </button>
+        ) : (
+          <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+            <span style={{ fontSize: 12, color: "#A32D2D", fontFamily: "'Inter', sans-serif" }}>
+              Sure?
+            </span>
+            <button
+              onClick={handleDelete}
+              style={{
+                background: "#A32D2D",
+                color: "#FFFFFF",
+                border: "none",
+                cursor: "pointer",
+                fontSize: 11,
+                fontWeight: 600,
+                padding: "6px 12px",
+                borderRadius: 6,
+                fontFamily: "'Inter', sans-serif",
+                minHeight: 36,
+              }}
+            >
+              Yes, delete
+            </button>
+            <button
+              onClick={() => setConfirming(false)}
+              style={{
+                background: "transparent",
+                border: "1px solid #E8E2D8",
+                cursor: "pointer",
+                fontSize: 11,
+                padding: "6px 12px",
+                borderRadius: 6,
+                fontFamily: "'Inter', sans-serif",
+                color: "#6B6560",
+                minHeight: 36,
+              }}
+            >
+              Cancel
+            </button>
+          </div>
+        )}
+        <span>
+          {new Date(lead.created_at).toLocaleString("en-US", {
+            month: "short",
+            day: "numeric",
+            hour: "numeric",
+            minute: "2-digit",
+          })}
+        </span>
       </div>
     </div>
   );
