@@ -43,7 +43,7 @@ const Navbar = () => {
           <img
             src={tonysLogo}
             alt="Tony's Remodeling - Painting and Carpentry"
-            className="h-10 md:h-12 w-auto object-contain"
+            className="h-[52px] md:h-[62px] w-auto object-contain"
           />
         </a>
 
