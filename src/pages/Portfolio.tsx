@@ -19,18 +19,18 @@ interface Project {
 }
 
 const PROJECTS: Project[] = [
-  { id: 1, title: "New England Residence", category: "Exterior", location: "New England", src: "/images/project-02.jpg" },
-  { id: 2, title: "New England Colonial", category: "Exterior", location: "New England", src: "/images/project-12.jpg" },
-  { id: 3, title: "New England Deck", category: "Exterior", location: "New England", src: "/images/project-08.jpg" },
-  { id: 4, title: "New England Bath Remodel", category: "Remodeling", location: "New England", src: "/images/project-04.jpg" },
-  { id: 5, title: "New England Wood Siding", category: "Exterior", location: "New England", src: "/images/project-14.jpg" },
-  { id: 6, title: "New England Residence", category: "Exterior", location: "New England", src: "/images/project-06.jpg" },
-  { id: 7, title: "New England Deck", category: "Exterior", location: "New England", src: "/images/project-07.jpg" },
-  { id: 8, title: "New England Interior", category: "Interior", location: "New England", src: "/images/project-05.jpg" },
-  { id: 9, title: "New England Colonial", category: "Exterior", location: "New England", src: "/images/project-13.jpg" },
-  { id: 10, title: "New England Closet Remodel", category: "Remodeling", location: "New England", src: "/images/project-15.jpg" },
-  { id: 11, title: "New England Kitchen Remodel", category: "Remodeling", location: "New England", src: "/images/project-16.jpg" },
-  { id: 12, title: "New England Deck", category: "Exterior", location: "New England", src: "/images/project-09.jpg" },
+  { id: 1, title: "Coastal Residence", category: "Exterior", location: "New England", src: "/images/project-02.jpg" },
+  { id: 2, title: "Colonial Restoration", category: "Exterior", location: "New England", src: "/images/project-12.jpg" },
+  { id: 3, title: "Waterfront Deck", category: "Exterior", location: "New England", src: "/images/project-08.jpg" },
+  { id: 4, title: "Master Bath Remodel", category: "Remodeling", location: "New England", src: "/images/project-04.jpg" },
+  { id: 5, title: "Wood Siding Project", category: "Exterior", location: "New England", src: "/images/project-14.jpg" },
+  { id: 6, title: "Shingle Style Residence", category: "Exterior", location: "New England", src: "/images/project-06.jpg" },
+  { id: 7, title: "Outdoor Deck Build", category: "Exterior", location: "New England", src: "/images/project-07.jpg" },
+  { id: 8, title: "Modern Interior", category: "Interior", location: "New England", src: "/images/project-05.jpg" },
+  { id: 9, title: "Classic Colonial", category: "Exterior", location: "New England", src: "/images/project-13.jpg" },
+  { id: 10, title: "Custom Closet Remodel", category: "Remodeling", location: "New England", src: "/images/project-15.jpg" },
+  { id: 11, title: "Kitchen Remodel", category: "Remodeling", location: "New England", src: "/images/project-16.jpg" },
+  { id: 12, title: "Cedar Deck Refinish", category: "Exterior", location: "New England", src: "/images/project-09.jpg" },
 ];
 
 const FILTERS: Category[] = ["All Projects", "Interior", "Exterior", "Remodeling", "Commercial"];
