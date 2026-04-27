@@ -139,60 +139,77 @@ const ContactForm = ({ compact = false }: ContactFormProps) => {
   const inputClass = (key: keyof FormState) =>
     cn("rounded-sm", errors[key] && "border-destructive focus-visible:ring-destructive");
 
+  const fieldGap = compact ? 12 : 20;
+  const inputH = compact ? 40 : 46;
+  const labelSize = compact ? 13 : 14;
+  const btnH = compact ? 44 : 50;
+  const textareaRows = compact ? 3 : 4;
+
+  const labelStyle = { fontSize: labelSize, fontWeight: 500 } as const;
+  const inputStyle = { height: inputH } as const;
+
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-5">
+    <form
+      onSubmit={handleSubmit}
+      noValidate
+      style={{ display: "flex", flexDirection: "column", gap: fieldGap }}
+    >
       <div>
-        <Label htmlFor="fullName">Full Name</Label>
+        <Label htmlFor="fullName" style={labelStyle}>Full Name</Label>
         <Input
           id="fullName"
           value={formData.fullName}
           onChange={(e) => setField("fullName", e.target.value)}
           aria-invalid={!!errors.fullName}
-          className={cn("mt-2", inputClass("fullName"))}
+          className={cn("mt-1.5", inputClass("fullName"))}
+          style={inputStyle}
         />
         {errorMsg("fullName")}
       </div>
 
       <div>
-        <Label htmlFor="phone">Phone Number</Label>
+        <Label htmlFor="phone" style={labelStyle}>Phone Number</Label>
         <Input
           id="phone"
           type="tel"
           value={formData.phone}
           onChange={(e) => setField("phone", e.target.value)}
           aria-invalid={!!errors.phone}
-          className={cn("mt-2", inputClass("phone"))}
+          className={cn("mt-1.5", inputClass("phone"))}
+          style={inputStyle}
         />
         {errorMsg("phone")}
       </div>
 
       <div>
-        <Label htmlFor="email">Email Address</Label>
+        <Label htmlFor="email" style={labelStyle}>Email Address</Label>
         <Input
           id="email"
           type="email"
           value={formData.email}
           onChange={(e) => setField("email", e.target.value)}
           aria-invalid={!!errors.email}
-          className={cn("mt-2", inputClass("email"))}
+          className={cn("mt-1.5", inputClass("email"))}
+          style={inputStyle}
         />
         {errorMsg("email")}
       </div>
 
       <div>
-        <Label htmlFor="address">Property Address</Label>
+        <Label htmlFor="address" style={labelStyle}>Property Address</Label>
         <Input
           id="address"
           value={formData.address}
           onChange={(e) => setField("address", e.target.value)}
           aria-invalid={!!errors.address}
-          className={cn("mt-2", inputClass("address"))}
+          className={cn("mt-1.5", inputClass("address"))}
+          style={inputStyle}
         />
         {errorMsg("address")}
       </div>
 
       <div>
-        <Label htmlFor="service">Service Needed</Label>
+        <Label htmlFor="service" style={labelStyle}>Service Needed</Label>
         <Select
           value={formData.service}
           onValueChange={(v) => setField("service", v)}
@@ -201,9 +218,10 @@ const ContactForm = ({ compact = false }: ContactFormProps) => {
             id="service"
             aria-invalid={!!errors.service}
             className={cn(
-              "mt-2 rounded-sm",
+              "mt-1.5 rounded-sm",
               errors.service && "border-destructive focus:ring-destructive",
             )}
+            style={inputStyle}
           >
             <SelectValue placeholder="Select a service" />
           </SelectTrigger>
@@ -219,24 +237,25 @@ const ContactForm = ({ compact = false }: ContactFormProps) => {
       </div>
 
       <div>
-        <Label htmlFor="project">
+        <Label htmlFor="project" style={labelStyle}>
           Tell us about your project{" "}
           <span className="text-muted-foreground font-normal">(optional)</span>
         </Label>
         <Textarea
           id="project"
-          rows={4}
+          rows={textareaRows}
           value={formData.project}
           onChange={(e) => setField("project", e.target.value)}
           placeholder="Describe the space, what needs to be done, any details that help us prepare a better estimate."
-          className="mt-2 rounded-sm"
+          className="mt-1.5 rounded-sm"
         />
       </div>
 
       <Button
         type="submit"
         disabled={submitting}
-        className="w-full h-12 bg-primary text-primary-foreground hover:bg-primary-dark rounded-sm text-base"
+        className="w-full bg-primary text-primary-foreground hover:bg-primary-dark rounded-sm text-base"
+        style={{ height: btnH }}
       >
         {submitting ? "Sending..." : "Send My Request"}
       </Button>
