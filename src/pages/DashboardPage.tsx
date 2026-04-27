@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useLeads } from "@/hooks/useLeads";
 import Sidebar, { type DashTab } from "@/components/dashboard/Sidebar";
+import BottomNav from "@/components/dashboard/BottomNav";
 
 import DashHeader from "@/components/dashboard/DashHeader";
 import OverviewTab from "@/components/dashboard/tabs/OverviewTab";
@@ -64,11 +65,47 @@ const DashboardPage = () => {
         .dash-sidebar { display: flex; }
         .dash-bottom-nav { display: none; }
         .dash-content-wrap { padding-bottom: 0; }
+        .dash-header-signout { display: none !important; }
+
+        /* Prevent bounce scroll on iOS */
+        .dash-content-wrap {
+          -webkit-overflow-scrolling: touch;
+          overscroll-behavior: none;
+        }
+
+        /* Tap highlight transparent */
+        .dash-bottom-nav button,
+        .dash-bottom-nav a {
+          -webkit-tap-highlight-color: transparent;
+        }
+
+        .dash-bottom-btn:active {
+          opacity: 0.7;
+          transform: scale(0.95);
+          transition: transform 0.1s ease;
+        }
+
+        main {
+          overflow-y: auto;
+          overflow-x: hidden;
+        }
+
+        @keyframes dash-shimmer {
+          0% { background-position: -400px 0; }
+          100% { background-position: 400px 0; }
+        }
+
+        @keyframes glowPulse {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(196,41,28,0), 0 0 8px 2px rgba(196,41,28,0.50); }
+          50% { box-shadow: 0 0 0 6px rgba(196,41,28,0), 0 0 20px 6px rgba(196,41,28,0.25); }
+        }
+
         @media (max-width: 767px) {
           .dash-sidebar { display: none !important; }
           .dash-bottom-nav { display: flex !important; }
           .dash-header-date { display: none !important; }
-          .dash-content-wrap { padding-bottom: 80px !important; }
+          .dash-header-signout { display: flex !important; }
+          .dash-content-wrap { padding-bottom: calc(60px + env(safe-area-inset-bottom)) !important; }
         }
       `}</style>
 
@@ -80,7 +117,7 @@ const DashboardPage = () => {
       />
 
       <div className="dash-content-wrap" style={{ flex: 1, display: "flex", flexDirection: "column", minWidth: 0 }}>
-        <DashHeader title={TAB_TITLES[activeTab]} />
+        <DashHeader title={TAB_TITLES[activeTab]} onSignOut={handleSignOut} />
         {userId && <NotificationBanner userId={userId} />}
         <main style={{ flex: 1 }}>
           {activeTab === "overview" && <OverviewTab leads={leads} loading={loading} />}
@@ -89,6 +126,12 @@ const DashboardPage = () => {
           {activeTab === "analytics" && <AnalyticsTab leads={leads} />}
         </main>
       </div>
+
+      <BottomNav
+        activeTab={activeTab}
+        onTabChange={setActiveTab}
+        newLeadsCount={newLeadsCount}
+      />
 
       <LeadToast />
     </div>
