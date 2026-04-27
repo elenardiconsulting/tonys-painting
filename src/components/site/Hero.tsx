@@ -255,104 +255,28 @@ const Hero = () => {
   return (
     <section
       id="top"
-      className="relative w-full min-h-screen overflow-hidden flex items-center md:items-center"
-      style={{ backgroundColor: "#1A1A1A" }}
+      className="hero-section"
     >
-      {/* Background Image Layer */}
+      {/* Background Image */}
       <motion.img
         {...imageMotion}
         src={HERO_IMAGE}
         alt="Tony's Painting professional painting exterior"
         loading="eager"
-        className="hero-background-image"
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          zIndex: 0,
-        }}
+        className="hero-bg-image"
       />
 
-      {/* Desktop Overlays */}
-      <div
-        className="hidden md:block"
-        style={{
-          position: "absolute",
-          inset: 0,
-          zIndex: 1,
-          background:
-            "linear-gradient(to right, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.65) 40%, rgba(0,0,0,0.20) 70%, rgba(0,0,0,0.05) 100%)",
-        }}
-      />
-      <div
-        className="hidden md:block"
-        style={{
-          position: "absolute",
-          inset: 0,
-          zIndex: 2,
-          background: "linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 40%)",
-        }}
-      />
-      <div
-        className="hidden md:block"
-        style={{
-          position: "absolute",
-          inset: 0,
-          zIndex: 3,
-          background: "linear-gradient(to bottom, rgba(0,0,0,0.40) 0%, transparent 20%)",
-        }}
-      />
-
-      {/* Mobile Overlays */}
-      <div
-        className="md:hidden"
-        style={{
-          position: "absolute",
-          inset: 0,
-          zIndex: 1,
-          background: "linear-gradient(to top, rgba(0,0,0,0.97) 0%, rgba(0,0,0,0.90) 30%, rgba(0,0,0,0.60) 55%, rgba(0,0,0,0.20) 75%, rgba(0,0,0,1) 100%)",
-        }}
-      />
-      <div
-        className="md:hidden"
-        style={{
-          position: "absolute",
-          inset: 0,
-          zIndex: 2,
-          background: "linear-gradient(to bottom, rgba(0,0,0,0.50) 0%, transparent 15%)",
-        }}
-      />
+      {/* Overlays */}
+      <div className="hero-overlay-main" />
+      <div className="hero-overlay-top" />
 
       {/* Layout Container */}
-      <div
-        className="hero-layout-container"
-        style={{
-          position: "relative",
-          zIndex: 10,
-          width: "100%",
-          display: "flex",
-        }}
-      >
-        {/* Content Panel */}
-        <div
-          className="hero-content-panel"
-          style={{
-            flex: 1,
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
+      <div className="hero-layout-container">
+        {/* Left/Main Content Panel */}
+        <div className="hero-content">
           <motion.h1
             {...fadeUp(0)}
             className="hero-headline"
-            style={{
-              fontFamily: "'Playfair Display', serif",
-              fontWeight: 900,
-              letterSpacing: "-0.02em",
-              margin: 0,
-            }}
           >
             <span className="desktop-only">
               Painting and remodeling<br />
@@ -365,16 +289,9 @@ const Hero = () => {
             </span>
           </motion.h1>
 
-          <div className="mobile-only hero-mobile-divider" />
-
           <motion.p
             {...fadeUp(0.3)}
             className="hero-subline"
-            style={{
-              fontFamily: "'Inter', sans-serif",
-              fontWeight: 400,
-              margin: 0,
-            }}
           >
             Since 2004, Tony's team has brought precision and care to every project in the region.
           </motion.p>
@@ -383,29 +300,27 @@ const Hero = () => {
           <motion.a
             {...fadeUp(0.6)}
             href="/contact"
-            className="mobile-only hero-cta-mobile"
+            className="mobile-only hero-cta-btn"
           >
-            <Calendar size={20} className="text-white" />
-            <span className="font-['Inter'] font-bold text-[16px]">Get Free Estimate</span>
-            <span className="font-['Inter'] font-bold text-[20px]">→</span>
+            <Calendar className="hero-cta-icon" />
+            <span className="hero-cta-text">Get Free Estimate</span>
+            <span className="hero-cta-arrow">→</span>
           </motion.a>
 
           {/* Stats Container */}
           <motion.div
             {...fadeUp(0.7)}
-            className="hero-stats-container"
+            className="hero-stats"
           >
             {stats.map((stat, idx) => (
-              <div key={idx} className="hero-stat-item">
-                <div className="hero-stat-content">
-                  <div className="hero-stat-icon">{stat.icon}</div>
-                  <div className="hero-stat-text">
-                    <div className="hero-stat-title">{stat.title}</div>
-                    <div className="hero-stat-desc">{stat.desc}</div>
-                  </div>
+              <div key={idx} className="hero-stat">
+                <div className="hero-stat-icon">{stat.icon}</div>
+                <div>
+                  <span className="hero-stat-title">{stat.title}</span>
+                  <span className="hero-stat-sub">{stat.desc}</span>
                 </div>
                 {idx < stats.length - 1 && (
-                  <div className="hero-stat-divider-line desktop-only" />
+                  <div className="hero-stat-divider desktop-only" />
                 )}
               </div>
             ))}
@@ -413,7 +328,7 @@ const Hero = () => {
         </div>
 
         {/* Desktop Right Panel (Form) */}
-        <div className="hero-right-panel desktop-only" style={{ width: "380px", flexShrink: 0 }}>
+        <div className="hero-form-panel desktop-only">
           <motion.div {...fadeUp(0.5)}>
             <GlassForm />
           </motion.div>
@@ -424,54 +339,113 @@ const Hero = () => {
         .desktop-only { display: block; }
         .mobile-only { display: none; }
         
-        .hero-layout-container {
-          padding: 0 80px;
+        .hero-section {
+          position: relative;
+          width: 100%;
           min-height: 100vh;
+          overflow: hidden;
+          background-color: #1A1A1A;
+          display: flex;
+          align-items: center;
+        }
+
+        .hero-bg-image {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center 30%;
+          z-index: 0;
+        }
+
+        .hero-overlay-main {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          background: linear-gradient(to right, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.65) 40%, rgba(0,0,0,0.20) 70%, rgba(0,0,0,0.05) 100%);
+        }
+
+        .hero-overlay-top {
+          position: absolute;
+          inset: 0;
+          z-index: 3;
+          background: linear-gradient(to bottom, rgba(0,0,0,0.40) 0%, transparent 20%);
+        }
+
+        /* Second desktop overlay */
+        .hero-section::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+          background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 40%);
+          pointer-events: none;
+        }
+
+        .hero-layout-container {
+          position: relative;
+          z-index: 10;
+          width: 100%;
+          display: flex;
+          padding: 0 80px;
           align-items: center;
           justify-content: space-between;
           gap: 40px;
         }
-        
+
+        .hero-content {
+          flex: 1;
+          max-width: 600px;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+
         .hero-headline {
+          font-family: 'Playfair Display', serif;
+          font-weight: 900;
           font-size: clamp(36px, 4.2vw, 64px);
           line-height: 1.02;
+          letter-spacing: -0.025em;
           color: #F5F1EB;
+          margin: 0;
         }
-        
+
         .hero-subline {
+          font-family: 'Inter', sans-serif;
           font-size: 16px;
+          font-weight: 400;
           color: rgba(255,255,255,0.72);
           line-height: 1.7;
           max-width: 500px;
-          margin-top: 20px;
+          margin: 0;
         }
-        
-        .hero-stats-container {
+
+        .hero-stats {
           display: flex;
           align-items: center;
           gap: 28px;
           padding-top: 16px;
           border-top: 1px solid rgba(255,255,255,0.12);
-          margin-top: 20px;
         }
-        
-        .hero-stat-item {
+
+        .hero-stat {
           display: flex;
           align-items: center;
           gap: 28px;
         }
-        
-        .hero-stat-content {
+
+        .hero-stat > div:nth-child(2) {
           display: flex;
-          align-items: center;
-          gap: 10px;
+          flex-direction: column;
         }
-        
+
         .hero-stat-icon {
           color: #C4291C;
           display: flex;
         }
-        
+
         .hero-stat-title {
           color: white;
           font-family: 'Inter', sans-serif;
@@ -479,119 +453,154 @@ const Hero = () => {
           font-size: 15px;
           line-height: 1;
         }
-        
-        .hero-stat-desc {
+
+        .hero-stat-sub {
           color: rgba(255,255,255,0.45);
           font-family: 'Inter', sans-serif;
           font-size: 11px;
           margin-top: 2px;
         }
-        
-        .hero-stat-divider-line {
+
+        .hero-stat-divider {
           width: 1px;
           height: 28px;
           background: rgba(255,255,255,0.12);
         }
 
-        @media (min-width: 768px) {
-          .hero-background-image {
-            object-position: center 30%;
-          }
+        .hero-form-panel {
+          width: 380px;
+          flex-shrink: 0;
         }
 
         @media (max-width: 767px) {
           .desktop-only { display: none !important; }
-          .mobile-only { display: block; }
-          
-          .hero-background-image {
-            object-position: center center !important;
-          }
-          
-          .hero-layout-container {
-            padding: 0 24px 40px 24px;
-            min-height: 100vh;
+          .mobile-only { display: block !important; }
+
+          .hero-section {
             flex-direction: column;
             justify-content: flex-end;
           }
-          
-          .hero-content-panel {
-            width: 100%;
+
+          .hero-bg-image {
+            object-position: 65% 20% !important;
           }
-          
+
+          .hero-overlay-main {
+            background: linear-gradient(
+              to top,
+              rgba(0,0,0,0.96) 0%,
+              rgba(0,0,0,0.88) 25%,
+              rgba(0,0,0,0.55) 50%,
+              rgba(0,0,0,0.15) 75%,
+              rgba(0,0,0,0.0) 100%
+            ) !important;
+          }
+
+          .hero-overlay-top {
+            background: linear-gradient(
+              to bottom,
+              rgba(0,0,0,0.55) 0%,
+              transparent 18%
+            ) !important;
+            z-index: 2;
+          }
+
+          .hero-section::after {
+            display: none;
+          }
+
+          .hero-layout-container {
+            padding: 0;
+            display: block;
+          }
+
+          .hero-content {
+            gap: 16px;
+            padding: 0 24px 44px 24px;
+            max-width: 100%;
+            margin: 0;
+          }
+
           .hero-headline {
-            font-size: clamp(42px, 11vw, 58px);
+            font-size: clamp(40px, 10.5vw, 56px);
             line-height: 1.0;
+            letter-spacing: -0.02em;
             color: #FFFFFF;
           }
-          
-          .hero-mobile-divider {
+
+          .hero-headline::after {
+            content: '';
+            display: block;
             width: 48px;
             height: 3px;
             background: #C4291C;
             border-radius: 2px;
-            margin: 12px 0 16px 0;
-            display: block;
+            margin-top: 14px;
           }
-          
+
           .hero-subline {
             font-size: 15px;
             color: rgba(255,255,255,0.72);
             line-height: 1.7;
-            max-width: 100%;
-            margin-top: 0;
-            margin-bottom: 24px;
           }
-          
-          .hero-cta-mobile {
-            display: flex !important;
+
+          .hero-cta-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             width: 100%;
             height: 58px;
             background: #C4291C;
             border-radius: 10px;
-            align-items: center;
-            justify-content: space-between;
             padding: 0 20px;
-            margin-bottom: 28px;
-            color: white;
             text-decoration: none;
-            transition: background 0.2s;
+            border: none;
+            cursor: pointer;
           }
-          
-          .hero-cta-mobile:active {
+
+          .hero-cta-btn:active {
             background: #8B1A10;
           }
-          
-          .hero-stats-container {
+
+          .hero-cta-icon { color: white; width: 20px; height: 20px; }
+          .hero-cta-text { color: white; font-family: Inter; font-weight: 700; font-size: 16px; }
+          .hero-cta-arrow { color: white; font-size: 20px; font-weight: 700; }
+
+          .hero-stats {
+            flex-direction: row;
             justify-content: space-between;
+            align-items: center;
             padding-top: 16px;
-            margin-top: 0;
+            border-top: 1px solid rgba(255,255,255,0.12);
             gap: 0;
           }
-          
-          .hero-stat-item {
-            gap: 0;
+
+          .hero-stat {
+            gap: 7px;
           }
-          
-          .hero-stat-content {
-            gap: 8px;
+
+          .hero-stat-icon {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
           }
-          
-          .hero-stat-icon svg {
-            width: 20px;
-            height: 20px;
-          }
-          
+
           .hero-stat-title {
-            font-size: 13px;
+            font-size: 12px;
+            line-height: 1;
+            display: block;
           }
-          
-          .hero-stat-desc {
-            font-size: 10px;
+
+          .hero-stat-sub {
+            font-size: 9px;
+            margin-top: 2px;
+            display: block;
           }
         }
       `}</style>
     </section>
   );
+};
 };
 
 export default Hero;
