@@ -65,7 +65,7 @@ const CalendarTab = ({ leads }: Props) => {
     today.getMonth() === month && today.getFullYear() === year;
 
   return (
-    <div style={{ padding: 24 }}>
+    <div className="calendar-container" style={{ padding: 24 }}>
       <style>{`
         .calendar-layout {
           display: grid;
@@ -97,6 +97,15 @@ const CalendarTab = ({ leads }: Props) => {
           position: relative;
         }
         .calendar-cell:hover { background: #F5F1EB; }
+        @media (max-width: 767px) {
+          .calendar-container { padding: 16px !important; }
+          .calendar-cell { height: 36px !important; font-size: 13px !important; }
+          .calendar-day-label { font-size: 10px !important; padding: 4px 0 !important; }
+          .calendar-month-label { font-size: 16px !important; }
+          .calendar-nav-btn { padding: 8px !important; }
+          .calendar-today-btn { font-size: 12px !important; padding: 4px 10px !important; }
+          .upcoming-item { padding: 10px 0 !important; }
+        }
       `}</style>
 
       <div className="calendar-layout">
