@@ -300,10 +300,9 @@ const Hero = () => {
           <motion.a
             {...fadeUp(0.6)}
             href="/contact"
-            className="mobile-only hero-cta-btn"
+            className="mobile-only hero-mobile-btn"
           >
-            <Calendar className="hero-cta-icon" />
-            <span className="hero-cta-text">Get Free Estimate</span>
+            Get Free Estimate
           </motion.a>
 
           {/* Stats Container */}
