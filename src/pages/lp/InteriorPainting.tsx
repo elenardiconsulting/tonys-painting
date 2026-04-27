@@ -42,6 +42,14 @@ const LPInteriorPainting = () => (
       "Boston",
       "Brookline",
     ]}
+    portfolioImages={[
+      "/images/project-05.jpg",
+      "/images/project-15.jpg",
+      "/images/project-04.jpg",
+      "/images/project-16.jpg",
+      "/images/project-01.jpg",
+      "/images/project-02.jpg"
+    ]}
   />
 );
 

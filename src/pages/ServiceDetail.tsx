@@ -124,14 +124,23 @@ const ServiceDetail = () => {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <div
-                key={i}
-                className="aspect-[4/5] bg-background flex items-center justify-center text-muted-foreground/50 font-display text-base"
-              >
-                Project {i + 1}
-              </div>
-            ))}
+            {(() => {
+              const gallery: Record<string, string[]> = {
+                "interior-painting": ["/images/project-05.jpg", "/images/project-15.jpg", "/images/project-04.jpg", "/images/project-16.jpg", "/images/project-02.jpg", "/images/project-01.jpg"],
+                "exterior-painting": ["/images/project-02.jpg", "/images/project-12.jpg", "/images/project-14.jpg", "/images/project-13.jpg", "/images/project-03.jpg", "/images/project-01.jpg"],
+                "remodeling": ["/images/project-04.jpg", "/images/project-16.jpg", "/images/project-15.jpg", "/images/project-08.jpg", "/images/project-07.jpg", "/images/project-09.jpg"],
+                "handyman": ["/images/project-08.jpg", "/images/project-07.jpg", "/images/project-09.jpg", "/images/project-11.jpg"]
+              };
+              const images = service.slug ? (gallery[service.slug] || []) : [];
+              return images.map((src, i) => (
+                <div
+                  key={i}
+                  className="aspect-[4/5] bg-background overflow-hidden"
+                >
+                  <img src={src} alt={`Tony's ${service.name} project detail`} className="w-full h-full object-cover" loading="lazy" />
+                </div>
+              ));
+            })()}
           </div>
         </div>
       </section>

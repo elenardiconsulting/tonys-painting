@@ -23,6 +23,8 @@ export interface LandingTemplateProps {
   reviews: [Review, Review, Review];
   included: IncludedItem[];
   portfolioLocations: string[];
+  portfolioImages?: string[];
+  heroImage?: string;
 }
 
 const TRUST_SIGNALS = [
@@ -68,6 +70,8 @@ const LandingTemplate = ({
   reviews,
   included,
   portfolioLocations,
+  portfolioImages,
+  heroImage,
 }: LandingTemplateProps) => {
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#F5F1EB" }}>
@@ -99,7 +103,12 @@ const LandingTemplate = ({
         {/* Left column */}
         <div
           className="px-6 py-12 md:px-[60px] md:py-[80px] flex flex-col justify-center gap-7"
-          style={{ backgroundColor: "#1A1A1A" }}
+          style={{ 
+            backgroundColor: "#1A1A1A",
+            backgroundImage: heroImage ? `linear-gradient(rgba(26, 26, 26, 0.7), rgba(26, 26, 26, 0.7)), url(${heroImage})` : 'none',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}
         >
           <div>
             <span
@@ -343,9 +352,13 @@ const LandingTemplate = ({
                     backgroundColor: "#E8E2D8",
                     aspectRatio: "4 / 3",
                     borderRadius: "6px",
+                    overflow: "hidden"
                   }}
-                  aria-hidden="true"
-                />
+                >
+                  {portfolioImages && portfolioImages[i] && (
+                    <img src={portfolioImages[i]} alt={`Tony's ${service} project in ${loc}`} className="w-full h-full object-cover" loading="lazy" />
+                  )}
+                </div>
                 <p style={{ color: "#6B6560", fontSize: "12px", marginTop: "8px" }}>{loc}</p>
               </div>
             ))}

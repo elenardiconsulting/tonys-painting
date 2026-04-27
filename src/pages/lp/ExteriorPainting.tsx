@@ -42,6 +42,15 @@ const LPExteriorPainting = () => (
       "Boston",
       "Newton",
     ]}
+    heroImage="/images/project-02.jpg"
+    portfolioImages={[
+      "/images/project-12.jpg",
+      "/images/project-14.jpg",
+      "/images/project-13.jpg",
+      "/images/project-03.jpg",
+      "/images/project-11.jpg",
+      "/images/project-01.jpg"
+    ]}
   />
 );
 
