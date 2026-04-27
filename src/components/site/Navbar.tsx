@@ -49,20 +49,22 @@ const Navbar = () => {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300 ease-out border-b",
         solid
-          ? "bg-dark/95 backdrop-blur supports-[backdrop-filter]:bg-dark/80 border-white/5 shadow-[0_2px_20px_rgba(0,0,0,0.15)]"
+          ? "bg-[#1A1A1A] border-white/5 shadow-[0_2px_20px_rgba(0,0,0,0.15)]"
           : "bg-transparent border-transparent shadow-none",
       )}
     >
       <nav className="container flex h-16 md:h-20 items-center justify-between">
-        <a href="/" className="flex items-center" aria-label="Tony's Remodeling home">
-          <img
-            src={tonysLogo}
-            alt="Tony's Remodeling - Painting and Carpentry"
-            className="h-[52px] md:h-[62px] w-auto object-contain"
-          />
-        </a>
+        <div className="flex-1 flex justify-start">
+          <a href="/" className="flex items-center" aria-label="Tony's Remodeling home">
+            <img
+              src={tonysLogo}
+              alt="Tony's Remodeling - Painting and Carpentry"
+              className="h-[52px] md:h-[62px] w-auto object-contain"
+            />
+          </a>
+        </div>
 
-        <ul className="hidden md:flex items-center gap-8">
+        <ul className="hidden md:flex flex-1 items-center justify-center gap-8">
           {/* Services dropdown */}
           <li
             className="relative"
@@ -71,7 +73,7 @@ const Navbar = () => {
           >
             <a
               href="/services"
-              className="flex items-center gap-1 text-sm font-medium text-background/80 hover:text-primary transition-colors py-2"
+              className="flex items-center gap-1 text-sm font-medium text-white hover:opacity-70 transition-all duration-200 py-2"
             >
               Services
               <ChevronDown
@@ -81,18 +83,18 @@ const Navbar = () => {
             </a>
             <div
               className={cn(
-                "absolute left-0 top-full pt-2 transition-all duration-200",
+                "absolute left-1/2 -translate-x-1/2 top-full pt-2 transition-all duration-200",
                 servicesOpen
                   ? "opacity-100 visible translate-y-0"
                   : "opacity-0 invisible -translate-y-1 pointer-events-none",
               )}
             >
-              <div className="bg-dark border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.3)] rounded-sm grid grid-cols-2 gap-x-2 py-3 min-w-[460px]">
+              <div className="bg-[#1A1A1A] border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.3)] rounded-sm grid grid-cols-2 gap-x-2 py-3 min-w-[460px]">
                 {services.map((s) => (
                   <a
                     key={s.href}
                     href={s.href}
-                    className="block px-5 py-2 text-sm text-background/80 hover:text-primary hover:bg-white/5 transition-colors whitespace-nowrap"
+                    className="block px-5 py-2 text-sm text-white/80 hover:text-primary hover:bg-white/5 transition-colors whitespace-nowrap"
                   >
                     {s.label}
                   </a>
@@ -105,7 +107,7 @@ const Navbar = () => {
             <li key={l.href}>
               <a
                 href={l.href}
-                className="text-sm font-medium text-background/80 hover:text-primary transition-colors"
+                className="text-sm font-medium text-white hover:opacity-70 transition-all duration-200"
               >
                 {l.label}
               </a>
@@ -113,9 +115,12 @@ const Navbar = () => {
           ))}
         </ul>
 
-        <div className="hidden md:block">
-          <Button asChild className="bg-primary text-primary-foreground hover:bg-primary-dark rounded-sm">
-            <a href="/contact">Get Free Estimate</a>
+        <div className="hidden md:flex flex-1 justify-end">
+          <Button asChild className="group bg-primary text-white hover:bg-primary-dark rounded-lg px-5 py-2.5 h-auto transition-all duration-200">
+            <a href="/contact" className="flex items-center gap-2">
+              Get Free Estimate
+              <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+            </a>
           </Button>
         </div>
 
@@ -179,8 +184,11 @@ const Navbar = () => {
               </li>
             ))}
             <li className="pt-2">
-              <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary-dark rounded-sm">
-                <a href="/contact" onClick={() => setOpen(false)}>Get Free Estimate</a>
+              <Button asChild className="group w-full bg-primary text-white hover:bg-primary-dark rounded-lg py-3 transition-all duration-200">
+                <a href="/contact" onClick={() => setOpen(false)} className="flex items-center justify-center gap-2">
+                  Get Free Estimate
+                  <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+                </a>
               </Button>
             </li>
           </ul>
