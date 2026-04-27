@@ -301,10 +301,9 @@ const Hero = () => {
             {...fadeUp(0.6)}
             href="/contact"
             className="mobile-only hero-cta-btn"
+            style={{ justifyContent: "center" }}
           >
-            <Calendar className="hero-cta-icon" />
             <span className="hero-cta-text">Get Free Estimate</span>
-            <span className="hero-cta-arrow">→</span>
           </motion.a>
 
           {/* Stats Container */}
