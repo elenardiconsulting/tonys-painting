@@ -1,6 +1,6 @@
 import { useState, FormEvent } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Shield, Star, CheckCircle2 } from "lucide-react";
+import { Shield, Star, CheckCircle2, Calendar } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import heroBg from "@/assets/hero-bg.jpg";
@@ -255,10 +255,10 @@ const Hero = () => {
   return (
     <section
       id="top"
-      className="relative w-full min-h-screen overflow-hidden flex items-center"
+      className="relative w-full min-h-screen overflow-hidden flex items-center md:items-center"
       style={{ backgroundColor: "#1A1A1A" }}
     >
-      {/* Background Image */}
+      {/* Background Image Layer */}
       <motion.img
         {...imageMotion}
         src={HERO_IMAGE}
@@ -271,14 +271,13 @@ const Hero = () => {
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          objectPosition: "center 30%",
           zIndex: 0,
         }}
       />
 
-      {/* Overlays */}
+      {/* Desktop Overlays */}
       <div
-        className="hero-overlay-1"
+        className="hidden md:block"
         style={{
           position: "absolute",
           inset: 0,
@@ -288,6 +287,7 @@ const Hero = () => {
         }}
       />
       <div
+        className="hidden md:block"
         style={{
           position: "absolute",
           inset: 0,
@@ -296,11 +296,32 @@ const Hero = () => {
         }}
       />
       <div
+        className="hidden md:block"
         style={{
           position: "absolute",
           inset: 0,
           zIndex: 3,
           background: "linear-gradient(to bottom, rgba(0,0,0,0.40) 0%, transparent 20%)",
+        }}
+      />
+
+      {/* Mobile Overlays */}
+      <div
+        className="md:hidden"
+        style={{
+          position: "absolute",
+          inset: 0,
+          zIndex: 1,
+          background: "linear-gradient(to top, rgba(0,0,0,0.97) 0%, rgba(0,0,0,0.90) 30%, rgba(0,0,0,0.60) 55%, rgba(0,0,0,0.20) 75%, rgba(0,0,0,1) 100%)",
+        }}
+      />
+      <div
+        className="md:hidden"
+        style={{
+          position: "absolute",
+          inset: 0,
+          zIndex: 2,
+          background: "linear-gradient(to bottom, rgba(0,0,0,0.50) 0%, transparent 15%)",
         }}
       />
 
@@ -312,20 +333,15 @@ const Hero = () => {
           zIndex: 10,
           width: "100%",
           display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: "40px",
         }}
       >
-        {/* Left Panel */}
+        {/* Content Panel */}
         <div
-          className="hero-left-panel"
+          className="hero-content-panel"
           style={{
             flex: 1,
-            maxWidth: "600px",
             display: "flex",
             flexDirection: "column",
-            gap: "20px",
           }}
         >
           <motion.h1
@@ -334,108 +350,70 @@ const Hero = () => {
             style={{
               fontFamily: "'Playfair Display', serif",
               fontWeight: 900,
-              lineHeight: 1.02,
-              letterSpacing: "-0.025em",
-              color: "#F5F1EB",
+              letterSpacing: "-0.02em",
               margin: 0,
             }}
           >
-            Painting and remodeling<br />
-            you can <span style={{ color: "#C4291C" }}>actually trust.</span>
+            <span className="desktop-only">
+              Painting and remodeling<br />
+              you can <span style={{ color: "#C4291C" }}>actually trust.</span>
+            </span>
+            <span className="mobile-only">
+              <span style={{ color: '#C4291C' }}>Painting</span> and<br />
+              remodeling<br />
+              you can <span style={{ color: '#C4291C' }}>trust.</span>
+            </span>
           </motion.h1>
+
+          <div className="mobile-only hero-mobile-divider" />
 
           <motion.p
             {...fadeUp(0.3)}
+            className="hero-subline"
             style={{
               fontFamily: "'Inter', sans-serif",
-              fontSize: "16px",
               fontWeight: 400,
-              color: "rgba(255,255,255,0.72)",
-              lineHeight: 1.7,
-              maxWidth: "500px",
               margin: 0,
             }}
           >
             Since 2004, Tony's team has brought precision and care to every project in the region.
           </motion.p>
 
+          {/* Mobile CTA */}
+          <motion.a
+            {...fadeUp(0.6)}
+            href="/contact"
+            className="mobile-only hero-cta-mobile"
+          >
+            <Calendar size={20} className="text-white" />
+            <span className="font-['Inter'] font-bold text-[16px]">Get Free Estimate</span>
+            <span className="font-['Inter'] font-bold text-[20px]">→</span>
+          </motion.a>
+
+          {/* Stats Container */}
           <motion.div
             {...fadeUp(0.7)}
             className="hero-stats-container"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "28px",
-              paddingTop: "16px",
-              borderTop: "1px solid rgba(255,255,255,0.12)",
-              flexWrap: "wrap",
-            }}
           >
             {stats.map((stat, idx) => (
-              <div key={idx} style={{ display: "flex", alignItems: "center", gap: "28px" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                  <div style={{ color: "#C4291C", display: "flex" }}>{stat.icon}</div>
-                  <div>
-                    <div
-                      style={{
-                        color: "white",
-                        fontFamily: "'Inter', sans-serif",
-                        fontWeight: 700,
-                        fontSize: "15px",
-                        lineHeight: 1,
-                      }}
-                    >
-                      {stat.title}
-                    </div>
-                    <div
-                      style={{
-                        color: "rgba(255,255,255,0.45)",
-                        fontFamily: "'Inter', sans-serif",
-                        fontSize: "11px",
-                        marginTop: "2px",
-                      }}
-                    >
-                      {stat.desc}
-                    </div>
+              <div key={idx} className="hero-stat-item">
+                <div className="hero-stat-content">
+                  <div className="hero-stat-icon">{stat.icon}</div>
+                  <div className="hero-stat-text">
+                    <div className="hero-stat-title">{stat.title}</div>
+                    <div className="hero-stat-desc">{stat.desc}</div>
                   </div>
                 </div>
                 {idx < stats.length - 1 && (
-                  <div
-                    className="hero-stat-divider"
-                    style={{ width: "1px", height: "28px", background: "rgba(255,255,255,0.12)" }}
-                  />
+                  <div className="hero-stat-divider-line desktop-only" />
                 )}
               </div>
             ))}
           </motion.div>
-
-          {/* Mobile CTA Button */}
-          <motion.a
-            {...fadeUp(0.9)}
-            href="/contact"
-            className="hero-mobile-cta"
-            style={{
-              display: "none",
-              width: "100%",
-              height: "50px",
-              background: "#C4291C",
-              color: "white",
-              fontFamily: "'Inter', sans-serif",
-              fontWeight: 600,
-              fontSize: "14px",
-              borderRadius: "8px",
-              alignItems: "center",
-              justifyContent: "center",
-              marginTop: "16px",
-              textDecoration: "none"
-            }}
-          >
-            Get Free Estimate
-          </motion.a>
         </div>
 
-        {/* Right Panel (Form) */}
-        <div className="hero-right-panel" style={{ width: "380px", flexShrink: 0 }}>
+        {/* Desktop Right Panel (Form) */}
+        <div className="hero-right-panel desktop-only" style={{ width: "380px", flexShrink: 0 }}>
           <motion.div {...fadeUp(0.5)}>
             <GlassForm />
           </motion.div>
@@ -443,46 +421,172 @@ const Hero = () => {
       </div>
 
       <style>{`
+        .desktop-only { display: block; }
+        .mobile-only { display: none; }
+        
         .hero-layout-container {
           padding: 0 80px;
           min-height: 100vh;
+          align-items: center;
+          justify-content: space-between;
+          gap: 40px;
         }
+        
         .hero-headline {
           font-size: clamp(36px, 4.2vw, 64px);
+          line-height: 1.02;
+          color: #F5F1EB;
         }
-        @media (max-width: 767px) {
+        
+        .hero-subline {
+          font-size: 16px;
+          color: rgba(255,255,255,0.72);
+          line-height: 1.7;
+          max-width: 500px;
+          margin-top: 20px;
+        }
+        
+        .hero-stats-container {
+          display: flex;
+          align-items: center;
+          gap: 28px;
+          padding-top: 16px;
+          border-top: 1px solid rgba(255,255,255,0.12);
+          margin-top: 20px;
+        }
+        
+        .hero-stat-item {
+          display: flex;
+          align-items: center;
+          gap: 28px;
+        }
+        
+        .hero-stat-content {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        
+        .hero-stat-icon {
+          color: #C4291C;
+          display: flex;
+        }
+        
+        .hero-stat-title {
+          color: white;
+          font-family: 'Inter', sans-serif;
+          font-weight: 700;
+          font-size: 15px;
+          line-height: 1;
+        }
+        
+        .hero-stat-desc {
+          color: rgba(255,255,255,0.45);
+          font-family: 'Inter', sans-serif;
+          font-size: 11px;
+          margin-top: 2px;
+        }
+        
+        .hero-stat-divider-line {
+          width: 1px;
+          height: 28px;
+          background: rgba(255,255,255,0.12);
+        }
+
+        @media (min-width: 768px) {
           .hero-background-image {
-            object-position: 70% center !important;
+            object-position: center 30%;
           }
-          .hero-overlay-1 {
-            background: linear-gradient(to bottom, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.60) 50%, rgba(0,0,0,0.80) 100%) !important;
+        }
+
+        @media (max-width: 767px) {
+          .desktop-only { display: none !important; }
+          .mobile-only { display: block; }
+          
+          .hero-background-image {
+            object-position: center center !important;
           }
+          
           .hero-layout-container {
-            padding: 100px 24px 48px 24px;
+            padding: 0 24px 40px 24px;
             min-height: 100vh;
+            flex-direction: column;
             justify-content: flex-end;
           }
-          .hero-left-panel {
+          
+          .hero-content-panel {
             width: 100%;
-            max-width: 100%;
-            flex: none;
           }
-          .hero-right-panel {
-            display: none;
-          }
+          
           .hero-headline {
-            font-size: clamp(32px, 8vw, 48px);
+            font-size: clamp(42px, 11vw, 58px);
+            line-height: 1.0;
+            color: #FFFFFF;
           }
-          .hero-stats-container {
-            display: grid !important;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px !important;
+          
+          .hero-mobile-divider {
+            width: 48px;
+            height: 3px;
+            background: #C4291C;
+            border-radius: 2px;
+            margin: 12px 0 16px 0;
+            display: block;
           }
-          .hero-stat-divider {
-            display: none;
+          
+          .hero-subline {
+            font-size: 15px;
+            color: rgba(255,255,255,0.72);
+            line-height: 1.7;
+            max-width: 100%;
+            margin-top: 0;
+            margin-bottom: 24px;
           }
-          .hero-mobile-cta {
+          
+          .hero-cta-mobile {
             display: flex !important;
+            width: 100%;
+            height: 58px;
+            background: #C4291C;
+            border-radius: 10px;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            margin-bottom: 28px;
+            color: white;
+            text-decoration: none;
+            transition: background 0.2s;
+          }
+          
+          .hero-cta-mobile:active {
+            background: #8B1A10;
+          }
+          
+          .hero-stats-container {
+            justify-content: space-between;
+            padding-top: 16px;
+            margin-top: 0;
+            gap: 0;
+          }
+          
+          .hero-stat-item {
+            gap: 0;
+          }
+          
+          .hero-stat-content {
+            gap: 8px;
+          }
+          
+          .hero-stat-icon svg {
+            width: 20px;
+            height: 20px;
+          }
+          
+          .hero-stat-title {
+            font-size: 13px;
+          }
+          
+          .hero-stat-desc {
+            font-size: 10px;
           }
         }
       `}</style>
