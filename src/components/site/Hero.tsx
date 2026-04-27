@@ -89,17 +89,15 @@ const Hero = () => {
             style={{ 
               fontFamily: "'Playfair Display', serif",
               fontWeight: 900,
-              fontSize: "clamp(48px, 6.5vw, 88px)",
-              lineHeight: "0.97",
-              letterSpacing: "-0.03em",
+              fontSize: "clamp(36px, 4.2vw, 62px)",
+              lineHeight: 1.05,
+              letterSpacing: "-0.025em",
               color: "#F5F1EB",
-              maxWidth: "680px"
+              maxWidth: "640px"
             }}
           >
             Transforming spaces across{" "}
-            <br className="hidden md:block" />
             <span style={{ color: "#C4291C" }}>Martha's Vineyard</span>{" "}
-            <br className="hidden md:block" />
             and{" "}
             <span style={{ color: "#C4291C" }}>New England.</span>
           </motion.h1>
