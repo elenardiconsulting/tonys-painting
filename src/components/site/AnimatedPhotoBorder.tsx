@@ -62,6 +62,7 @@ const AnimatedPhotoBorder = ({ children, className, delay = 0 }: AnimatedPhotoBo
                   ease: "easeInOut",
                   repeat: Infinity,
                   repeatType: "reverse",
+                  delay,
                 }
           }
         />
