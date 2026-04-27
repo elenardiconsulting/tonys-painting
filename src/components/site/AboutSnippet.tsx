@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import FadeUpSection from "@/components/site/FadeUpSection";
-import AnimatedPhotoBorder from "@/components/site/AnimatedPhotoBorder";
 import otonielSantos from "@/assets/otoniel-santos-founder.png";
 
 const people = [
@@ -18,167 +17,204 @@ const people = [
   },
 ];
 
-const AboutSnippet = () => {
+const AboutPhotoSlideshow = () => {
   const shouldReduceMotion = useReducedMotion();
-  const [active, setActive] = useState(0);
-  const [fading, setFading] = useState(false);
+  const [current, setCurrent] = useState(0);
+  const [next, setNext] = useState(1);
+  const [transitioning, setTransitioning] = useState(false);
   const [paused, setPaused] = useState(false);
+  const [progressKey, setProgressKey] = useState(0);
 
-  useEffect(() => {
-    if (paused || shouldReduceMotion) return;
-    const interval = setInterval(() => {
-      setFading(true);
-      setTimeout(() => {
-        setActive((prev) => (prev + 1) % people.length);
-        setFading(false);
-      }, 600);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [paused, active, shouldReduceMotion]);
-
-  const handleManualNav = (index: number) => {
-    if (index === active) return;
-    setFading(true);
+  const goTo = (index: number) => {
+    if (transitioning || shouldReduceMotion) return;
+    const nextIndex = index % people.length;
+    if (nextIndex === current) return;
+    
+    setNext(nextIndex);
+    setTransitioning(true);
     setTimeout(() => {
-      setActive(index);
-      setFading(false);
-    }, 600);
+      setCurrent(nextIndex);
+      setNext((nextIndex + 1) % people.length);
+      setTransitioning(false);
+      setProgressKey((k) => k + 1);
+    }, 700);
   };
 
+  useEffect(() => {
+    if (paused || transitioning || shouldReduceMotion) return;
+    const interval = setInterval(() => {
+      goTo(current + 1);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [current, paused, transitioning, shouldReduceMotion]);
+
+  if (shouldReduceMotion) {
+    return (
+      <div className="flex flex-col items-center gap-[14px]">
+        <div className="relative w-[200px] h-[250px] md:w-[300px] md:h-[370px] rounded-[8px] overflow-hidden">
+          <img
+            src={people[current].image}
+            alt={people[current].name}
+            className="absolute inset-0 w-full h-full object-cover object-top"
+          />
+        </div>
+        <div className="text-center">
+          <p className="font-sans font-semibold text-[18px] text-[#1A1A1A] m-0 mb-[5px]">
+            {people[current].name}
+          </p>
+          <p className="font-sans font-medium text-[12px] text-[#C4291C] uppercase tracking-[0.08em] m-0">
+            {people[current].role}
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      className="flex flex-col items-center gap-[14px]"
+    >
+      {/* Container das fotos sobrepostas */}
+      <div className="relative w-[200px] h-[250px] md:w-[300px] md:h-[370px] rounded-[8px] overflow-hidden">
+        {/* Foto atual (embaixo) */}
+        <img
+          src={people[current].image}
+          alt={people[current].name}
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "top center",
+            opacity: transitioning ? 0 : 1,
+            transition: "opacity 0.7s ease",
+            zIndex: 1,
+          }}
+        />
+
+        {/* Proxima foto (em cima, aparece durante transicao) */}
+        <img
+          src={people[next].image}
+          alt={people[next].name}
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "top center",
+            opacity: transitioning ? 1 : 0,
+            transition: "opacity 0.7s ease",
+            zIndex: 2,
+          }}
+        />
+
+        {/* Borda vermelha SVG animada por cima de tudo */}
+        <svg
+          className="absolute inset-[-4px] w-[calc(100%+8px)] h-[calc(100%+8px)] z-[3] pointer-events-none"
+          viewBox="0 0 308 378"
+        >
+          <rect
+            x="2"
+            y="2"
+            width="304"
+            height="374"
+            rx="8"
+            fill="none"
+            stroke="#C4291C"
+            strokeWidth="2.5"
+            strokeDasharray="1356"
+            strokeDashoffset="1356"
+            style={{
+              animation: "drawBorder 2.5s ease-in-out infinite alternate",
+            }}
+          />
+        </svg>
+      </div>
+
+      {/* Nome e cargo com fade */}
+      <div
+        className="text-center"
+        style={{
+          opacity: transitioning ? 0 : 1,
+          transition: "opacity 0.7s ease",
+        }}
+      >
+        <p
+          style={{
+            fontFamily: "Inter, sans-serif",
+            fontWeight: 600,
+            fontSize: "18px",
+            color: "#1A1A1A",
+            margin: "0 0 5px",
+          }}
+        >
+          {transitioning ? people[next].name : people[current].name}
+        </p>
+        <p
+          style={{
+            fontFamily: "Inter, sans-serif",
+            fontWeight: 500,
+            fontSize: "12px",
+            color: "#C4291C",
+            textTransform: "uppercase",
+            letterSpacing: "0.08em",
+            margin: 0,
+          }}
+        >
+          {transitioning ? people[next].role : people[current].role}
+        </p>
+      </div>
+
+      {/* Barra de progresso */}
+      <div className="w-[200px] md:w-[300px] h-[2px] bg-black/10 rounded-[1px] overflow-hidden">
+        <div
+          key={progressKey}
+          style={{
+            height: "100%",
+            background: "#C4291C",
+            borderRadius: "1px",
+            animation: paused ? "none" : "progressBar 5s linear forwards",
+          }}
+        />
+      </div>
+
+      {/* Dots */}
+      <div className="flex gap-[8px] justify-center">
+        {people.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => goTo(i)}
+            style={{
+              width: current === i ? "20px" : "6px",
+              height: "6px",
+              borderRadius: current === i ? "3px" : "50%",
+              background: current === i ? "#C4291C" : "rgba(0,0,0,0.20)",
+              border: "none",
+              cursor: "pointer",
+              transition: "all 0.3s ease",
+              padding: 0,
+            }}
+            aria-label={`Go to slide ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const AboutSnippet = () => {
   return (
     <section id="about" className="bg-stone overflow-hidden">
       <div className="container py-20 md:py-28 flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
         {/* TOP PANEL ON MOBILE / LEFT PANEL ON DESKTOP */}
-        <div className="w-full order-1 lg:order-none">
-          {shouldReduceMotion ? (
-            <FadeUpSection className="flex flex-row items-end justify-center lg:justify-start gap-4 md:gap-[28px] w-full">
-              {people.map((person, i) => (
-                <div key={i} className="flex flex-col items-center gap-[10px]">
-                  <div className="w-[140px] h-[175px] md:w-[260px] md:h-[320px]">
-                    <AnimatedPhotoBorder className="w-full h-full" delay={i * 0.5}>
-                      <img
-                        src={person.image}
-                        alt={person.name}
-                        className="block w-full h-full object-cover object-[top_center] rounded-[6px]"
-                      />
-                    </AnimatedPhotoBorder>
-                  </div>
-                  <div className="text-center">
-                    <h4 className="font-sans font-semibold text-[14px] md:text-[17px] text-[#1A1A1A] leading-tight">
-                      {person.name}
-                    </h4>
-                    <p className="font-sans font-medium text-[11px] md:text-[12px] text-[#C4291C] uppercase tracking-[0.08em] mt-1">
-                      {person.role}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </FadeUpSection>
-          ) : (
-            <FadeUpSection className="flex flex-col items-center lg:items-start">
-              <div
-                className="about-photo-panel flex flex-col items-center lg:items-start"
-                onMouseEnter={() => setPaused(true)}
-                onMouseLeave={() => setPaused(false)}
-              >
-                {/* Photo Container */}
-                <div className="relative inline-block w-[160px] h-[200px] md:w-[260px] md:h-[320px]">
-                  <AnimatedPhotoBorder className="w-full h-full">
-                    <img
-                      src={people[active].image}
-                      alt={people[active].name}
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                        objectPosition: "top center",
-                        borderRadius: "6px",
-                        opacity: fading ? 0 : 1,
-                        transition: "opacity 0.6s ease",
-                      }}
-                    />
-                  </AnimatedPhotoBorder>
-                </div>
-
-                {/* Progress Bar */}
-                {!shouldReduceMotion && (
-                  <div className="about-progress-bar w-[160px] md:w-[260px]">
-                    <div
-                      key={active}
-                      className={`about-progress-fill ${paused ? "paused" : ""}`}
-                    />
-                  </div>
-                )}
-
-                {/* Name and Role */}
-                <div
-                  style={{
-                    opacity: fading ? 0 : 1,
-                    transition: "opacity 0.6s ease",
-                    marginTop: "12px",
-                    textAlign: "center",
-                    width: "160px",
-                  }}
-                  className="md:w-[260px]"
-                >
-                  <p
-                    style={{
-                      fontFamily: "Inter, sans-serif",
-                      fontWeight: 600,
-                      fontSize: "17px",
-                      color: "#1A1A1A",
-                      margin: "0 0 4px",
-                    }}
-                  >
-                    {people[active].name}
-                  </p>
-                  <p
-                    style={{
-                      fontFamily: "Inter, sans-serif",
-                      fontWeight: 500,
-                      fontSize: "12px",
-                      color: "#C4291C",
-                      textTransform: "uppercase",
-                      letterSpacing: "0.08em",
-                      margin: 0,
-                    }}
-                  >
-                    {people[active].role}
-                  </p>
-                </div>
-
-                {/* Navigation Dots */}
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    gap: "8px",
-                    marginTop: "16px",
-                    width: "160px",
-                  }}
-                  className="md:w-[260px]"
-                >
-                  {people.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => handleManualNav(i)}
-                      style={{
-                        width: active === i ? "20px" : "6px",
-                        height: "6px",
-                        borderRadius: active === i ? "3px" : "50%",
-                        background: active === i ? "#C4291C" : "rgba(0,0,0,0.20)",
-                        border: "none",
-                        cursor: "pointer",
-                        transition: "all 0.3s ease",
-                        padding: 0,
-                      }}
-                      aria-label={`Go to slide ${i + 1}`}
-                    />
-                  ))}
-                </div>
-              </div>
-            </FadeUpSection>
-          )}
+        <div className="w-full order-1 lg:order-none flex justify-center lg:justify-start">
+          <FadeUpSection className="w-full">
+            <AboutPhotoSlideshow />
+          </FadeUpSection>
         </div>
 
         {/* BOTTOM PANEL ON MOBILE / RIGHT PANEL ON DESKTOP */}
@@ -204,32 +240,6 @@ const AboutSnippet = () => {
           </Button>
         </FadeUpSection>
       </div>
-
-      <style>{`
-        @keyframes progressBar {
-          from { width: 0%; }
-          to { width: 100%; }
-        }
-
-        .about-progress-bar {
-          height: 2px;
-          background: rgba(0,0,0,0.10);
-          border-radius: 1px;
-          margin-top: 10px;
-          overflow: hidden;
-        }
-
-        .about-progress-fill {
-          height: 100%;
-          background: #C4291C;
-          border-radius: 1px;
-          animation: progressBar 5s linear forwards;
-        }
-
-        .about-progress-fill.paused {
-          animation-play-state: paused;
-        }
-      `}</style>
     </section>
   );
 };
