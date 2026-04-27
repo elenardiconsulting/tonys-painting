@@ -589,7 +589,7 @@ const ScheduleModal = ({
   );
 };
 
-const LeadsTab = ({ leads, updateLead }: Props) => {
+const LeadsTab = ({ leads, updateLead, deleteLead }: Props) => {
   const [filter, setFilter] = useState<LeadStatus | "all">("all");
   const [search, setSearch] = useState("");
   const [scheduleLead, setScheduleLead] = useState<Lead | null>(null);
@@ -717,6 +717,7 @@ const LeadsTab = ({ leads, updateLead }: Props) => {
             key={lead.id}
             lead={lead}
             updateLead={updateLead}
+            deleteLead={deleteLead}
             onScheduleNeeded={setScheduleLead}
           />
         ))}
