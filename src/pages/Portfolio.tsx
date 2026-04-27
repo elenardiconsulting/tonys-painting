@@ -14,37 +14,25 @@ interface Project {
   title: string;
   category: Exclude<Category, "All Projects">;
   location: string;
+  src: string;
 }
 
 const PROJECTS: Project[] = [
-  { id: 1, title: "Edgartown Residence", category: "Interior", location: "Martha's Vineyard" },
-  { id: 2, title: "West Chop Summer Home", category: "Exterior", location: "Martha's Vineyard" },
-  { id: 3, title: "Boston Office Renovation", category: "Commercial", location: "Boston" },
-  { id: 4, title: "Chilmark Farmhouse", category: "Exterior", location: "Martha's Vineyard" },
-  { id: 5, title: "Brookline Master Bath", category: "Remodeling", location: "Boston" },
-  { id: 6, title: "Oak Bluffs Victorian", category: "Interior", location: "Martha's Vineyard" },
-  { id: 7, title: "Vineyard Haven Kitchen", category: "Remodeling", location: "Martha's Vineyard" },
-  { id: 8, title: "Cambridge Townhouse", category: "Exterior", location: "Boston" },
-  { id: 9, title: "Aquinnah Retreat", category: "Interior", location: "Martha's Vineyard" },
-  { id: 10, title: "Newton Commercial Space", category: "Commercial", location: "Boston" },
-  { id: 11, title: "Edgartown Porch", category: "Exterior", location: "Martha's Vineyard" },
-  { id: 12, title: "Hamptons Weekend Home", category: "Interior", location: "Martha's Vineyard" },
+  { id: 1, title: "Edgartown Residence", category: "Exterior", location: "Martha's Vineyard", src: "/images/project-02.jpg" },
+  { id: 2, title: "Cambridge Colonial", category: "Exterior", location: "Boston", src: "/images/project-12.jpg" },
+  { id: 3, title: "Vineyard Haven Deck", category: "Exterior", location: "Martha's Vineyard", src: "/images/project-08.jpg" },
+  { id: 4, title: "Oak Bluffs Bath Remodel", category: "Remodeling", location: "Martha's Vineyard", src: "/images/project-04.jpg" },
+  { id: 5, title: "Chilmark Wood Siding", category: "Exterior", location: "Martha's Vineyard", src: "/images/project-14.jpg" },
+  { id: 6, title: "West Chop Residence", category: "Exterior", location: "Martha's Vineyard", src: "/images/project-06.jpg" },
+  { id: 7, title: "Aquinnah Deck", category: "Exterior", location: "Martha's Vineyard", src: "/images/project-07.jpg" },
+  { id: 8, title: "Edgartown Interior", category: "Interior", location: "Martha's Vineyard", src: "/images/project-05.jpg" },
+  { id: 9, title: "Vineyard Colonial", category: "Exterior", location: "Martha's Vineyard", src: "/images/project-13.jpg" },
+  { id: 10, title: "Boston Closet Remodel", category: "Remodeling", location: "Boston", src: "/images/project-15.jpg" },
+  { id: 11, title: "Newton Kitchen Remodel", category: "Remodeling", location: "Boston", src: "/images/project-16.jpg" },
+  { id: 12, title: "Chilmark Deck", category: "Exterior", location: "Martha's Vineyard", src: "/images/project-09.jpg" },
 ];
 
 const FILTERS: Category[] = ["All Projects", "Interior", "Exterior", "Remodeling", "Commercial"];
-
-// Deterministic placeholder color per project for visual variety.
-const placeholderTone = (id: number) => {
-  const tones = [
-    "from-stone to-background",
-    "from-background to-stone",
-    "from-stone via-background to-stone",
-    "from-[hsl(33_25%_82%)] to-[hsl(36_33%_94%)]",
-    "from-[hsl(24_15%_75%)] to-[hsl(33_25%_88%)]",
-    "from-[hsl(36_20%_88%)] to-[hsl(24_10%_70%)]",
-  ];
-  return tones[id % tones.length];
-};
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState<Category>("All Projects");
@@ -129,16 +117,12 @@ const Portfolio = () => {
                   onClick={() => setLightboxId(p.id)}
                   className="portfolio-item group relative aspect-[4/3] overflow-hidden text-left w-full"
                 >
-                  <div
-                    className={cn(
-                      "absolute inset-0 bg-gradient-to-br transition-transform duration-500 group-hover:scale-105",
-                      placeholderTone(p.id),
-                    )}
-                    aria-hidden
+                  <img
+                    src={p.src}
+                    alt={`${p.title}, ${p.location}`}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 flex items-center justify-center text-foreground/30 font-display text-base">
-                    {p.category}
-                  </div>
                   <div className="portfolio-overlay absolute inset-0 flex flex-col items-center justify-center text-center p-6">
                     <div className="portfolio-caption">
                       <p className="text-xs uppercase tracking-[0.2em] text-primary mb-2">
@@ -217,14 +201,11 @@ const Portfolio = () => {
             className="w-full max-w-[900px] flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
-            <div
-              className={cn(
-                "w-full aspect-[4/3] bg-gradient-to-br flex items-center justify-center text-foreground/30 font-display text-xl",
-                placeholderTone(currentProject.id),
-              )}
-            >
-              {currentProject.category}
-            </div>
+            <img
+              src={currentProject.src}
+              alt={`${currentProject.title}, ${currentProject.location}`}
+              className="w-full aspect-[4/3] object-cover"
+            />
             <div className="mt-6 text-center">
               <p className="text-xs uppercase tracking-[0.25em] text-primary mb-2">
                 {currentProject.category}
