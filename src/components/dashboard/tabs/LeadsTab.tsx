@@ -117,62 +117,162 @@ const LeadCard = ({
               fontFamily: "'Inter', sans-serif",
               border: "none",
               cursor: "pointer",
+              minHeight: 28,
             }}
           >
             {badge.label}
           </button>
           {dropdownOpen && (
-            <div
-              style={{
-                position: "absolute",
-                top: "calc(100% + 6px)",
-                right: 0,
-                background: "#FFFFFF",
-                border: "1px solid #E8E2D8",
-                borderRadius: 8,
-                boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
-                zIndex: 5,
-                minWidth: 160,
-                padding: 4,
-              }}
-            >
-              {STATUSES.map((s) => {
-                const b = getStatusBadge(s);
-                return (
-                  <button
-                    key={s}
-                    onClick={() => handleStatusChange(s)}
-                    style={{
-                      display: "block",
-                      width: "100%",
-                      textAlign: "left",
-                      padding: "6px 10px",
-                      border: "none",
-                      background: "transparent",
-                      cursor: "pointer",
-                      fontFamily: "'Inter', sans-serif",
-                      fontSize: 12,
-                      borderRadius: 4,
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.background = "#F5F1EB")}
-                    onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
-                  >
-                    <span
+            <>
+              {/* Desktop dropdown */}
+              <div
+                className="lead-status-dropdown"
+                style={{
+                  position: "absolute",
+                  top: "calc(100% + 6px)",
+                  right: 0,
+                  background: "#FFFFFF",
+                  border: "1px solid #E8E2D8",
+                  borderRadius: 8,
+                  boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
+                  zIndex: 5,
+                  minWidth: 160,
+                  padding: 4,
+                }}
+              >
+                {STATUSES.map((s) => {
+                  const b = getStatusBadge(s);
+                  return (
+                    <button
+                      key={s}
+                      onClick={() => handleStatusChange(s)}
                       style={{
-                        background: b.bg,
-                        color: b.color,
-                        padding: "2px 8px",
-                        borderRadius: 999,
-                        fontSize: 11,
-                        fontWeight: 600,
+                        display: "block",
+                        width: "100%",
+                        textAlign: "left",
+                        padding: "6px 10px",
+                        border: "none",
+                        background: "transparent",
+                        cursor: "pointer",
+                        fontFamily: "'Inter', sans-serif",
+                        fontSize: 12,
+                        borderRadius: 4,
                       }}
+                      onMouseEnter={(e) => (e.currentTarget.style.background = "#F5F1EB")}
+                      onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
                     >
-                      {b.label}
-                    </span>
+                      <span
+                        style={{
+                          background: b.bg,
+                          color: b.color,
+                          padding: "2px 8px",
+                          borderRadius: 999,
+                          fontSize: 11,
+                          fontWeight: 600,
+                        }}
+                      >
+                        {b.label}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Mobile bottom sheet */}
+              <div
+                className="lead-status-sheet-overlay"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setDropdownOpen(false);
+                }}
+                style={{
+                  display: "none",
+                  position: "fixed",
+                  inset: 0,
+                  background: "rgba(0,0,0,0.5)",
+                  zIndex: 100,
+                }}
+              >
+                <div
+                  className="lead-status-sheet"
+                  onClick={(e) => e.stopPropagation()}
+                  style={{
+                    position: "fixed",
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    background: "#FFFFFF",
+                    borderRadius: "16px 16px 0 0",
+                    padding: 20,
+                    paddingBottom: "calc(20px + env(safe-area-inset-bottom))",
+                    zIndex: 101,
+                  }}
+                >
+                  <div
+                    style={{
+                      fontFamily: "'Inter', sans-serif",
+                      fontWeight: 600,
+                      fontSize: 16,
+                      color: "#1A1A1A",
+                      marginBottom: 12,
+                    }}
+                  >
+                    Change Status
+                  </div>
+                  {STATUSES.map((s) => {
+                    const b = getStatusBadge(s);
+                    return (
+                      <button
+                        key={s}
+                        onClick={() => handleStatusChange(s)}
+                        style={{
+                          display: "block",
+                          width: "100%",
+                          textAlign: "left",
+                          padding: 12,
+                          border: "none",
+                          borderBottom: "1px solid #F1EFE8",
+                          background: "transparent",
+                          cursor: "pointer",
+                          fontFamily: "'Inter', sans-serif",
+                          fontSize: 14,
+                        }}
+                      >
+                        <span
+                          style={{
+                            background: b.bg,
+                            color: b.color,
+                            padding: "4px 10px",
+                            borderRadius: 999,
+                            fontSize: 12,
+                            fontWeight: 600,
+                          }}
+                        >
+                          {b.label}
+                        </span>
+                      </button>
+                    );
+                  })}
+                  <button
+                    onClick={() => setDropdownOpen(false)}
+                    style={{
+                      width: "100%",
+                      marginTop: 12,
+                      padding: 12,
+                      background: "#FFFFFF",
+                      border: "1px solid #E8E2D8",
+                      borderRadius: 8,
+                      fontFamily: "'Inter', sans-serif",
+                      fontSize: 14,
+                      fontWeight: 500,
+                      cursor: "pointer",
+                    }}
+                  >
+                    Cancel
                   </button>
-                );
-              })}
-            </div>
+                </div>
+              </div>
+            </>
           )}
         </div>
       </div>
