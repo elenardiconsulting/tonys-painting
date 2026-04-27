@@ -103,6 +103,7 @@ const VideoShowcase = () => {
               ref={videoRef}
               src="/videos/tonys-showreel.mp4"
               controls
+              muted
               preload="metadata"
               playsInline
               style={{
