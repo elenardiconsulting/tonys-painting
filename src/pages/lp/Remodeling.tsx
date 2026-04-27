@@ -40,6 +40,14 @@ const LPRemodeling = () => (
       "Brookline",
       "Wellesley",
     ]}
+    portfolioImages={[
+      "/images/project-04.jpg",
+      "/images/project-16.jpg",
+      "/images/project-15.jpg",
+      "/images/project-08.jpg",
+      "/images/project-09.jpg",
+      "/images/project-07.jpg"
+    ]}
   />
 );
 
