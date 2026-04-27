@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import SEO from "@/components/SEO";
 import PageLayout from "@/components/site/PageLayout";
 import InnerHero from "@/components/site/InnerHero";
 import FadeUpSection from "@/components/site/FadeUpSection";
@@ -90,6 +91,12 @@ const Portfolio = () => {
 
   return (
     <PageLayout>
+      <SEO
+        title="Painting and Remodeling Portfolio | New England Projects"
+        description="Browse our work across Martha's Vineyard, Boston and New England. Interior, exterior, remodeling and deck projects since 2004."
+        canonical="/portfolio"
+        keywords="painting portfolio Martha's Vineyard, painting projects Boston MA, before after painting New England, remodeling projects MA"
+      />
       <InnerHero
         title="Our work speaks for itself."
         subtitle="20 years of projects across Martha's Vineyard, Boston and New England."

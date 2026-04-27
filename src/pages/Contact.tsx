@@ -1,4 +1,5 @@
 import { Instagram, Facebook } from "lucide-react";
+import SEO from "@/components/SEO";
 import PageLayout from "@/components/site/PageLayout";
 import InnerHero from "@/components/site/InnerHero";
 import ContactForm from "@/components/site/ContactForm";

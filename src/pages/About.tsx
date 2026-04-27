@@ -1,4 +1,5 @@
 import { Check, Wrench, Handshake } from "lucide-react";
+import SEO from "@/components/SEO";
 import PageLayout from "@/components/site/PageLayout";
 import InnerHero from "@/components/site/InnerHero";
 import FadeUpSection from "@/components/site/FadeUpSection";
@@ -50,6 +51,25 @@ const boston = ["Boston", "Cambridge", "Brookline", "Newton", "Needham", "Welles
 const About = () => {
   return (
     <PageLayout>
+      <SEO
+        title="About Tony's Painting and Remodeling | Est. 2004"
+        description="Founded in 2004 by Otoniel Santos in Martha's Vineyard. 20 years serving New England with professionalism, hard work and honesty."
+        canonical="/about"
+        keywords="Tony's Painting history, painting company Martha's Vineyard, Otoniel Santos painter, painting remodeling New England since 2004"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          name: "About Tony's Painting and Remodeling",
+          description:
+            "Founded in 2004 by Otoniel Santos in Martha's Vineyard, serving New England for over 20 years.",
+          mainEntity: {
+            "@type": "LocalBusiness",
+            name: "Tony's Painting and Remodeling",
+            foundingDate: "2004",
+            founder: { "@type": "Person", name: "Otoniel Santos" },
+          },
+        }}
+      />
       <InnerHero
         title="20 years of doing the work right."
         subtitle="Tony started this company with a simple belief: that the quality of your work is the only thing that matters."

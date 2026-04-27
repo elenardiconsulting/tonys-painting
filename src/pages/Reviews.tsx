@@ -1,4 +1,5 @@
 import { Star } from "lucide-react";
+import SEO from "@/components/SEO";
 import PageLayout from "@/components/site/PageLayout";
 import InnerHero from "@/components/site/InnerHero";
 import FadeUpSection from "@/components/site/FadeUpSection";
@@ -54,6 +55,12 @@ const Stars = ({ size = 16 }: { size?: number }) => (
 const Reviews = () => {
   return (
     <PageLayout>
+      <SEO
+        title="5-Star Reviews | Tony's Painting and Remodeling"
+        description="Real Google reviews from clients across Martha's Vineyard and New England. See why Tony's is the most trusted painting company in the region."
+        canonical="/reviews"
+        keywords="Tony's Painting reviews, painting company reviews Martha's Vineyard, best painters New England, 5 star painting contractor MA"
+      />
       <InnerHero
         title="What our clients say."
         subtitle="Every review below is from a real client on Google. We let the work speak for itself."
