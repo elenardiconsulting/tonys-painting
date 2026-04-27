@@ -549,6 +549,8 @@ const Hero = () => {
             text-align: center;
             width: 100%;
             height: 58px;
+            line-height: 58px;
+            padding: 0;
             background: #C4291C;
             border-radius: 10px;
             color: #FFFFFF;
