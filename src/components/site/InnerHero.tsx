@@ -1,4 +1,3 @@
-import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface Crumb {
@@ -11,57 +10,117 @@ interface InnerHeroProps {
   subtitle?: string;
   crumbs: Crumb[];
   variant?: "stone" | "image";
+  /** Optional override (kept for back-compat). Ignored for the new compact layout. */
   height?: string;
+  /** Use compact layout (160px tall, smaller type). Defaults to true. */
+  compact?: boolean;
 }
 
-const InnerHero = ({ title, subtitle, crumbs, variant = "stone", height }: InnerHeroProps) => {
+const InnerHero = ({
+  title,
+  subtitle,
+  crumbs,
+  variant = "stone",
+  compact = true,
+}: InnerHeroProps) => {
   const isImage = variant === "image";
-  const baseHeight = height ?? (isImage ? "h-[400px]" : "h-[280px]");
 
   return (
     <section
-      className={`relative ${baseHeight} flex items-end ${isImage ? "bg-dark" : "bg-stone"} pt-20 md:pt-24`}
+      style={{
+        position: "relative",
+        background: isImage ? "#2C2C2A" : "#E8E2D8",
+        paddingTop: 80,
+        paddingBottom: 40,
+      }}
+      className="px-6 md:px-20"
     >
-      {isImage && (
-        <>
-          <div className="absolute inset-0 bg-stone" aria-hidden />
-          <div className="absolute inset-0 bg-dark/55" aria-hidden />
-        </>
-      )}
+      {isImage && <div className="absolute inset-0 bg-dark/55" aria-hidden />}
 
-      <div className="container relative pb-10 md:pb-14">
-        <nav className="flex items-center text-xs uppercase tracking-[0.2em] mb-4">
-          {crumbs.map((c, i) => (
-            <span key={i} className="flex items-center">
-              {c.to ? (
-                <Link
-                  to={c.to}
-                  className={`${isImage ? "text-background/70 hover:text-primary" : "text-muted-foreground hover:text-primary"} transition-colors`}
-                >
-                  {c.label}
-                </Link>
-              ) : (
-                <span className={isImage ? "text-background" : "text-foreground"}>{c.label}</span>
-              )}
-              {i < crumbs.length - 1 && (
-                <ChevronRight
-                  size={12}
-                  className={`mx-2 ${isImage ? "text-background/50" : "text-muted-foreground"}`}
-                />
-              )}
-            </span>
-          ))}
+      <div className="container relative" style={{ padding: 0 }}>
+        {/* Breadcrumb */}
+        <nav aria-label="Breadcrumb">
+          <ol
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 6,
+              listStyle: "none",
+              padding: 0,
+              margin: "0 0 12px",
+              flexWrap: "wrap",
+              fontFamily: "Inter, sans-serif",
+              fontSize: 12,
+            }}
+          >
+            {crumbs.map((c, i) => {
+              const isLast = i === crumbs.length - 1;
+              return (
+                <li key={i} style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                  {c.to && !isLast ? (
+                    <Link
+                      to={c.to}
+                      style={{
+                        color: isImage ? "rgba(255,255,255,0.7)" : "#9CA3AF",
+                        fontSize: 12,
+                        textDecoration: "none",
+                        transition: "color 0.2s ease",
+                      }}
+                    >
+                      {c.label}
+                    </Link>
+                  ) : (
+                    <span
+                      style={{
+                        color: isImage ? "#FFFFFF" : "#1A1A1A",
+                        fontSize: 12,
+                        fontWeight: 500,
+                      }}
+                    >
+                      {c.label}
+                    </span>
+                  )}
+                  {!isLast && (
+                    <span
+                      aria-hidden
+                      style={{
+                        color: isImage ? "rgba(255,255,255,0.5)" : "#C4B8B0",
+                        fontSize: 12,
+                      }}
+                    >
+                      ›
+                    </span>
+                  )}
+                </li>
+              );
+            })}
+          </ol>
         </nav>
 
+        {/* Title */}
         <h1
-          className={`font-display text-4xl md:text-6xl leading-tight ${isImage ? "text-background" : "text-foreground"}`}
-          style={{ fontWeight: 900, letterSpacing: "-0.02em" }}
+          style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontWeight: 700,
+            fontSize: compact ? "clamp(28px, 3.5vw, 40px)" : "clamp(32px, 5vw, 60px)",
+            lineHeight: 1.1,
+            letterSpacing: "-0.02em",
+            color: isImage ? "#FFFFFF" : "#1A1A1A",
+            margin: 0,
+          }}
         >
           {title}
         </h1>
         {subtitle && (
           <p
-            className={`mt-3 max-w-2xl text-base md:text-lg ${isImage ? "text-background/80" : "text-muted-foreground"}`}
+            style={{
+              marginTop: 8,
+              maxWidth: 640,
+              fontFamily: "Inter, sans-serif",
+              fontSize: 14,
+              lineHeight: 1.55,
+              color: isImage ? "rgba(255,255,255,0.8)" : "#6B6560",
+            }}
           >
             {subtitle}
           </p>
