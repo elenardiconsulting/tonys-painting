@@ -28,7 +28,7 @@ const TAB_TITLES: Record<DashTab, string> = {
 const DashboardPage = () => {
   const [activeTab, setActiveTab] = useState<DashTab>("overview");
   const [userId, setUserId] = useState<string | null>(null);
-  const { leads, loading, updateLead } = useLeads();
+  const { leads, loading, updateLead, deleteLead } = useLeads();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -121,7 +121,7 @@ const DashboardPage = () => {
         {userId && <NotificationBanner userId={userId} />}
         <main style={{ flex: 1 }}>
           {activeTab === "overview" && <OverviewTab leads={leads} loading={loading} />}
-          {activeTab === "leads" && <LeadsTab leads={leads} updateLead={updateLead} />}
+          {activeTab === "leads" && <LeadsTab leads={leads} updateLead={updateLead} deleteLead={deleteLead} />}
           {activeTab === "calendar" && <CalendarTab leads={leads} />}
           {activeTab === "analytics" && <AnalyticsTab leads={leads} />}
         </main>
