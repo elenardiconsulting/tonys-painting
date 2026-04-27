@@ -184,8 +184,11 @@ const Navbar = () => {
               </li>
             ))}
             <li className="pt-2">
-              <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary-dark rounded-sm">
-                <a href="/contact" onClick={() => setOpen(false)}>Get Free Estimate</a>
+              <Button asChild className="group w-full bg-primary text-white hover:bg-primary-dark rounded-lg py-3 transition-all duration-200">
+                <a href="/contact" onClick={() => setOpen(false)} className="flex items-center justify-center gap-2">
+                  Get Free Estimate
+                  <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+                </a>
               </Button>
             </li>
           </ul>
