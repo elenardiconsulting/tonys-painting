@@ -90,12 +90,6 @@ const DashboardPage = () => {
         </main>
       </div>
 
-      <BottomNav
-        activeTab={activeTab}
-        onTabChange={setActiveTab}
-        newLeadsCount={newLeadsCount}
-      />
-
       <LeadToast />
     </div>
   );
