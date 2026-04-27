@@ -4,9 +4,10 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 interface AnimatedPhotoBorderProps {
   children: ReactNode;
   className?: string;
+  delay?: number;
 }
 
-const AnimatedPhotoBorder = ({ children, className }: AnimatedPhotoBorderProps) => {
+const AnimatedPhotoBorder = ({ children, className, delay = 0 }: AnimatedPhotoBorderProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.2 });
   const prefersReducedMotion = useReducedMotion();
@@ -61,6 +62,7 @@ const AnimatedPhotoBorder = ({ children, className }: AnimatedPhotoBorderProps) 
                   ease: "easeInOut",
                   repeat: Infinity,
                   repeatType: "reverse",
+                  delay,
                 }
           }
         />
