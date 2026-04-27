@@ -1,5 +1,12 @@
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
-import webpush from "npm:web-push@3.6.7";
+import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+// @deno-types="npm:@types/web-push"
+import webpush from "npm:web-push";
+
+const supabaseAdmin = createClient(
+  Deno.env.get("SUPABASE_URL")!,
+  Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
+);
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -7,40 +14,40 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type",
 };
 
-const supabaseAdmin = createClient(
-  Deno.env.get("SUPABASE_URL")!,
-  Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
-);
-
-Deno.serve(async (req) => {
+serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
   }
 
   try {
-    const { title, body } = await req.json().catch(() => ({}));
+    const { title, body } = await req.json();
 
     webpush.setVapidDetails(
       Deno.env.get("VAPID_SUBJECT")!,
       Deno.env.get("VAPID_PUBLIC_KEY")!,
-      Deno.env.get("VAPID_PRIVATE_KEY")!
+      Deno.env.get("VAPID_PRIVATE_KEY")!,
     );
 
     const { data: subscriptions } = await supabaseAdmin
       .from("push_subscriptions")
       .select("*");
 
-    const payload = JSON.stringify({
-      title: title || "Tony's Painting",
-      body: body || "New lead received.",
-    });
+    if (!subscriptions || subscriptions.length === 0) {
+      return new Response(
+        JSON.stringify({ sent: 0, message: "No subscriptions found" }),
+        { headers: { ...corsHeaders, "Content-Type": "application/json" } },
+      );
+    }
 
     const results = await Promise.allSettled(
-      (subscriptions || []).map(async (sub: { endpoint: string; p256dh: string; auth: string }) => {
+      subscriptions.map(async (sub: { endpoint: string; p256dh: string; auth: string }) => {
         try {
           await webpush.sendNotification(
-            { endpoint: sub.endpoint, keys: { p256dh: sub.p256dh, auth: sub.auth } },
-            payload
+            {
+              endpoint: sub.endpoint,
+              keys: { p256dh: sub.p256dh, auth: sub.auth },
+            },
+            JSON.stringify({ title, body }),
           );
         } catch (err: unknown) {
           const e = err as { statusCode?: number };
@@ -49,22 +56,21 @@ Deno.serve(async (req) => {
               .from("push_subscriptions")
               .delete()
               .eq("endpoint", sub.endpoint);
-          } else {
-            console.error("Push send error", err);
           }
+          throw err;
         }
-      })
+      }),
     );
 
-    return new Response(
-      JSON.stringify({ sent: results.length }),
-      { headers: { ...corsHeaders, "Content-Type": "application/json" } }
-    );
+    const sent = results.filter((r) => r.status === "fulfilled").length;
+
+    return new Response(JSON.stringify({ sent }), {
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
   } catch (err) {
-    console.error(err);
     return new Response(
       JSON.stringify({ error: (err as Error).message }),
-      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
     );
   }
 });
