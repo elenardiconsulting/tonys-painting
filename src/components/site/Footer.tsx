@@ -1,10 +1,18 @@
+import tonysLogo from "@/assets/tonys-logo.png";
+
 const Footer = () => {
   return (
     <footer className="bg-dark border-t border-white/5">
       <div className="container py-12 md:py-16 grid md:grid-cols-3 gap-10">
         <div>
-          <div className="font-display text-2xl text-background">Tony&apos;s Painting</div>
-          <p className="mt-3 text-sm text-background/60 max-w-xs leading-relaxed">
+          <a href="/" className="inline-block" aria-label="Tony's Remodeling home">
+            <img
+              src={tonysLogo}
+              alt="Tony's Remodeling - Painting and Carpentry"
+              className="h-12 w-auto object-contain brightness-0 invert"
+            />
+          </a>
+          <p className="mt-4 text-sm text-background/60 max-w-xs leading-relaxed">
             Premium painting and remodeling, serving Martha&apos;s Vineyard and New England since 2004.
           </p>
         </div>
