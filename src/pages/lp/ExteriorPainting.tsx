@@ -45,7 +45,7 @@ const LPExteriorPainting = () => (
     portfolioLocations={[
       "New England",
       "New England",
-      "West Tisbury",
+      "New England",
       "New England",
       "New England",
       "New England",
