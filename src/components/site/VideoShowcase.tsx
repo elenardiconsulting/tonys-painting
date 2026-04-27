@@ -92,8 +92,29 @@ const VideoShowcase = () => {
             </p>
           </FadeUpSection>
 
+          <FadeUpSection delay={0.3} className="video-cta-container-desktop">
+            <Link
+              to="/contact"
+              className="video-showcase-cta"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                background: "#C4291C",
+                color: "#FFFFFF",
+                padding: "13px 26px",
+                borderRadius: 8,
+                fontFamily: "Inter, sans-serif",
+                fontWeight: 600,
+                fontSize: 14,
+                textDecoration: "none",
+                transition: "background 0.2s ease",
+              }}
+            >
+              Get Free Estimate →
+            </Link>
+          </FadeUpSection>
         </div>
-        
+
         <div className="video-visual-panel">
           <FadeUpSection
             delay={0.2}
