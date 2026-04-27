@@ -4,6 +4,7 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 interface AnimatedPhotoBorderProps {
   children: ReactNode;
   className?: string;
+  delay?: number;
 }
 
 const AnimatedPhotoBorder = ({ children, className }: AnimatedPhotoBorderProps) => {
