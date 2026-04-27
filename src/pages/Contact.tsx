@@ -67,14 +67,14 @@ const Contact = () => {
         <div className="container grid lg:grid-cols-5 gap-10 lg:gap-14">
           {/* Form card */}
           <div className="lg:col-span-3">
-            <div className="bg-surface border border-border rounded-lg p-6 sm:p-8 md:p-10">
-              <h2 className="font-display text-3xl md:text-4xl text-foreground">
+            <div className="bg-surface border border-border rounded-lg p-5 sm:p-6 md:p-7 max-w-xl">
+              <h2 className="font-display text-2xl md:text-3xl text-foreground">
                 Request a Free Estimate
               </h2>
-              <p className="mt-2 text-muted-foreground">
+              <p className="mt-1.5 text-sm text-muted-foreground">
                 No commitment. We will review your request and reach out to schedule a visit.
               </p>
-              <div className="mt-8">
+              <div className="mt-6">
                 <ContactForm />
               </div>
             </div>
