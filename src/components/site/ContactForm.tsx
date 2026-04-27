@@ -44,7 +44,11 @@ const emptyForm: FormState = {
   project: "",
 };
 
-const ContactForm = () => {
+interface ContactFormProps {
+  compact?: boolean;
+}
+
+const ContactForm = ({ compact = false }: ContactFormProps) => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const [formData, setFormData] = useState<FormState>(emptyForm);
