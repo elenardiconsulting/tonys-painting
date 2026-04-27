@@ -46,6 +46,7 @@ const VideoShowcase = () => {
 
   return (
     <section
+      ref={containerRef}
       className="w-full video-section"
       style={{ background: "#1A1A1A" }}
     >
