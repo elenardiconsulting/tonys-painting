@@ -1,8 +1,9 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { Shield, Star, CheckCircle2, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import heroBg from "@/assets/hero-bg.jpg";
 
-const HERO_IMAGE = "/images/project-01.jpg"; // Using the 20210824_111207_08-scaled.jpg image which was renamed during upload
+const HERO_IMAGE = heroBg;
 
 const Hero = () => {
   const reduce = useReducedMotion();
