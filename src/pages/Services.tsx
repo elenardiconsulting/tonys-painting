@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Brush, Home, Hammer, Wrench, ArrowRight } from "lucide-react";
+import { Brush, Home, Hammer, Wrench, ArrowRight, Layers, Layout, HardHat, Ruler, Grid, Fence, Paintbrush, Square } from "lucide-react";
 import PageLayout from "@/components/site/PageLayout";
 import InnerHero from "@/components/site/InnerHero";
 import FadeUpSection from "@/components/site/FadeUpSection";
@@ -13,7 +13,7 @@ const services = [
     to: "/services/interior-painting",
   },
   {
-    icon: Home,
+    icon: Paintbrush,
     name: "Exterior Painting",
     desc: "Premium coatings built to handle New England weather, applied with proper prep and care.",
     to: "/services/exterior-painting",
@@ -30,6 +30,54 @@ const services = [
     desc: "The smaller jobs that keep your property looking sharp and working the way it should.",
     to: "/services/handyman",
   },
+  {
+    icon: Layers,
+    name: "Deck and Stairs",
+    desc: "Staining, sealing and repairs for decks and outdoor stairs.",
+    to: "/services/deck-stairs",
+  },
+  {
+    icon: HardHat,
+    name: "Construction Cleaning",
+    desc: "Post-construction cleanup for residential and commercial spaces.",
+    to: "/services/construction-cleaning",
+  },
+  {
+    icon: Ruler,
+    name: "General Carpentry",
+    desc: "Trim, moldings, built-ins and structural wood repairs.",
+    to: "/services/carpentry",
+  },
+  {
+    icon: Layout,
+    name: "Flooring",
+    desc: "Hardwood, vinyl and LVP installation and refinishing.",
+    to: "/services/flooring",
+  },
+  {
+    icon: Grid,
+    name: "Ceramic Tile",
+    desc: "Precision tile work for bathrooms, kitchens and floors.",
+    to: "/services/ceramic-tile",
+  },
+  {
+    icon: Fence,
+    name: "Fence",
+    desc: "Wood and vinyl fence installation, repair and staining.",
+    to: "/services/fence",
+  },
+  {
+    icon: Square,
+    name: "Plastering",
+    desc: "Crack repair, skim coating and paint-ready surface prep.",
+    to: "/services/plastering",
+  },
+  {
+    icon: Home,
+    name: "Countertop",
+    desc: "Kitchen and bathroom countertop installation and finishing.",
+    to: "/services/countertop",
+  },
 ];
 
 const Services = () => {
@@ -45,7 +93,7 @@ const Services = () => {
 
       <section className="bg-background">
         <div className="container py-16 md:py-24">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {services.map(({ icon: Icon, name, desc, to }, i) => (
               <FadeUpSection key={to} delay={i * 0.1}>
                 <Link
