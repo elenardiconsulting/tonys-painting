@@ -1,6 +1,6 @@
 import { useState, FormEvent } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Shield, Star, CheckCircle2, Calendar } from "lucide-react";
+import { Shield, Star, CheckCircle2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import heroBg from "@/assets/hero-bg.jpg";
