@@ -4,10 +4,10 @@ import LandingTemplate from "@/components/lp/LandingTemplate";
 const LPExteriorPainting = () => (
   <>
     <SEO
-      title="Exterior Painting in Martha's Vineyard and Boston"
-      description="Exterior painting built for New England weather. Serving Martha's Vineyard and Boston since 2004. Benjamin Moore certified. Free estimate."
+      title="Exterior Painting in New England"
+      description="Exterior painting built for New England weather. Serving New England since 2004. Benjamin Moore certified. Free estimate."
       canonical="/lp/exterior-painting"
-      keywords="exterior painting Martha's Vineyard, exterior painters Boston, exterior house painting MA"
+      keywords="exterior painting New England, exterior painters New England, exterior house painting MA"
     />
     <LandingTemplate
     tag="EXTERIOR PAINTING"
@@ -43,12 +43,12 @@ const LPExteriorPainting = () => (
       { title: "Multi-season durability guarantee", description: "" },
     ]}
     portfolioLocations={[
-      "Edgartown",
-      "Chilmark",
+      "New England",
+      "New England",
       "West Tisbury",
-      "Vineyard Haven",
-      "Boston",
-      "Newton",
+      "New England",
+      "New England",
+      "New England",
     ]}
     heroImage="/images/project-02.jpg"
     portfolioImages={[

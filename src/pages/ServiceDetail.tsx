@@ -9,9 +9,9 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
   "interior-painting": {
     title: "Interior Painting Services in New England",
     description:
-      "Professional interior painting for homes and businesses across Martha's Vineyard, Boston and New England. Clean, on schedule, 20 years of experience. Free estimate.",
+      "Professional interior painting for homes and businesses across New England. Clean, on schedule, 20 years of experience. Free estimate.",
     keywords:
-      "interior painting Martha's Vineyard, interior painters Boston MA, interior house painting New England, residential interior painters, room painting contractor MA",
+      "interior painting New England, interior painters New England, interior house painting New England, residential interior painters, room painting contractor MA",
     schema: {
       "@context": "https://schema.org",
       "@type": "Service",
@@ -25,9 +25,9 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
   "exterior-painting": {
     title: "Exterior Painting Services in New England",
     description:
-      "Premium exterior painting built to handle New England weather. Serving Martha's Vineyard, Boston and beyond since 2004. Benjamin Moore certified. Free estimate.",
+      "Premium exterior painting built to handle New England weather. Serving New England since 2004. Benjamin Moore certified. Free estimate.",
     keywords:
-      "exterior painting Martha's Vineyard, exterior painters Boston MA, exterior house painting New England, Benjamin Moore painters MA, siding painting contractor",
+      "exterior painting New England, exterior painters New England, exterior house painting New England, Benjamin Moore painters MA, siding painting contractor",
     schema: {
       "@context": "https://schema.org",
       "@type": "Service",
@@ -41,9 +41,9 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
   remodeling: {
     title: "Home Remodeling Services in New England",
     description:
-      "Flooring, tile, plastering, carpentry and countertop installation across Martha's Vineyard, Boston and New England. One team for every job. Free estimate.",
+      "Flooring, tile, plastering, carpentry and countertop installation across New England. One team for every job. Free estimate.",
     keywords:
-      "home remodeling Martha's Vineyard, remodeling contractor Boston MA, flooring tile New England, kitchen bathroom remodel MA, carpentry contractor New England",
+      "home remodeling New England, remodeling contractor New England, flooring tile New England, kitchen bathroom remodel MA, carpentry contractor New England",
     schema: {
       "@context": "https://schema.org",
       "@type": "Service",
@@ -57,56 +57,56 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
   "deck-stairs": {
     title: "Deck Staining and Repair in New England",
     description:
-      "Professional deck staining, sealing and repair across Martha's Vineyard and New England. Built to withstand harsh winters. Free estimate.",
-    keywords: "deck staining Martha's Vineyard, deck repair New England, deck sealing Boston MA, outdoor deck refinishing MA",
+      "Professional deck staining, sealing and repair across New England. Built to withstand harsh winters. Free estimate.",
+    keywords: "deck staining New England, deck repair New England, deck sealing New England, outdoor deck refinishing MA",
   },
   flooring: {
-    title: "Flooring Installation in Martha's Vineyard and New England",
+    title: "Flooring Installation in New England",
     description:
-      "Hardwood, vinyl and LVP flooring installation across Martha's Vineyard, Boston and New England. Historic and modern homes. Free estimate.",
-    keywords: "flooring installation Martha's Vineyard, hardwood floors Boston MA, vinyl flooring New England, floor refinishing MA",
+      "Hardwood, vinyl and LVP flooring installation across New England. Historic and modern homes. Free estimate.",
+    keywords: "flooring installation New England, hardwood floors New England, vinyl flooring New England, floor refinishing MA",
   },
   "ceramic-tile": {
     title: "Ceramic Tile Installation in New England",
     description:
-      "Precision tile work for bathrooms, kitchens and floors across Martha's Vineyard and New England. Clean lines, lasting results. Free estimate.",
-    keywords: "tile installation Martha's Vineyard, ceramic tile Boston MA, bathroom tile New England, kitchen backsplash MA",
+      "Precision tile work for bathrooms, kitchens and floors across New England. Clean lines, lasting results. Free estimate.",
+    keywords: "tile installation New England, ceramic tile New England, bathroom tile New England, kitchen backsplash MA",
   },
   plastering: {
     title: "Plastering and Skim Coating in New England",
     description:
-      "Crack repair, skim coating and plaster restoration across Martha's Vineyard and New England. Smooth walls, done properly. Free estimate.",
-    keywords: "plastering Martha's Vineyard, skim coating Boston MA, plaster repair New England, drywall patching MA",
+      "Crack repair, skim coating and plaster restoration across New England. Smooth walls, done properly. Free estimate.",
+    keywords: "plastering New England, skim coating New England, plaster repair New England, drywall patching MA",
   },
   carpentry: {
-    title: "Carpentry Services in Martha's Vineyard and New England",
+    title: "Carpentry Services in New England",
     description:
-      "Trim, moldings, built-ins and structural wood repairs across Martha's Vineyard, Boston and New England. Free estimate.",
-    keywords: "carpentry Martha's Vineyard, trim moldings Boston MA, general carpentry New England, built-in shelving MA",
+      "Trim, moldings, built-ins and structural wood repairs across New England. Free estimate.",
+    keywords: "carpentry New England, trim moldings New England, general carpentry New England, built-in shelving MA",
   },
   fence: {
     title: "Fence Installation and Repair in New England",
     description:
-      "Wood and vinyl fence installation and repair across Martha's Vineyard and New England. Built to last through harsh winters. Free estimate.",
-    keywords: "fence installation Martha's Vineyard, fence repair Boston MA, wood vinyl fence New England, fence contractor MA",
+      "Wood and vinyl fence installation and repair across New England. Built to last through harsh winters. Free estimate.",
+    keywords: "fence installation New England, fence repair New England, wood vinyl fence New England, fence contractor MA",
   },
   countertop: {
     title: "Countertop Installation in New England",
     description:
-      "Kitchen and bathroom countertop installation across Martha's Vineyard and New England. Precise measurement, clean finish. Free estimate.",
-    keywords: "countertop installation Martha's Vineyard, kitchen countertop Boston MA, bathroom vanity countertop New England",
+      "Kitchen and bathroom countertop installation across New England. Precise measurement, clean finish. Free estimate.",
+    keywords: "countertop installation New England, kitchen countertop New England, bathroom vanity countertop New England",
   },
   "construction-cleaning": {
     title: "Construction Cleaning Services in New England",
     description:
-      "Post-construction cleanup for residential and commercial spaces across Martha's Vineyard and New England. Ready to use from day one. Free estimate.",
-    keywords: "construction cleaning Martha's Vineyard, post construction cleanup Boston MA, construction cleaning New England",
+      "Post-construction cleanup for residential and commercial spaces across New England. Ready to use from day one. Free estimate.",
+    keywords: "construction cleaning New England, post construction cleanup New England, construction cleaning New England",
   },
   handyman: {
-    title: "Handyman Services in Martha's Vineyard and New England",
+    title: "Handyman Services in New England",
     description:
-      "Deck repair, fence, stairs and general repairs across Martha's Vineyard and New England. Small jobs done right. Free estimate.",
-    keywords: "handyman Martha's Vineyard, handyman services Boston MA, property repairs New England, general repairs MA",
+      "Deck repair, fence, stairs and general repairs across New England. Small jobs done right. Free estimate.",
+    keywords: "handyman New England, handyman services New England, property repairs New England, general repairs MA",
   },
 };
 

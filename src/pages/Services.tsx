@@ -86,9 +86,9 @@ const Services = () => {
     <PageLayout>
       <SEO
         title="Painting and Remodeling Services in New England"
-        description="From interior and exterior painting to flooring, tile, carpentry and remodeling. Tony's serves Martha's Vineyard, Boston and all of New England. Free estimates."
+        description="From interior and exterior painting to flooring, tile, carpentry and remodeling. Tony's serves New England. Free estimates."
         canonical="/services"
-        keywords="painting services New England, remodeling contractor Martha's Vineyard, interior exterior painters Boston, flooring tile carpentry New England"
+        keywords="painting services New England, remodeling contractor New England, interior exterior painters New England, flooring tile carpentry New England"
         schema={{
           "@context": "https://schema.org",
           "@type": "Service",

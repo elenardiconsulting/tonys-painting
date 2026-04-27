@@ -31,7 +31,7 @@ const TRUST_SIGNALS = [
   "Licensed and Insured",
   "Free Estimates, No Commitment",
   "5-Star Rated on Google",
-  "Serving Martha's Vineyard since 2004",
+  "Serving New England since 2004",
   "Response within one business day",
 ];
 

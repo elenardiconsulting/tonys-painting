@@ -18,7 +18,7 @@ const contactBlocks = [
   },
   {
     label: "Service Area",
-    value: "Martha's Vineyard and Boston Area",
+    value: "New England",
     href: null,
   },
 ];
@@ -34,9 +34,9 @@ const Contact = () => {
     <PageLayout>
       <SEO
         title="Get a Free Painting Estimate in New England"
-        description="Contact Tony's Painting and Remodeling for a free estimate. Serving Martha's Vineyard, Boston and all of New England. Call 508 982 9675 or fill out the form."
+        description="Contact Tony's Painting and Remodeling for a free estimate. Serving New England. Call 508 982 9675 or fill out the form."
         canonical="/contact"
-        keywords="free painting estimate New England, painting quote Martha's Vineyard, contact painters Boston MA, hire painting contractor MA"
+        keywords="free painting estimate New England, painting quote New England, contact painters New England, hire painting contractor MA"
         schema={{
           "@context": "https://schema.org",
           "@type": "ContactPage",
@@ -49,7 +49,7 @@ const Contact = () => {
             email: "contact@tonyspaintingcmv.com",
             address: {
               "@type": "PostalAddress",
-              addressLocality: "Martha's Vineyard",
+              addressLocality: "New England",
               addressRegion: "MA",
               addressCountry: "US",
             },

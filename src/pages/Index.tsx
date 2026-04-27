@@ -16,15 +16,15 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title="Painting and Remodeling You Can Trust | New England"
-        description="Tony's Painting and Remodeling has served Martha's Vineyard, Boston and all of New England since 2004. Interior, exterior, remodeling and more. Free estimates."
+        description="Tony's Painting and Remodeling has served New England since 2004. Interior, exterior, remodeling and more. Free estimates."
         canonical="/"
-        keywords="painting company New England, house painters Martha's Vineyard, interior exterior painting Boston MA, painting remodeling contractor New England, Tony's Painting"
+        keywords="painting company New England, house painters New England, interior exterior painting New England, painting remodeling contractor New England, Tony's Painting"
         schema={{
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           name: "Tony's Painting and Remodeling",
           description:
-            "Professional painting and remodeling services serving Martha's Vineyard, Boston and all of New England since 2004.",
+            "Professional painting and remodeling services serving New England since 2004.",
           url: "https://tonyspaintingcmv.com",
           telephone: "+15089829675",
           email: "contact@tonyspaintingcmv.com",
@@ -32,7 +32,7 @@ const Index = () => {
           founder: { "@type": "Person", name: "Otoniel Santos" },
           address: {
             "@type": "PostalAddress",
-            addressLocality: "Martha's Vineyard",
+            addressLocality: "New England",
             addressRegion: "MA",
             addressCountry: "US",
           },
@@ -42,16 +42,16 @@ const Index = () => {
             longitude: -70.6453,
           },
           areaServed: [
-            { "@type": "Place", name: "Martha's Vineyard, MA" },
-            { "@type": "Place", name: "Boston, MA" },
-            { "@type": "Place", name: "Cambridge, MA" },
-            { "@type": "Place", name: "Brookline, MA" },
-            { "@type": "Place", name: "Newton, MA" },
-            { "@type": "Place", name: "Edgartown, MA" },
-            { "@type": "Place", name: "Chilmark, MA" },
-            { "@type": "Place", name: "Oak Bluffs, MA" },
-            { "@type": "Place", name: "Vineyard Haven, MA" },
-            { "@type": "Place", name: "Aquinnah, MA" },
+            { "@type": "Place", name: "New England, MA" },
+            { "@type": "Place", name: "New England" },
+            { "@type": "Place", name: "New England, MA" },
+            { "@type": "Place", name: "New England, MA" },
+            { "@type": "Place", name: "New England, MA" },
+            { "@type": "Place", name: "New England" },
+            { "@type": "Place", name: "New England" },
+            { "@type": "Place", name: "New England, MA" },
+            { "@type": "Place", name: "New England, MA" },
+            { "@type": "Place", name: "New England, MA" },
             { "@type": "Place", name: "Connecticut" },
             { "@type": "Place", name: "Rhode Island" },
             { "@type": "Place", name: "New Hampshire" },

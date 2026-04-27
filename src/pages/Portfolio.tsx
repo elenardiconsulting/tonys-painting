@@ -19,18 +19,18 @@ interface Project {
 }
 
 const PROJECTS: Project[] = [
-  { id: 1, title: "Edgartown Residence", category: "Exterior", location: "Martha's Vineyard", src: "/images/project-02.jpg" },
-  { id: 2, title: "Cambridge Colonial", category: "Exterior", location: "Boston", src: "/images/project-12.jpg" },
-  { id: 3, title: "Vineyard Haven Deck", category: "Exterior", location: "Martha's Vineyard", src: "/images/project-08.jpg" },
-  { id: 4, title: "Oak Bluffs Bath Remodel", category: "Remodeling", location: "Martha's Vineyard", src: "/images/project-04.jpg" },
-  { id: 5, title: "Chilmark Wood Siding", category: "Exterior", location: "Martha's Vineyard", src: "/images/project-14.jpg" },
-  { id: 6, title: "West Chop Residence", category: "Exterior", location: "Martha's Vineyard", src: "/images/project-06.jpg" },
-  { id: 7, title: "Aquinnah Deck", category: "Exterior", location: "Martha's Vineyard", src: "/images/project-07.jpg" },
-  { id: 8, title: "Edgartown Interior", category: "Interior", location: "Martha's Vineyard", src: "/images/project-05.jpg" },
-  { id: 9, title: "Vineyard Colonial", category: "Exterior", location: "Martha's Vineyard", src: "/images/project-13.jpg" },
-  { id: 10, title: "Boston Closet Remodel", category: "Remodeling", location: "Boston", src: "/images/project-15.jpg" },
-  { id: 11, title: "Newton Kitchen Remodel", category: "Remodeling", location: "Boston", src: "/images/project-16.jpg" },
-  { id: 12, title: "Chilmark Deck", category: "Exterior", location: "Martha's Vineyard", src: "/images/project-09.jpg" },
+  { id: 1, title: "New England Residence", category: "Exterior", location: "New England", src: "/images/project-02.jpg" },
+  { id: 2, title: "New England Colonial", category: "Exterior", location: "New England", src: "/images/project-12.jpg" },
+  { id: 3, title: "New England Deck", category: "Exterior", location: "New England", src: "/images/project-08.jpg" },
+  { id: 4, title: "New England Bath Remodel", category: "Remodeling", location: "New England", src: "/images/project-04.jpg" },
+  { id: 5, title: "New England Wood Siding", category: "Exterior", location: "New England", src: "/images/project-14.jpg" },
+  { id: 6, title: "New England Residence", category: "Exterior", location: "New England", src: "/images/project-06.jpg" },
+  { id: 7, title: "New England Deck", category: "Exterior", location: "New England", src: "/images/project-07.jpg" },
+  { id: 8, title: "New England Interior", category: "Interior", location: "New England", src: "/images/project-05.jpg" },
+  { id: 9, title: "New England Colonial", category: "Exterior", location: "New England", src: "/images/project-13.jpg" },
+  { id: 10, title: "New England Closet Remodel", category: "Remodeling", location: "New England", src: "/images/project-15.jpg" },
+  { id: 11, title: "New England Kitchen Remodel", category: "Remodeling", location: "New England", src: "/images/project-16.jpg" },
+  { id: 12, title: "New England Deck", category: "Exterior", location: "New England", src: "/images/project-09.jpg" },
 ];
 
 const FILTERS: Category[] = ["All Projects", "Interior", "Exterior", "Remodeling", "Commercial"];
@@ -93,13 +93,13 @@ const Portfolio = () => {
     <PageLayout>
       <SEO
         title="Painting and Remodeling Portfolio | New England Projects"
-        description="Browse our work across Martha's Vineyard, Boston and New England. Interior, exterior, remodeling and deck projects since 2004."
+        description="Browse our work across New England. Interior, exterior, remodeling and deck projects since 2004."
         canonical="/portfolio"
-        keywords="painting portfolio Martha's Vineyard, painting projects Boston MA, before after painting New England, remodeling projects MA"
+        keywords="painting portfolio New England, painting projects New England, before after painting New England, remodeling projects MA"
       />
       <InnerHero
         title="Our work speaks for itself."
-        subtitle="20 years of projects across Martha's Vineyard, Boston and New England."
+        subtitle="20 years of projects across New England."
         crumbs={[{ label: "Home", to: "/" }, { label: "Portfolio" }]}
       />
 
