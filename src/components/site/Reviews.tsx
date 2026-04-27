@@ -5,21 +5,21 @@ import FadeUpSection from "@/components/site/FadeUpSection";
 const reviews = [
   {
     quote:
-      "Tony and his crew repainted our entire home in Edgartown. The attention to detail was extraordinary. We could not be happier.",
+      "Tony and his crew repainted our entire home in New England. The attention to detail was extraordinary. We could not be happier.",
     name: "Margaret H.",
-    location: "Edgartown, MA",
+    location: "New England",
   },
   {
     quote:
       "From the first estimate to the final walkthrough, the team was professional, punctual, and meticulous. Highest recommendation.",
     name: "David L.",
-    location: "Chilmark, MA",
+    location: "New England",
   },
   {
     quote:
       "We have used Tony's Painting for three projects now. Quality and consistency every time. They treat your home like their own.",
     name: "Sarah & James K.",
-    location: "Boston, MA",
+    location: "New England",
   },
 ];
 

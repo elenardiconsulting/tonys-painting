@@ -13,7 +13,7 @@ const Footer = () => {
             />
           </a>
           <p className="mt-4 text-sm text-background/60 max-w-xs leading-relaxed">
-            Premium painting and remodeling, serving Martha&apos;s Vineyard and New England since 2004.
+            Premium painting and remodeling, serving New England since 2004.
           </p>
         </div>
 
@@ -38,8 +38,8 @@ const Footer = () => {
         <div>
           <div className="text-xs uppercase tracking-[0.2em] text-background/50 mb-4">Contact</div>
           <ul className="space-y-2 text-sm text-background/80">
-            <li>Martha&apos;s Vineyard, MA</li>
-            <li>Boston, MA</li>
+            <li>New England, MA</li>
+            <li>New England</li>
             <li>
               <a href="/contact" className="hover:text-primary transition-colors">
                 Request an estimate

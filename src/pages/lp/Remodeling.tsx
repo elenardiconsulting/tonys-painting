@@ -4,10 +4,10 @@ import LandingTemplate from "@/components/lp/LandingTemplate";
 const LPRemodeling = () => (
   <>
     <SEO
-      title="Home Remodeling in Martha's Vineyard and Boston"
-      description="Flooring, tile, carpentry and more. One team for every job in Martha's Vineyard and Boston. Licensed and insured. Free estimate."
+      title="Home Remodeling in New England"
+      description="Flooring, tile, carpentry and more. One team for every job in New England. Licensed and insured. Free estimate."
       canonical="/lp/remodeling"
-      keywords="remodeling Martha's Vineyard, home remodeling Boston, flooring tile carpentry MA"
+      keywords="remodeling New England, home remodeling New England, flooring tile carpentry MA"
     />
     <LandingTemplate
     tag="REMODELING"
@@ -41,12 +41,12 @@ const LPRemodeling = () => (
       { title: "Finish work and moldings", description: "" },
     ]}
     portfolioLocations={[
-      "Edgartown",
-      "Oak Bluffs",
-      "Vineyard Haven",
-      "Boston",
-      "Brookline",
-      "Wellesley",
+      "New England",
+      "New England",
+      "New England",
+      "New England",
+      "New England",
+      "New England",
     ]}
     portfolioImages={[
       "/images/project-04.jpg",

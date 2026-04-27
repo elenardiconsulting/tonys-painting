@@ -132,7 +132,7 @@ const ThankYou = () => {
 
         {/* Microcopy */}
         <p style={{ fontSize: "12px", color: "#9CA3AF" }}>
-          Tony&apos;s Painting has been serving Martha&apos;s Vineyard and Boston since 2004.
+          Tony&apos;s Painting has been serving New England since 2004.
         </p>
       </div>
     </main>

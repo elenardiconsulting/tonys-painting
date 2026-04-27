@@ -2,11 +2,11 @@ import { useState, useRef, useEffect } from "react";
 import FadeUpSection from "@/components/site/FadeUpSection";
 
 const projects = [
-  { name: "Colonial home exterior painting", type: "Exterior", src: "/images/project-13.jpg", alt: "Colonial home exterior painting, Martha's Vineyard" },
+  { name: "Colonial home exterior painting", type: "Exterior", src: "/images/project-13.jpg", alt: "Colonial home exterior painting, New England" },
   { name: "Tony's team painting home", type: "Exterior", src: "/images/project-12.jpg", alt: "Tony's team painting blue exterior home" },
   { name: "Premium deck staining", type: "Exterior", src: "/images/project-07.jpg", alt: "Premium deck staining and finishing" },
   { name: "Bathroom remodel", type: "Remodeling", src: "/images/project-04.jpg", alt: "Bathroom remodel with tile and hardwood" },
-  { name: "Deck staining", type: "Exterior", src: "/images/project-09.jpg", alt: "Deck staining Martha's Vineyard" },
+  { name: "Deck staining", type: "Exterior", src: "/images/project-09.jpg", alt: "Deck staining New England" },
   { name: "Kitchen remodel", type: "Remodeling", src: "/images/project-16.jpg", alt: "Kitchen remodel with countertop installation" },
 ];
 

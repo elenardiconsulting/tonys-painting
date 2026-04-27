@@ -4,14 +4,14 @@ import LandingTemplate from "@/components/lp/LandingTemplate";
 const LPInteriorPainting = () => (
   <>
     <SEO
-      title="Interior Painting in Martha's Vineyard and Boston"
-      description="Professional interior painters serving Martha's Vineyard and Boston since 2004. Licensed, insured, 5-star rated. Get your free estimate today."
+      title="Interior Painting in New England"
+      description="Professional interior painters serving New England since 2004. Licensed, insured, 5-star rated. Get your free estimate today."
       canonical="/lp/interior-painting"
-      keywords="interior painting Martha's Vineyard, interior painters Boston, interior house painting MA"
+      keywords="interior painting New England, interior painters New England, interior house painting MA"
     />
     <LandingTemplate
     tag="INTERIOR PAINTING"
-    headline="Professional interior painting in Martha's Vineyard and Boston."
+    headline="Professional interior painting in New England."
     subline="Clean work, on schedule, with attention to every detail. Residential and commercial."
     service="Interior Painting"
     heroReview={{
@@ -43,12 +43,12 @@ const LPInteriorPainting = () => (
       { title: "Surface prep and priming", description: "" },
     ]}
     portfolioLocations={[
-      "Edgartown",
-      "Oak Bluffs",
-      "Vineyard Haven",
-      "Aquinnah",
-      "Boston",
-      "Brookline",
+      "New England",
+      "New England",
+      "New England",
+      "New England",
+      "New England",
+      "New England",
     ]}
     portfolioImages={[
       "/images/project-05.jpg",

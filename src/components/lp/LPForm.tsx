@@ -175,7 +175,7 @@ const LPForm = ({ service }: LPFormProps) => {
         </Button>
 
         <p className="text-center" style={{ fontSize: "12px", color: "#6B6560" }}>
-          Licensed and Insured. Serving Martha&apos;s Vineyard since 2004.
+          Licensed and Insured. Serving New England since 2004.
         </p>
       </form>
     </div>

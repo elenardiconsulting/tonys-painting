@@ -29,39 +29,27 @@ const values = [
 ];
 
 const timeline = [
-  { year: "2004", text: "Otoniel Santos founds Tony's Painting on Martha's Vineyard." },
-  { year: "2008", text: "Expands into commercial projects across the island." },
-  { year: "2012", text: "Team grows and first projects begin in the Boston area." },
-  { year: "2018", text: "Over 300 projects completed across Martha's Vineyard and New England." },
+  { year: "2004", text: "Otoniel Santos founds Tony's Painting in New England." },
+  { year: "2008", text: "Expands into commercial projects across the region." },
+  { year: "2012", text: "Team grows and project volume across New England doubles." },
+  { year: "2018", text: "Over 300 projects completed across New England." },
   { year: "2024", text: "20 years, 500 projects and a reputation built one brushstroke at a time." },
 ];
-
-const vineyard = [
-  "Edgartown",
-  "Chilmark",
-  "West Chop",
-  "Oak Bluffs",
-  "Vineyard Haven",
-  "Aquinnah",
-  "Hamptons",
-];
-
-const boston = ["Boston", "Cambridge", "Brookline", "Newton", "Needham", "Wellesley"];
 
 const About = () => {
   return (
     <PageLayout>
       <SEO
         title="About Tony's Painting and Remodeling | Est. 2004"
-        description="Founded in 2004 by Otoniel Santos in Martha's Vineyard. 20 years serving New England with professionalism, hard work and honesty."
+        description="Founded in 2004 by Otoniel Santos in New England. 20 years serving New England with professionalism, hard work and honesty."
         canonical="/about"
-        keywords="Tony's Painting history, painting company Martha's Vineyard, Otoniel Santos painter, painting remodeling New England since 2004"
+        keywords="Tony's Painting history, painting company New England, Otoniel Santos painter, painting remodeling New England since 2004"
         schema={{
           "@context": "https://schema.org",
           "@type": "AboutPage",
           name: "About Tony's Painting and Remodeling",
           description:
-            "Founded in 2004 by Otoniel Santos in Martha's Vineyard, serving New England for over 20 years.",
+            "Founded in 2004 by Otoniel Santos in New England, serving New England for over 20 years.",
           mainEntity: {
             "@type": "LocalBusiness",
             name: "Tony's Painting and Remodeling",
@@ -210,29 +198,10 @@ const About = () => {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-10 md:gap-16">
-            <div>
-              <h3 className="font-display text-2xl text-foreground mb-6">Martha's Vineyard</h3>
-              <ul className="space-y-3">
-                {vineyard.map((c) => (
-                  <li key={c} className="flex items-center gap-3 text-foreground">
-                    <span className="w-2 h-2 rounded-full bg-primary" />
-                    {c}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-display text-2xl text-foreground mb-6">Boston Area</h3>
-              <ul className="space-y-3">
-                {boston.map((c) => (
-                  <li key={c} className="flex items-center gap-3 text-foreground">
-                    <span className="w-2 h-2 rounded-full bg-primary" />
-                    {c}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="max-w-2xl">
+            <p className="text-base md:text-lg text-foreground leading-relaxed">
+              We serve clients across New England, taking on residential and commercial projects throughout the region.
+            </p>
           </div>
         </div>
       </section>
