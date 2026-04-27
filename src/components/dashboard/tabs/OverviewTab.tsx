@@ -146,6 +146,7 @@ const OverviewTab = ({ leads, loading }: Props) => {
       </div>
 
       <div
+        className="overview-recent"
         style={{
           marginTop: 32,
           background: "#FFFFFF",
@@ -182,9 +183,26 @@ const OverviewTab = ({ leads, loading }: Props) => {
 
         {recent.map((lead, idx) => {
           const badge = getStatusBadge(lead.status);
+          const badgeEl = (
+            <span
+              style={{
+                background: badge.bg,
+                color: badge.color,
+                padding: "4px 10px",
+                borderRadius: 999,
+                fontSize: 11,
+                fontWeight: 600,
+                fontFamily: "'Inter', sans-serif",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {badge.label}
+            </span>
+          );
           return (
             <div
               key={lead.id}
+              className="overview-recent-item"
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -194,6 +212,7 @@ const OverviewTab = ({ leads, loading }: Props) => {
               }}
             >
               <div
+                className="overview-recent-avatar"
                 style={{
                   width: 40,
                   height: 40,
@@ -213,6 +232,7 @@ const OverviewTab = ({ leads, loading }: Props) => {
               </div>
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div
+                  className="overview-recent-name"
                   style={{
                     fontFamily: "'Inter', sans-serif",
                     fontWeight: 600,
@@ -223,30 +243,27 @@ const OverviewTab = ({ leads, loading }: Props) => {
                   {lead.name}
                 </div>
                 <div
+                  className="overview-recent-meta-row"
                   style={{
                     fontFamily: "'Inter', sans-serif",
                     fontWeight: 400,
                     fontSize: 13,
                     color: "#6B6560",
+                    marginTop: 2,
                   }}
                 >
-                  {lead.service_type || "General inquiry"} · {timeAgo(lead.created_at)}
+                  <span>
+                    {lead.service_type || "General inquiry"} · {timeAgo(lead.created_at)}
+                  </span>
+                  <span
+                    className="overview-recent-badge-mobile"
+                    style={{ display: "none" }}
+                  >
+                    {badgeEl}
+                  </span>
                 </div>
               </div>
-              <span
-                style={{
-                  background: badge.bg,
-                  color: badge.color,
-                  padding: "4px 10px",
-                  borderRadius: 999,
-                  fontSize: 11,
-                  fontWeight: 600,
-                  fontFamily: "'Inter', sans-serif",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                {badge.label}
-              </span>
+              <span className="overview-recent-badge-desktop">{badgeEl}</span>
             </div>
           );
         })}
