@@ -81,9 +81,9 @@ const Hero = () => {
         }}
       />
 
-      {/* Content */}
-      <div className="container relative z-[10] px-6 md:px-20 pt-20">
-        <div className="max-w-[720px]">
+      {/* Content Container */}
+      <div className="absolute bottom-0 left-0 right-0 w-full z-[10]">
+        <div className="container px-6 md:px-20 pb-10 md:pb-20 max-w-[720px] flex flex-col gap-5 items-start">
           <motion.h1 
             {...fadeUp(0)}
             className="hero-headline"
@@ -91,29 +91,29 @@ const Hero = () => {
               fontFamily: "'Playfair Display', serif",
               fontWeight: 900,
               fontSize: "clamp(36px, 4.2vw, 62px)",
-              lineHeight: 1.05,
+              lineHeight: 1.02,
               letterSpacing: "-0.025em",
               color: "#F5F1EB",
-              maxWidth: "640px"
             }}
           >
-            Painting and remodeling <br className="hidden md:block" />
-            you can actually <span style={{ color: "#C4291C" }}>trust.</span>
+            Painting and remodeling<br />
+            you can{" "}
+            <span style={{ color: "#C4291C" }}>actually trust.</span>
           </motion.h1>
 
           <motion.p
             {...fadeUp(0.3)}
-            className="mt-5 text-[17px] leading-[1.7] text-white/75 max-w-[520px]"
-            style={{ fontFamily: "'Inter', sans-serif" }}
+            className="text-[16px] leading-[1.7] text-white/72 max-w-[500px] m-0"
+            style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
           >
             Since 2004, Tony's team has brought precision and care to every project in the region.
           </motion.p>
 
           <motion.div 
             {...fadeUp(0.5)} 
-            className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-8"
+            className="flex flex-row items-center gap-5 flex-wrap"
           >
-            <Button asChild className="group relative h-auto py-3.5 px-7 rounded-lg bg-gradient-to-br from-[#C4291C] to-[#8B1A10] text-white font-semibold text-[15px] shadow-[0_4px_20px_rgba(196,41,28,0.35)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_25px_rgba(196,41,28,0.45)]">
+            <Button asChild className="h-auto py-[13px] px-[26px] rounded-lg bg-[#C4291C] hover:bg-[#A82318] text-white font-semibold text-[14px] transition-all duration-200">
               <a href="/contact" className="flex items-center gap-2">
                 Get Free Estimate
                 <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
@@ -122,42 +122,44 @@ const Hero = () => {
 
             <a 
               href="tel:+15089829675" 
-              className="group flex items-center gap-3 text-white transition-opacity hover:opacity-80"
+              className="flex items-center gap-[10px] text-white transition-opacity hover:opacity-80"
             >
-              <div className="flex items-center justify-center w-10 h-10 rounded-full border-[1.5px] border-white/40 transition-colors group-hover:border-white/60">
+              <div className="flex items-center justify-center w-[38px] h-[38px] rounded-full border-[1.5px] border-white/35">
                 <Phone size={16} fill="white" />
               </div>
-              <span className="font-medium text-[15px]">508 982 9675</span>
+              <span className="font-medium text-[14px]" style={{ fontFamily: "'Inter', sans-serif" }}>508 982 9675</span>
             </a>
           </motion.div>
-        </div>
-      </div>
 
-      {/* Credibility Stats */}
-      <div className="absolute bottom-12 md:bottom-12 left-6 md:left-20 z-[10]">
-        <motion.div 
-          {...fadeUp(0.7)}
-          className="flex flex-wrap items-center gap-y-6 gap-x-7 md:gap-x-10"
-        >
-          {stats.map((stat, idx) => (
-            <div key={idx} className="flex items-center gap-4">
-              <div className="text-[#C4291C]">
-                {stat.icon}
-              </div>
-              <div className="flex flex-col">
-                <span className="text-white font-bold text-base leading-none mb-1">
-                  {stat.title}
-                </span>
-                <span className="text-white/55 text-xs font-normal">
-                  {stat.desc}
-                </span>
-              </div>
-              {idx < stats.length - 1 && (
-                <div className="hidden sm:block w-[1px] h-8 bg-white/15 ml-3" />
-              )}
+          {/* Credibility Stats */}
+          <motion.div 
+            {...fadeUp(0.7)}
+            className="w-full pt-4 border-t border-white/12 mt-2"
+          >
+            <div className="grid grid-cols-2 md:flex md:flex-row items-center gap-y-5 gap-x-7 md:gap-x-[28px]">
+              {stats.map((stat, idx) => (
+                <div key={idx} className="flex items-center gap-4 group">
+                  <div className="flex items-center gap-[10px]">
+                    <div className="text-[#C4291C]">
+                      {stat.icon}
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-white font-bold text-[13px] md:text-[15px] leading-none mb-1" style={{ fontFamily: "'Inter', sans-serif" }}>
+                        {stat.title}
+                      </span>
+                      <span className="text-white/45 text-[10px] md:text-[11px] font-normal" style={{ fontFamily: "'Inter', sans-serif" }}>
+                        {stat.desc}
+                      </span>
+                    </div>
+                  </div>
+                  {idx < stats.length - 1 && (
+                    <div className="hidden md:block w-[1px] h-[28px] bg-white/12 ml-[28px]" />
+                  )}
+                </div>
+              ))}
             </div>
-          ))}
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
