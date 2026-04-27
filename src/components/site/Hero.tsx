@@ -542,28 +542,28 @@ const Hero = () => {
             line-height: 1.7;
           }
 
-          .hero-cta-btn {
+          .hero-mobile-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            text-align: center;
             width: 100%;
             height: 58px;
             background: #C4291C;
             border-radius: 10px;
-            padding: 0 20px;
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
             text-decoration: none;
             border: none;
             cursor: pointer;
+            transition: background 0.2s;
           }
 
-          .hero-cta-btn:active {
+          .hero-mobile-btn:active {
             background: #8B1A10;
           }
-
-          .hero-cta-icon { color: white; width: 20px; height: 20px; }
-          .hero-cta-text { color: white; font-family: Inter; font-weight: 700; font-size: 16px; }
-          .hero-cta-arrow { color: white; font-size: 20px; font-weight: 700; }
 
           .hero-stats {
             flex-direction: row;
