@@ -22,6 +22,8 @@ const GlassForm = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    console.log('Supabase URL:', import.meta.env.VITE_SUPABASE_URL ? 'present' : 'MISSING');
+    console.log('Supabase Key:', import.meta.env.VITE_SUPABASE_ANON_KEY ? 'present' : 'MISSING');
     if (!formData.fullName || !formData.phone || !formData.email || !formData.service) {
       toast({
         title: "Please fill in all required fields",
@@ -43,6 +45,8 @@ const GlassForm = () => {
     setSubmitting(false);
 
     if (error) {
+      console.error('Supabase insert error:', error);
+      console.error('Error details:', JSON.stringify(error, null, 2));
       toast({
         title: "Something went wrong",
         description: "Please try again or call us directly.",

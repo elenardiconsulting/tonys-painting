@@ -73,6 +73,8 @@ const ContactForm = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    console.log('Supabase URL:', import.meta.env.VITE_SUPABASE_URL ? 'present' : 'MISSING');
+    console.log('Supabase Key:', import.meta.env.VITE_SUPABASE_ANON_KEY ? 'present' : 'MISSING');
     const v = validate();
     setErrors(v);
     if (Object.keys(v).length > 0) return;
@@ -92,6 +94,8 @@ const ContactForm = () => {
     setSubmitting(false);
 
     if (error) {
+      console.error('Supabase insert error:', error);
+      console.error('Error details:', JSON.stringify(error, null, 2));
       toast({
         title: "Something went wrong",
         description: "Please try again or call us directly.",
