@@ -288,8 +288,19 @@ const ServiceDetail = () => {
 
   if (!service) return <Navigate to="/services" replace />;
 
+  const seo = slug ? SEO_BY_SLUG[slug] : undefined;
+
   return (
     <PageLayout>
+      {seo && (
+        <SEO
+          title={seo.title}
+          description={seo.description}
+          canonical={`/services/${slug}`}
+          keywords={seo.keywords}
+          schema={seo.schema}
+        />
+      )}
       <InnerHero
         variant="image"
         title={service.name}
