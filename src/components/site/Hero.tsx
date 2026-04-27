@@ -1,8 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import RippleButton from "@/components/site/RippleButton";
 
-const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1800&q=85";
+const HERO_IMAGE = "/images/project-02.jpg";
 
 const Hero = () => {
   const reduce = useReducedMotion();
@@ -46,7 +45,7 @@ const Hero = () => {
       <motion.img
         {...imageMotion}
         src={HERO_IMAGE}
-        alt="Interior space showcasing Tony's painting and remodeling craftsmanship"
+        alt="Tony's Painting professional painting exterior of home in New England"
         className="absolute inset-0 w-full h-full object-cover object-center md:[object-position:center_30%]"
         style={{ zIndex: 0 }}
         loading="eager"
