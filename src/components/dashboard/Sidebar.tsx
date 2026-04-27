@@ -32,7 +32,7 @@ const Sidebar = ({ activeTab, onTabChange, newLeadsCount, onSignOut }: SidebarPr
         top: 0,
       }}
     >
-      <div style={{ padding: "20px 16px 16px" }}>
+      <div style={{ padding: "8px 16px 16px" }}>
         <img
           src={tonysLogo}
           alt="Tony's Remodeling - Painting and Carpentry"
