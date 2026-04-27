@@ -6,6 +6,9 @@
 
 @layer base {
   :root {
+    /* Viewport height variable for mobile Safari correction */
+    --vh: 1vh;
+
     /* Brand palette */
     --background: 36 33% 94%;          /* #F5F1EB linen */
     --foreground: 0 0% 10%;            /* #1A1A1A */
@@ -122,6 +125,11 @@
   @keyframes shimmerText {
     0% { background-position: -600px 0; }
     100% { background-position: 600px 0; }
+  }
+}
+
+  .hero-section {
+    min-height: calc(var(--vh, 1vh) * 100);
   }
 }
 
