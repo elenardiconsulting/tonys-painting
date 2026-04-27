@@ -29,24 +29,12 @@ const values = [
 ];
 
 const timeline = [
-  { year: "2004", text: "Otoniel Santos founds Tony's Painting on New England." },
-  { year: "2008", text: "Expands into commercial projects across the island." },
-  { year: "2012", text: "Team grows and first projects begin in the New England." },
+  { year: "2004", text: "Otoniel Santos founds Tony's Painting in New England." },
+  { year: "2008", text: "Expands into commercial projects across the region." },
+  { year: "2012", text: "Team grows and project volume across New England doubles." },
   { year: "2018", text: "Over 300 projects completed across New England." },
   { year: "2024", text: "20 years, 500 projects and a reputation built one brushstroke at a time." },
 ];
-
-const vineyard = [
-  "New England",
-  "New England",
-  "New England",
-  "New England",
-  "New England",
-  "New England",
-  "New England",
-];
-
-const boston = ["New England", "New England", "New England", "New England", "New England", "New England"];
 
 const About = () => {
   return (
@@ -210,29 +198,10 @@ const About = () => {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-10 md:gap-16">
-            <div>
-              <h3 className="font-display text-2xl text-foreground mb-6">New England</h3>
-              <ul className="space-y-3">
-                {vineyard.map((c) => (
-                  <li key={c} className="flex items-center gap-3 text-foreground">
-                    <span className="w-2 h-2 rounded-full bg-primary" />
-                    {c}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-display text-2xl text-foreground mb-6">New England</h3>
-              <ul className="space-y-3">
-                {boston.map((c) => (
-                  <li key={c} className="flex items-center gap-3 text-foreground">
-                    <span className="w-2 h-2 rounded-full bg-primary" />
-                    {c}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="max-w-2xl">
+            <p className="text-base md:text-lg text-foreground leading-relaxed">
+              We serve clients across New England, taking on residential and commercial projects throughout the region.
+            </p>
           </div>
         </div>
       </section>
