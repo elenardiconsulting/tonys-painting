@@ -151,6 +151,7 @@ const AnalyticsTab = ({ leads }: Props) => {
 
   return (
     <div
+      className="analytics-wrap"
       style={{
         padding: 24,
         fontFamily: "'Inter', sans-serif",
@@ -164,7 +165,11 @@ const AnalyticsTab = ({ leads }: Props) => {
         }
         .analytics-grid .full-row { grid-column: 1 / -1; }
         @media (max-width: 767px) {
-          .analytics-grid { grid-template-columns: 1fr; }
+          .analytics-wrap { padding: 16px !important; }
+          .analytics-grid {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
         }
       `}</style>
 
