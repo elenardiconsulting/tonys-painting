@@ -1,4 +1,5 @@
 import { LayoutGrid, Users, Calendar, BarChart3, LogOut } from "lucide-react";
+import tonysLogo from "@/assets/tonys-logo.png";
 
 export type DashTab = "overview" | "leads" | "calendar" | "analytics";
 
@@ -32,16 +33,11 @@ const Sidebar = ({ activeTab, onTabChange, newLeadsCount, onSignOut }: SidebarPr
       }}
     >
       <div style={{ padding: "20px 16px 16px" }}>
-        <div
-          style={{
-            fontFamily: "'Playfair Display', serif",
-            fontWeight: 700,
-            fontSize: 16,
-            color: "#F5F1EB",
-          }}
-        >
-          Tony's Painting
-        </div>
+        <img
+          src={tonysLogo}
+          alt="Tony's Remodeling - Painting and Carpentry"
+          style={{ height: 42, width: "auto", objectFit: "contain", display: "block" }}
+        />
         <div
           style={{
             display: "inline-block",

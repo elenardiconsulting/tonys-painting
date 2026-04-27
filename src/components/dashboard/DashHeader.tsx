@@ -1,5 +1,3 @@
-import tonysLogo from "@/assets/tonys-logo.png";
-
 interface DashHeaderProps {
   title: string;
 }
@@ -25,32 +23,19 @@ const DashHeader = ({ title }: DashHeaderProps) => {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        gap: 16,
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap: 16, minWidth: 0 }}>
-        <a href="/" aria-label="Tony's Remodeling home" style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
-          <img
-            src={tonysLogo}
-            alt="Tony's Remodeling - Painting and Carpentry"
-            style={{ height: 42, width: "auto", objectFit: "contain", display: "block" }}
-          />
-        </a>
-        <h1
-          style={{
-            fontFamily: "'Playfair Display', serif",
-            fontWeight: 700,
-            fontSize: 20,
-            color: "#1A1A1A",
-            margin: 0,
-            whiteSpace: "nowrap",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-          }}
-        >
-          {title}
-        </h1>
-      </div>
+      <h1
+        style={{
+          fontFamily: "'Playfair Display', serif",
+          fontWeight: 700,
+          fontSize: 20,
+          color: "#1A1A1A",
+          margin: 0,
+        }}
+      >
+        {title}
+      </h1>
       <div
         className="dash-header-date"
         style={{
@@ -58,7 +43,6 @@ const DashHeader = ({ title }: DashHeaderProps) => {
           fontWeight: 400,
           fontSize: 13,
           color: "#9CA3AF",
-          flexShrink: 0,
         }}
       >
         {today}
