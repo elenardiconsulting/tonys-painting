@@ -479,6 +479,15 @@ const Hero = () => {
           flex-shrink: 0;
         }
 
+        .hero-form-panel input::placeholder,
+        .hero-form-panel textarea::placeholder {
+          color: #FFFFFF !important;
+          opacity: 1;
+        }
+        .hero-form-panel select:invalid {
+          color: #FFFFFF;
+        }
+
         @media (max-width: 767px) {
           .desktop-only { display: none !important; }
           .mobile-only { display: block !important; }
