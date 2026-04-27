@@ -1,8 +1,11 @@
+import { LogOut } from "lucide-react";
+
 interface DashHeaderProps {
   title: string;
+  onSignOut?: () => void;
 }
 
-const DashHeader = ({ title }: DashHeaderProps) => {
+const DashHeader = ({ title, onSignOut }: DashHeaderProps) => {
   const today = new Date().toLocaleDateString("en-US", {
     weekday: "long",
     month: "long",
@@ -47,6 +50,27 @@ const DashHeader = ({ title }: DashHeaderProps) => {
       >
         {today}
       </div>
+      {onSignOut && (
+        <button
+          className="dash-header-signout"
+          onClick={onSignOut}
+          aria-label="Sign out"
+          style={{
+            display: "none",
+            alignItems: "center",
+            justifyContent: "center",
+            width: 44,
+            height: 44,
+            background: "transparent",
+            border: "none",
+            color: "#6B6560",
+            cursor: "pointer",
+            padding: 0,
+          }}
+        >
+          <LogOut size={20} />
+        </button>
+      )}
     </header>
   );
 };
