@@ -1,12 +1,12 @@
 import FadeUpSection from "@/components/site/FadeUpSection";
 
 const projects = [
-  { name: "Chilmark Farmhouse", type: "Exterior" },
-  { name: "Edgartown Cottage", type: "Interior" },
-  { name: "West Chop Residence", type: "Remodeling" },
-  { name: "Beacon Hill Townhouse", type: "Interior" },
-  { name: "Vineyard Haven Studio", type: "Exterior" },
-  { name: "Boston Brownstone", type: "Remodeling" },
+  { name: "Colonial home exterior painting", type: "Exterior", src: "/images/project-13.jpg", alt: "Colonial home exterior painting, Martha's Vineyard" },
+  { name: "Tony's team painting home", type: "Exterior", src: "/images/project-12.jpg", alt: "Tony's team painting blue exterior home" },
+  { name: "Premium deck staining", type: "Exterior", src: "/images/project-07.jpg", alt: "Premium deck staining and finishing" },
+  { name: "Bathroom remodel", type: "Remodeling", src: "/images/project-04.jpg", alt: "Bathroom remodel with tile and hardwood" },
+  { name: "Deck staining", type: "Exterior", src: "/images/project-09.jpg", alt: "Deck staining Martha's Vineyard" },
+  { name: "Kitchen remodel", type: "Remodeling", src: "/images/project-16.jpg", alt: "Kitchen remodel with countertop installation" },
 ];
 
 const PortfolioPreview = () => {
@@ -36,9 +36,12 @@ const PortfolioPreview = () => {
               as="article"
               className="portfolio-item group relative aspect-[4/5] bg-background overflow-hidden"
             >
-              <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/50 font-display text-lg">
-                {p.type}
-              </div>
+              <img
+                src={p.src}
+                alt={p.alt}
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
               <div className="portfolio-overlay absolute inset-0 flex flex-col items-center justify-center text-center p-6">
                 <div className="portfolio-caption">
                   <p className="text-xs uppercase tracking-[0.2em] text-primary mb-2">{p.type}</p>
