@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Brush, Home, Hammer, Wrench, ArrowRight, Layers, Layout, HardHat, Ruler, Grid, Fence, Paintbrush, Square } from "lucide-react";
+import SEO from "@/components/SEO";
 import PageLayout from "@/components/site/PageLayout";
 import InnerHero from "@/components/site/InnerHero";
 import FadeUpSection from "@/components/site/FadeUpSection";
@@ -83,6 +84,30 @@ const services = [
 const Services = () => {
   return (
     <PageLayout>
+      <SEO
+        title="Painting and Remodeling Services in New England"
+        description="From interior and exterior painting to flooring, tile, carpentry and remodeling. Tony's serves Martha's Vineyard, Boston and all of New England. Free estimates."
+        canonical="/services"
+        keywords="painting services New England, remodeling contractor Martha's Vineyard, interior exterior painters Boston, flooring tile carpentry New England"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: "Painting and Remodeling Services",
+          provider: {
+            "@type": "LocalBusiness",
+            name: "Tony's Painting and Remodeling",
+            telephone: "+15089829675",
+          },
+          areaServed: "New England, USA",
+          description:
+            "Professional painting and remodeling services including interior painting, exterior painting, flooring, tile, carpentry and more.",
+          offers: {
+            "@type": "Offer",
+            availability: "https://schema.org/InStock",
+            priceCurrency: "USD",
+          },
+        }}
+      />
       <FadeUpSection>
         <InnerHero
           title="Everything your space needs."
