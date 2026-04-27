@@ -28,6 +28,7 @@ const Card = ({
   numberColor?: string;
 }) => (
   <div
+    className="overview-card"
     style={{
       background: "#FFFFFF",
       borderRadius: 10,
@@ -37,6 +38,7 @@ const Card = ({
     }}
   >
     <div
+      className="overview-card-number"
       style={{
         fontFamily: "'Inter', sans-serif",
         fontWeight: 700,
@@ -81,7 +83,7 @@ const OverviewTab = ({ leads, loading }: Props) => {
   const recent = leads.slice(0, 5);
 
   return (
-    <div style={{ padding: 24 }}>
+    <div className="overview-wrap" style={{ padding: 24 }}>
       <style>{`
         @keyframes dash-shimmer {
           0% { background-position: -400px 0 }
@@ -94,6 +96,24 @@ const OverviewTab = ({ leads, loading }: Props) => {
         }
         @media (min-width: 768px) {
           .dash-metrics { grid-template-columns: repeat(4, 1fr); }
+        }
+        @media (max-width: 767px) {
+          .overview-wrap { padding: 16px !important; }
+          .dash-metrics { gap: 12px !important; }
+          .overview-card { padding: 14px !important; }
+          .overview-card-number { font-size: 24px !important; }
+          .overview-recent { padding: 16px !important; }
+          .overview-recent-item { padding: 12px 0 !important; gap: 10px !important; }
+          .overview-recent-avatar { width: 36px !important; height: 36px !important; }
+          .overview-recent-name { font-size: 14px !important; }
+          .overview-recent-meta-row {
+            display: flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            flex-wrap: wrap !important;
+          }
+          .overview-recent-badge-mobile { display: inline-flex !important; }
+          .overview-recent-badge-desktop { display: none !important; }
         }
       `}</style>
 
