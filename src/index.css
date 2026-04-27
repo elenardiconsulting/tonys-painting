@@ -201,3 +201,22 @@
       0 0 20px 6px rgba(196, 41, 28, 0.25);
   }
 }
+.video-play-button:hover {
+  background: rgba(196,41,28,1) !important;
+  transform: scale(1.05);
+}
+.video-showcase-cta:hover {
+  background: #8B1A10 !important;
+}
+@media (max-width: 767px) {
+  section.w-full[style*="#1A1A1A"] {
+    padding: 60px 20px !important;
+  }
+  .video-showcase-title {
+    font-size: 28px !important;
+  }
+  .video-showcase-cta {
+    width: 100%;
+    text-align: center;
+  }
+}

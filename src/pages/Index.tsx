@@ -1,6 +1,7 @@
 import Navbar from "@/components/site/Navbar";
 import Hero from "@/components/site/Hero";
 import TrustBar from "@/components/site/TrustBar";
+import VideoShowcase from "@/components/site/VideoShowcase";
 import ServicesPreview from "@/components/site/ServicesPreview";
 import PortfolioPreview from "@/components/site/PortfolioPreview";
 import PartnersSection from "@/components/site/PartnersSection";
@@ -16,6 +17,7 @@ const Index = () => {
       <main>
         <Hero />
         <TrustBar />
+        <VideoShowcase />
         <ServicesPreview />
         <PortfolioPreview />
         <PartnersSection />
