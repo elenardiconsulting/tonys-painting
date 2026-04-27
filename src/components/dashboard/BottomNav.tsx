@@ -26,6 +26,7 @@ const BottomNav = ({ activeTab, onTabChange, newLeadsCount }: BottomNavProps) =>
         height: "calc(60px + env(safe-area-inset-bottom))",
         paddingBottom: "env(safe-area-inset-bottom)",
         background: "#1A1A1A",
+        borderTop: "1px solid rgba(255,255,255,0.08)",
         display: "flex",
         justifyContent: "space-around",
         alignItems: "center",
@@ -38,9 +39,10 @@ const BottomNav = ({ activeTab, onTabChange, newLeadsCount }: BottomNavProps) =>
         return (
           <button
             key={id}
+            className="dash-bottom-btn"
             onClick={() => onTabChange(id)}
             style={{
-              minWidth: 44,
+              minWidth: 64,
               minHeight: 44,
               display: "flex",
               flexDirection: "column",
