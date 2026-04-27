@@ -65,7 +65,7 @@ const CalendarTab = ({ leads }: Props) => {
     today.getMonth() === month && today.getFullYear() === year;
 
   return (
-    <div style={{ padding: 24 }}>
+    <div className="calendar-container" style={{ padding: 24 }}>
       <style>{`
         .calendar-layout {
           display: grid;
@@ -97,6 +97,15 @@ const CalendarTab = ({ leads }: Props) => {
           position: relative;
         }
         .calendar-cell:hover { background: #F5F1EB; }
+        @media (max-width: 767px) {
+          .calendar-container { padding: 16px !important; }
+          .calendar-cell { height: 36px !important; font-size: 13px !important; }
+          .calendar-day-label { font-size: 10px !important; padding: 4px 0 !important; }
+          .calendar-month-label { font-size: 16px !important; }
+          .calendar-nav-btn { padding: 8px !important; }
+          .calendar-today-btn { font-size: 12px !important; padding: 4px 10px !important; }
+          .upcoming-item { padding: 10px 0 !important; }
+        }
       `}</style>
 
       <div className="calendar-layout">
@@ -117,6 +126,7 @@ const CalendarTab = ({ leads }: Props) => {
             }}
           >
             <button
+              className="calendar-nav-btn"
               onClick={() => setCurrentMonth(new Date(year, month - 1, 1))}
               style={{
                 background: "transparent",
@@ -130,6 +140,7 @@ const CalendarTab = ({ leads }: Props) => {
             </button>
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
               <h2
+                className="calendar-month-label"
                 style={{
                   fontFamily: "'Playfair Display', serif",
                   fontWeight: 700,
@@ -142,6 +153,7 @@ const CalendarTab = ({ leads }: Props) => {
               </h2>
               {!isCurrentMonth && (
                 <button
+                  className="calendar-today-btn"
                   onClick={() => {
                     setCurrentMonth(new Date());
                     setSelectedDate(new Date());
@@ -162,6 +174,7 @@ const CalendarTab = ({ leads }: Props) => {
               )}
             </div>
             <button
+              className="calendar-nav-btn"
               onClick={() => setCurrentMonth(new Date(year, month + 1, 1))}
               style={{
                 background: "transparent",
@@ -179,6 +192,7 @@ const CalendarTab = ({ leads }: Props) => {
             {DAY_LABELS.map((d) => (
               <div
                 key={d}
+                className="calendar-day-label"
                 style={{
                   textAlign: "center",
                   fontFamily: "'Inter', sans-serif",

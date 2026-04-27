@@ -27,6 +27,7 @@ const NotificationBanner = ({ userId }: Props) => {
 
   return (
     <div
+      className="notif-banner"
       style={{
         background: "#FAEEDA",
         borderBottom: "1px solid #F5D5A0",
@@ -36,13 +37,25 @@ const NotificationBanner = ({ userId }: Props) => {
         justifyContent: "space-between",
         gap: 12,
         fontFamily: "'Inter', sans-serif",
+        position: "sticky",
+        top: 64,
+        zIndex: 9,
+        transition: "all 0.2s ease",
       }}
     >
-      <span style={{ fontSize: 13, color: "#854F0B", fontWeight: 400 }}>
+      <style>{`
+        @media (max-width: 767px) {
+          .notif-banner { padding: 8px 16px !important; }
+          .notif-banner-text { font-size: 12px !important; }
+          .notif-banner-btn { padding: 4px 10px !important; font-size: 12px !important; }
+        }
+      `}</style>
+      <span className="notif-banner-text" style={{ fontSize: 13, color: "#854F0B", fontWeight: 400 }}>
         Enable notifications to get alerted when new leads arrive.
       </span>
       <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
         <button
+          className="notif-banner-btn"
           onClick={handleEnable}
           style={{
             background: "#854F0B",
