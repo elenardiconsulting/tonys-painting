@@ -45,6 +45,14 @@ export const useLeads = () => {
           );
         },
       )
+      .on(
+        "postgres_changes",
+        { event: "DELETE", schema: "public", table: "leads" },
+        (payload) => {
+          const oldId = (payload.old as { id: string }).id;
+          setLeads((prev) => prev.filter((l) => l.id !== oldId));
+        },
+      )
       .subscribe();
 
     return () => {
@@ -60,5 +68,12 @@ export const useLeads = () => {
     await supabase.from("leads").update(updates).eq("id", id);
   };
 
-  return { leads, loading, updateLead };
+  const deleteLead = async (id: string) => {
+    const { error } = await supabase.from("leads").delete().eq("id", id);
+    if (!error) {
+      setLeads((prev) => prev.filter((l) => l.id !== id));
+    }
+  };
+
+  return { leads, loading, updateLead, deleteLead };
 };
