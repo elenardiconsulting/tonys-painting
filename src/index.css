@@ -180,3 +180,12 @@
     animation: none;
   }
 }
+@keyframes drawBorder {
+  0% { stroke-dashoffset: 1400; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes progressBar {
+  from { width: 0%; }
+  to { width: 100%; }
+}
