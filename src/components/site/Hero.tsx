@@ -301,7 +301,7 @@ const Hero = () => {
             {...fadeUp(0.6)}
             href="/contact"
             className="mobile-only hero-cta-btn"
-            style={{ justifyContent: "center" }}
+            style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
           >
             <span className="hero-cta-text">Get Free Estimate</span>
           </motion.a>
