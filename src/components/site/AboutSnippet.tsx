@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { useReducedMotion } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import FadeUpSection from "@/components/site/FadeUpSection";
 import otonielSantos from "@/assets/otoniel-santos-founder.png";
@@ -17,57 +16,30 @@ const people = [
   },
 ];
 
+const DURATION = 5000;
+const FADE_MS = 700;
+
 const AboutPhotoSlideshow = () => {
-  const shouldReduceMotion = useReducedMotion();
   const [current, setCurrent] = useState(0);
-  const [next, setNext] = useState(1);
-  const [transitioning, setTransitioning] = useState(false);
   const [paused, setPaused] = useState(false);
-  
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const goTo = (index: number) => {
-    if (transitioning || shouldReduceMotion) return;
-    const nextIndex = index % people.length;
-    if (nextIndex === current) return;
-    
-    setNext(nextIndex);
-    setTransitioning(true);
-    setTimeout(() => {
-      setCurrent(nextIndex);
-      setNext((nextIndex + 1) % people.length);
-      setTransitioning(false);
-    }, 700);
+    setCurrent(index % people.length);
   };
 
   useEffect(() => {
-    if (paused || transitioning || shouldReduceMotion) return;
-    const interval = setInterval(() => {
-      goTo(current + 1);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [current, paused, transitioning, shouldReduceMotion]);
-
-  if (shouldReduceMotion) {
-    return (
-      <div className="flex flex-col items-center gap-[14px]">
-        <div className="relative w-[200px] h-[250px] md:w-[300px] md:h-[370px] rounded-[8px] overflow-hidden border-2 border-[#C4291C]">
-          <img
-            src={people[current].image}
-            alt={people[current].name}
-            className="absolute inset-0 w-full h-full object-cover object-top"
-          />
-        </div>
-        <div className="text-center">
-          <p className="font-sans font-semibold text-[18px] text-[#1A1A1A] m-0 mb-[5px]">
-            {people[current].name}
-          </p>
-          <p className="font-sans font-medium text-[12px] text-[#C4291C] uppercase tracking-[0.08em] m-0">
-            {people[current].role}
-          </p>
-        </div>
-      </div>
-    );
-  }
+    if (paused) {
+      if (timerRef.current) clearInterval(timerRef.current);
+      return;
+    }
+    timerRef.current = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % people.length);
+    }, DURATION);
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [paused]);
 
   return (
     <div
@@ -75,9 +47,9 @@ const AboutPhotoSlideshow = () => {
       onMouseLeave={() => setPaused(false)}
       className="flex flex-col items-center gap-[14px]"
     >
-      {/* Container das fotos sobrepostas com glow pulsante */}
+      {/* Stack de imagens: TODAS sempre no DOM, so opacity muda */}
       <div
-        className="relative w-[200px] h-[250px] md:w-[300px] md:h-[370px]"
+        className="about-slideshow-photo relative w-[200px] h-[250px] md:w-[300px] md:h-[370px]"
         style={{
           borderRadius: "8px",
           overflow: "hidden",
@@ -85,73 +57,66 @@ const AboutPhotoSlideshow = () => {
           animation: "glowPulse 2s ease-in-out infinite",
         }}
       >
-        {/* Foto atual (embaixo) */}
-        <img
-          src={people[current].image}
-          alt={people[current].name}
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "top center",
-            opacity: transitioning ? 0 : 1,
-            transition: "opacity 0.7s ease",
-            zIndex: 1,
-          }}
-        />
-
-        {/* Proxima foto (em cima, aparece durante transicao) */}
-        <img
-          src={people[next].image}
-          alt={people[next].name}
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "top center",
-            opacity: transitioning ? 1 : 0,
-            transition: "opacity 0.7s ease",
-            zIndex: 2,
-          }}
-        />
+        {people.map((person, index) => (
+          <img
+            key={index}
+            src={person.image}
+            alt={person.name}
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "top center",
+              opacity: current === index ? 1 : 0,
+              transition: `opacity ${FADE_MS}ms ease`,
+              willChange: "opacity",
+              zIndex: current === index ? 2 : 1,
+            }}
+          />
+        ))}
       </div>
 
-      {/* Nome e cargo com fade */}
-      <div
-        className="text-center"
-        style={{
-          opacity: transitioning ? 0 : 1,
-          transition: "opacity 0.7s ease",
-        }}
-      >
-        <p
-          style={{
-            fontFamily: "Inter, sans-serif",
-            fontWeight: 600,
-            fontSize: "18px",
-            color: "#1A1A1A",
-            margin: "0 0 5px",
-          }}
-        >
-          {transitioning ? people[next].name : people[current].name}
-        </p>
-        <p
-          style={{
-            fontFamily: "Inter, sans-serif",
-            fontWeight: 500,
-            fontSize: "12px",
-            color: "#C4291C",
-            textTransform: "uppercase",
-            letterSpacing: "0.08em",
-            margin: 0,
-          }}
-        >
-          {transitioning ? people[next].role : people[current].role}
-        </p>
+      {/* Nome e cargo: fade via CSS transition */}
+      <div className="relative text-center w-full" style={{ minHeight: "48px" }}>
+        {people.map((person, index) => (
+          <div
+            key={index}
+            style={{
+              position: "absolute",
+              inset: 0,
+              opacity: current === index ? 1 : 0,
+              transition: `opacity ${FADE_MS}ms ease`,
+              willChange: "opacity",
+            }}
+          >
+            <p
+              style={{
+                fontFamily: "Inter, sans-serif",
+                fontWeight: 600,
+                fontSize: "18px",
+                color: "#1A1A1A",
+                margin: "0 0 5px",
+              }}
+            >
+              {person.name}
+            </p>
+            <p
+              style={{
+                fontFamily: "Inter, sans-serif",
+                fontWeight: 500,
+                fontSize: "12px",
+                color: "#C4291C",
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                margin: 0,
+              }}
+            >
+              {person.role}
+            </p>
+          </div>
+        ))}
       </div>
 
       {/* Dots */}
@@ -160,6 +125,7 @@ const AboutPhotoSlideshow = () => {
           <button
             key={i}
             onClick={() => goTo(i)}
+            aria-label={`Go to slide ${i + 1}`}
             style={{
               width: current === i ? "20px" : "6px",
               height: "6px",
@@ -170,7 +136,6 @@ const AboutPhotoSlideshow = () => {
               transition: "all 0.3s ease",
               padding: 0,
             }}
-            aria-label={`Go to slide ${i + 1}`}
           />
         ))}
       </div>
