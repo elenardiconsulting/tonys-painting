@@ -1,4 +1,5 @@
 import { Instagram, Facebook } from "lucide-react";
+import SEO from "@/components/SEO";
 import PageLayout from "@/components/site/PageLayout";
 import InnerHero from "@/components/site/InnerHero";
 import ContactForm from "@/components/site/ContactForm";
@@ -31,6 +32,30 @@ const trustItems = [
 const Contact = () => {
   return (
     <PageLayout>
+      <SEO
+        title="Get a Free Painting Estimate in New England"
+        description="Contact Tony's Painting and Remodeling for a free estimate. Serving Martha's Vineyard, Boston and all of New England. Call 508 982 9675 or fill out the form."
+        canonical="/contact"
+        keywords="free painting estimate New England, painting quote Martha's Vineyard, contact painters Boston MA, hire painting contractor MA"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          name: "Get a Free Estimate",
+          description: "Request a free painting and remodeling estimate from Tony's team.",
+          mainEntity: {
+            "@type": "LocalBusiness",
+            name: "Tony's Painting and Remodeling",
+            telephone: "+15089829675",
+            email: "contact@tonyspaintingcmv.com",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Martha's Vineyard",
+              addressRegion: "MA",
+              addressCountry: "US",
+            },
+          },
+        }}
+      />
       <InnerHero
         title="Let's talk about your project."
         subtitle="Tell us what you need and we will get back to you within one business day."

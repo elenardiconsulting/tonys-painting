@@ -1,7 +1,15 @@
+import SEO from "@/components/SEO";
 import LandingTemplate from "@/components/lp/LandingTemplate";
 
 const LPInteriorPainting = () => (
-  <LandingTemplate
+  <>
+    <SEO
+      title="Interior Painting in Martha's Vineyard and Boston"
+      description="Professional interior painters serving Martha's Vineyard and Boston since 2004. Licensed, insured, 5-star rated. Get your free estimate today."
+      canonical="/lp/interior-painting"
+      keywords="interior painting Martha's Vineyard, interior painters Boston, interior house painting MA"
+    />
+    <LandingTemplate
     tag="INTERIOR PAINTING"
     headline="Professional interior painting in Martha's Vineyard and Boston."
     subline="Clean work, on schedule, with attention to every detail. Residential and commercial."
@@ -51,6 +59,7 @@ const LPInteriorPainting = () => (
       "/images/project-02.jpg"
     ]}
   />
+  </>
 );
 
 export default LPInteriorPainting;
