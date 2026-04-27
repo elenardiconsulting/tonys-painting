@@ -74,13 +74,12 @@ const PortfolioPreview = () => {
         <div className="md:hidden -mx-6">
           <div
             ref={scrollRef}
-            className="flex overflow-x-auto snap-x snap-mandatory scrollbar-none px-6 gap-0"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            className="portfolio-slider"
           >
             {projects.map((p) => (
               <div
                 key={p.name}
-                className="snap-center shrink-0 w-[calc(100vw-48px)] h-[260px] relative rounded-[10px] overflow-hidden"
+                className="portfolio-slide"
               >
                 <img
                   src={p.src}
@@ -111,6 +110,34 @@ const PortfolioPreview = () => {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 767px) {
+          .portfolio-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 0 24px;
+            gap: 16px;
+          }
+          
+          .portfolio-slider::-webkit-scrollbar {
+            display: none;
+          }
+
+          .portfolio-slide {
+            width: calc(100vw - 64px);
+            flex-shrink: 0;
+            scroll-snap-align: center;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 260px;
+            position: relative;
+          }
+        }
+      `}</style>
     </section>
   );
 };
