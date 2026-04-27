@@ -3,11 +3,10 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Shield, Star, CheckCircle2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const HERO_IMAGE = heroBg;
-
-const ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT as string | undefined;
 
 const GlassForm = () => {
   const { toast } = useToast();
@@ -32,30 +31,26 @@ const GlassForm = () => {
     }
 
     setSubmitting(true);
-    try {
-      if (ENDPOINT) {
-        const res = await fetch(ENDPOINT, {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        });
-        if (!res.ok) throw new Error("Request failed");
-      } else {
-        await new Promise((r) => setTimeout(r, 800));
-      }
-      navigate("/thank-you");
-    } catch {
+    const { error } = await supabase.from("leads").insert({
+      name: formData.fullName,
+      phone: formData.phone,
+      email: formData.email,
+      service_type: formData.service,
+      message: formData.project,
+      prefer_phone: false,
+      status: "new",
+    });
+    setSubmitting(false);
+
+    if (error) {
       toast({
         title: "Something went wrong",
         description: "Please try again or call us directly.",
         variant: "destructive",
       });
-    } finally {
-      setSubmitting(false);
+      return;
     }
+    navigate("/thank-you");
   };
 
   const inputStyle = {
