@@ -23,7 +23,7 @@ const AboutPhotoSlideshow = () => {
   const [next, setNext] = useState(1);
   const [transitioning, setTransitioning] = useState(false);
   const [paused, setPaused] = useState(false);
-  const [progressKey, setProgressKey] = useState(0);
+  
 
   const goTo = (index: number) => {
     if (transitioning || shouldReduceMotion) return;
@@ -36,7 +36,6 @@ const AboutPhotoSlideshow = () => {
       setCurrent(nextIndex);
       setNext((nextIndex + 1) % people.length);
       setTransitioning(false);
-      setProgressKey((k) => k + 1);
     }, 700);
   };
 
@@ -51,7 +50,7 @@ const AboutPhotoSlideshow = () => {
   if (shouldReduceMotion) {
     return (
       <div className="flex flex-col items-center gap-[14px]">
-        <div className="relative w-[200px] h-[250px] md:w-[300px] md:h-[370px] rounded-[8px] overflow-hidden">
+        <div className="relative w-[200px] h-[250px] md:w-[300px] md:h-[370px] rounded-[8px] overflow-hidden border-2 border-[#C4291C]">
           <img
             src={people[current].image}
             alt={people[current].name}
@@ -76,8 +75,16 @@ const AboutPhotoSlideshow = () => {
       onMouseLeave={() => setPaused(false)}
       className="flex flex-col items-center gap-[14px]"
     >
-      {/* Container das fotos sobrepostas */}
-      <div className="relative w-[200px] h-[250px] md:w-[300px] md:h-[370px] rounded-[8px] overflow-hidden">
+      {/* Container das fotos sobrepostas com glow pulsante */}
+      <div
+        className="relative w-[200px] h-[250px] md:w-[300px] md:h-[370px]"
+        style={{
+          borderRadius: "8px",
+          overflow: "hidden",
+          border: "2px solid #C4291C",
+          animation: "glowPulse 2s ease-in-out infinite",
+        }}
+      >
         {/* Foto atual (embaixo) */}
         <img
           src={people[current].image}
@@ -111,28 +118,6 @@ const AboutPhotoSlideshow = () => {
             zIndex: 2,
           }}
         />
-
-        {/* Borda vermelha SVG animada por cima de tudo */}
-        <svg
-          className="absolute inset-[-4px] w-[calc(100%+8px)] h-[calc(100%+8px)] z-[3] pointer-events-none"
-          viewBox="0 0 308 378"
-        >
-          <rect
-            x="2"
-            y="2"
-            width="304"
-            height="374"
-            rx="8"
-            fill="none"
-            stroke="#C4291C"
-            strokeWidth="2.5"
-            strokeDasharray="1356"
-            strokeDashoffset="1356"
-            style={{
-              animation: "drawBorder 2.5s ease-in-out infinite alternate",
-            }}
-          />
-        </svg>
       </div>
 
       {/* Nome e cargo com fade */}
@@ -167,19 +152,6 @@ const AboutPhotoSlideshow = () => {
         >
           {transitioning ? people[next].role : people[current].role}
         </p>
-      </div>
-
-      {/* Barra de progresso */}
-      <div className="w-[200px] md:w-[300px] h-[2px] bg-black/10 rounded-[1px] overflow-hidden">
-        <div
-          key={progressKey}
-          style={{
-            height: "100%",
-            background: "#C4291C",
-            borderRadius: "1px",
-            animation: paused ? "none" : "progressBar 5s linear forwards",
-          }}
-        />
       </div>
 
       {/* Dots */}
