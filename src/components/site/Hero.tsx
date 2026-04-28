@@ -97,7 +97,7 @@ const GlassForm = () => {
             margin: "0 0 4px 0",
           }}
         >
-          Get a Free Estimate
+          Request a Consultation
         </h3>
         <p
           style={{
@@ -288,13 +288,13 @@ const Hero = () => {
             className="hero-headline"
           >
             <span className="desktop-only">
-              Painting and remodeling<br />
-              you can <span style={{ color: "#C4291C" }}>actually trust.</span>
+              Transforming homes with<br />
+              <span style={{ color: "#C4291C" }}>intention and detail.</span>
             </span>
             <span className="mobile-only">
-              <span style={{ color: '#C4291C' }}>Painting</span> and<br />
-              remodeling<br />
-              you can <span style={{ color: '#C4291C' }}>trust.</span>
+              Transforming homes<br />
+              with <span style={{ color: '#C4291C' }}>intention</span><br />
+              and <span style={{ color: '#C4291C' }}>detail.</span>
             </span>
           </motion.h1>
 
@@ -311,7 +311,7 @@ const Hero = () => {
             href="/contact"
             className="mobile-only hero-mobile-btn"
           >
-            Get Free Estimate
+            Request a Consultation
           </motion.a>
 
           {/* Stats Container */}

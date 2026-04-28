@@ -149,7 +149,7 @@ const Services = () => {
               size="lg"
               className="mt-8 bg-primary text-primary-foreground hover:bg-primary-dark rounded-sm h-12 px-10"
             >
-              <Link to="/contact">Get Free Estimate</Link>
+              <Link to="/contact">Request a Consultation</Link>
             </RippleButton>
           </FadeUpSection>
         </div>

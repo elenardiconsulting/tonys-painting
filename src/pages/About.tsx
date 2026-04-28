@@ -219,7 +219,7 @@ const About = () => {
                 size="lg"
                 className="bg-primary text-primary-foreground hover:bg-primary-dark rounded-sm h-12 px-10"
               >
-                <a href="/contact">Get Free Estimate</a>
+                <a href="/contact">Request a Consultation</a>
               </RippleButton>
             </div>
           </FadeUpSection>
