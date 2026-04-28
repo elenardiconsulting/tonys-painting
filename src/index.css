@@ -363,14 +363,14 @@ img {
   content-visibility: auto;
 }
 
-/* Impedir que sliders capturem scroll vertical */
-.reels-desktop,
-.reels-mobile {
-  overflow-y: hidden;
-  overscroll-behavior-x: contain;
+/* Instagram Reels: visibilidade desktop/mobile */
+.ig-desktop { display: none; }
+.ig-mobile { display: block; }
+
+@media (min-width: 768px) {
+  .ig-desktop { display: block !important; }
+  .ig-mobile { display: none !important; }
 }
 
-.reels-mobile > div:first-child {
-  overflow-y: hidden;
-  overscroll-behavior: contain;
-}
+.ig-mobile > div:first-child::-webkit-scrollbar { display: none; }
+
