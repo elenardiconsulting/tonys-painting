@@ -157,12 +157,13 @@ const InstagramReels = () => {
         color: "#FFFFFF",
         fontFamily: "Montserrat, sans-serif",
         fontWeight: 600,
-        fontSize: "14px",
-        padding: "9px 18px",
-        borderRadius: "8px",
+        fontSize: "12px",
+        padding: "5px 12px",
+        borderRadius: "6px",
         textDecoration: "none",
         whiteSpace: "nowrap",
         flexShrink: 0,
+        lineHeight: 1.2,
       }}
     >
       Follow
@@ -181,50 +182,51 @@ const InstagramReels = () => {
         style={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between",
           marginBottom: "32px",
-          flexWrap: "nowrap",
           gap: "12px",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "12px",
-          }}
-        >
-          {Avatar}
-          <div style={{ minWidth: 0 }}>
-            <a
-              href={INSTAGRAM_PROFILE}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ig-handle"
-              style={{
-                fontFamily: "Montserrat, sans-serif",
-                fontWeight: 600,
-                color: "#1A1A1A",
-                textDecoration: "none",
-                display: "block",
-                lineHeight: 1.2,
-                whiteSpace: "nowrap",
-              }}
-            >
-              @tonyspainting_remodeling
-            </a>
+        {Avatar}
+        <div style={{ minWidth: 0, flex: 1 }}>
+          <a
+            href={INSTAGRAM_PROFILE}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ig-handle"
+            style={{
+              fontFamily: "Montserrat, sans-serif",
+              fontWeight: 600,
+              color: "#1A1A1A",
+              textDecoration: "none",
+              display: "block",
+              lineHeight: 1.2,
+              whiteSpace: "nowrap",
+            }}
+          >
+            @tonyspainting_remodeling
+          </a>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+              marginTop: "4px",
+              flexWrap: "nowrap",
+            }}
+          >
             <span
               style={{
                 fontFamily: "Montserrat, sans-serif",
                 fontSize: "12px",
                 color: "#6B6560",
+                whiteSpace: "nowrap",
               }}
             >
               Follow us on Instagram
             </span>
+            {FollowBtn}
           </div>
         </div>
-        {FollowBtn}
       </div>
 
       {/* DESKTOP: 4 colunas */}
