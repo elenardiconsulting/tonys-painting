@@ -192,12 +192,10 @@ const InstagramReels = () => {
             display: "flex",
             alignItems: "center",
             gap: "12px",
-            minWidth: 0,
-            flex: 1,
           }}
         >
           {Avatar}
-          <div style={{ minWidth: 0 }}>
+          <div>
             <a
               href={INSTAGRAM_PROFILE}
               target="_blank"
@@ -211,8 +209,6 @@ const InstagramReels = () => {
                 display: "block",
                 lineHeight: 1.2,
                 whiteSpace: "nowrap",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
               }}
             >
               @tonyspainting_remodeling
