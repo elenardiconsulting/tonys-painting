@@ -1,9 +1,36 @@
+import { useState } from "react";
+
 interface PremiumMapProps {
   variant?: "footer" | "contact";
 }
 
+const LOCATIONS = [
+  {
+    id: "vineyard",
+    label: "Vineyard Haven",
+    address: "11 Cook Rd, Vineyard Haven, MA 02568",
+    query: "11 Cook Rd, Vineyard Haven, MA 02568",
+  },
+  {
+    id: "pocasset",
+    label: "Pocasset",
+    address: "2 Williams Ave, Pocasset, MA",
+    query: "2 Williams Ave, Pocasset, MA",
+  },
+  {
+    id: "bridgewater",
+    label: "West Bridgewater",
+    address: "240 W Center St, West Bridgewater, MA 02379",
+    query: "240 W Center St, West Bridgewater, MA 02379",
+  },
+];
+
 const PremiumMap = ({ variant = "footer" }: PremiumMapProps) => {
   const isFooter = variant === "footer";
+  const [activeId, setActiveId] = useState(LOCATIONS[0].id);
+  const active = LOCATIONS.find((l) => l.id === activeId) ?? LOCATIONS[0];
+  const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(active.query)}&output=embed`;
+  const directionsHref = `https://maps.google.com/?q=${encodeURIComponent(active.query)}`;
 
   return (
     <div
@@ -17,11 +44,65 @@ const PremiumMap = ({ variant = "footer" }: PremiumMapProps) => {
         boxShadow: isFooter ? "none" : "0 8px 32px rgba(0,0,0,0.06)",
       }}
     >
+      {/* Location selector tabs */}
+      <div
+        style={{
+          display: "flex",
+          gap: "6px",
+          padding: "10px 12px",
+          background: isFooter ? "#1A1A1A" : "#F5F1EB",
+          borderBottom: isFooter
+            ? "1px solid rgba(255,255,255,0.06)"
+            : "1px solid #E8E2D8",
+          overflowX: "auto",
+        }}
+      >
+        {LOCATIONS.map((loc) => {
+          const isActive = loc.id === activeId;
+          return (
+            <button
+              key={loc.id}
+              type="button"
+              onClick={() => setActiveId(loc.id)}
+              style={{
+                flexShrink: 0,
+                padding: "6px 12px",
+                borderRadius: "999px",
+                fontFamily: "Inter, sans-serif",
+                fontSize: "11px",
+                fontWeight: 600,
+                cursor: "pointer",
+                border: isActive
+                  ? "1px solid #C4291C"
+                  : isFooter
+                    ? "1px solid rgba(255,255,255,0.12)"
+                    : "1px solid #E8E2D8",
+                background: isActive
+                  ? "#C4291C"
+                  : isFooter
+                    ? "transparent"
+                    : "#FFFFFF",
+                color: isActive
+                  ? "#FFFFFF"
+                  : isFooter
+                    ? "#F5F1EB"
+                    : "#1A1A1A",
+                transition: "all 0.2s ease",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {loc.label}
+            </button>
+          );
+        })}
+      </div>
+
       {/* Google Maps Embed */}
       <div style={{ position: "relative", width: "100%" }}>
         <iframe
-          title="Tony's Painting service area map"
-          src="https://www.google.com/maps?q=Martha's+Vineyard,+MA&output=embed"
+          key={active.id}
+          title={`Tony's Painting location - ${active.label}`}
+          src={mapSrc}
           width="100%"
           height={isFooter ? 220 : 360}
           style={{
@@ -51,7 +132,7 @@ const PremiumMap = ({ variant = "footer" }: PremiumMapProps) => {
             border: isFooter
               ? "1px solid rgba(255,255,255,0.1)"
               : "1px solid rgba(0,0,0,0.06)",
-            maxWidth: "220px",
+            maxWidth: "240px",
           }}
         >
           <div
@@ -93,7 +174,7 @@ const PremiumMap = ({ variant = "footer" }: PremiumMapProps) => {
               lineHeight: 1.5,
             }}
           >
-            Martha's Vineyard, MA
+            {active.address}
           </p>
         </div>
       </div>
@@ -106,6 +187,7 @@ const PremiumMap = ({ variant = "footer" }: PremiumMapProps) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          gap: "12px",
           borderTop: isFooter
             ? "1px solid rgba(255,255,255,0.06)"
             : "1px solid #E8E2D8",
@@ -125,7 +207,7 @@ const PremiumMap = ({ variant = "footer" }: PremiumMapProps) => {
           </p>
         </div>
         <a
-          href="https://maps.google.com/?q=Martha's+Vineyard,+MA"
+          href={directionsHref}
           target="_blank"
           rel="noopener noreferrer"
           style={{

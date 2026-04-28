@@ -21,21 +21,6 @@ const contactBlocks = [
     value: "New England",
     href: null,
   },
-  {
-    label: "Office",
-    value: "11 Cook Rd, Vineyard Haven, MA 02568",
-    href: "https://maps.google.com/?q=11+Cook+Rd,+Vineyard+Haven,+MA+02568",
-  },
-  {
-    label: "Office",
-    value: "2 Williams Ave, Pocasset, MA",
-    href: "https://maps.google.com/?q=2+Williams+Ave,+Pocasset,+MA",
-  },
-  {
-    label: "Office",
-    value: "240 W Center St, West Bridgewater, MA 02379",
-    href: "https://maps.google.com/?q=240+W+Center+St,+West+Bridgewater,+MA+02379",
-  },
 ];
 
 const trustItems = [
