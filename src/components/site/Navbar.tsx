@@ -118,7 +118,7 @@ const Navbar = () => {
         <div className="hidden md:flex flex-1 justify-end">
           <Button asChild className="group bg-primary text-white hover:bg-primary-dark rounded-lg px-5 py-2.5 h-auto transition-all duration-200">
             <a href="/contact" className="flex items-center gap-2">
-              Get Free Estimate
+              Request a Consultation
               <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
             </a>
           </Button>
@@ -167,7 +167,7 @@ const Navbar = () => {
           <div className="w-full max-w-[280px] pt-4">
             <Button asChild className="w-full bg-primary text-white hover:bg-primary-dark rounded-lg py-6 h-auto transition-all duration-200">
               <a href="/contact" onClick={() => setOpen(false)} className="flex items-center justify-center gap-2 text-lg font-bold">
-                Get Free Estimate
+                Request a Consultation
               </a>
             </Button>
           </div>

@@ -110,7 +110,7 @@ const VideoShowcase = () => {
                 transition: "background 0.2s ease",
               }}
             >
-              Get Free Estimate →
+              Request a Consultation →
             </Link>
           </FadeUpSection>
         </div>
@@ -192,7 +192,7 @@ const VideoShowcase = () => {
                 transition: "background 0.2s ease",
               }}
             >
-              Get Free Estimate →
+              Request a Consultation →
             </Link>
           </FadeUpSection>
         </div>
