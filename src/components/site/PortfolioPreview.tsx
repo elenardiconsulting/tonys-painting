@@ -12,12 +12,9 @@ const projects = [
 
 const PortfolioPreview = () => {
   const [activeSlide, setActiveSlide] = useState(0);
-  const [activeDesktopSlide, setActiveDesktopSlide] = useState(0);
+  const [activePage, setActivePage] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const desktopScrollRef = useRef<HTMLDivElement>(null);
-
-  const fixedProjects = projects.slice(0, 3);
-  const sliderProjects = projects.slice(3);
+  const sliderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -33,18 +30,59 @@ const PortfolioPreview = () => {
   }, []);
 
   useEffect(() => {
-    const el = desktopScrollRef.current;
+    const el = sliderRef.current;
     if (!el) return;
 
     const handleScroll = () => {
-      const slideWidth = el.offsetWidth / 3;
-      const index = Math.round(el.scrollLeft / slideWidth);
-      setActiveDesktopSlide(index);
+      const pageWidth = el.offsetWidth;
+      const page = Math.round(el.scrollLeft / pageWidth);
+      setActivePage(page);
     };
 
-    el.addEventListener("scroll", handleScroll);
+    el.addEventListener("scroll", handleScroll, { passive: true });
     return () => el.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const renderPage = (slice: typeof projects) => (
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gap: "16px",
+        flexShrink: 0,
+        width: "100%",
+        scrollSnapAlign: "start",
+      }}
+    >
+      {slice.map((p, i) => (
+        <div
+          key={p.name}
+          style={{
+            aspectRatio: "4/5",
+            borderRadius: "10px",
+            overflow: "hidden",
+          }}
+        >
+          <img
+            src={p.src}
+            alt={p.alt}
+            loading={i === 0 ? "eager" : "lazy"}
+            decoding="async"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "center",
+              display: "block",
+              transition: "transform 0.4s ease",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.04)")}
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+          />
+        </div>
+      ))}
+    </div>
+  );
 
   return (
     <section id="portfolio" className="bg-stone overflow-hidden" style={{ contain: "layout" }}>
@@ -64,80 +102,112 @@ const PortfolioPreview = () => {
           </a>
         </FadeUpSection>
 
-        {/* Desktop Layout: 1 row de 3 fixas + slider para os proximos 3 */}
+        {/* Desktop Layout: 1 row de 3 colunas que desliza para mostrar fotos adicionais */}
         <div className="portfolio-desktop-layout">
-          {/* Row 1: 3 fixas */}
-          <div className="grid grid-cols-3 gap-6">
-            {fixedProjects.map((p, i) => (
-              <FadeUpSection
-                key={p.name}
-                delay={i * 0.1}
-                as="article"
-                className="portfolio-item group relative aspect-[4/5] bg-background overflow-hidden"
+          <div style={{ position: "relative", overflow: "hidden" }}>
+            <div
+              ref={sliderRef}
+              style={{
+                display: "flex",
+                overflowX: "scroll",
+                scrollSnapType: "x mandatory",
+                scrollbarWidth: "none",
+                WebkitOverflowScrolling: "touch",
+                gap: "16px",
+              }}
+            >
+              {renderPage(projects.slice(0, 3))}
+              {renderPage(projects.slice(3, 6))}
+            </div>
+
+            {activePage === 0 && (
+              <button
+                aria-label="Next portfolio page"
+                onClick={() =>
+                  sliderRef.current?.scrollTo({
+                    left: sliderRef.current.offsetWidth,
+                    behavior: "smooth",
+                  })
+                }
+                style={{
+                  position: "absolute",
+                  right: "-16px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: "44px",
+                  height: "44px",
+                  borderRadius: "50%",
+                  background: "#1A1A1A",
+                  color: "white",
+                  border: "none",
+                  cursor: "pointer",
+                  fontSize: "18px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: "0 4px 16px rgba(0,0,0,0.2)",
+                  zIndex: 2,
+                }}
               >
-                <img
-                  src={p.src}
-                  alt={p.alt}
-                  loading={i < 2 ? "eager" : "lazy"}
-                  // @ts-expect-error fetchpriority is valid HTML
-                  fetchpriority={i < 2 ? "high" : undefined}
-                  decoding="async"
-                  style={{ objectPosition: "center" }}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="portfolio-overlay absolute inset-0 flex flex-col items-center justify-center text-center p-6">
-                  <div className="portfolio-caption">
-                    <p className="text-xs uppercase tracking-[0.2em] text-primary mb-2">{p.type}</p>
-                    <h3 className="font-display text-2xl md:text-3xl text-background">{p.name}</h3>
-                  </div>
-                </div>
-              </FadeUpSection>
-            ))}
+                →
+              </button>
+            )}
+
+            {activePage === 1 && (
+              <button
+                aria-label="Previous portfolio page"
+                onClick={() =>
+                  sliderRef.current?.scrollTo({ left: 0, behavior: "smooth" })
+                }
+                style={{
+                  position: "absolute",
+                  left: "-16px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: "44px",
+                  height: "44px",
+                  borderRadius: "50%",
+                  background: "#1A1A1A",
+                  color: "white",
+                  border: "none",
+                  cursor: "pointer",
+                  fontSize: "18px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: "0 4px 16px rgba(0,0,0,0.2)",
+                  zIndex: 2,
+                }}
+              >
+                ←
+              </button>
+            )}
           </div>
 
-          {/* Row 2: slider com os proximos 3 */}
-          {sliderProjects.length > 0 && (
-            <div className="mt-6">
-              <div ref={desktopScrollRef} className="portfolio-desktop-slider">
-                {sliderProjects.map((p) => (
-                  <article
-                    key={p.name}
-                    className="portfolio-item portfolio-desktop-slide group relative aspect-[4/5] bg-background overflow-hidden"
-                  >
-                    <img
-                      src={p.src}
-                      alt={p.alt}
-                      loading="lazy"
-                      decoding="async"
-                      style={{ objectPosition: "center" }}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="portfolio-overlay absolute inset-0 flex flex-col items-center justify-center text-center p-6">
-                      <div className="portfolio-caption">
-                        <p className="text-xs uppercase tracking-[0.2em] text-primary mb-2">{p.type}</p>
-                        <h3 className="font-display text-2xl md:text-3xl text-background">{p.name}</h3>
-                      </div>
-                    </div>
-                  </article>
-                ))}
-              </div>
-
-              {sliderProjects.length > 3 && (
-                <div className="flex justify-center items-center gap-2 mt-4">
-                  {sliderProjects.map((_, i) => (
-                    <div
-                      key={i}
-                      className={`transition-all duration-300 ${
-                        activeDesktopSlide === i
-                          ? "bg-[#C4291C] w-[20px] h-[6px] rounded-[3px]"
-                          : "bg-black/20 w-[6px] h-[6px] rounded-full"
-                      }`}
-                    />
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
+          <div style={{ display: "flex", justifyContent: "center", gap: "8px", marginTop: "20px" }}>
+            {[0, 1].map((i) => (
+              <button
+                key={i}
+                aria-label={`Go to portfolio page ${i + 1}`}
+                onClick={() =>
+                  sliderRef.current?.scrollTo({
+                    left: i === 0 ? 0 : sliderRef.current.offsetWidth,
+                    behavior: "smooth",
+                  })
+                }
+                style={{
+                  width: activePage === i ? "24px" : "8px",
+                  height: "8px",
+                  borderRadius: activePage === i ? "4px" : "50%",
+                  background: activePage === i ? "#C4291C" : "rgba(0,0,0,0.18)",
+                  border: "none",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
+                  padding: 0,
+                }}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Mobile Layout — sem alteracao */}
@@ -194,21 +264,8 @@ const PortfolioPreview = () => {
           display: none;
         }
 
-        .portfolio-desktop-slider {
-          display: flex;
-          overflow-x: auto;
-          scroll-snap-type: x mandatory;
-          scrollbar-width: none;
-          -ms-overflow-style: none;
-          gap: 24px;
-        }
-        .portfolio-desktop-slider::-webkit-scrollbar {
+        .portfolio-desktop-layout div[style*="overflowX"]::-webkit-scrollbar {
           display: none;
-        }
-        .portfolio-desktop-slide {
-          flex-shrink: 0;
-          width: calc((100% - 48px) / 3);
-          scroll-snap-align: start;
         }
 
         @media (max-width: 767px) {
