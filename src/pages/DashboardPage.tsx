@@ -4,6 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useLeads } from "@/hooks/useLeads";
 import Sidebar, { type DashTab } from "@/components/dashboard/Sidebar";
 import BottomNav from "@/components/dashboard/BottomNav";
+import InstallPWA from "@/components/dashboard/InstallPWA";
 
 import DashHeader from "@/components/dashboard/DashHeader";
 import OverviewTab from "@/components/dashboard/tabs/OverviewTab";
@@ -134,6 +135,7 @@ const DashboardPage = () => {
       />
 
       <LeadToast />
+      <InstallPWA />
     </div>
   );
 };
