@@ -195,15 +195,15 @@ const InstagramReels = () => {
           }}
         >
           {Avatar}
-          <div>
+          <div style={{ minWidth: 0 }}>
             <a
               href={INSTAGRAM_PROFILE}
               target="_blank"
               rel="noopener noreferrer"
+              className="ig-handle"
               style={{
                 fontFamily: "Montserrat, sans-serif",
                 fontWeight: 600,
-                fontSize: "15px",
                 color: "#1A1A1A",
                 textDecoration: "none",
                 display: "block",
