@@ -49,7 +49,7 @@ const InnerHero = ({
               padding: 0,
               margin: "0 0 12px",
               flexWrap: "wrap",
-              fontFamily: "Inter, sans-serif",
+              fontFamily: "Montserrat, sans-serif",
               fontSize: 12,
             }}
           >
@@ -116,7 +116,7 @@ const InnerHero = ({
             style={{
               marginTop: 8,
               maxWidth: 640,
-              fontFamily: "Inter, sans-serif",
+              fontFamily: "Montserrat, sans-serif",
               fontSize: 14,
               lineHeight: 1.55,
               color: isImage ? "rgba(255,255,255,0.8)" : "#6B6560",

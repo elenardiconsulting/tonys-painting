@@ -98,7 +98,7 @@ const Contact = () => {
             <p
               style={{
                 marginTop: 4,
-                fontFamily: "Inter, sans-serif",
+                fontFamily: "Montserrat, sans-serif",
                 fontSize: 12,
                 color: "#6B6560",
               }}
