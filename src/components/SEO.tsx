@@ -10,7 +10,7 @@ interface SEOProps {
   schema?: object;
 }
 
-const BASE_URL = "https://tonyspaintingcmv.com";
+const BASE_URL = "https://tonyspaintingmv.com";
 const COMPANY_NAME = "Tony's Painting and Remodeling";
 const DEFAULT_OG_IMAGE = BASE_URL + "/og-image.jpg";
 
