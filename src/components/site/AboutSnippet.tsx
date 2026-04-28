@@ -93,7 +93,7 @@ const AboutPhotoSlideshow = () => {
           >
             <p
               style={{
-                fontFamily: "Inter, sans-serif",
+                fontFamily: "Montserrat, sans-serif",
                 fontWeight: 600,
                 fontSize: "18px",
                 color: "#1A1A1A",
@@ -104,7 +104,7 @@ const AboutPhotoSlideshow = () => {
             </p>
             <p
               style={{
-                fontFamily: "Inter, sans-serif",
+                fontFamily: "Montserrat, sans-serif",
                 fontWeight: 500,
                 fontSize: "12px",
                 color: "#C4291C",

@@ -57,7 +57,7 @@ const VideoShowcase = () => {
           <FadeUpSection className="flex flex-col items-start" style={{ gap: 16 }}>
             <div
               style={{
-                fontFamily: "Inter, sans-serif",
+                fontFamily: "Montserrat, sans-serif",
                 fontWeight: 400,
                 fontSize: 11,
                 color: "#C4291C",
@@ -82,7 +82,7 @@ const VideoShowcase = () => {
             <p
               className="video-showcase-subline"
               style={{
-                fontFamily: "Inter, sans-serif",
+                fontFamily: "Montserrat, sans-serif",
                 fontWeight: 400,
                 color: "rgba(255,255,255,0.60)",
                 lineHeight: 1.7,
@@ -103,7 +103,7 @@ const VideoShowcase = () => {
                 color: "#FFFFFF",
                 padding: "13px 26px",
                 borderRadius: 8,
-                fontFamily: "Inter, sans-serif",
+                fontFamily: "Montserrat, sans-serif",
                 fontWeight: 600,
                 fontSize: 14,
                 textDecoration: "none",
@@ -185,7 +185,7 @@ const VideoShowcase = () => {
                 color: "#FFFFFF",
                 padding: "13px 26px",
                 borderRadius: 8,
-                fontFamily: "Inter, sans-serif",
+                fontFamily: "Montserrat, sans-serif",
                 fontWeight: 600,
                 fontSize: 14,
                 textDecoration: "none",
