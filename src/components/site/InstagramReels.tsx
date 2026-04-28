@@ -237,6 +237,9 @@ const InstagramReels = () => {
         style={{
           gridTemplateColumns: "repeat(4, 1fr)",
           gap: "16px",
+          maxWidth: "80%",
+          marginLeft: "auto",
+          marginRight: "auto",
         }}
       >
         {reels.map((reel, i) => (
@@ -263,9 +266,11 @@ const InstagramReels = () => {
               key={i}
               style={{
                 flexShrink: 0,
-                width: "calc(100vw - 48px)",
+                width: "calc((100vw - 48px) * 0.8)",
+                marginLeft: i === 0 ? "calc((100vw - 48px) * 0.1)" : 0,
+                marginRight: i === reels.length - 1 ? "calc((100vw - 48px) * 0.1)" : 0,
                 scrollSnapAlign: "center",
-                maxHeight: "65vh",
+                maxHeight: "52vh",
               }}
             >
               <ReelCard reel={reel} index={i} />
