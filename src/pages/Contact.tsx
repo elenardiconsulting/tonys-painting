@@ -3,7 +3,6 @@ import SEO from "@/components/SEO";
 import PageLayout from "@/components/site/PageLayout";
 import InnerHero from "@/components/site/InnerHero";
 import ContactForm from "@/components/site/ContactForm";
-import PremiumMap from "@/components/site/PremiumMap";
 import { Separator } from "@/components/ui/separator";
 
 const contactBlocks = [
@@ -192,28 +191,6 @@ const Contact = () => {
         `}</style>
       </section>
 
-      {/* Premium Map */}
-      <section className="bg-background contact-map-section" style={{ padding: "0 80px 60px" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <h2
-            style={{
-              fontFamily: "'Playfair Display', serif",
-              fontWeight: 700,
-              fontSize: 28,
-              color: "#1A1A1A",
-              margin: "0 0 20px",
-            }}
-          >
-            Where we work.
-          </h2>
-          <PremiumMap variant="contact" />
-        </div>
-        <style>{`
-          @media (max-width: 767px) {
-            .contact-map-section { padding: 0 24px 40px !important; }
-          }
-        `}</style>
-      </section>
 
       {/* Trust strip */}
       <section className="bg-stone py-10">
