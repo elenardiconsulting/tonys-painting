@@ -173,13 +173,11 @@ const Navbar = () => {
           opacity: open ? 1 : 0,
           visibility: open ? "visible" : "hidden",
           pointerEvents: open ? "auto" : "none",
-          transition: "opacity 0.3s ease, visibility 0.3s ease",
+          transition: "opacity 0.25s ease, visibility 0.25s ease",
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
           justifyContent: "center",
-          gap: "32px",
-          padding: "0 32px",
+          padding: "0 40px",
         }}
       >
         <ul
@@ -189,8 +187,7 @@ const Navbar = () => {
             margin: 0,
             display: "flex",
             flexDirection: "column",
-            alignItems: "center",
-            gap: "24px",
+            gap: "4px",
           }}
         >
           {mobileLinks.map((l) => (
@@ -199,13 +196,15 @@ const Navbar = () => {
                 href={l.href}
                 onClick={() => setOpen(false)}
                 style={{
-                  fontFamily: "'Playfair Display', serif",
-                  fontWeight: 900,
-                  fontSize: "32px",
-                  color: "white",
+                  fontFamily: "'Inter', sans-serif",
+                  fontWeight: 400,
+                  fontSize: "22px",
+                  letterSpacing: "-0.01em",
+                  color: "rgba(255,255,255,0.92)",
                   textDecoration: "none",
                   display: "block",
-                  textAlign: "center",
+                  padding: "14px 0",
+                  borderBottom: "1px solid rgba(255,255,255,0.08)",
                 }}
               >
                 {l.label}
@@ -218,20 +217,18 @@ const Navbar = () => {
           href="/contact"
           onClick={() => setOpen(false)}
           style={{
-            marginTop: "16px",
-            background: "#C4291C",
-            color: "white",
-            padding: "16px 40px",
-            borderRadius: "8px",
-            fontFamily: "'Montserrat', sans-serif",
-            fontWeight: 700,
-            fontSize: "16px",
+            marginTop: "32px",
+            alignSelf: "flex-start",
+            color: "#C4291C",
+            fontFamily: "'Inter', sans-serif",
+            fontWeight: 500,
+            fontSize: "14px",
+            letterSpacing: "0.04em",
+            textTransform: "uppercase",
             textDecoration: "none",
-            textAlign: "center",
-            width: "280px",
           }}
         >
-          Request a Consultation
+          Request a Consultation →
         </a>
       </div>
     </>
