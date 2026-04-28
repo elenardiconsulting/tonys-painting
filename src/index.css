@@ -373,11 +373,16 @@ img {
 .ig-mobile > div:first-child::-webkit-scrollbar { display: none; }
 
 
-/* Instagram Reels handle responsivo */
+/* Instagram Reels avatar + handle responsivo */
+.ig-avatar-inner { width: 52px; height: 52px; }
 .ig-handle { font-size: 15px; }
-@media (max-width: 480px) {
-  .ig-handle { font-size: 13px; }
+
+@media (max-width: 767px) {
+  .ig-avatar-inner { width: 72px; height: 72px; }
+  .ig-handle { font-size: 18px; }
+  .ig-follow-btn { font-size: 14px !important; padding: 7px 16px !important; }
 }
 @media (max-width: 380px) {
-  .ig-handle { font-size: 12px; }
+  .ig-avatar-inner { width: 64px; height: 64px; }
+  .ig-handle { font-size: 16px; }
 }
