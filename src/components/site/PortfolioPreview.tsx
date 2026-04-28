@@ -291,6 +291,29 @@ const PortfolioPreview = () => {
             display: block !important;
           }
 
+          .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+          }
+
+          .portfolio-grid-item {
+            position: relative;
+            aspect-ratio: 1 / 1;
+            border-radius: 10px;
+            overflow: hidden;
+          }
+
+          .portfolio-grid-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 10px;
+          }
+
           .portfolio-slider {
             display: flex;
             overflow-x: auto;
