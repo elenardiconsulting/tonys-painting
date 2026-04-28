@@ -240,6 +240,8 @@ const InstagramReels = () => {
           maxWidth: "80%",
           marginLeft: "auto",
           marginRight: "auto",
+          overflowY: "hidden",
+          overscrollBehaviorX: "contain",
         }}
       >
         {reels.map((reel, i) => (
@@ -254,6 +256,8 @@ const InstagramReels = () => {
           style={{
             display: "flex",
             overflowX: "scroll",
+            overflowY: "hidden",
+            overscrollBehavior: "contain",
             scrollSnapType: "x mandatory",
             WebkitOverflowScrolling: "touch",
             scrollbarWidth: "none",
