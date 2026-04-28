@@ -192,27 +192,124 @@ const Navbar = () => {
             gap: "4px",
           }}
         >
-          {mobileLinks.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                onClick={() => setOpen(false)}
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontWeight: 400,
-                  fontSize: "22px",
-                  letterSpacing: "-0.01em",
-                  color: "rgba(255,255,255,0.92)",
-                  textDecoration: "none",
-                  display: "block",
-                  padding: "14px 0",
-                  borderBottom: "1px solid rgba(255,255,255,0.08)",
-                }}
-              >
-                {l.label}
-              </a>
-            </li>
-          ))}
+          {mobileLinks.map((l) => {
+            const isServices = l.label === "Services";
+            const linkBaseStyle = {
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 400 as const,
+              fontSize: "22px",
+              letterSpacing: "-0.01em",
+              color: "rgba(255,255,255,0.92)",
+              textDecoration: "none",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: "14px 0",
+              borderBottom: "1px solid rgba(255,255,255,0.08)",
+              background: "none",
+              border: "none",
+              borderBottomWidth: "1px",
+              borderBottomStyle: "solid" as const,
+              borderBottomColor: "rgba(255,255,255,0.08)",
+              width: "100%",
+              cursor: "pointer" as const,
+              textAlign: "left" as const,
+            };
+
+            if (isServices) {
+              return (
+                <li key={l.href}>
+                  <button
+                    type="button"
+                    onClick={() => setMobileServicesOpen((v) => !v)}
+                    aria-expanded={mobileServicesOpen}
+                    style={linkBaseStyle}
+                  >
+                    <span>Services</span>
+                    <ChevronDown
+                      size={18}
+                      style={{
+                        transition: "transform 0.2s ease",
+                        transform: mobileServicesOpen ? "rotate(180deg)" : "rotate(0deg)",
+                        opacity: 0.7,
+                      }}
+                    />
+                  </button>
+                  <div
+                    style={{
+                      maxHeight: mobileServicesOpen ? "60vh" : "0",
+                      overflow: "hidden",
+                      overflowY: mobileServicesOpen ? "auto" : "hidden",
+                      transition: "max-height 0.3s ease",
+                    }}
+                  >
+                    <ul style={{ listStyle: "none", padding: "8px 0 12px 16px", margin: 0 }}>
+                      <li>
+                        <a
+                          href="/services"
+                          onClick={() => setOpen(false)}
+                          style={{
+                            display: "block",
+                            padding: "10px 0",
+                            fontFamily: "'Inter', sans-serif",
+                            fontWeight: 500,
+                            fontSize: "14px",
+                            color: "#C4291C",
+                            textDecoration: "none",
+                            letterSpacing: "0.04em",
+                            textTransform: "uppercase",
+                          }}
+                        >
+                          All Services
+                        </a>
+                      </li>
+                      {services.map((s) => (
+                        <li key={s.href}>
+                          <a
+                            href={s.href}
+                            onClick={() => setOpen(false)}
+                            style={{
+                              display: "block",
+                              padding: "10px 0",
+                              fontFamily: "'Inter', sans-serif",
+                              fontWeight: 400,
+                              fontSize: "15px",
+                              color: "rgba(255,255,255,0.7)",
+                              textDecoration: "none",
+                            }}
+                          >
+                            {s.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </li>
+              );
+            }
+
+            return (
+              <li key={l.href}>
+                <a
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  style={{
+                    fontFamily: "'Inter', sans-serif",
+                    fontWeight: 400,
+                    fontSize: "22px",
+                    letterSpacing: "-0.01em",
+                    color: "rgba(255,255,255,0.92)",
+                    textDecoration: "none",
+                    display: "block",
+                    padding: "14px 0",
+                    borderBottom: "1px solid rgba(255,255,255,0.08)",
+                  }}
+                >
+                  {l.label}
+                </a>
+              </li>
+            );
+          })}
         </ul>
 
         <a
