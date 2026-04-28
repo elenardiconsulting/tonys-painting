@@ -212,42 +212,52 @@ const Portfolio = () => {
               ))}
             </div>
 
-            {mobileSliderProjects.length > 0 && (
+            {mobileSliderPages.length > 0 && (
               <>
             <div
               ref={scrollRef}
               className="mt-5 flex overflow-x-auto snap-x snap-mandatory gap-3 px-6 scrollbar-none"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
-              {mobileSliderProjects.map((p) => (
+              {mobileSliderPages.map((page, pageIdx) => (
                 <div
-                  key={p.id}
-                  className="relative h-[230px] w-[calc(100vw-72px)] shrink-0 snap-center overflow-hidden rounded-[10px]"
-                  onClick={() => setLightboxId(p.id)}
+                  key={pageIdx}
+                  className="grid grid-cols-2 gap-3 shrink-0 snap-center"
+                  style={{ width: 'calc(100vw - 48px)' }}
                 >
-                  <img
-                    src={p.src}
-                    alt={`${p.title}, ${p.location}`}
-                    className="h-full w-full object-cover"
-                  />
-                  <div
-                    className="absolute inset-x-0 bottom-0 flex min-h-[38%] flex-col justify-end p-4"
-                    style={{
-                      background:
-                        "linear-gradient(to top, hsl(var(--foreground) / 0.58) 0%, hsl(var(--foreground) / 0.16) 58%, transparent 100%)",
-                    }}
-                  >
-                    <h3 className="font-sans text-[14px] font-semibold text-background">
-                      {p.title}
-                    </h3>
-                  </div>
+                  {page.map((p) => (
+                    <button
+                      key={p.id}
+                      type="button"
+                      className="relative aspect-square overflow-hidden rounded-[10px] text-left"
+                      onClick={() => setLightboxId(p.id)}
+                    >
+                      <img
+                        src={p.src}
+                        alt={`${p.title}, ${p.location}`}
+                        loading="lazy"
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
+                      <div
+                        className="absolute inset-x-0 bottom-0 flex min-h-[42%] flex-col justify-end p-3"
+                        style={{
+                          background:
+                            "linear-gradient(to top, hsl(var(--foreground) / 0.58) 0%, hsl(var(--foreground) / 0.18) 58%, transparent 100%)",
+                        }}
+                      >
+                        <h3 className="font-sans text-[12px] font-semibold leading-tight text-background">
+                          {p.title}
+                        </h3>
+                      </div>
+                    </button>
+                  ))}
                 </div>
               ))}
             </div>
 
             {/* Dots */}
             <div className="flex justify-center items-center gap-2 mt-4">
-              {mobileSliderProjects.map((_, i) => (
+              {mobileSliderPages.map((_, i) => (
                 <div
                   key={i}
                   className={`transition-all duration-300 ${
