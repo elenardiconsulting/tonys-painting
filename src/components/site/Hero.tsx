@@ -238,8 +238,13 @@ const Hero = () => {
       document.documentElement.style.setProperty('--vh', `${vh}px`);
     };
     setVh();
-    window.addEventListener('resize', setVh);
-    return () => window.removeEventListener('resize', setVh);
+    // IMPORTANT: do NOT listen to `resize` on mobile — the browser fires resize
+    // every time the URL bar shows/hides during scroll, which would recalculate
+    // the hero height and cause the page to "jump" back to the top.
+    // Only recalc on orientation change (real viewport change).
+    const onOrientation = () => setVh();
+    window.addEventListener('orientationchange', onOrientation);
+    return () => window.removeEventListener('orientationchange', onOrientation);
   }, []);
 
   const fadeUp = (delay: number) =>
