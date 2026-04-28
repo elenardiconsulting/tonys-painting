@@ -270,18 +270,19 @@ const Hero = () => {
       className="hero-section"
     >
       {/* Background Image */}
-      <motion.img
-        {...imageMotion}
-        src={HERO_IMAGE}
-        alt="Tony's Painting professional painting exterior"
-        loading="eager"
-        decoding="async"
-        // @ts-expect-error fetchpriority is valid HTML attr
-        fetchpriority="high"
-        className="hero-bg-image"
-        style={{ willChange: "transform" }}
-      />
-
+      <motion.picture {...imageMotion} className="hero-bg-image" style={{ willChange: "transform" }}>
+        <source media="(min-width: 768px)" srcSet={HERO_IMAGE_DESKTOP} />
+        <img
+          src={HERO_IMAGE}
+          alt="Tony's Painting professional painting exterior"
+          loading="eager"
+          decoding="async"
+          // @ts-expect-error fetchpriority is valid HTML attr
+          fetchpriority="high"
+          className="hero-bg-image"
+          style={{ willChange: "transform" }}
+        />
+      </motion.picture>
       {/* Overlays */}
       <div className="hero-overlay-main" />
       <div className="hero-overlay-top" />
