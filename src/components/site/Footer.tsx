@@ -1,8 +1,10 @@
 import tonysLogo from "@/assets/tonys-logo.png";
+import PremiumMap from "./PremiumMap";
 
 const Footer = () => {
   return (
     <footer className="bg-dark border-t border-white/5">
+      <PremiumMap variant="footer" />
       <div className="container py-12 md:py-16 grid md:grid-cols-3 gap-10">
         <div>
           <a href="/" className="inline-block" aria-label="Tony's Remodeling home">
