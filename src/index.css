@@ -355,7 +355,7 @@
 
 /* Scroll performance optimizations */
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; removido — causava scroll automatico indesejado */
   -webkit-overflow-scrolling: touch;
 }
 
