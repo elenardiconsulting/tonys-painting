@@ -28,7 +28,7 @@ const PortfolioPreview = () => {
   }, []);
 
   return (
-    <section id="portfolio" className="bg-stone overflow-hidden">
+    <section id="portfolio" className="bg-stone overflow-hidden" style={{ contain: "layout" }}>
       <div className="container py-20 md:py-28">
         <FadeUpSection className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
           <div className="max-w-2xl">

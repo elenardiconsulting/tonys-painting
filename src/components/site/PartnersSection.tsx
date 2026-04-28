@@ -4,7 +4,7 @@ import partnersLogos from "@/assets/partners-logos.png";
 const PartnersSection = () => {
   return (
     <section
-      style={{ backgroundColor: "#323230" }}
+      style={{ backgroundColor: "#323230", contain: "layout style" }}
       className="px-6 py-[60px] md:px-10 md:py-20"
     >
       <div className="mx-auto" style={{ maxWidth: "900px" }}>
