@@ -6,8 +6,9 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import heroBg from "@/assets/hero-bg.jpg";
 import heroBgDesktop from "@/assets/hero-bg-desktop.jpg";
+import heroBgMobile from "@/assets/hero-bg-mobile.jpg";
 
-const HERO_IMAGE = heroBg;
+const HERO_IMAGE = heroBgMobile;
 const HERO_IMAGE_DESKTOP = heroBgDesktop;
 
 const GlassForm = () => {
