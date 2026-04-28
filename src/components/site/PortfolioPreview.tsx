@@ -184,32 +184,6 @@ const PortfolioPreview = () => {
             ))}
           </div>
         </div>
-                  style={{ objectPosition: "center" }}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-4">
-                  <h3 className="font-sans font-semibold text-white text-[14px]">
-                    {p.name}
-                  </h3>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Dots */}
-          <div className="flex justify-center items-center gap-2 mt-4">
-            {projects.map((_, i) => (
-              <div
-                key={i}
-                className={`transition-all duration-300 ${
-                  activeSlide === i 
-                    ? "bg-[#C4291C] w-[20px] h-[6px] rounded-[3px]" 
-                    : "bg-black/20 w-[6px] h-[6px] rounded-full"
-                }`}
-              />
-            ))}
-          </div>
-        </div>
       </div>
 
       <style>{`
