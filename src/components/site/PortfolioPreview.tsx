@@ -104,84 +104,81 @@ const PortfolioPreview = () => {
 
         {/* Desktop Layout: 1 row de 3 colunas que desliza para mostrar fotos adicionais */}
         <div className="portfolio-desktop-layout">
-          <div style={{ position: "relative", overflow: "hidden" }}>
-            <div
-              ref={sliderRef}
+          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+            {/* Seta esquerda — fora do slider */}
+            <button
+              aria-label="Previous portfolio page"
+              onClick={() =>
+                sliderRef.current?.scrollTo({ left: 0, behavior: "smooth" })
+              }
               style={{
+                flexShrink: 0,
+                width: "40px",
+                height: "40px",
+                borderRadius: "50%",
+                background: activePage === 1 ? "#1A1A1A" : "transparent",
+                color: activePage === 1 ? "white" : "transparent",
+                border: "none",
+                cursor: activePage === 1 ? "pointer" : "default",
+                fontSize: "18px",
                 display: "flex",
-                overflowX: "scroll",
-                scrollSnapType: "x mandatory",
-                scrollbarWidth: "none",
-                WebkitOverflowScrolling: "touch",
-                gap: "16px",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "all 0.2s ease",
+                pointerEvents: activePage === 1 ? "auto" : "none",
+                boxShadow: activePage === 1 ? "0 2px 12px rgba(0,0,0,0.15)" : "none",
               }}
             >
-              {renderPage(projects.slice(0, 3))}
-              {renderPage(projects.slice(3, 6))}
+              ←
+            </button>
+
+            {/* Slider — ocupa todo o espaco restante */}
+            <div style={{ flex: 1, overflow: "hidden" }}>
+              <div
+                ref={sliderRef}
+                style={{
+                  display: "flex",
+                  overflowX: "scroll",
+                  scrollSnapType: "x mandatory",
+                  scrollbarWidth: "none",
+                  WebkitOverflowScrolling: "touch",
+                  gap: "16px",
+                }}
+              >
+                {renderPage(projects.slice(0, 3))}
+                {renderPage(projects.slice(3, 6))}
+              </div>
             </div>
 
-            {activePage === 0 && (
-              <button
-                aria-label="Next portfolio page"
-                onClick={() =>
-                  sliderRef.current?.scrollTo({
-                    left: sliderRef.current.offsetWidth,
-                    behavior: "smooth",
-                  })
-                }
-                style={{
-                  position: "absolute",
-                  right: "-16px",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  width: "44px",
-                  height: "44px",
-                  borderRadius: "50%",
-                  background: "#1A1A1A",
-                  color: "white",
-                  border: "none",
-                  cursor: "pointer",
-                  fontSize: "18px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  boxShadow: "0 4px 16px rgba(0,0,0,0.2)",
-                  zIndex: 2,
-                }}
-              >
-                →
-              </button>
-            )}
-
-            {activePage === 1 && (
-              <button
-                aria-label="Previous portfolio page"
-                onClick={() =>
-                  sliderRef.current?.scrollTo({ left: 0, behavior: "smooth" })
-                }
-                style={{
-                  position: "absolute",
-                  left: "-16px",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  width: "44px",
-                  height: "44px",
-                  borderRadius: "50%",
-                  background: "#1A1A1A",
-                  color: "white",
-                  border: "none",
-                  cursor: "pointer",
-                  fontSize: "18px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  boxShadow: "0 4px 16px rgba(0,0,0,0.2)",
-                  zIndex: 2,
-                }}
-              >
-                ←
-              </button>
-            )}
+            {/* Seta direita — fora do slider */}
+            <button
+              aria-label="Next portfolio page"
+              onClick={() =>
+                sliderRef.current?.scrollTo({
+                  left: sliderRef.current.offsetWidth,
+                  behavior: "smooth",
+                })
+              }
+              style={{
+                flexShrink: 0,
+                width: "40px",
+                height: "40px",
+                borderRadius: "50%",
+                background: activePage === 0 ? "#1A1A1A" : "transparent",
+                color: activePage === 0 ? "white" : "transparent",
+                border: "none",
+                cursor: activePage === 0 ? "pointer" : "default",
+                fontSize: "18px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "all 0.2s ease",
+                pointerEvents: activePage === 0 ? "auto" : "none",
+                boxShadow: activePage === 0 ? "0 2px 12px rgba(0,0,0,0.15)" : "none",
+              }}
+            >
+              →
+            </button>
           </div>
 
           <div style={{ display: "flex", justifyContent: "center", gap: "8px", marginTop: "20px" }}>
