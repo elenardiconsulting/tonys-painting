@@ -58,6 +58,7 @@ const PortfolioPreview = () => {
                 src={p.src}
                 alt={p.alt}
                 loading="lazy"
+                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="portfolio-overlay absolute inset-0 flex flex-col items-center justify-center text-center p-6">
@@ -84,6 +85,8 @@ const PortfolioPreview = () => {
                 <img
                   src={p.src}
                   alt={p.alt}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-4">
