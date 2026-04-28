@@ -163,11 +163,10 @@ const Footer = () => {
         }
         @media (min-width: 1024px) {
           .footer-grid {
-            grid-template-columns: 1.5fr 0.8fr 1fr 1fr 400px;
+            grid-template-columns: 1.5fr 1fr 1fr 400px;
           }
           .footer-grid > div:nth-child(2),
-          .footer-grid > div:nth-child(3),
-          .footer-grid > div:nth-child(4) {
+          .footer-grid > div:nth-child(3) {
             justify-self: end;
           }
         }
