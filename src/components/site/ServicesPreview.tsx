@@ -24,7 +24,7 @@ const services = [
     name: 'Flooring',
     description: 'Hardwood installation, refinishing and restoration that transforms any space.',
     href: '/services/flooring',
-    image: '/images/flooring-01.jpg',
+    image: '/images/flooring-02.jpg',
   },
   {
     name: 'Ceramic Tile',
