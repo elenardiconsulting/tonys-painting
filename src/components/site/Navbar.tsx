@@ -150,17 +150,24 @@ const Navbar = () => {
       </nav>
 
       {/* Fullscreen Mobile Menu Overlay */}
-      <div 
-        className={cn(
-          "fixed inset-0 z-[55] bg-[#2A2A28] transition-transform duration-500 ease-in-out md:hidden",
-          open ? "translate-y-0" : "-translate-y-full"
-        )}
+      <div
+        className="md:hidden"
+        style={{
+          position: 'fixed',
+          inset: 0,
+          zIndex: 55,
+          background: '#2A2A28',
+          transform: open ? 'translateY(0)' : 'translateY(-100%)',
+          transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+          visibility: open ? 'visible' : 'hidden',
+          pointerEvents: open ? 'auto' : 'none',
+        }}
       >
         <div className="flex flex-col items-center justify-center h-full px-8 gap-8">
-          <ul className="flex flex-col items-center gap-6">
+          <ul className="flex flex-col items-center gap-6 list-none p-0 m-0">
             <li>
-              <a 
-                href="/services" 
+              <a
+                href="/services"
                 onClick={() => setOpen(false)}
                 className="font-['Playfair_Display'] font-bold text-2xl text-white hover:text-primary transition-colors"
               >
@@ -179,7 +186,7 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-          
+
           <div className="w-full max-w-[280px] pt-4">
             <Button asChild className="w-full bg-primary text-white hover:bg-primary-dark rounded-lg py-6 h-auto transition-all duration-200">
               <a href="/contact" onClick={() => setOpen(false)} className="flex items-center justify-center gap-2 text-lg font-bold">
