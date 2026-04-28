@@ -169,7 +169,7 @@ const InstagramReels = () => {
               }}
             >
               <img
-                src="/images/co_ceo.png"
+                src="/favicon.ico"
                 alt="Tony's Painting Instagram"
                 style={{
                   width: "100%",
