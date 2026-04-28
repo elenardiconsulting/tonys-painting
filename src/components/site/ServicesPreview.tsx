@@ -1,24 +1,95 @@
-import { Brush, Home, Hammer } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import FadeUpSection from "@/components/site/FadeUpSection";
 
 const services = [
   {
-    icon: Brush,
-    name: "Interior Painting",
-    desc: "Refined finishes that bring warmth and character to every room.",
+    name: 'Interior Painting',
+    description: 'Refined interior finishes for every room, from a single accent wall to your entire home.',
+    href: '/services/interior-painting',
+    image: '/images/interior-04.jpg',
   },
   {
-    icon: Home,
-    name: "Exterior Painting",
-    desc: "Durable, weather ready coatings built for New England conditions.",
+    name: 'Exterior Painting',
+    description: 'Premium coatings built to handle New England weather, applied with proper prep and care.',
+    href: '/services/exterior-painting',
+    image: '/images/project-13.jpg',
   },
   {
-    icon: Hammer,
-    name: "Remodeling",
-    desc: "Thoughtful renovations from carpentry to full room transformations.",
+    name: 'Remodeling',
+    description: 'Full-scope remodeling for kitchens, bathrooms and living spaces across New England.',
+    href: '/services/remodeling',
+    image: '/images/remodeling-02.jpg',
+  },
+  {
+    name: 'Flooring',
+    description: 'Hardwood installation, refinishing and restoration that transforms any space.',
+    href: '/services/flooring',
+    image: '/images/flooring-01.jpg',
+  },
+  {
+    name: 'Ceramic Tile',
+    description: 'Precision tile work for bathrooms, kitchens and floors. Clean lines, lasting results.',
+    href: '/services/ceramic-tile',
+    image: '/images/project-04.jpg',
+  },
+  {
+    name: 'Deck and Stairs',
+    description: 'Staining, sealing and repair for decks and stairs built to withstand New England winters.',
+    href: '/services/deck-stairs',
+    image: '/images/project-07.jpg',
   },
 ];
+
+const ServiceCard = ({ service }: { service: typeof services[number] }) => (
+  <article className="service-image-card">
+    <div className="service-image-wrap">
+      <img
+        src={service.image}
+        alt={service.name}
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+    <div style={{ height: '2px', background: '#C4291C' }} />
+    <div style={{ padding: '20px', flex: 1, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+      <h3 style={{
+        fontFamily: "'Playfair Display', serif",
+        fontWeight: 700,
+        fontSize: '18px',
+        color: '#1A1A1A',
+        margin: 0,
+      }}>
+        {service.name}
+      </h3>
+      <p style={{
+        fontFamily: 'Inter, sans-serif',
+        fontSize: '13px',
+        color: '#6B6560',
+        lineHeight: 1.65,
+        margin: 0,
+        flex: 1,
+      }}>
+        {service.description}
+      </p>
+      <a
+        href={service.href}
+        style={{
+          fontFamily: 'Inter, sans-serif',
+          fontSize: '13px',
+          fontWeight: 600,
+          color: '#C4291C',
+          textDecoration: 'none',
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '4px',
+          marginTop: '4px',
+        }}
+      >
+        Learn more →
+      </a>
+    </div>
+  </article>
+);
 
 const ServicesPreview = () => {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -45,55 +116,82 @@ const ServicesPreview = () => {
           </h2>
         </FadeUpSection>
 
-        {/* Desktop Grid */}
-        <div className="craftsmanship-grid mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-px bg-border">
-          {services.map(({ icon: Icon, name, desc }, i) => (
-            <FadeUpSection key={name} delay={i * 0.1} as="article" className="service-card bg-background p-8 md:p-10 hover:bg-stone">
-              <Icon className="text-primary" size={32} strokeWidth={1.5} />
-              <h3 className="mt-6 font-display text-2xl md:text-3xl text-foreground">{name}</h3>
-              <p className="mt-3 text-muted-foreground leading-relaxed">{desc}</p>
-              <a
-                href="/services"
-                className="mt-6 inline-block text-sm font-medium text-foreground border-b border-foreground/30 hover:text-primary hover:border-primary transition-colors pb-0.5"
-              >
-                Learn more
-              </a>
+        {/* Desktop / Tablet Grid */}
+        <div className="services-image-grid mt-12 md:mt-16">
+          {services.map((service, i) => (
+            <FadeUpSection key={service.href} delay={i * 0.05}>
+              <ServiceCard service={service} />
             </FadeUpSection>
           ))}
         </div>
 
         {/* Mobile Slider */}
         <div className="md:hidden mt-12 -mx-6">
-          <div ref={scrollRef} className="craftsmanship-slider">
-            {services.map(({ icon: Icon, name, desc }) => (
-              <article key={name} className="craftsmanship-slide">
-                <Icon className="text-primary" size={32} strokeWidth={1.5} />
-                <h3 className="mt-6 font-display text-2xl text-foreground">{name}</h3>
-                <p className="mt-3 text-muted-foreground leading-relaxed text-[15px]">{desc}</p>
-                <a
-                  href="/services"
-                  className="mt-6 inline-block text-sm font-medium text-foreground border-b border-foreground/30 hover:text-primary hover:border-primary transition-colors pb-0.5"
-                >
-                  Learn more
-                </a>
-              </article>
+          <div ref={scrollRef} className="services-image-slider">
+            {services.map((service) => (
+              <div key={service.href} className="services-image-slide">
+                <ServiceCard service={service} />
+              </div>
             ))}
           </div>
 
-          <div className="craftsmanship-dots">
+          <div className="services-image-dots">
             {services.map((_, i) => (
-              <div key={i} className={`craftsmanship-dot ${activeSlide === i ? "active" : ""}`} />
+              <div key={i} className={`services-image-dot ${activeSlide === i ? "active" : ""}`} />
             ))}
           </div>
         </div>
       </div>
 
       <style>{`
+        .service-image-card {
+          background: #FFFFFF;
+          border-radius: 12px;
+          border: 0.5px solid #E8E2D8;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          transition: box-shadow 0.2s ease;
+          height: 100%;
+        }
+        .service-image-wrap {
+          position: relative;
+          aspect-ratio: 16/9;
+          overflow: hidden;
+        }
+        .service-image-wrap img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          display: block;
+          transition: transform 0.4s ease;
+        }
+        .service-image-card:hover {
+          box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+        }
+        .service-image-card:hover img {
+          transform: scale(1.04);
+        }
+
+        @media (min-width: 768px) {
+          .services-image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+          }
+        }
+        @media (min-width: 1024px) {
+          .services-image-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
+        }
+
         @media (max-width: 767px) {
-          .craftsmanship-grid {
+          .services-image-grid {
             display: none;
           }
-          .craftsmanship-slider {
+          .services-image-slider {
             display: flex;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
@@ -103,33 +201,28 @@ const ServicesPreview = () => {
             gap: 16px;
             padding: 0 24px;
           }
-          .craftsmanship-slider::-webkit-scrollbar {
+          .services-image-slider::-webkit-scrollbar {
             display: none;
           }
-          .craftsmanship-slide {
+          .services-image-slide {
             flex-shrink: 0;
             width: calc(100vw - 64px);
             scroll-snap-align: center;
-            border-radius: 12px;
-            overflow: hidden;
-            background: #FFFFFF;
-            border: 0.5px solid #E8E2D8;
-            padding: 24px;
           }
-          .craftsmanship-dots {
+          .services-image-dots {
             display: flex;
             justify-content: center;
             gap: 6px;
             margin-top: 16px;
           }
-          .craftsmanship-dot {
+          .services-image-dot {
             width: 6px;
             height: 6px;
             border-radius: 50%;
             background: rgba(0,0,0,0.15);
             transition: all 0.3s ease;
           }
-          .craftsmanship-dot.active {
+          .services-image-dot.active {
             width: 20px;
             height: 6px;
             border-radius: 3px;
