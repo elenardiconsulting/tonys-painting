@@ -38,7 +38,6 @@ const Footer = () => {
         <div>
           <div className="text-xs uppercase tracking-[0.2em] text-background/50 mb-4">Contact</div>
           <ul className="space-y-2 text-sm text-background/80">
-            <li>New England, MA</li>
             <li>New England</li>
             <li>
               <a href="/contact" className="hover:text-primary transition-colors">
