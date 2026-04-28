@@ -5,8 +5,10 @@ import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import heroBg from "@/assets/hero-bg.jpg";
+import heroBgDesktop from "@/assets/hero-bg-desktop.jpg";
 
 const HERO_IMAGE = heroBg;
+const HERO_IMAGE_DESKTOP = heroBgDesktop;
 
 const GlassForm = () => {
   const { toast } = useToast();
