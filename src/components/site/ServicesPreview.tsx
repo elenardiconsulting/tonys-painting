@@ -6,7 +6,7 @@ const services = [
     name: 'Interior Painting',
     description: 'Refined interior finishes for every room, from a single accent wall to your entire home.',
     href: '/services/interior-painting',
-    image: '/images/interior-04.jpg',
+    image: '/images/interior-05.jpg',
   },
   {
     name: 'Exterior Painting',
@@ -18,13 +18,13 @@ const services = [
     name: 'Remodeling',
     description: 'Full-scope remodeling for kitchens, bathrooms and living spaces across New England.',
     href: '/services/remodeling',
-    image: '/images/remodeling-02.jpg',
+    image: '/images/project-15.jpg',
   },
   {
     name: 'Flooring',
     description: 'Hardwood installation, refinishing and restoration that transforms any space.',
     href: '/services/flooring',
-    image: '/images/flooring-01.jpg',
+    image: '/images/flooring-02.jpg',
   },
   {
     name: 'Ceramic Tile',
