@@ -124,9 +124,8 @@ const InstagramReels = () => {
       aria-label="Open Instagram profile"
     >
       <div
+        className="ig-avatar-inner"
         style={{
-          width: "52px",
-          height: "52px",
           borderRadius: "50%",
           padding: "2px",
           background: "#F5F1EB",
