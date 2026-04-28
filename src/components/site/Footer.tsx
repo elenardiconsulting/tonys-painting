@@ -145,6 +145,64 @@ const Footer = () => {
         </div>
       </div>
 
+      {/* Mapa mobile only */}
+      <div
+        className="footer-map-mobile"
+        style={{
+          display: "none",
+          position: "relative",
+          width: "100%",
+          height: "120px",
+          overflow: "hidden",
+          borderTop: "1px solid rgba(255,255,255,0.05)",
+          opacity: 0.7,
+        }}
+      >
+        <iframe
+          title="Tony's Painting location"
+          src="https://www.google.com/maps?q=11+Cook+Rd,+Vineyard+Haven,+MA+02568&output=embed"
+          width="100%"
+          height="100%"
+          style={{
+            border: 0,
+            display: "block",
+            filter: "grayscale(100%) invert(92%) contrast(85%)",
+          }}
+          loading="lazy"
+          allowFullScreen={false}
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+        <div
+          style={{
+            position: "absolute",
+            bottom: "8px",
+            left: "8px",
+            display: "flex",
+            alignItems: "center",
+            gap: "5px",
+          }}
+        >
+          <div
+            style={{
+              width: "5px",
+              height: "5px",
+              borderRadius: "50%",
+              background: "#C4291C",
+            }}
+          />
+          <span
+            style={{
+              fontFamily: "Inter, sans-serif",
+              fontSize: "10px",
+              color: "rgba(245,241,235,0.70)",
+              fontWeight: 500,
+            }}
+          >
+            Martha's Vineyard, MA
+          </span>
+        </div>
+      </div>
+
       <div className="border-t border-white/5">
         <div className="container py-6 flex flex-col md:flex-row justify-between items-center gap-2 text-xs text-background/50">
           <div>© {new Date().getFullYear()} Tony&apos;s Painting and Remodeling. All rights reserved.</div>
@@ -172,8 +230,10 @@ const Footer = () => {
         }
         @media (max-width: 767px) {
           .footer-map-col { display: none; }
+          .footer-map-mobile { display: block !important; }
         }
       `}</style>
+
     </footer>
   );
 };
