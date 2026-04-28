@@ -54,11 +54,9 @@ const Portfolio = () => {
     activeFilter === "All Projects"
       ? PROJECTS
       : PROJECTS.filter((p) => p.category === activeFilter);
-  const mobileGridProjects = filtered.slice(0, 4);
-  const mobileSliderRest = filtered.slice(4);
   const mobileSliderPages: Project[][] = [];
-  for (let i = 0; i < mobileSliderRest.length; i += 4) {
-    mobileSliderPages.push(mobileSliderRest.slice(i, i + 4));
+  for (let i = 0; i < filtered.length; i += 4) {
+    mobileSliderPages.push(filtered.slice(i, i + 4));
   }
 
   const lightboxIndex = lightboxId != null ? filtered.findIndex((p) => p.id === lightboxId) : -1;
@@ -181,42 +179,11 @@ const Portfolio = () => {
             ))}
           </div>
 
-          {/* Mobile Grid and Slider */}
+          {/* Mobile 2x2 Slider */}
           <div className="md:hidden -mx-6">
-            <div className="grid grid-cols-2 gap-3 px-6">
-              {mobileGridProjects.map((p, i) => (
-                <button
-                  key={p.id}
-                  type="button"
-                  className="relative aspect-square overflow-hidden rounded-[10px] text-left"
-                  onClick={() => setLightboxId(p.id)}
-                >
-                  <img
-                    src={p.src}
-                    alt={`${p.title}, ${p.location}`}
-                    loading={i < 2 ? "eager" : "lazy"}
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
-                  <div
-                    className="absolute inset-x-0 bottom-0 flex min-h-[42%] flex-col justify-end p-3"
-                    style={{
-                      background:
-                        "linear-gradient(to top, hsl(var(--foreground) / 0.58) 0%, hsl(var(--foreground) / 0.18) 58%, transparent 100%)",
-                    }}
-                  >
-                    <h3 className="font-sans text-[12px] font-semibold leading-tight text-background">
-                      {p.title}
-                    </h3>
-                  </div>
-                </button>
-              ))}
-            </div>
-
-            {mobileSliderPages.length > 0 && (
-              <>
             <div
               ref={scrollRef}
-              className="mt-5 flex overflow-x-auto snap-x snap-mandatory gap-3 px-6 scrollbar-none"
+              className="flex overflow-x-auto snap-x snap-mandatory gap-3 px-6 scrollbar-none"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
               {mobileSliderPages.map((page, pageIdx) => (
@@ -225,7 +192,7 @@ const Portfolio = () => {
                   className="grid grid-cols-2 gap-3 shrink-0 snap-center"
                   style={{ width: 'calc(100vw - 48px)' }}
                 >
-                  {page.map((p) => (
+                  {page.map((p, itemIdx) => (
                     <button
                       key={p.id}
                       type="button"
@@ -235,7 +202,7 @@ const Portfolio = () => {
                       <img
                         src={p.src}
                         alt={`${p.title}, ${p.location}`}
-                        loading="lazy"
+                        loading={pageIdx === 0 && itemIdx < 2 ? "eager" : "lazy"}
                         className="absolute inset-0 h-full w-full object-cover"
                       />
                       <div
@@ -268,8 +235,6 @@ const Portfolio = () => {
                 />
               ))}
             </div>
-              </>
-            )}
           </div>
         </div>
       </section>
