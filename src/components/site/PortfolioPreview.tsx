@@ -264,21 +264,8 @@ const PortfolioPreview = () => {
           display: none;
         }
 
-        .portfolio-desktop-slider {
-          display: flex;
-          overflow-x: auto;
-          scroll-snap-type: x mandatory;
-          scrollbar-width: none;
-          -ms-overflow-style: none;
-          gap: 24px;
-        }
-        .portfolio-desktop-slider::-webkit-scrollbar {
+        .portfolio-desktop-layout div[style*="overflowX"]::-webkit-scrollbar {
           display: none;
-        }
-        .portfolio-desktop-slide {
-          flex-shrink: 0;
-          width: calc((100% - 48px) / 3);
-          scroll-snap-align: start;
         }
 
         @media (max-width: 767px) {
