@@ -63,7 +63,7 @@ const DashboardPage = () => {
     >
       <style>{`
         .dash-sidebar { display: flex; }
-        .dash-bottom-nav { display: none; }
+        .dash-bottom-nav { display: none !important; }
         .dash-content-wrap { padding-bottom: 0; }
         .dash-header-signout { display: none !important; }
 
