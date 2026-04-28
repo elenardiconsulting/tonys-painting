@@ -151,6 +151,7 @@ const InstagramReels = () => {
       href={INSTAGRAM_PROFILE}
       target="_blank"
       rel="noopener noreferrer"
+      className="ig-follow-btn"
       style={{
         background: "#0095F6",
         color: "#FFFFFF",
