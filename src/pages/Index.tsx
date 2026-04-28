@@ -28,7 +28,7 @@ const Index = () => {
             "Professional painting and remodeling services serving New England since 2004.",
           url: "https://tonyspaintingcmv.com",
           telephone: "+15089829675",
-          email: "contact@tonyspaintingcmv.com",
+          email: "Tonyspainting11@gmail.com",
           foundingDate: "2004",
           founder: { "@type": "Person", name: "Otoniel Santos" },
           address: {
