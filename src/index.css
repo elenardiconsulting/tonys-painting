@@ -374,3 +374,12 @@ img {
 
 .ig-mobile > div:first-child::-webkit-scrollbar { display: none; }
 
+
+/* Instagram Reels handle responsivo */
+.ig-handle { font-size: 15px; }
+@media (max-width: 480px) {
+  .ig-handle { font-size: 13px; }
+}
+@media (max-width: 380px) {
+  .ig-handle { font-size: 12px; }
+}
