@@ -39,7 +39,7 @@ const LoginPage = () => {
     border: "1.5px solid #E8E2D8",
     borderRadius: 8,
     padding: "0 14px",
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: 14,
     color: "#1A1A1A",
     background: "white",
@@ -48,7 +48,7 @@ const LoginPage = () => {
   };
 
   const labelStyle: React.CSSProperties = {
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontWeight: 500,
     fontSize: 13,
     color: "#1A1A1A",
@@ -79,7 +79,7 @@ const LoginPage = () => {
               marginTop: 10,
               background: "rgba(196,41,28,0.15)",
               color: "#C4291C",
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'Montserrat', sans-serif",
               fontSize: 11,
               padding: "3px 10px",
               borderRadius: 4,
@@ -94,7 +94,7 @@ const LoginPage = () => {
         <p
           className="login-mid-quote"
           style={{
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "'Montserrat', sans-serif",
             fontWeight: 400,
             fontSize: 14,
             color: "rgba(255,255,255,0.45)",
@@ -109,7 +109,7 @@ const LoginPage = () => {
         <div>
           <p
             style={{
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'Montserrat', sans-serif",
               fontSize: 11,
               color: "rgba(255,255,255,0.25)",
               margin: 0,
@@ -119,7 +119,7 @@ const LoginPage = () => {
           </p>
           <p
             style={{
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'Montserrat', sans-serif",
               fontSize: 11,
               color: "rgba(255,255,255,0.20)",
               marginTop: 4,
@@ -158,7 +158,7 @@ const LoginPage = () => {
             </h1>
             <p
               style={{
-                fontFamily: "'Inter', sans-serif",
+                fontFamily: "'Montserrat', sans-serif",
                 fontWeight: 400,
                 fontSize: 15,
                 color: "#6B6560",
@@ -205,7 +205,7 @@ const LoginPage = () => {
           {error && (
             <div
               style={{
-                fontFamily: "'Inter', sans-serif",
+                fontFamily: "'Montserrat', sans-serif",
                 fontWeight: 400,
                 fontSize: 13,
                 color: "#C4291C",
@@ -227,7 +227,7 @@ const LoginPage = () => {
               width: "100%",
               background: loading ? "#8B1A10" : "#C4291C",
               color: "white",
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'Montserrat', sans-serif",
               fontWeight: 700,
               fontSize: 15,
               border: "none",

@@ -50,7 +50,7 @@ const Sidebar = ({ activeTab, onTabChange, newLeadsCount, onSignOut }: SidebarPr
             fontWeight: 600,
             letterSpacing: 0.5,
             textTransform: "uppercase",
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "'Montserrat', sans-serif",
           }}
         >
           Staff Portal
@@ -76,7 +76,7 @@ const Sidebar = ({ activeTab, onTabChange, newLeadsCount, onSignOut }: SidebarPr
                 background: active ? "rgba(255,255,255,0.08)" : "transparent",
                 color: active ? "#FFFFFF" : "rgba(255,255,255,0.55)",
                 border: "none",
-                fontFamily: "'Inter', sans-serif",
+                fontFamily: "'Montserrat', sans-serif",
                 fontSize: 14,
                 fontWeight: 500,
                 textAlign: "left",
@@ -126,7 +126,7 @@ const Sidebar = ({ activeTab, onTabChange, newLeadsCount, onSignOut }: SidebarPr
           background: "transparent",
           color: "rgba(255,255,255,0.40)",
           cursor: "pointer",
-          fontFamily: "'Inter', sans-serif",
+          fontFamily: "'Montserrat', sans-serif",
           fontSize: 13,
           borderTop: "1px solid rgba(255,255,255,0.06)",
           borderRadius: 0,

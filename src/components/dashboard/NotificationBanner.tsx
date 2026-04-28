@@ -36,7 +36,7 @@ const NotificationBanner = ({ userId }: Props) => {
         alignItems: "center",
         justifyContent: "space-between",
         gap: 12,
-        fontFamily: "'Inter', sans-serif",
+        fontFamily: "'Montserrat', sans-serif",
         position: "sticky",
         top: 64,
         zIndex: 9,

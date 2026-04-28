@@ -68,7 +68,7 @@ const LeadToast = () => {
                 padding: 16,
                 borderLeft: "4px solid #C4291C",
                 boxShadow: "0 8px 32px rgba(0,0,0,0.25)",
-                fontFamily: "'Inter', sans-serif",
+                fontFamily: "'Montserrat', sans-serif",
               }}
             >
               <div

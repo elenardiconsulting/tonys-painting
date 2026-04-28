@@ -40,7 +40,7 @@ const Card = ({
     <div
       className="overview-card-number"
       style={{
-        fontFamily: "'Inter', sans-serif",
+        fontFamily: "'Montserrat', sans-serif",
         fontWeight: 700,
         fontSize: 28,
         color: numberColor || "#1A1A1A",
@@ -51,7 +51,7 @@ const Card = ({
     </div>
     <div
       style={{
-        fontFamily: "'Inter', sans-serif",
+        fontFamily: "'Montserrat', sans-serif",
         fontWeight: 500,
         fontSize: 13,
         color: "#6B6560",
@@ -157,7 +157,7 @@ const OverviewTab = ({ leads, loading }: Props) => {
       >
         <h2
           style={{
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "'Montserrat', sans-serif",
             fontWeight: 600,
             fontSize: 16,
             color: "#1A1A1A",
@@ -170,7 +170,7 @@ const OverviewTab = ({ leads, loading }: Props) => {
         {recent.length === 0 && !loading && (
           <div
             style={{
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'Montserrat', sans-serif",
               fontSize: 14,
               color: "#9CA3AF",
               padding: "20px 0",
@@ -192,7 +192,7 @@ const OverviewTab = ({ leads, loading }: Props) => {
                 borderRadius: 999,
                 fontSize: 11,
                 fontWeight: 600,
-                fontFamily: "'Inter', sans-serif",
+                fontFamily: "'Montserrat', sans-serif",
                 whiteSpace: "nowrap",
               }}
             >
@@ -222,7 +222,7 @@ const OverviewTab = ({ leads, loading }: Props) => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontFamily: "'Inter', sans-serif",
+                  fontFamily: "'Montserrat', sans-serif",
                   fontWeight: 700,
                   fontSize: 14,
                   flexShrink: 0,
@@ -234,7 +234,7 @@ const OverviewTab = ({ leads, loading }: Props) => {
                 <div
                   className="overview-recent-name"
                   style={{
-                    fontFamily: "'Inter', sans-serif",
+                    fontFamily: "'Montserrat', sans-serif",
                     fontWeight: 600,
                     fontSize: 14,
                     color: "#1A1A1A",
@@ -245,7 +245,7 @@ const OverviewTab = ({ leads, loading }: Props) => {
                 <div
                   className="overview-recent-meta-row"
                   style={{
-                    fontFamily: "'Inter', sans-serif",
+                    fontFamily: "'Montserrat', sans-serif",
                     fontWeight: 400,
                     fontSize: 13,
                     color: "#6B6560",

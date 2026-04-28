@@ -153,7 +153,7 @@ const Reviews = () => {
           }
 
           .reviews-slide-text {
-            font-family: Inter, sans-serif;
+            font-family: Montserrat, sans-serif;
             font-size: 14px;
             color: #1A1A1A;
             line-height: 1.7;
@@ -162,7 +162,7 @@ const Reviews = () => {
           }
 
           .reviews-slide-name {
-            font-family: Inter, sans-serif;
+            font-family: Montserrat, sans-serif;
             font-weight: 600;
             font-size: 13px;
             color: #6B6560;
