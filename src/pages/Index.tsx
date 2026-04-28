@@ -8,6 +8,7 @@ import PortfolioPreview from "@/components/site/PortfolioPreview";
 import PartnersSection from "@/components/site/PartnersSection";
 import Reviews from "@/components/site/Reviews";
 import AboutSnippet from "@/components/site/AboutSnippet";
+import InstagramReels from "@/components/site/InstagramReels";
 import FinalCTA from "@/components/site/FinalCTA";
 import Footer from "@/components/site/Footer";
 
@@ -95,6 +96,7 @@ const Index = () => {
         <PortfolioPreview />
         <PartnersSection />
         <Reviews />
+        <InstagramReels />
         <AboutSnippet />
         <FinalCTA />
       </main>
