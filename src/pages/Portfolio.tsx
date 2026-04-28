@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 type Category = "All Projects" | "Interior" | "Exterior" | "Remodeling" | "Commercial";
 
 interface Project {
-  id: number;
+  id: number | string;
   title: string;
   category: Exclude<Category, "All Projects">;
   location: string;
@@ -19,14 +19,23 @@ interface Project {
 }
 
 const PROJECTS: Project[] = [
+  { id: 'int-luxury-01', title: "Luxury Kitchen Renovation", category: "Interior", location: "Martha's Vineyard", src: "/images/interior-04.jpg" },
   { id: 1, title: "Coastal Residence", category: "Exterior", location: "New England", src: "/images/project-02.jpg" },
+  { id: 'int-luxury-02', title: "Open Plan Living Space", category: "Interior", location: "Martha's Vineyard", src: "/images/interior-03.jpg" },
   { id: 2, title: "Colonial Restoration", category: "Exterior", location: "New England", src: "/images/project-12.jpg" },
+  { id: 'floor-01', title: "Hardwood Floor Refinishing", category: "Remodeling", location: "New England", src: "/images/flooring-01.jpg" },
   { id: 3, title: "Waterfront Deck", category: "Exterior", location: "New England", src: "/images/project-08.jpg" },
+  { id: 'int-luxury-03', title: "White Kitchen Interior", category: "Interior", location: "New England", src: "/images/interior-05.jpg" },
   { id: 4, title: "Master Bath Remodel", category: "Remodeling", location: "New England", src: "/images/project-04.jpg" },
+  { id: 'remodel-kitchen', title: "Full Kitchen Remodel", category: "Remodeling", location: "Boston Area", src: "/images/remodeling-02.jpg" },
   { id: 5, title: "Wood Siding Project", category: "Exterior", location: "New England", src: "/images/project-14.jpg" },
+  { id: 'int-luxury-04', title: "Classic Kitchen Cabinetry", category: "Interior", location: "Boston Area", src: "/images/interior-01.jpg" },
   { id: 6, title: "Shingle Style Residence", category: "Exterior", location: "New England", src: "/images/project-06.jpg" },
+  { id: 'floor-02', title: "Built-in Cabinetry", category: "Interior", location: "Boston Area", src: "/images/flooring-02.jpg" },
   { id: 7, title: "Outdoor Deck Build", category: "Exterior", location: "New England", src: "/images/project-07.jpg" },
+  { id: 'int-luxury-05', title: "Kitchen Island Detail", category: "Interior", location: "Martha's Vineyard", src: "/images/interior-02.jpg" },
   { id: 8, title: "Modern Interior", category: "Interior", location: "New England", src: "/images/project-05.jpg" },
+  { id: 'floor-03', title: "Dark Hardwood Restoration", category: "Remodeling", location: "New England", src: "/images/flooring-03.jpg" },
   { id: 9, title: "Classic Colonial", category: "Exterior", location: "New England", src: "/images/project-13.jpg" },
   { id: 10, title: "Custom Closet Remodel", category: "Remodeling", location: "New England", src: "/images/project-15.jpg" },
   { id: 11, title: "Kitchen Remodel", category: "Remodeling", location: "New England", src: "/images/project-16.jpg" },
@@ -37,7 +46,7 @@ const FILTERS: Category[] = ["All Projects", "Interior", "Exterior", "Remodeling
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState<Category>("All Projects");
-  const [lightboxId, setLightboxId] = useState<number | null>(null);
+  const [lightboxId, setLightboxId] = useState<number | string | null>(null);
   const [activeSlide, setActiveSlide] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
 

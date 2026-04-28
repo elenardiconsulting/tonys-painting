@@ -2,12 +2,12 @@ import { useState, useRef, useEffect } from "react";
 import FadeUpSection from "@/components/site/FadeUpSection";
 
 const projects = [
-  { name: "Colonial home exterior painting", type: "Exterior", src: "/images/project-13.jpg", alt: "Colonial home exterior painting, New England" },
-  { name: "Tony's team painting home", type: "Exterior", src: "/images/project-12.jpg", alt: "Tony's team painting blue exterior home" },
-  { name: "Premium deck staining", type: "Exterior", src: "/images/project-07.jpg", alt: "Premium deck staining and finishing" },
-  { name: "Bathroom remodel", type: "Remodeling", src: "/images/project-04.jpg", alt: "Bathroom remodel with tile and hardwood" },
-  { name: "Deck staining", type: "Exterior", src: "/images/project-09.jpg", alt: "Deck staining New England" },
-  { name: "Kitchen remodel", type: "Remodeling", src: "/images/project-16.jpg", alt: "Kitchen remodel with countertop installation" },
+  { name: "Luxury Kitchen Interior", type: "Interior", src: "/images/interior-04.jpg", alt: "Luxury white kitchen interior painting and remodeling, New England" },
+  { name: "Open Plan Living Space", type: "Interior", src: "/images/interior-03.jpg", alt: "Open plan kitchen and living room interior, Martha's Vineyard" },
+  { name: "Hardwood Floor Refinishing", type: "Remodeling", src: "/images/flooring-01.jpg", alt: "Hardwood floor refinishing and restoration, New England" },
+  { name: "Kitchen Remodel", type: "Remodeling", src: "/images/remodeling-02.jpg", alt: "Full kitchen remodel with subway tile and custom cabinets" },
+  { name: "Kitchen Detail", type: "Interior", src: "/images/interior-01.jpg", alt: "White kitchen cabinets and island interior painting" },
+  { name: "Floor Restoration", type: "Remodeling", src: "/images/flooring-03.jpg", alt: "Dark hardwood floor restoration, Boston area" },
 ];
 
 const PortfolioPreview = () => {
@@ -57,8 +57,11 @@ const PortfolioPreview = () => {
               <img
                 src={p.src}
                 alt={p.alt}
-                loading="lazy"
+                loading={i < 2 ? "eager" : "lazy"}
+                // @ts-expect-error fetchpriority is valid HTML
+                fetchpriority={i < 2 ? "high" : undefined}
                 decoding="async"
+                style={{ objectPosition: "center" }}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="portfolio-overlay absolute inset-0 flex flex-col items-center justify-center text-center p-6">
@@ -77,7 +80,7 @@ const PortfolioPreview = () => {
             ref={scrollRef}
             className="portfolio-slider"
           >
-            {projects.map((p) => (
+            {projects.map((p, i) => (
               <div
                 key={p.name}
                 className="portfolio-slide"
@@ -85,8 +88,11 @@ const PortfolioPreview = () => {
                 <img
                   src={p.src}
                   alt={p.alt}
-                  loading="lazy"
+                  loading={i < 2 ? "eager" : "lazy"}
+                  // @ts-expect-error fetchpriority is valid HTML
+                  fetchpriority={i < 2 ? "high" : undefined}
                   decoding="async"
+                  style={{ objectPosition: "center" }}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-4">

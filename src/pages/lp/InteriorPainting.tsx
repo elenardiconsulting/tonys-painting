@@ -51,12 +51,12 @@ const LPInteriorPainting = () => (
       "New England",
     ]}
     portfolioImages={[
-      "/images/project-05.jpg",
-      "/images/project-15.jpg",
-      "/images/project-04.jpg",
-      "/images/project-16.jpg",
-      "/images/project-01.jpg",
-      "/images/project-02.jpg"
+      "/images/interior-04.jpg",
+      "/images/interior-03.jpg",
+      "/images/interior-05.jpg",
+      "/images/interior-01.jpg",
+      "/images/interior-02.jpg",
+      "/images/project-05.jpg"
     ]}
   />
   </>
