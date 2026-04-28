@@ -288,12 +288,13 @@ const Hero = () => {
             className="hero-headline"
           >
             <span className="desktop-only">
-              Transforming homes with<br />
-              <span style={{ color: "#C4291C" }}>intention and detail.</span>
+              Transforming homes<br />
+              with <span style={{ color: "#C4291C" }}>intention and detail.</span>
             </span>
             <span className="mobile-only">
-              Transforming homes<br />
-              with <span style={{ color: '#C4291C' }}>intention</span><br />
+              Transforming<br />
+              homes with<br />
+              <span style={{ color: '#C4291C' }}>intention</span><br />
               and <span style={{ color: '#C4291C' }}>detail.</span>
             </span>
           </motion.h1>
