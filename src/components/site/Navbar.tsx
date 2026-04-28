@@ -30,12 +30,14 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === "/";
 
   useEffect(() => {
     setOpen(false);
     setServicesOpen(false);
+    setMobileServicesOpen(false);
   }, [location.pathname]);
 
   useEffect(() => {
