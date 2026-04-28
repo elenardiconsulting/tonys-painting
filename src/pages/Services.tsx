@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Brush, Home, Hammer, Wrench, ArrowRight, Layers, Layout, HardHat, Ruler, Grid, Fence, Paintbrush, Square } from "lucide-react";
 import SEO from "@/components/SEO";
 import PageLayout from "@/components/site/PageLayout";
 import InnerHero from "@/components/site/InnerHero";
@@ -8,76 +7,76 @@ import RippleButton from "@/components/site/RippleButton";
 
 const services = [
   {
-    icon: Brush,
-    name: "Interior Painting",
-    desc: "Refined interior finishes for every room, from a single accent wall to your entire home.",
-    to: "/services/interior-painting",
+    name: 'Interior Painting',
+    description: 'Refined interior finishes for every room, from a single accent wall to your entire home.',
+    href: '/services/interior-painting',
+    image: '/images/interior-04.jpg',
   },
   {
-    icon: Paintbrush,
-    name: "Exterior Painting",
-    desc: "Premium coatings built to handle New England weather, applied with proper prep and care.",
-    to: "/services/exterior-painting",
+    name: 'Exterior Painting',
+    description: 'Premium coatings built to handle New England weather, applied with proper prep and care.',
+    href: '/services/exterior-painting',
+    image: '/images/project-13.jpg',
   },
   {
-    icon: Hammer,
-    name: "Remodeling",
-    desc: "Flooring, tile, plastering and carpentry handled by one trusted team from start to finish.",
-    to: "/services/remodeling",
+    name: 'Remodeling',
+    description: 'Full-scope remodeling for kitchens, bathrooms and living spaces across New England.',
+    href: '/services/remodeling',
+    image: '/images/remodeling-02.jpg',
   },
   {
-    icon: Wrench,
-    name: "Handyman Services",
-    desc: "The smaller jobs that keep your property looking sharp and working the way it should.",
-    to: "/services/handyman",
+    name: 'Flooring',
+    description: 'Hardwood installation, refinishing and restoration that transforms any space.',
+    href: '/services/flooring',
+    image: '/images/flooring-01.jpg',
   },
   {
-    icon: Layers,
-    name: "Deck and Stairs",
-    desc: "Staining, sealing and repairs for decks and outdoor stairs.",
-    to: "/services/deck-stairs",
+    name: 'Ceramic Tile',
+    description: 'Precision tile work for bathrooms, kitchens and floors. Clean lines, lasting results.',
+    href: '/services/ceramic-tile',
+    image: '/images/project-04.jpg',
   },
   {
-    icon: HardHat,
-    name: "Construction Cleaning",
-    desc: "Post-construction cleanup for residential and commercial spaces.",
-    to: "/services/construction-cleaning",
+    name: 'Deck and Stairs',
+    description: 'Staining, sealing and repair for decks and stairs built to withstand New England winters.',
+    href: '/services/deck-stairs',
+    image: '/images/project-07.jpg',
   },
   {
-    icon: Ruler,
-    name: "General Carpentry",
-    desc: "Trim, moldings, built-ins and structural wood repairs.",
-    to: "/services/carpentry",
+    name: 'General Carpentry',
+    description: 'Trim, moldings, built-ins and structural wood repairs done with care and precision.',
+    href: '/services/carpentry',
+    image: '/images/flooring-02.jpg',
   },
   {
-    icon: Layout,
-    name: "Flooring",
-    desc: "Hardwood, vinyl and LVP installation and refinishing.",
-    to: "/services/flooring",
+    name: 'Plastering',
+    description: 'Crack repair, skim coating and plaster restoration for walls that look brand new.',
+    href: '/services/plastering',
+    image: '/images/interior-01.jpg',
   },
   {
-    icon: Grid,
-    name: "Ceramic Tile",
-    desc: "Precision tile work for bathrooms, kitchens and floors.",
-    to: "/services/ceramic-tile",
+    name: 'Handyman Services',
+    description: 'Small repairs and fixes done right. No job is too small for our experienced team.',
+    href: '/services/handyman',
+    image: '/images/project-09.jpg',
   },
   {
-    icon: Fence,
-    name: "Fence",
-    desc: "Wood and vinyl fence installation, repair and staining.",
-    to: "/services/fence",
+    name: 'Fence',
+    description: 'Wood and vinyl fence installation and repair that stands strong through any season.',
+    href: '/services/fence',
+    image: '/images/project-14.jpg',
   },
   {
-    icon: Square,
-    name: "Plastering",
-    desc: "Crack repair, skim coating and paint-ready surface prep.",
-    to: "/services/plastering",
+    name: 'Countertop',
+    description: 'Kitchen and bathroom countertop installation with precise measurement and clean finish.',
+    href: '/services/countertop',
+    image: '/images/interior-02.jpg',
   },
   {
-    icon: Home,
-    name: "Countertop",
-    desc: "Kitchen and bathroom countertop installation and finishing.",
-    to: "/services/countertop",
+    name: 'Construction Cleaning',
+    description: 'Post-construction cleanup for residential spaces. Ready to use from day one.',
+    href: '/services/construction-cleaning',
+    image: '/images/interior-05.jpg',
   },
 ];
 
@@ -118,24 +117,111 @@ const Services = () => {
 
       <section className="bg-background">
         <div className="container py-16 md:py-24">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {services.map(({ icon: Icon, name, desc, to }, i) => (
-              <FadeUpSection key={to} delay={i * 0.1}>
-                <Link
-                  to={to}
-                  className="service-card group relative bg-surface border border-stone p-8 md:p-10 block hover:shadow-sm"
-                >
-                  <Icon className="text-primary" size={32} strokeWidth={1.5} />
-                  <h2 className="mt-6 font-display text-2xl md:text-3xl text-foreground">{name}</h2>
-                  <p className="mt-3 text-muted-foreground leading-relaxed max-w-md">{desc}</p>
-                  <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:gap-3 transition-all">
-                    Learn more <ArrowRight size={14} />
-                  </span>
+          <div className="services-page-grid">
+            {services.map((service, i) => (
+              <FadeUpSection key={service.href} delay={i * 0.05}>
+                <Link to={service.href} className="service-image-card-link">
+                  <article className="service-image-card">
+                    <div className="service-image-wrap">
+                      <img
+                        src={service.image}
+                        alt={service.name}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                    <div style={{ height: '2px', background: '#C4291C' }} />
+                    <div style={{ padding: '20px', flex: 1, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      <h2 style={{
+                        fontFamily: "'Playfair Display', serif",
+                        fontWeight: 700,
+                        fontSize: '18px',
+                        color: '#1A1A1A',
+                        margin: 0,
+                      }}>
+                        {service.name}
+                      </h2>
+                      <p style={{
+                        fontFamily: 'Inter, sans-serif',
+                        fontSize: '13px',
+                        color: '#6B6560',
+                        lineHeight: 1.65,
+                        margin: 0,
+                        flex: 1,
+                      }}>
+                        {service.description}
+                      </p>
+                      <span style={{
+                        fontFamily: 'Inter, sans-serif',
+                        fontSize: '13px',
+                        fontWeight: 600,
+                        color: '#C4291C',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '4px',
+                        marginTop: '4px',
+                      }}>
+                        Learn more →
+                      </span>
+                    </div>
+                  </article>
                 </Link>
               </FadeUpSection>
             ))}
           </div>
         </div>
+
+        <style>{`
+          .service-image-card-link {
+            display: block;
+            text-decoration: none;
+            height: 100%;
+          }
+          .service-image-card {
+            background: #FFFFFF;
+            border-radius: 12px;
+            border: 0.5px solid #E8E2D8;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: box-shadow 0.2s ease;
+            height: 100%;
+          }
+          .service-image-wrap {
+            position: relative;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+          }
+          .service-image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            transition: transform 0.4s ease;
+          }
+          .service-image-card:hover {
+            box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+          }
+          .service-image-card:hover img {
+            transform: scale(1.04);
+          }
+          .services-page-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
+          @media (min-width: 768px) {
+            .services-page-grid {
+              grid-template-columns: repeat(2, 1fr);
+            }
+          }
+          @media (min-width: 1024px) {
+            .services-page-grid {
+              grid-template-columns: repeat(3, 1fr);
+            }
+          }
+        `}</style>
       </section>
 
       <section className="bg-dark">
