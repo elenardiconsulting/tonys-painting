@@ -7,13 +7,13 @@ interface FadeUpSectionProps extends Omit<HTMLMotionProps<"div">, "initial" | "w
   as?: "div" | "section" | "article" | "li" | "ol" | "ul";
 }
 
-const FadeUpSection = ({ children, delay = 0, as = "div", className, ...rest }: FadeUpSectionProps) => {
+const FadeUpSection = ({ children, delay = 0, as = "div", className, style, ...rest }: FadeUpSectionProps) => {
   const reduce = useReducedMotion();
   const MotionTag = motion[as] as typeof motion.div;
 
   if (reduce) {
     return (
-      <MotionTag className={className} {...rest}>
+      <MotionTag className={className} style={style} {...rest}>
         {children}
       </MotionTag>
     );
@@ -23,8 +23,9 @@ const FadeUpSection = ({ children, delay = 0, as = "div", className, ...rest }: 
     <MotionTag
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut", delay }}
-      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.45, ease: "easeOut", delay }}
+      viewport={{ once: true, margin: "-40px" }}
+      style={{ willChange: "opacity, transform", ...style }}
       className={className}
       {...rest}
     >

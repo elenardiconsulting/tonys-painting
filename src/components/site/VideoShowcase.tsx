@@ -125,7 +125,7 @@ const VideoShowcase = () => {
               src="/videos/tonys-showreel.mp4"
               controls
               muted
-              preload="metadata"
+              preload="none"
               playsInline
               style={{
                 width: "100%",

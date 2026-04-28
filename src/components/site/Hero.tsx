@@ -76,8 +76,8 @@ const GlassForm = () => {
       onSubmit={handleSubmit}
       style={{
         background: "rgba(196, 41, 28, 0.056)",
-        backdropFilter: "blur(4px)",
-        WebkitBackdropFilter: "blur(4px)",
+        backdropFilter: "blur(10px)",
+        WebkitBackdropFilter: "blur(10px)",
         border: "1px solid rgba(196, 41, 28, 0.144)",
         borderRadius: "16px",
         padding: "28px",
@@ -85,6 +85,7 @@ const GlassForm = () => {
         flexDirection: "column",
         gap: "14px",
         boxShadow: "0 8px 32px rgba(0, 0, 0, 0.30), inset 0 1px 0 rgba(255,255,255,0.08)",
+        willChange: "transform",
       }}
     >
       <div>
@@ -272,7 +273,11 @@ const Hero = () => {
         src={HERO_IMAGE}
         alt="Tony's Painting professional painting exterior"
         loading="eager"
+        decoding="async"
+        // @ts-expect-error fetchpriority is valid HTML attr
+        fetchpriority="high"
         className="hero-bg-image"
+        style={{ willChange: "transform" }}
       />
 
       {/* Overlays */}
