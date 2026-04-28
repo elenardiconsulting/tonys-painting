@@ -9,39 +9,49 @@ const reels = [
 
 const INSTAGRAM_PROFILE = "https://www.instagram.com/tonyspainting_remodeling/";
 
-const ReelCard = ({ reel, index }: { reel: typeof reels[0]; index: number }) => {
+const IgIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="white" strokeWidth="2" />
+    <circle cx="12" cy="12" r="4" stroke="white" strokeWidth="2" />
+    <circle cx="17.5" cy="6.5" r="1.2" fill="white" />
+  </svg>
+);
+
+const ReelCard = ({ reel }: { reel: typeof reels[0] }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const el = containerRef.current;
+    const el = ref.current;
     if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
           videoRef.current?.play().catch(() => {});
         } else {
           videoRef.current?.pause();
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.4 }
     );
-    observer.observe(el);
-    return () => observer.disconnect();
+    obs.observe(el);
+    return () => obs.disconnect();
   }, []);
 
   return (
     <div
-      ref={containerRef}
+      ref={ref}
       onClick={() => window.open(reel.url, "_blank", "noopener,noreferrer")}
       style={{
-        position: "relative",
+        width: "100%",
+        height: "100%",
         borderRadius: "12px",
         overflow: "hidden",
-        border: "1px solid #EFEFEF",
         background: "#000",
-        aspectRatio: "9/16",
+        position: "relative",
         cursor: "pointer",
+        border: "1px solid rgba(0,0,0,0.08)",
+        boxShadow: "0 4px 20px rgba(0,0,0,0.10)",
       }}
     >
       <video
@@ -59,43 +69,27 @@ const ReelCard = ({ reel, index }: { reel: typeof reels[0]; index: number }) => 
         }}
       />
 
-      {/* Overlay escuro no hover */}
-      <div
-        onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(0,0,0,0.25)")}
-        onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(0,0,0,0)")}
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: "rgba(0,0,0,0)",
-          transition: "background 0.25s ease",
-        }}
-      />
-
-      {/* Badge Instagram */}
       <div
         style={{
           position: "absolute",
-          top: "12px",
-          right: "12px",
+          top: "10px",
+          right: "10px",
           display: "flex",
           alignItems: "center",
           gap: "6px",
-          padding: "6px 10px",
+          padding: "5px 10px",
           borderRadius: "999px",
           background: "rgba(0,0,0,0.55)",
           color: "#FFFFFF",
           fontFamily: "Montserrat, sans-serif",
           fontWeight: 600,
-          fontSize: "12px",
+          fontSize: "11px",
+          letterSpacing: "0.02em",
           backdropFilter: "blur(6px)",
           pointerEvents: "none",
         }}
       >
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="white" strokeWidth="2" />
-          <circle cx="12" cy="12" r="4" stroke="white" strokeWidth="2" />
-          <circle cx="17.5" cy="6.5" r="1.2" fill="white" />
-        </svg>
+        <IgIcon />
         Reel
       </div>
     </div>
@@ -104,18 +98,76 @@ const ReelCard = ({ reel, index }: { reel: typeof reels[0]; index: number }) => 
 
 const InstagramReels = () => {
   const sliderRef = useRef<HTMLDivElement | null>(null);
-  const [activeSlide, setActiveSlide] = useState(0);
+  const [active, setActive] = useState(0);
 
   useEffect(() => {
     const el = sliderRef.current;
     if (!el) return;
-    const handleScroll = () => {
-      const index = Math.round(el.scrollLeft / el.offsetWidth);
-      setActiveSlide(index);
-    };
-    el.addEventListener("scroll", handleScroll, { passive: true });
-    return () => el.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setActive(Math.round(el.scrollLeft / el.offsetWidth));
+    el.addEventListener("scroll", onScroll, { passive: true });
+    return () => el.removeEventListener("scroll", onScroll);
   }, []);
+
+  const Avatar = (
+    <a
+      href={INSTAGRAM_PROFILE}
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        display: "inline-block",
+        padding: "3px",
+        borderRadius: "50%",
+        background:
+          "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
+        flexShrink: 0,
+      }}
+      aria-label="Open Instagram profile"
+    >
+      <div
+        style={{
+          width: "52px",
+          height: "52px",
+          borderRadius: "50%",
+          padding: "2px",
+          background: "#F5F1EB",
+        }}
+      >
+        <img
+          src="/favicon.ico"
+          alt="Tony's Painting Instagram"
+          style={{
+            width: "100%",
+            height: "100%",
+            borderRadius: "50%",
+            objectFit: "cover",
+            display: "block",
+          }}
+        />
+      </div>
+    </a>
+  );
+
+  const FollowBtn = (
+    <a
+      href={INSTAGRAM_PROFILE}
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        background: "#0095F6",
+        color: "#FFFFFF",
+        fontFamily: "Montserrat, sans-serif",
+        fontWeight: 600,
+        fontSize: "14px",
+        padding: "9px 18px",
+        borderRadius: "8px",
+        textDecoration: "none",
+        whiteSpace: "nowrap",
+        flexShrink: 0,
+      }}
+    >
+      Follow
+    </a>
+  );
 
   return (
     <section
@@ -123,17 +175,7 @@ const InstagramReels = () => {
       style={{ padding: "80px 0" }}
       aria-label="Instagram Reels"
     >
-      <style>{`
-        .reels-desktop { display: grid; }
-        .reels-mobile { display: none; }
-        @media (max-width: 767px) {
-          .reels-desktop { display: none !important; }
-          .reels-mobile { display: block !important; }
-        }
-        .reels-mobile div::-webkit-scrollbar { display: none; }
-      `}</style>
-
-      {/* Header */}
+      {/* HEADER */}
       <div
         className="container"
         style={{
@@ -141,48 +183,21 @@ const InstagramReels = () => {
           alignItems: "center",
           justifyContent: "space-between",
           marginBottom: "32px",
-          flexWrap: "wrap",
-          gap: "16px",
+          flexWrap: "nowrap",
+          gap: "12px",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-          <a
-            href={INSTAGRAM_PROFILE}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: "inline-block",
-              padding: "3px",
-              borderRadius: "50%",
-              background:
-                "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
-            }}
-            aria-label="Open Tony's Painting Instagram profile"
-          >
-            <div
-              style={{
-                width: "56px",
-                height: "56px",
-                borderRadius: "50%",
-                padding: "2px",
-                background: "#F5F1EB",
-              }}
-            >
-              <img
-                src="/favicon.ico"
-                alt="Tony's Painting Instagram"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  borderRadius: "50%",
-                  objectFit: "cover",
-                  display: "block",
-                }}
-              />
-            </div>
-          </a>
-
-          <div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "12px",
+            minWidth: 0,
+            flex: 1,
+          }}
+        >
+          {Avatar}
+          <div style={{ minWidth: 0 }}>
             <a
               href={INSTAGRAM_PROFILE}
               target="_blank"
@@ -190,11 +205,14 @@ const InstagramReels = () => {
               style={{
                 fontFamily: "Montserrat, sans-serif",
                 fontWeight: 600,
-                fontSize: "16px",
+                fontSize: "15px",
                 color: "#1A1A1A",
                 textDecoration: "none",
                 display: "block",
                 lineHeight: 1.2,
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
               }}
             >
               @tonyspainting_remodeling
@@ -202,7 +220,7 @@ const InstagramReels = () => {
             <span
               style={{
                 fontFamily: "Montserrat, sans-serif",
-                fontSize: "13px",
+                fontSize: "12px",
                 color: "#6B6560",
               }}
             >
@@ -210,47 +228,32 @@ const InstagramReels = () => {
             </span>
           </div>
         </div>
+        {FollowBtn}
+      </div>
 
-        <a
-          href={INSTAGRAM_PROFILE}
-          target="_blank"
-          rel="noopener noreferrer"
+      {/* DESKTOP: 4 colunas */}
+      <div className="ig-desktop">
+        <div
+          className="container"
           style={{
-            background: "#0095F6",
-            color: "#FFFFFF",
-            fontFamily: "Montserrat, sans-serif",
-            fontWeight: 600,
-            fontSize: "14px",
-            padding: "10px 20px",
-            borderRadius: "8px",
-            textDecoration: "none",
-            transition: "background 0.2s ease",
+            display: "grid",
+            gridTemplateColumns: "repeat(4, 1fr)",
+            gap: "16px",
+            maxWidth: "80%",
+            marginLeft: "auto",
+            marginRight: "auto",
           }}
         >
-          Follow
-        </a>
+          {reels.map((r, i) => (
+            <div key={i} style={{ aspectRatio: "9/16" }}>
+              <ReelCard reel={r} />
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* DESKTOP: 4 videos */}
-      <div
-        className="container reels-desktop"
-        style={{
-          gridTemplateColumns: "repeat(4, 1fr)",
-          gap: "16px",
-          maxWidth: "80%",
-          marginLeft: "auto",
-          marginRight: "auto",
-          overflowY: "hidden",
-          overscrollBehaviorX: "contain",
-        }}
-      >
-        {reels.map((reel, i) => (
-          <ReelCard key={i} reel={reel} index={i} />
-        ))}
-      </div>
-
-      {/* MOBILE: 1 video por vez */}
-      <div className="reels-mobile">
+      {/* MOBILE: slider 1 por vez */}
+      <div className="ig-mobile">
         <div
           ref={sliderRef}
           style={{
@@ -265,7 +268,7 @@ const InstagramReels = () => {
             padding: "0 24px",
           }}
         >
-          {reels.map((reel, i) => (
+          {reels.map((r, i) => (
             <div
               key={i}
               style={{
@@ -274,14 +277,16 @@ const InstagramReels = () => {
                 marginLeft: i === 0 ? "calc((100vw - 48px) * 0.1)" : 0,
                 marginRight: i === reels.length - 1 ? "calc((100vw - 48px) * 0.1)" : 0,
                 scrollSnapAlign: "center",
-                maxHeight: "52vh",
+                aspectRatio: "9/16",
+                maxHeight: "60vh",
               }}
             >
-              <ReelCard reel={reel} index={i} />
+              <ReelCard reel={r} />
             </div>
           ))}
         </div>
 
+        {/* Dots */}
         <div
           style={{
             display: "flex",
@@ -294,10 +299,10 @@ const InstagramReels = () => {
             <div
               key={i}
               style={{
-                width: activeSlide === i ? "20px" : "6px",
+                width: active === i ? "20px" : "6px",
                 height: "6px",
-                borderRadius: activeSlide === i ? "3px" : "50%",
-                background: activeSlide === i ? "#C4291C" : "rgba(0,0,0,0.18)",
+                borderRadius: active === i ? "3px" : "50%",
+                background: active === i ? "#C4291C" : "rgba(0,0,0,0.18)",
                 transition: "all 0.3s ease",
               }}
             />
