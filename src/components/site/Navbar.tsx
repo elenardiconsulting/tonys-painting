@@ -137,13 +137,29 @@ const Navbar = () => {
             </a>
           </div>
 
-          <button
-            aria-label="Toggle menu"
-            className="md:hidden text-white relative z-[101]"
-            onClick={() => setOpen((v) => !v)}
-          >
-            {open ? <X size={28} /> : <Menu size={28} />}
-          </button>
+        </nav>
+      </header>
+
+      {/* Hamburger/X mobile - acima do overlay */}
+      <button
+        aria-label="Toggle menu"
+        onClick={() => setOpen((v) => !v)}
+        className="md:hidden"
+        style={{
+          position: "fixed",
+          top: "14px",
+          right: "20px",
+          zIndex: 110,
+          background: "none",
+          border: "none",
+          padding: "8px",
+          cursor: "pointer",
+          color: "white",
+          display: "flex",
+        }}
+      >
+        {open ? <X size={28} /> : <Menu size={28} />}
+      </button>
         </nav>
       </header>
 
