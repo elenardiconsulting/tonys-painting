@@ -348,9 +348,11 @@ const ServiceDetail = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {(() => {
               const gallery: Record<string, string[]> = {
-                "interior-painting": ["/images/project-05.jpg", "/images/project-15.jpg", "/images/project-04.jpg", "/images/project-16.jpg", "/images/project-02.jpg", "/images/project-01.jpg"],
+                "interior-painting": ["/images/interior-04.jpg", "/images/interior-03.jpg", "/images/interior-05.jpg", "/images/interior-01.jpg", "/images/interior-02.jpg", "/images/project-05.jpg"],
                 "exterior-painting": ["/images/project-02.jpg", "/images/project-12.jpg", "/images/project-14.jpg", "/images/project-13.jpg", "/images/project-03.jpg", "/images/project-01.jpg"],
-                "remodeling": ["/images/project-04.jpg", "/images/project-16.jpg", "/images/project-15.jpg", "/images/project-08.jpg", "/images/project-07.jpg", "/images/project-09.jpg"],
+                "remodeling": ["/images/remodeling-02.jpg", "/images/flooring-01.jpg", "/images/project-04.jpg", "/images/project-16.jpg", "/images/project-15.jpg", "/images/project-08.jpg"],
+                "flooring": ["/images/flooring-01.jpg", "/images/flooring-03.jpg", "/images/flooring-02.jpg", "/images/project-08.jpg", "/images/project-07.jpg", "/images/project-09.jpg"],
+                "countertop": ["/images/interior-02.jpg", "/images/interior-01.jpg", "/images/interior-04.jpg", "/images/project-16.jpg"],
                 "handyman": ["/images/project-08.jpg", "/images/project-07.jpg", "/images/project-09.jpg", "/images/project-11.jpg"]
               };
               const images = service.slug ? (gallery[service.slug] || []) : [];
@@ -359,7 +361,7 @@ const ServiceDetail = () => {
                   key={i}
                   className="aspect-[4/5] bg-background overflow-hidden"
                 >
-                  <img src={src} alt={`Tony's ${service.name} project detail`} className="w-full h-full object-cover" loading="lazy" />
+                  <img src={src} alt={`Tony's ${service.name} project detail`} className="w-full h-full object-cover" loading="lazy" decoding="async" style={{ objectPosition: "center" }} />
                 </div>
               ));
             })()}
