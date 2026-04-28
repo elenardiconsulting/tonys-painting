@@ -64,13 +64,14 @@ const PortfolioPreview = () => {
           </a>
         </FadeUpSection>
 
-        {/* Desktop Layout: 2 rows de 3 fixas */}
+        {/* Desktop Layout: 1 row de 3 fixas + slider para os proximos 3 */}
         <div className="portfolio-desktop-layout">
+          {/* Row 1: 3 fixas */}
           <div className="grid grid-cols-3 gap-6">
-            {projects.map((p, i) => (
+            {fixedProjects.map((p, i) => (
               <FadeUpSection
                 key={p.name}
-                delay={(i % 3) * 0.1}
+                delay={i * 0.1}
                 as="article"
                 className="portfolio-item group relative aspect-[4/5] bg-background overflow-hidden"
               >
@@ -93,6 +94,50 @@ const PortfolioPreview = () => {
               </FadeUpSection>
             ))}
           </div>
+
+          {/* Row 2: slider com os proximos 3 */}
+          {sliderProjects.length > 0 && (
+            <div className="mt-6">
+              <div ref={desktopScrollRef} className="portfolio-desktop-slider">
+                {sliderProjects.map((p) => (
+                  <article
+                    key={p.name}
+                    className="portfolio-item portfolio-desktop-slide group relative aspect-[4/5] bg-background overflow-hidden"
+                  >
+                    <img
+                      src={p.src}
+                      alt={p.alt}
+                      loading="lazy"
+                      decoding="async"
+                      style={{ objectPosition: "center" }}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="portfolio-overlay absolute inset-0 flex flex-col items-center justify-center text-center p-6">
+                      <div className="portfolio-caption">
+                        <p className="text-xs uppercase tracking-[0.2em] text-primary mb-2">{p.type}</p>
+                        <h3 className="font-display text-2xl md:text-3xl text-background">{p.name}</h3>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+
+              {sliderProjects.length > 3 && (
+                <div className="flex justify-center items-center gap-2 mt-4">
+                  {sliderProjects.map((_, i) => (
+                    <div
+                      key={i}
+                      className={`transition-all duration-300 ${
+                        activeDesktopSlide === i
+                          ? "bg-[#C4291C] w-[20px] h-[6px] rounded-[3px]"
+                          : "bg-black/20 w-[6px] h-[6px] rounded-full"
+                      }`}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Mobile Layout — sem alteracao */}
