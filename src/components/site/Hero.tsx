@@ -288,21 +288,18 @@ const Hero = () => {
       <div className="hero-layout-container">
         {/* Left/Main Content Panel */}
         <div className="hero-content">
-          <motion.h1
-            {...fadeUp(0)}
-            className="hero-headline"
-          >
+          <h1 className="hero-headline">
             <span className="desktop-only">
               Transforming homes<br />
-              with <span style={{ color: "#C4291C" }}>intention and detail.</span>
+              with intention and detail.
             </span>
             <span className="mobile-only">
               Transforming<br />
               homes with<br />
-              <span style={{ color: '#C4291C' }}>intention</span><br />
-              and <span style={{ color: '#C4291C' }}>detail.</span>
+              intention<br />
+              and detail.
             </span>
-          </motion.h1>
+          </h1>
 
           <motion.p
             {...fadeUp(0.3)}
