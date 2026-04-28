@@ -160,8 +160,6 @@ const Navbar = () => {
       >
         {open ? <X size={28} /> : <Menu size={28} />}
       </button>
-        </nav>
-      </header>
 
       {/* MOBILE MENU - fora do header */}
       <div
