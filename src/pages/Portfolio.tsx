@@ -55,7 +55,11 @@ const Portfolio = () => {
       ? PROJECTS
       : PROJECTS.filter((p) => p.category === activeFilter);
   const mobileGridProjects = filtered.slice(0, 4);
-  const mobileSliderProjects = filtered.slice(4);
+  const mobileSliderRest = filtered.slice(4);
+  const mobileSliderPages: Project[][] = [];
+  for (let i = 0; i < mobileSliderRest.length; i += 4) {
+    mobileSliderPages.push(mobileSliderRest.slice(i, i + 4));
+  }
 
   const lightboxIndex = lightboxId != null ? filtered.findIndex((p) => p.id === lightboxId) : -1;
   const currentProject = lightboxIndex >= 0 ? filtered[lightboxIndex] : null;
