@@ -187,7 +187,38 @@ const PortfolioPreview = () => {
       </div>
 
       <style>{`
+        .portfolio-desktop-layout {
+          display: block;
+        }
+        .portfolio-mobile-layout {
+          display: none;
+        }
+
+        .portfolio-desktop-slider {
+          display: flex;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+          gap: 24px;
+        }
+        .portfolio-desktop-slider::-webkit-scrollbar {
+          display: none;
+        }
+        .portfolio-desktop-slide {
+          flex-shrink: 0;
+          width: calc((100% - 48px) / 3);
+          scroll-snap-align: start;
+        }
+
         @media (max-width: 767px) {
+          .portfolio-desktop-layout {
+            display: none !important;
+          }
+          .portfolio-mobile-layout {
+            display: block !important;
+          }
+
           .portfolio-slider {
             display: flex;
             overflow-x: auto;
