@@ -18,7 +18,7 @@ const services = [
     name: 'Remodeling',
     description: 'Full-scope remodeling for kitchens, bathrooms and living spaces across New England.',
     href: '/services/remodeling',
-    image: '/images/remodeling-02.jpg',
+    image: '/images/project-15.jpg',
   },
   {
     name: 'Flooring',
