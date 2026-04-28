@@ -13,13 +13,28 @@ const contactBlocks = [
   },
   {
     label: "Email",
-    value: "contact@tonyspaintingcmv.com",
-    href: "mailto:contact@tonyspaintingcmv.com",
+    value: "Tonyspainting11@gmail.com",
+    href: "mailto:Tonyspainting11@gmail.com",
   },
   {
     label: "Service Area",
     value: "New England",
     href: null,
+  },
+  {
+    label: "Office",
+    value: "11 Cook Rd, Vineyard Haven, MA 02568",
+    href: "https://maps.google.com/?q=11+Cook+Rd,+Vineyard+Haven,+MA+02568",
+  },
+  {
+    label: "Office",
+    value: "2 Williams Ave, Pocasset, MA",
+    href: "https://maps.google.com/?q=2+Williams+Ave,+Pocasset,+MA",
+  },
+  {
+    label: "Office",
+    value: "240 W Center St, West Bridgewater, MA 02379",
+    href: "https://maps.google.com/?q=240+W+Center+St,+West+Bridgewater,+MA+02379",
   },
 ];
 
@@ -46,7 +61,7 @@ const Contact = () => {
             "@type": "LocalBusiness",
             name: "Tony's Painting and Remodeling",
             telephone: "+15089829675",
-            email: "contact@tonyspaintingcmv.com",
+            email: "Tonyspainting11@gmail.com",
             address: {
               "@type": "PostalAddress",
               addressLocality: "New England",
