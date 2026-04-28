@@ -362,3 +362,15 @@ section {
 img {
   content-visibility: auto;
 }
+
+/* Impedir que sliders capturem scroll vertical */
+.reels-desktop,
+.reels-mobile {
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+}
+
+.reels-mobile > div:first-child {
+  overflow-y: hidden;
+  overscroll-behavior: contain;
+}
