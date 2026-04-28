@@ -6,7 +6,7 @@ const services = [
     name: 'Interior Painting',
     description: 'Refined interior finishes for every room, from a single accent wall to your entire home.',
     href: '/services/interior-painting',
-    image: '/images/interior-04.jpg',
+    image: '/images/interior-05.jpg',
   },
   {
     name: 'Exterior Painting',
