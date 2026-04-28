@@ -207,17 +207,11 @@ const PortfolioPreview = () => {
           </div>
         </div>
 
-        {/* Mobile Layout — sem alteracao */}
-        <div className="portfolio-mobile-layout md:hidden -mx-6">
-          <div
-            ref={scrollRef}
-            className="portfolio-slider"
-          >
-            {projects.map((p, i) => (
-              <div
-                key={p.name}
-                className="portfolio-slide"
-              >
+        {/* Mobile Layout: grid 2x2 com primeiras 4 fotos + slider com restante */}
+        <div className="portfolio-mobile-layout md:hidden">
+          <div className="portfolio-grid">
+            {projects.slice(0, 4).map((p, i) => (
+              <div key={p.name} className="portfolio-grid-item">
                 <img
                   src={p.src}
                   alt={p.alt}
@@ -225,11 +219,11 @@ const PortfolioPreview = () => {
                   // @ts-expect-error fetchpriority is valid HTML
                   fetchpriority={i < 2 ? "high" : undefined}
                   decoding="async"
-                  style={{ objectPosition: "center" }}
                   className="w-full h-full object-cover"
+                  style={{ objectPosition: "center" }}
                 />
-                <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-4">
-                  <h3 className="font-sans font-semibold text-white text-[14px]">
+                <div className="portfolio-grid-overlay">
+                  <h3 className="font-sans font-semibold text-white text-[12px] leading-tight">
                     {p.name}
                   </h3>
                 </div>
@@ -237,19 +231,43 @@ const PortfolioPreview = () => {
             ))}
           </div>
 
-          {/* Dots */}
-          <div className="flex justify-center items-center gap-2 mt-4">
-            {projects.map((_, i) => (
-              <div
-                key={i}
-                className={`transition-all duration-300 ${
-                  activeSlide === i
-                    ? "bg-[#C4291C] w-[20px] h-[6px] rounded-[3px]"
-                    : "bg-black/20 w-[6px] h-[6px] rounded-full"
-                }`}
-              />
-            ))}
-          </div>
+          {projects.length > 4 && (
+            <div className="-mx-6 mt-4">
+              <div ref={scrollRef} className="portfolio-slider">
+                {projects.slice(4).map((p) => (
+                  <div key={p.name} className="portfolio-slide">
+                    <img
+                      src={p.src}
+                      alt={p.alt}
+                      loading="lazy"
+                      decoding="async"
+                      style={{ objectPosition: "center" }}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/25 flex flex-col justify-end p-4">
+                      <h3 className="font-sans font-semibold text-white text-[14px]">
+                        {p.name}
+                      </h3>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Dots */}
+              <div className="flex justify-center items-center gap-2 mt-4">
+                {projects.slice(4).map((_, i) => (
+                  <div
+                    key={i}
+                    className={`transition-all duration-300 ${
+                      activeSlide === i
+                        ? "bg-[#C4291C] w-[20px] h-[6px] rounded-[3px]"
+                        : "bg-black/20 w-[6px] h-[6px] rounded-full"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
