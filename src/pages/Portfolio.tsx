@@ -54,6 +54,8 @@ const Portfolio = () => {
     activeFilter === "All Projects"
       ? PROJECTS
       : PROJECTS.filter((p) => p.category === activeFilter);
+  const mobileGridProjects = filtered.slice(0, 4);
+  const mobileSliderProjects = filtered.slice(4);
 
   const lightboxIndex = lightboxId != null ? filtered.findIndex((p) => p.id === lightboxId) : -1;
   const currentProject = lightboxIndex >= 0 ? filtered[lightboxIndex] : null;
@@ -90,13 +92,18 @@ const Portfolio = () => {
     if (!el) return;
 
     const handleScroll = () => {
-      const index = Math.round(el.scrollLeft / el.offsetWidth);
+      const slide = el.firstElementChild as HTMLElement | null;
+      const gap = parseFloat(window.getComputedStyle(el).columnGap || "0");
+      const slideWidth = slide ? slide.offsetWidth + gap : el.offsetWidth;
+      const index = slideWidth > 0 ? Math.round(el.scrollLeft / slideWidth) : 0;
       setActiveSlide(index);
     };
 
-    el.addEventListener("scroll", handleScroll);
+    setActiveSlide(0);
+    el.scrollTo({ left: 0 });
+    el.addEventListener("scroll", handleScroll, { passive: true });
     return () => el.removeEventListener("scroll", handleScroll);
-  }, [filtered]);
+  }, [activeFilter]);
 
   return (
     <PageLayout>
@@ -170,26 +177,63 @@ const Portfolio = () => {
             ))}
           </div>
 
-          {/* Mobile Slider */}
+          {/* Mobile Grid and Slider */}
           <div className="md:hidden -mx-6">
-            <div
-              ref={scrollRef}
-              className="flex overflow-x-auto snap-x snap-mandatory scrollbar-none px-6 gap-0"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-            >
-              {filtered.map((p) => (
-                <div
+            <div className="grid grid-cols-2 gap-3 px-6">
+              {mobileGridProjects.map((p, i) => (
+                <button
                   key={p.id}
-                  className="snap-center shrink-0 w-[calc(100vw-48px)] h-[260px] relative rounded-[10px] overflow-hidden"
+                  type="button"
+                  className="relative aspect-square overflow-hidden rounded-[10px] text-left"
                   onClick={() => setLightboxId(p.id)}
                 >
                   <img
                     src={p.src}
                     alt={`${p.title}, ${p.location}`}
-                    className="w-full h-full object-cover"
+                    loading={i < 2 ? "eager" : "lazy"}
+                    className="absolute inset-0 h-full w-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-4">
-                    <h3 className="font-sans font-semibold text-white text-[14px]">
+                  <div
+                    className="absolute inset-x-0 bottom-0 flex min-h-[42%] flex-col justify-end p-3"
+                    style={{
+                      background:
+                        "linear-gradient(to top, hsl(var(--foreground) / 0.58) 0%, hsl(var(--foreground) / 0.18) 58%, transparent 100%)",
+                    }}
+                  >
+                    <h3 className="font-sans text-[12px] font-semibold leading-tight text-background">
+                      {p.title}
+                    </h3>
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            {mobileSliderProjects.length > 0 && (
+              <>
+            <div
+              ref={scrollRef}
+              className="mt-5 flex overflow-x-auto snap-x snap-mandatory gap-3 px-6 scrollbar-none"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {mobileSliderProjects.map((p) => (
+                <div
+                  key={p.id}
+                  className="relative h-[230px] w-[calc(100vw-72px)] shrink-0 snap-center overflow-hidden rounded-[10px]"
+                  onClick={() => setLightboxId(p.id)}
+                >
+                  <img
+                    src={p.src}
+                    alt={`${p.title}, ${p.location}`}
+                    className="h-full w-full object-cover"
+                  />
+                  <div
+                    className="absolute inset-x-0 bottom-0 flex min-h-[38%] flex-col justify-end p-4"
+                    style={{
+                      background:
+                        "linear-gradient(to top, hsl(var(--foreground) / 0.58) 0%, hsl(var(--foreground) / 0.16) 58%, transparent 100%)",
+                    }}
+                  >
+                    <h3 className="font-sans text-[14px] font-semibold text-background">
                       {p.title}
                     </h3>
                   </div>
@@ -199,17 +243,19 @@ const Portfolio = () => {
 
             {/* Dots */}
             <div className="flex justify-center items-center gap-2 mt-4">
-              {filtered.map((_, i) => (
+              {mobileSliderProjects.map((_, i) => (
                 <div
                   key={i}
                   className={`transition-all duration-300 ${
                     activeSlide === i 
-                      ? "bg-[#C4291C] w-[20px] h-[6px] rounded-[3px]" 
-                      : "bg-black/20 w-[6px] h-[6px] rounded-full"
+                      ? "h-[6px] w-[20px] rounded-[3px] bg-primary" 
+                      : "h-[6px] w-[6px] rounded-full bg-foreground/20"
                   }`}
                 />
               ))}
             </div>
+              </>
+            )}
           </div>
         </div>
       </section>
