@@ -86,7 +86,7 @@ const Contact = () => {
           >
             <h2
               style={{
-                fontFamily: "'Cormorant Garamond', serif",
+                fontFamily: "'Playfair Display', serif",
                 fontWeight: 700,
                 fontSize: 18,
                 color: "#1A1A1A",
@@ -114,7 +114,7 @@ const Contact = () => {
           <aside>
             <h2
               style={{
-                fontFamily: "'Cormorant Garamond', serif",
+                fontFamily: "'Playfair Display', serif",
                 fontWeight: 700,
                 fontSize: 22,
                 color: "#1A1A1A",

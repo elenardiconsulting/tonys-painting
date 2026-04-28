@@ -58,7 +58,7 @@ const DashboardPage = () => {
         display: "flex",
         minHeight: "100dvh",
         background: "#F8F7F4",
-        fontFamily: "'Inter', sans-serif",
+        fontFamily: "'Montserrat', sans-serif",
       }}
     >
       <style>{`

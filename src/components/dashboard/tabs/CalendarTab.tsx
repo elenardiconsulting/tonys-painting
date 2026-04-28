@@ -88,7 +88,7 @@ const CalendarTab = ({ leads }: Props) => {
           justify-content: center;
           border-radius: 8px;
           cursor: pointer;
-          font-family: 'Inter', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-weight: 500;
           font-size: 14px;
           color: #1A1A1A;
@@ -164,7 +164,7 @@ const CalendarTab = ({ leads }: Props) => {
                     color: "#FFFFFF",
                     border: "none",
                     borderRadius: 6,
-                    fontFamily: "'Inter', sans-serif",
+                    fontFamily: "'Montserrat', sans-serif",
                     fontSize: 11,
                     cursor: "pointer",
                   }}
@@ -195,7 +195,7 @@ const CalendarTab = ({ leads }: Props) => {
                 className="calendar-day-label"
                 style={{
                   textAlign: "center",
-                  fontFamily: "'Inter', sans-serif",
+                  fontFamily: "'Montserrat', sans-serif",
                   fontWeight: 500,
                   fontSize: 12,
                   color: "#9CA3AF",
@@ -270,7 +270,7 @@ const CalendarTab = ({ leads }: Props) => {
           >
             <h3
               style={{
-                fontFamily: "'Inter', sans-serif",
+                fontFamily: "'Montserrat', sans-serif",
                 fontWeight: 600,
                 fontSize: 14,
                 color: "#1A1A1A",
@@ -287,7 +287,7 @@ const CalendarTab = ({ leads }: Props) => {
             {selectedAppointments.length === 0 ? (
               <div
                 style={{
-                  fontFamily: "'Inter', sans-serif",
+                  fontFamily: "'Montserrat', sans-serif",
                   fontSize: 14,
                   color: "#9CA3AF",
                   textAlign: "center",
@@ -321,7 +321,7 @@ const CalendarTab = ({ leads }: Props) => {
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <div
                         style={{
-                          fontFamily: "'Inter', sans-serif",
+                          fontFamily: "'Montserrat', sans-serif",
                           fontWeight: 700,
                           fontSize: 14,
                           color: "#1A1A1A",
@@ -335,7 +335,7 @@ const CalendarTab = ({ leads }: Props) => {
                       </div>
                       <div
                         style={{
-                          fontFamily: "'Inter', sans-serif",
+                          fontFamily: "'Montserrat', sans-serif",
                           fontSize: 13,
                           color: "#1A1A1A",
                           fontWeight: 500,
@@ -345,7 +345,7 @@ const CalendarTab = ({ leads }: Props) => {
                       </div>
                       <div
                         style={{
-                          fontFamily: "'Inter', sans-serif",
+                          fontFamily: "'Montserrat', sans-serif",
                           fontSize: 12,
                           color: "#6B6560",
                         }}
@@ -361,7 +361,7 @@ const CalendarTab = ({ leads }: Props) => {
                         borderRadius: 999,
                         fontSize: 10,
                         fontWeight: 600,
-                        fontFamily: "'Inter', sans-serif",
+                        fontFamily: "'Montserrat', sans-serif",
                         height: "fit-content",
                       }}
                     >
@@ -383,7 +383,7 @@ const CalendarTab = ({ leads }: Props) => {
           >
             <h3
               style={{
-                fontFamily: "'Inter', sans-serif",
+                fontFamily: "'Montserrat', sans-serif",
                 fontWeight: 600,
                 fontSize: 14,
                 color: "#1A1A1A",
@@ -395,7 +395,7 @@ const CalendarTab = ({ leads }: Props) => {
             {upcoming.length === 0 ? (
               <div
                 style={{
-                  fontFamily: "'Inter', sans-serif",
+                  fontFamily: "'Montserrat', sans-serif",
                   fontSize: 13,
                   color: "#9CA3AF",
                 }}
@@ -411,7 +411,7 @@ const CalendarTab = ({ leads }: Props) => {
                     style={{
                       padding: "8px 0",
                       borderTop: idx === 0 ? "none" : "1px solid #F1EFE8",
-                      fontFamily: "'Inter', sans-serif",
+                      fontFamily: "'Montserrat', sans-serif",
                     }}
                   >
                     <div style={{ fontSize: 12, color: "#9CA3AF" }}>

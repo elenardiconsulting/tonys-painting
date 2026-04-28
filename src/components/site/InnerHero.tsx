@@ -100,7 +100,7 @@ const InnerHero = ({
         {/* Title */}
         <h1
           style={{
-            fontFamily: "'Cormorant Garamond', serif",
+            fontFamily: "'Playfair Display', serif",
             fontWeight: 700,
             fontSize: compact ? "clamp(28px, 3.5vw, 40px)" : "clamp(32px, 5vw, 60px)",
             lineHeight: 1.1,

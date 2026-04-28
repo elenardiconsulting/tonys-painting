@@ -54,7 +54,7 @@ const BottomNav = ({ activeTab, onTabChange, newLeadsCount }: BottomNavProps) =>
               cursor: "pointer",
               color,
               position: "relative",
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'Montserrat', sans-serif",
             }}
           >
             <Icon size={20} color={color} />

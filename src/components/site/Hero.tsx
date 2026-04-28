@@ -64,7 +64,7 @@ const GlassForm = () => {
     padding: "0 14px",
     height: "44px",
     color: "white",
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "'Montserrat', sans-serif",
     fontSize: "13px",
     outline: "none",
     width: "100%",
@@ -101,7 +101,7 @@ const GlassForm = () => {
         </h3>
         <p
           style={{
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "'Montserrat', sans-serif",
             fontWeight: 400,
             fontSize: "12px",
             color: "rgba(255,255,255,0.60)",
@@ -195,7 +195,7 @@ const GlassForm = () => {
           background: submitting ? "#8B1A10" : "#C4291C",
           borderRadius: "8px",
           color: "white",
-          fontFamily: "'Inter', sans-serif",
+          fontFamily: "'Montserrat', sans-serif",
           fontWeight: 600,
           fontSize: "14px",
           border: "none",
@@ -211,7 +211,7 @@ const GlassForm = () => {
 
       <p
         style={{
-          fontFamily: "'Inter', sans-serif",
+          fontFamily: "'Montserrat', sans-serif",
           fontWeight: 400,
           fontSize: "10px",
           color: "rgba(255,255,255,0.35)",
@@ -420,7 +420,7 @@ const Hero = () => {
         }
 
         .hero-subline {
-          font-family: 'Inter', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: 16px;
           font-weight: 400;
           color: rgba(255,255,255,0.72);
@@ -455,7 +455,7 @@ const Hero = () => {
 
         .hero-stat-title {
           color: white;
-          font-family: 'Inter', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-weight: 700;
           font-size: 15px;
           line-height: 1;
@@ -463,7 +463,7 @@ const Hero = () => {
 
         .hero-stat-sub {
           color: rgba(255,255,255,0.45);
-          font-family: 'Inter', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: 11px;
           margin-top: 2px;
         }
@@ -579,7 +579,7 @@ const Hero = () => {
             background: #C4291C;
             border-radius: 10px;
             color: #FFFFFF;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             font-weight: 700;
             font-size: 16px;
             text-decoration: none;

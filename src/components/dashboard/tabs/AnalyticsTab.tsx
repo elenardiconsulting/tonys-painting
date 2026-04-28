@@ -35,7 +35,7 @@ const cardStyle: React.CSSProperties = {
 };
 
 const cardTitle: React.CSSProperties = {
-  fontFamily: "'Inter', sans-serif",
+  fontFamily: "'Montserrat', sans-serif",
   fontWeight: 600,
   fontSize: 15,
   color: "#1A1A1A",
@@ -79,7 +79,7 @@ const EmptyState = () => (
     <p
       style={{
         marginTop: 16,
-        fontFamily: "'Inter', sans-serif",
+        fontFamily: "'Montserrat', sans-serif",
         fontWeight: 500,
         fontSize: 16,
         color: "#9CA3AF",
@@ -90,7 +90,7 @@ const EmptyState = () => (
     <p
       style={{
         marginTop: 4,
-        fontFamily: "'Inter', sans-serif",
+        fontFamily: "'Montserrat', sans-serif",
         fontWeight: 400,
         fontSize: 13,
         color: "#C4B8B0",
@@ -154,7 +154,7 @@ const AnalyticsTab = ({ leads }: Props) => {
       className="analytics-wrap"
       style={{
         padding: 24,
-        fontFamily: "'Inter', sans-serif",
+        fontFamily: "'Montserrat', sans-serif",
       }}
     >
       <style>{`

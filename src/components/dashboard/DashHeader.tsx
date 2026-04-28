@@ -42,7 +42,7 @@ const DashHeader = ({ title, onSignOut }: DashHeaderProps) => {
       <div
         className="dash-header-date"
         style={{
-          fontFamily: "'Inter', sans-serif",
+          fontFamily: "'Montserrat', sans-serif",
           fontWeight: 400,
           fontSize: 13,
           color: "#9CA3AF",

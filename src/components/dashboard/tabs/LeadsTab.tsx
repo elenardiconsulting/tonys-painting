@@ -90,7 +90,7 @@ const LeadCard = ({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "'Montserrat', sans-serif",
             fontWeight: 700,
             fontSize: 14,
             flexShrink: 0,
@@ -101,7 +101,7 @@ const LeadCard = ({
         <div style={{ flex: 1, minWidth: 0 }}>
           <div
             style={{
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'Montserrat', sans-serif",
               fontWeight: 600,
               fontSize: 15,
               color: "#1A1A1A",
@@ -111,7 +111,7 @@ const LeadCard = ({
           </div>
           <div
             style={{
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'Montserrat', sans-serif",
               fontSize: 13,
               color: "#6B6560",
             }}
@@ -129,7 +129,7 @@ const LeadCard = ({
               borderRadius: 999,
               fontSize: 11,
               fontWeight: 600,
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'Montserrat', sans-serif",
               border: "none",
               cursor: "pointer",
               minHeight: 28,
@@ -169,7 +169,7 @@ const LeadCard = ({
                         border: "none",
                         background: "transparent",
                         cursor: "pointer",
-                        fontFamily: "'Inter', sans-serif",
+                        fontFamily: "'Montserrat', sans-serif",
                         fontSize: 12,
                         borderRadius: 4,
                       }}
@@ -225,7 +225,7 @@ const LeadCard = ({
                 >
                   <div
                     style={{
-                      fontFamily: "'Inter', sans-serif",
+                      fontFamily: "'Montserrat', sans-serif",
                       fontWeight: 600,
                       fontSize: 16,
                       color: "#1A1A1A",
@@ -249,7 +249,7 @@ const LeadCard = ({
                           borderBottom: "1px solid #F1EFE8",
                           background: "transparent",
                           cursor: "pointer",
-                          fontFamily: "'Inter', sans-serif",
+                          fontFamily: "'Montserrat', sans-serif",
                           fontSize: 14,
                         }}
                       >
@@ -277,7 +277,7 @@ const LeadCard = ({
                       background: "#FFFFFF",
                       border: "1px solid #E8E2D8",
                       borderRadius: 8,
-                      fontFamily: "'Inter', sans-serif",
+                      fontFamily: "'Montserrat', sans-serif",
                       fontSize: 14,
                       fontWeight: 500,
                       cursor: "pointer",
@@ -300,7 +300,7 @@ const LeadCard = ({
               display: "flex",
               alignItems: "center",
               gap: 8,
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'Montserrat', sans-serif",
               fontSize: 13,
               color: "#6B6560",
               textDecoration: "none",
@@ -317,7 +317,7 @@ const LeadCard = ({
               display: "flex",
               alignItems: "center",
               gap: 8,
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'Montserrat', sans-serif",
               fontSize: 13,
               color: "#6B6560",
               textDecoration: "none",
@@ -333,7 +333,7 @@ const LeadCard = ({
         <div
           style={{
             padding: "12px 16px 0",
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "'Montserrat', sans-serif",
             fontSize: 13,
             color: "#6B6560",
             display: "-webkit-box",
@@ -350,7 +350,7 @@ const LeadCard = ({
         <label
           style={{
             display: "block",
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "'Montserrat', sans-serif",
             fontWeight: 500,
             fontSize: 12,
             color: "#9CA3AF",
@@ -370,7 +370,7 @@ const LeadCard = ({
             border: "1px solid #E8E2D8",
             borderRadius: 6,
             padding: 8,
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "'Montserrat', sans-serif",
             fontSize: 13,
             color: "#1A1A1A",
             outline: "none",
@@ -386,7 +386,7 @@ const LeadCard = ({
           alignItems: "center",
           justifyContent: "space-between",
           gap: 8,
-          fontFamily: "'Inter', sans-serif",
+          fontFamily: "'Montserrat', sans-serif",
           fontSize: 12,
           color: "#9CA3AF",
         }}
@@ -403,7 +403,7 @@ const LeadCard = ({
               cursor: "pointer",
               color: "#9CA3AF",
               fontSize: 12,
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'Montserrat', sans-serif",
               padding: "4px 8px",
               borderRadius: 6,
               minHeight: 36,
@@ -415,7 +415,7 @@ const LeadCard = ({
           </button>
         ) : (
           <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-            <span style={{ fontSize: 12, color: "#A32D2D", fontFamily: "'Inter', sans-serif" }}>
+            <span style={{ fontSize: 12, color: "#A32D2D", fontFamily: "'Montserrat', sans-serif" }}>
               Sure?
             </span>
             <button
@@ -429,7 +429,7 @@ const LeadCard = ({
                 fontWeight: 600,
                 padding: "6px 12px",
                 borderRadius: 6,
-                fontFamily: "'Inter', sans-serif",
+                fontFamily: "'Montserrat', sans-serif",
                 minHeight: 36,
               }}
             >
@@ -444,7 +444,7 @@ const LeadCard = ({
                 fontSize: 11,
                 padding: "6px 12px",
                 borderRadius: 6,
-                fontFamily: "'Inter', sans-serif",
+                fontFamily: "'Montserrat', sans-serif",
                 color: "#6B6560",
                 minHeight: 36,
               }}
@@ -515,7 +515,7 @@ const ScheduleModal = ({
       <div className="schedule-modal" onClick={(e) => e.stopPropagation()}>
         <h3
           style={{
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "'Montserrat', sans-serif",
             fontWeight: 600,
             fontSize: 16,
             color: "#1A1A1A",
@@ -534,7 +534,7 @@ const ScheduleModal = ({
               border: "1px solid #E8E2D8",
               borderRadius: 6,
               fontSize: 14,
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'Montserrat', sans-serif",
             }}
           />
           <input
@@ -546,7 +546,7 @@ const ScheduleModal = ({
               border: "1px solid #E8E2D8",
               borderRadius: 6,
               fontSize: 14,
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'Montserrat', sans-serif",
             }}
           />
           <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
@@ -558,7 +558,7 @@ const ScheduleModal = ({
                 background: "#FFFFFF",
                 border: "1px solid #E8E2D8",
                 borderRadius: 6,
-                fontFamily: "'Inter', sans-serif",
+                fontFamily: "'Montserrat', sans-serif",
                 fontSize: 14,
                 cursor: "pointer",
               }}
@@ -574,7 +574,7 @@ const ScheduleModal = ({
                 color: "#FFFFFF",
                 border: "none",
                 borderRadius: 6,
-                fontFamily: "'Inter', sans-serif",
+                fontFamily: "'Montserrat', sans-serif",
                 fontSize: 14,
                 fontWeight: 600,
                 cursor: "pointer",
@@ -678,7 +678,7 @@ const LeadsTab = ({ leads, updateLead, deleteLead }: Props) => {
                 style={{
                   padding: "6px 12px",
                   borderRadius: 999,
-                  fontFamily: "'Inter', sans-serif",
+                  fontFamily: "'Montserrat', sans-serif",
                   fontSize: 12,
                   fontWeight: 500,
                   background: active ? "#1A1A1A" : "#FFFFFF",
@@ -704,7 +704,7 @@ const LeadsTab = ({ leads, updateLead, deleteLead }: Props) => {
             border: "1px solid #E8E2D8",
             borderRadius: 6,
             fontSize: 13,
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "'Montserrat', sans-serif",
             outline: "none",
             minWidth: 240,
           }}
@@ -728,7 +728,7 @@ const LeadsTab = ({ leads, updateLead, deleteLead }: Props) => {
           style={{
             padding: 40,
             textAlign: "center",
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "'Montserrat', sans-serif",
             fontSize: 14,
             color: "#9CA3AF",
           }}
