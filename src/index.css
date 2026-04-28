@@ -103,28 +103,11 @@
 
 @layer utilities {
   .hero-headline {
-    background: linear-gradient(
-      90deg,
-      #F5F1EB 0%,
-      #C4291C 35%,
-      #F5F1EB 60%,
-      #E8E2D8 100%
-    );
-    background-size: 600px 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: shimmerText 10s linear infinite;
+    color: #FFFFFF;
     font-family: 'Playfair Display', serif;
     font-weight: 900;
-    font-size: clamp(56px, 8vw, 96px);
-    line-height: 1.0;
-    letter-spacing: -0.03em;
-  }
-
-  @keyframes shimmerText {
-    0% { background-position: -600px 0; }
-    100% { background-position: 600px 0; }
+    line-height: 1.02;
+    letter-spacing: -0.025em;
   }
 }
 
