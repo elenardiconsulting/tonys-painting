@@ -12,7 +12,12 @@ const projects = [
 
 const PortfolioPreview = () => {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [activeDesktopSlide, setActiveDesktopSlide] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const desktopScrollRef = useRef<HTMLDivElement>(null);
+
+  const fixedProjects = projects.slice(0, 3);
+  const sliderProjects = projects.slice(3);
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -21,6 +26,20 @@ const PortfolioPreview = () => {
     const handleScroll = () => {
       const index = Math.round(el.scrollLeft / el.offsetWidth);
       setActiveSlide(index);
+    };
+
+    el.addEventListener("scroll", handleScroll);
+    return () => el.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const el = desktopScrollRef.current;
+    if (!el) return;
+
+    const handleScroll = () => {
+      const slideWidth = el.offsetWidth / 3;
+      const index = Math.round(el.scrollLeft / slideWidth);
+      setActiveDesktopSlide(index);
     };
 
     el.addEventListener("scroll", handleScroll);
