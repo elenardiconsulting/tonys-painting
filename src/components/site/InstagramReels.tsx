@@ -1,13 +1,106 @@
 import { useState, useRef, useEffect } from "react";
 
 const reels = [
-  { url: "https://www.instagram.com/reel/DXnh0eujkbr/", embedUrl: "https://www.instagram.com/reel/DXnh0eujkbr/embed/" },
-  { url: "https://www.instagram.com/reel/DXfU0FhCax4/", embedUrl: "https://www.instagram.com/reel/DXfU0FhCax4/embed/" },
-  { url: "https://www.instagram.com/reel/DXk-G4QDmP5/", embedUrl: "https://www.instagram.com/reel/DXk-G4QDmP5/embed/" },
-  { url: "https://www.instagram.com/reel/DXWuvwnjjIX/", embedUrl: "https://www.instagram.com/reel/DXWuvwnjjIX/embed/" },
+  { video: "/videos/reel-01.mp4", url: "https://www.instagram.com/reel/DXnh0eujkbr/" },
+  { video: "/videos/reel-02.mp4", url: "https://www.instagram.com/reel/DXfU0FhCax4/" },
+  { video: "/videos/reel-03.mp4", url: "https://www.instagram.com/reel/DXk-G4QDmP5/" },
+  { video: "/videos/reel-04.mp4", url: "https://www.instagram.com/reel/DXWuvwnjjIX/" },
 ];
 
 const INSTAGRAM_PROFILE = "https://www.instagram.com/tonyspainting_remodeling/";
+
+const ReelCard = ({ reel, index }: { reel: typeof reels[0]; index: number }) => {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          videoRef.current?.play().catch(() => {});
+        } else {
+          videoRef.current?.pause();
+        }
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      onClick={() => window.open(reel.url, "_blank", "noopener,noreferrer")}
+      style={{
+        position: "relative",
+        borderRadius: "12px",
+        overflow: "hidden",
+        border: "1px solid #EFEFEF",
+        background: "#000",
+        aspectRatio: "9/16",
+        cursor: "pointer",
+      }}
+    >
+      <video
+        ref={videoRef}
+        src={reel.video}
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          display: "block",
+        }}
+      />
+
+      {/* Overlay escuro no hover */}
+      <div
+        onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(0,0,0,0.25)")}
+        onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(0,0,0,0)")}
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "rgba(0,0,0,0)",
+          transition: "background 0.25s ease",
+        }}
+      />
+
+      {/* Badge Instagram */}
+      <div
+        style={{
+          position: "absolute",
+          top: "12px",
+          right: "12px",
+          display: "flex",
+          alignItems: "center",
+          gap: "6px",
+          padding: "6px 10px",
+          borderRadius: "999px",
+          background: "rgba(0,0,0,0.55)",
+          color: "#FFFFFF",
+          fontFamily: "Montserrat, sans-serif",
+          fontWeight: 600,
+          fontSize: "12px",
+          backdropFilter: "blur(6px)",
+          pointerEvents: "none",
+        }}
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="white" strokeWidth="2" />
+          <circle cx="12" cy="12" r="4" stroke="white" strokeWidth="2" />
+          <circle cx="17.5" cy="6.5" r="1.2" fill="white" />
+        </svg>
+        Reel
+      </div>
+    </div>
+  );
+};
 
 const InstagramReels = () => {
   const sliderRef = useRef<HTMLDivElement | null>(null);
@@ -36,12 +129,11 @@ const InstagramReels = () => {
         @media (max-width: 767px) {
           .reels-desktop { display: none !important; }
           .reels-mobile { display: block !important; }
-          .reels-section-pad { padding: 56px 0 !important; }
         }
         .reels-mobile div::-webkit-scrollbar { display: none; }
       `}</style>
 
-      {/* Header estilo Instagram */}
+      {/* Header */}
       <div
         className="container"
         style={{
@@ -54,7 +146,6 @@ const InstagramReels = () => {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-          {/* Avatar ring estilo Instagram */}
           <a
             href={INSTAGRAM_PROFILE}
             target="_blank"
@@ -120,7 +211,6 @@ const InstagramReels = () => {
           </div>
         </div>
 
-        {/* Botao Follow estilo Instagram */}
         <a
           href={INSTAGRAM_PROFILE}
           target="_blank"
@@ -141,7 +231,7 @@ const InstagramReels = () => {
         </a>
       </div>
 
-      {/* DESKTOP: 4 reels lado a lado */}
+      {/* DESKTOP: 4 videos */}
       <div
         className="container reels-desktop"
         style={{
@@ -150,28 +240,11 @@ const InstagramReels = () => {
         }}
       >
         {reels.map((reel, i) => (
-          <div
-            key={i}
-            style={{
-              borderRadius: "12px",
-              overflow: "hidden",
-              border: "1px solid #EFEFEF",
-              background: "#000",
-              aspectRatio: "9/16",
-            }}
-          >
-            <iframe
-              src={reel.embedUrl}
-              style={{ width: "100%", height: "100%", border: "none", display: "block" }}
-              allowFullScreen
-              loading="lazy"
-              title={`Tony's Painting Reel ${i + 1}`}
-            />
-          </div>
+          <ReelCard key={i} reel={reel} index={i} />
         ))}
       </div>
 
-      {/* MOBILE: 1 reel por vez com slide */}
+      {/* MOBILE: 1 video por vez */}
       <div className="reels-mobile">
         <div
           ref={sliderRef}
@@ -192,26 +265,14 @@ const InstagramReels = () => {
                 flexShrink: 0,
                 width: "calc(100vw - 48px)",
                 scrollSnapAlign: "center",
-                borderRadius: "12px",
-                overflow: "hidden",
-                border: "1px solid #EFEFEF",
-                background: "#000",
-                aspectRatio: "9/16",
                 maxHeight: "65vh",
               }}
             >
-              <iframe
-                src={reel.embedUrl}
-                style={{ width: "100%", height: "100%", border: "none", display: "block" }}
-                allowFullScreen
-                loading="lazy"
-                title={`Tony's Painting Reel ${i + 1}`}
-              />
+              <ReelCard reel={reel} index={i} />
             </div>
           ))}
         </div>
 
-        {/* Dots mobile */}
         <div
           style={{
             display: "flex",
