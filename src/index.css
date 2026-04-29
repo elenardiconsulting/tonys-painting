@@ -386,3 +386,8 @@ img {
   .ig-avatar-inner { width: 64px; height: 64px; }
   .ig-handle { font-size: 16px; }
 }
+
+@keyframes goldShimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}

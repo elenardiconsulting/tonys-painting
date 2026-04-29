@@ -217,6 +217,45 @@ const Footer = () => {
         </div>
       </div>
 
+      <div style={{
+        borderTop: '1px solid rgba(255,255,255,0.05)',
+        marginTop: '16px',
+        paddingTop: '14px',
+        textAlign: 'center',
+      }}>
+        <p style={{
+          fontFamily: 'Inter, sans-serif',
+          fontSize: '12px',
+          color: 'rgba(255,255,255,0.30)',
+          margin: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '4px',
+          flexWrap: 'wrap',
+        }}>
+          Website designed & developed by&nbsp;
+          <a
+            href="https://wa.me/13392428150"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              fontWeight: 600,
+              fontSize: '12px',
+              textDecoration: 'none',
+              background: 'linear-gradient(90deg, #C9A84C 0%, #F5D98B 50%, #C9A84C 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              backgroundSize: '200% auto',
+              animation: 'goldShimmer 3s linear infinite',
+            }}
+          >
+            Elenardi Consulting
+          </a>
+        </p>
+      </div>
+
       <style>{`
         .footer-grid {
           grid-template-columns: 1fr;
