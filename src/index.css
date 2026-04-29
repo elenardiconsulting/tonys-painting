@@ -391,3 +391,260 @@ img {
   0% { background-position: 0% center; }
   100% { background-position: 200% center; }
 }
+
+/* ===========================
+   NAVBAR
+=========================== */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .navbar-links {
+    gap: 20px;
+  }
+  .navbar-links a {
+    font-size: 13px;
+  }
+  .navbar-cta {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+}
+
+/* ===========================
+   HERO
+=========================== */
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .hero-title {
+    font-size: clamp(36px, 8vw, 52px) !important;
+  }
+  .hero-subline {
+    font-size: 15px !important;
+    max-width: 420px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-content {
+    padding: 0 40px !important;
+  }
+  .hero-title {
+    font-size: clamp(44px, 6vw, 60px) !important;
+  }
+  /* Esconder o glass form em tablet — mostrar apenas o CTA */
+  .hero-glass-form {
+    display: none !important;
+  }
+}
+
+/* ===========================
+   TRUST BAR
+=========================== */
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .trust-bar-mobile {
+    display: none !important;
+  }
+  .trust-bar-desktop {
+    display: flex !important;
+    gap: 24px;
+    padding: 16px 24px;
+  }
+}
+
+/* ===========================
+   SERVICES GRID
+=========================== */
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 14px !important;
+    padding: 0 20px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 16px !important;
+    padding: 0 40px !important;
+  }
+}
+
+/* ===========================
+   PORTFOLIO PREVIEW
+=========================== */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .ig-desktop {
+    display: block !important;
+  }
+  .ig-mobile {
+    display: none !important;
+  }
+  .portfolio-desktop-layout {
+    display: block !important;
+    padding: 0 40px !important;
+  }
+  .portfolio-mobile-layout {
+    display: none !important;
+  }
+}
+
+/* ===========================
+   ABOUT SNIPPET
+=========================== */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .about-snippet-container {
+    padding: 60px 40px !important;
+    gap: 40px !important;
+  }
+  .about-photo-panel img,
+  .about-photo-panel > div {
+    width: 240px !important;
+    height: 300px !important;
+  }
+}
+
+/* ===========================
+   VIDEO SECTION
+=========================== */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .video-section-container {
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 60px 40px !important;
+  }
+  .video-text-panel {
+    max-width: 100% !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+  .video-panel {
+    width: 280px !important;
+  }
+}
+
+/* ===========================
+   INSTAGRAM REELS
+=========================== */
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .ig-desktop {
+    display: none !important;
+  }
+  .ig-mobile {
+    display: block !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .ig-desktop {
+    display: block !important;
+    padding: 0 40px !important;
+  }
+  .ig-desktop > div {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 10px !important;
+  }
+  .ig-mobile {
+    display: none !important;
+  }
+}
+
+/* ===========================
+   REVIEWS
+=========================== */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .reviews-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    padding: 0 40px !important;
+  }
+}
+
+/* ===========================
+   CONTACT PAGE
+=========================== */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .contact-layout {
+    grid-template-columns: 1fr !important;
+    padding: 40px !important;
+  }
+  .contact-map-col {
+    display: none !important;
+  }
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 32px !important;
+    padding: 40px !important;
+  }
+  .footer-map-col {
+    display: none !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 24px !important;
+    padding: 32px 20px !important;
+  }
+}
+
+/* ===========================
+   DASHBOARD (tablet)
+=========================== */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .dash-sidebar {
+    width: 200px !important;
+  }
+  .dash-sidebar .sidebar-label {
+    font-size: 13px !important;
+  }
+  .overview-cards-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .leads-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .analytics-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ===========================
+   GLOBAL — padding universal por breakpoint
+=========================== */
+
+@media (min-width: 481px) and (max-width: 767px) {
+  section {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  section {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  section {
+    padding-left: 60px !important;
+    padding-right: 60px !important;
+  }
+}
