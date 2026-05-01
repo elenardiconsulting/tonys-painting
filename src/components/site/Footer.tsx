@@ -223,9 +223,11 @@ const Footer = () => {
         marginTop: '16px',
         paddingTop: '16px',
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'row',
         alignItems: 'center',
-        gap: '8px',
+        justifyContent: 'center',
+        gap: '12px',
+        flexWrap: 'wrap',
       }}>
         <span style={{
           fontFamily: 'Inter, sans-serif',
@@ -244,7 +246,7 @@ const Footer = () => {
             src={elenardiLogo}
             alt="Elenardi Mídia"
             style={{
-              height: '48px',
+              height: '43px',
               width: 'auto',
               opacity: 1,
               transition: 'opacity 250ms ease',
