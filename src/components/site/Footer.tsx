@@ -1,4 +1,5 @@
 import tonysLogo from "@/assets/tonys-logo.png";
+import elenardiLogo from "@/assets/elenardi-midia-logo.png";
 
 const Footer = () => {
   return (
@@ -218,42 +219,40 @@ const Footer = () => {
       </div>
 
       <div style={{
-        borderTop: '1px solid rgba(255,255,255,0.05)',
+        borderTop: '1px solid rgba(255,255,255,0.04)',
         marginTop: '16px',
-        paddingTop: '14px',
-        textAlign: 'center',
+        paddingTop: '16px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '8px',
       }}>
-        <p style={{
+        <span style={{
           fontFamily: 'Inter, sans-serif',
-          fontSize: '12px',
-          color: 'rgba(255,255,255,0.30)',
-          margin: 0,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '4px',
-          flexWrap: 'wrap',
+          fontSize: '11px',
+          color: 'rgba(255,255,255,0.25)',
+          letterSpacing: '0.02em',
         }}>
-          Website designed & developed by&nbsp;
-          <a
-            href="https://wa.me/13392428150"
-            target="_blank"
-            rel="noopener noreferrer"
+          Website designed &amp; developed by
+        </span>
+        <a
+          href="https://www.instagram.com/elenardimidia/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src={elenardiLogo}
+            alt="Elenardi Mídia"
             style={{
-              fontWeight: 600,
-              fontSize: '12px',
-              textDecoration: 'none',
-              background: 'linear-gradient(90deg, #C9A84C 0%, #F5D98B 50%, #C9A84C 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              backgroundSize: '200% auto',
-              animation: 'goldShimmer 3s linear infinite',
+              height: '48px',
+              width: 'auto',
+              opacity: 1,
+              transition: 'opacity 250ms ease',
             }}
-          >
-            Elenardi Consulting
-          </a>
-        </p>
+            onMouseEnter={e => (e.currentTarget.style.opacity = '0.7')}
+            onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
+          />
+        </a>
       </div>
 
       <style>{`
