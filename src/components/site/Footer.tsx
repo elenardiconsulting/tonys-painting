@@ -226,7 +226,7 @@ const Footer = () => {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: '12px',
+        gap: '10px',
         flexWrap: 'wrap',
       }}>
         <span style={{
@@ -246,7 +246,7 @@ const Footer = () => {
             src={elenardiLogo}
             alt="Elenardi Mídia"
             style={{
-              height: '43px',
+              height: '24px',
               width: 'auto',
               opacity: 1,
               transition: 'opacity 250ms ease',
