@@ -130,10 +130,54 @@ const ThankYou = () => {
           }}
         />
 
+        {/* Google Review CTA */}
+        <div style={{
+          marginTop: '40px',
+          padding: '32px',
+          background: '#F5F1EB',
+          borderRadius: '16px',
+          border: '1px solid #E8E2D8',
+          textAlign: 'center',
+        }}>
+          <p style={{ fontSize: '13px', color: '#6B6560', fontFamily: 'Inter', marginBottom: '8px' }}>
+            While you wait for our response...
+          </p>
+          <h3 style={{
+            fontFamily: "'Playfair Display', serif",
+            fontWeight: 700,
+            fontSize: '20px',
+            color: '#1A1A1A',
+            marginBottom: '16px',
+          }}>
+            Have you worked with us before?
+          </h3>
+          <a
+            href="https://search.google.com/local/writereview?placeid=ChIJJ7xHBJdZiVQRzs7lUW1AN30"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              background: '#C4291C',
+              color: 'white',
+              padding: '11px 24px',
+              borderRadius: '8px',
+              fontFamily: 'Inter',
+              fontWeight: 600,
+              fontSize: '14px',
+              textDecoration: 'none',
+            }}
+          >
+            ⭐ Leave a Google Review
+          </a>
+        </div>
+
         {/* Microcopy */}
         <p style={{ fontSize: "12px", color: "#9CA3AF" }}>
           Tony&apos;s Painting has been serving New England since 2004.
         </p>
+
       </div>
     </main>
   );

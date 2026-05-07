@@ -109,6 +109,60 @@ const Reviews = () => {
             ))}
           </div>
         </div>
+
+        {/* Google Review CTA */}
+        <div style={{
+          textAlign: 'center',
+          marginTop: '48px',
+          padding: '40px 24px',
+          background: 'white',
+          borderRadius: '16px',
+          border: '1px solid #E8E2D8',
+          maxWidth: '480px',
+          margin: '40px auto 0',
+        }}>
+          <div style={{ fontSize: '32px', marginBottom: '12px', letterSpacing: '-2px' }}>⭐⭐⭐⭐⭐</div>
+          <h3 style={{
+            fontFamily: "'Playfair Display', serif",
+            fontWeight: 700,
+            fontSize: '22px',
+            color: '#1A1A1A',
+            marginBottom: '8px',
+          }}>
+            Loved working with us?
+          </h3>
+          <p style={{
+            fontFamily: 'Inter, sans-serif',
+            fontSize: '14px',
+            color: '#6B6560',
+            lineHeight: 1.7,
+            marginBottom: '24px',
+            maxWidth: '340px',
+            margin: '0 auto 24px',
+          }}>
+            Your review helps other homeowners in New England find us. It takes less than a minute.
+          </p>
+          <a
+            href="https://search.google.com/local/writereview?placeid=ChIJJ7xHBJdZiVQRzs7lUW1AN30"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              background: '#1A1A1A',
+              color: 'white',
+              padding: '13px 28px',
+              borderRadius: '8px',
+              fontFamily: 'Inter, sans-serif',
+              fontWeight: 600,
+              fontSize: '14px',
+              textDecoration: 'none',
+            }}
+          >
+            Write a Google Review →
+          </a>
+        </div>
       </div>
 
       <style>{`

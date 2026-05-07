@@ -225,7 +225,50 @@ const About = () => {
           </FadeUpSection>
         </div>
       </section>
+
+      {/* Google Review Section */}
+      <div style={{
+        background: '#1A1A1A',
+        padding: '64px 40px',
+        textAlign: 'center',
+        borderTop: '1px solid rgba(255,255,255,0.05)',
+      }}>
+        <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', fontFamily: 'Inter', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+          20 years of trust
+        </p>
+        <h2 style={{
+          fontFamily: "'Playfair Display', serif",
+          fontWeight: 900,
+          fontSize: 'clamp(24px, 3vw, 36px)',
+          color: '#F5F1EB',
+          marginBottom: '24px',
+          lineHeight: 1.1,
+        }}>
+          We have earned it.
+        </h2>
+        <a
+          href="https://search.google.com/local/writereview?placeid=ChIJJ7xHBJdZiVQRzs7lUW1AN30"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            background: '#C4291C',
+            color: 'white',
+            padding: '13px 28px',
+            borderRadius: '8px',
+            fontFamily: 'Inter',
+            fontWeight: 600,
+            fontSize: '14px',
+            textDecoration: 'none',
+          }}
+        >
+          ⭐ Leave a Google Review
+        </a>
+      </div>
     </PageLayout>
+
   );
 };
 
