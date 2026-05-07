@@ -226,8 +226,8 @@ const About = () => {
         </div>
       </section>
 
-      {/* Google Review Section */}
-      <div style={{
+      {/* Google Review Section hidden temporarily */}
+      {/* <div style={{
         background: '#1A1A1A',
         padding: '64px 40px',
         textAlign: 'center',
@@ -237,7 +237,7 @@ const About = () => {
           20 years of trust
         </p>
         <h2 style={{
-          fontFamily: "'Playfair Display', serif",
+          fontFamily: \"'Playfair Display', serif\",
           fontWeight: 900,
           fontSize: 'clamp(24px, 3vw, 36px)',
           color: '#F5F1EB',
@@ -247,9 +247,9 @@ const About = () => {
           We have earned it.
         </h2>
         <a
-          href="https://www.google.com/maps/place/?q=place_id:0x89e529970477bc27:0x3d37406d51e5cec&action=write-review"
-          target="_blank"
-          rel="noopener noreferrer"
+          href=\"https://www.google.com/maps/place/?q=place_id:0x89e529970477bc27:0x3d37406d51e5cec&action=write-review\"
+          target=\"_blank\"
+          rel=\"noopener noreferrer\"
           style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -266,7 +266,7 @@ const About = () => {
         >
           ⭐ Leave a Google Review
         </a>
-      </div>
+      </div> */}
     </PageLayout>
 
   );

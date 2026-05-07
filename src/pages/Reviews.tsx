@@ -109,8 +109,8 @@ const Reviews = () => {
             ))}
           </div>
 
-          {/* Google Review CTA */}
-          <div style={{
+          {/* Google Review CTA hidden temporarily */}
+          {/* <div style={{
             textAlign: 'center',
             marginTop: '48px',
             padding: '40px 24px',
@@ -122,7 +122,7 @@ const Reviews = () => {
           }}>
             <div style={{ fontSize: '32px', marginBottom: '12px', letterSpacing: '-2px' }}>⭐⭐⭐⭐⭐</div>
             <h3 style={{
-              fontFamily: "'Playfair Display', serif",
+              fontFamily: \"'Playfair Display', serif\",
               fontWeight: 700,
               fontSize: '22px',
               color: '#1A1A1A',
@@ -142,9 +142,9 @@ const Reviews = () => {
               Your review helps other homeowners in New England find us. It takes less than a minute.
             </p>
             <a
-              href="https://www.google.com/maps/place/?q=place_id:0x89e529970477bc27:0x3d37406d51e5cec&action=write-review"
-              target="_blank"
-              rel="noopener noreferrer"
+              href=\"https://www.google.com/maps/place/?q=place_id:0x89e529970477bc27:0x3d37406d51e5cec&action=write-review\"
+              target=\"_blank\"
+              rel=\"noopener noreferrer\"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -161,7 +161,7 @@ const Reviews = () => {
             >
               Write a Google Review →
             </a>
-          </div>
+          </div> */}
         </div>
       </section>
 
