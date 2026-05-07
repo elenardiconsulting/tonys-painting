@@ -130,8 +130,8 @@ const ThankYou = () => {
           }}
         />
 
-        {/* Google Review CTA */}
-        <div style={{
+        {/* Google Review CTA hidden temporarily */}
+        {/* <div style={{
           marginTop: '40px',
           padding: '32px',
           background: '#F5F1EB',
@@ -143,7 +143,7 @@ const ThankYou = () => {
             While you wait for our response...
           </p>
           <h3 style={{
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: \"'Playfair Display', serif\",
             fontWeight: 700,
             fontSize: '20px',
             color: '#1A1A1A',
@@ -152,9 +152,9 @@ const ThankYou = () => {
             Have you worked with us before?
           </h3>
           <a
-            href="https://www.google.com/maps/place/?q=place_id:0x89e529970477bc27:0x3d37406d51e5cec&action=write-review"
-            target="_blank"
-            rel="noopener noreferrer"
+            href=\"https://www.google.com/maps/place/?q=place_id:0x89e529970477bc27:0x3d37406d51e5cec&action=write-review\"
+            target=\"_blank\"
+            rel=\"noopener noreferrer\"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -171,7 +171,7 @@ const ThankYou = () => {
           >
             ⭐ Leave a Google Review
           </a>
-        </div>
+        </div> */}
 
         {/* Microcopy */}
         <p style={{ fontSize: "12px", color: "#9CA3AF" }}>
