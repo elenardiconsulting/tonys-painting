@@ -27,7 +27,7 @@ const Footer = () => {
           </p>
           <div className="mt-6 flex items-center gap-3">
             <a
-              href="https://www.instagram.com/tonyspainting_/"
+              href="https://www.instagram.com/tonyspainting_remodeling/"
               target="_blank"
               rel="noopener noreferrer"
               title="Follow us on Instagram"
