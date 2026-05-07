@@ -19,6 +19,8 @@ import NotFound from "./pages/NotFound.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
 import DashboardPage from "./pages/DashboardPage.tsx";
 import ProtectedRoute from "./components/ProtectedRoute.tsx";
+import ReviewButton from "./components/site/ReviewButton.tsx";
+
 
 const queryClient = new QueryClient();
 
@@ -26,8 +28,13 @@ const AnimatedRoutes = () => {
   const location = useLocation();
   const reduce = useReducedMotion();
 
+  const isPublicPage = !location.pathname.startsWith('/dashboard') && location.pathname !== '/login';
+
   return (
-    <AnimatePresence mode="wait">
+    <>
+      {isPublicPage && <ReviewButton />}
+      <AnimatePresence mode="wait">
+
       <motion.div
         key={location.pathname}
         initial={reduce ? false : { opacity: 0 }}
@@ -60,6 +67,7 @@ const AnimatedRoutes = () => {
         </Routes>
       </motion.div>
     </AnimatePresence>
+    </>
   );
 };
 
