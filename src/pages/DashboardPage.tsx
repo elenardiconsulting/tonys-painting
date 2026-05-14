@@ -62,7 +62,7 @@ const DashboardPage = () => {
     document.addEventListener('visibilitychange', handleVisibility)
     return () => document.removeEventListener('visibilitychange', handleVisibility)
   }, [])
-
+  const navigate = useNavigate();
 
   useEffect(() => {
     const newLeadsCount = leads.filter(l => l.status === 'new').length
