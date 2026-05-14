@@ -33,6 +33,15 @@ const DashboardPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const newLeadsCount = leads.filter(l => l.status === 'new').length
+    if (newLeadsCount === 0 && 'clearAppBadge' in navigator) {
+      navigator.clearAppBadge()
+    } else if (newLeadsCount > 0 && 'setAppBadge' in navigator) {
+      navigator.setAppBadge(newLeadsCount)
+    }
+  }, [leads])
+
+  useEffect(() => {
     const initPush = async () => {
       await registerServiceWorker();
       const { data: { session } } = await supabase.auth.getSession();
