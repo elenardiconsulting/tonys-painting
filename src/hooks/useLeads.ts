@@ -6,6 +6,13 @@ export const useLeads = () => {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [loading, setLoading] = useState(true);
 
+  // Limpar badge ao abrir o dashboard
+  useEffect(() => {
+    if ('clearAppBadge' in navigator) {
+      navigator.clearAppBadge()
+    }
+  }, [])
+
   useEffect(() => {
     let mounted = true;
 

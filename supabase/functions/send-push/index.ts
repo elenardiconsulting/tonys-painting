@@ -39,6 +39,11 @@ serve(async (req) => {
       );
     }
 
+    const { count } = await supabaseAdmin
+      .from('leads')
+      .select('*', { count: 'exact', head: true })
+      .eq('status', 'new')
+
     const results = await Promise.allSettled(
       subscriptions.map(async (sub: { endpoint: string; p256dh: string; auth: string }) => {
         try {
@@ -47,7 +52,11 @@ serve(async (req) => {
               endpoint: sub.endpoint,
               keys: { p256dh: sub.p256dh, auth: sub.auth },
             },
-            JSON.stringify({ title, body }),
+            JSON.stringify({ 
+              title: "New Lead Received",
+              body: (body || "New lead received."),
+              count: count || 1
+            }),
           );
         } catch (err: unknown) {
           const e = err as { statusCode?: number };
