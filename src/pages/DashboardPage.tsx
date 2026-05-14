@@ -30,6 +30,7 @@ const DashboardPage = () => {
   const [activeTab, setActiveTab] = useState<DashTab>("overview");
   const [userId, setUserId] = useState<string | null>(null);
   const { leads, loading, updateLead, deleteLead } = useLeads();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const clearBadge = async () => {
@@ -62,7 +63,6 @@ const DashboardPage = () => {
     document.addEventListener('visibilitychange', handleVisibility)
     return () => document.removeEventListener('visibilitychange', handleVisibility)
   }, [])
-  const navigate = useNavigate();
 
   useEffect(() => {
     const newLeadsCount = leads.filter(l => l.status === 'new').length
