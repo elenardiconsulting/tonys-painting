@@ -33,45 +33,33 @@ const DashboardPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const clearBadge = async () => {
+    // Enviar mensagem para o service worker limpar o badge
+    const sendClearMessage = async () => {
       try {
-        // Metodo 1: API direta
-        if ('clearAppBadge' in navigator) {
-          await (navigator as any).clearAppBadge()
+        const sw = await navigator.serviceWorker.ready
+        if (sw.active) {
+          sw.active.postMessage({ type: 'CLEAR_BADGE' })
         }
-        // Metodo 2: setAppBadge(0) como fallback
-        if ('setAppBadge' in navigator) {
-          await (navigator as any).setAppBadge(0)
-        }
-        // Metodo 3: via service worker
-        if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
-          navigator.serviceWorker.controller.postMessage({ type: 'CLEAR_BADGE' })
-        }
-      } catch (err) {
-        console.log('Badge clear:', err)
-      }
+      } catch(e) {}
     }
 
-    clearBadge()
+    sendClearMessage()
 
-    // Limpar tambem ao voltar para a aba (visibilitychange)
-    const handleVisibility = () => {
-      if (document.visibilityState === 'visible') {
-        clearBadge()
-      }
+    // Repetir ao voltar para a aba
+    const onFocus = () => sendClearMessage()
+    const onVisible = () => {
+      if (document.visibilityState === 'visible') sendClearMessage()
     }
-    document.addEventListener('visibilitychange', handleVisibility)
-    return () => document.removeEventListener('visibilitychange', handleVisibility)
+
+    window.addEventListener('focus', onFocus)
+    document.addEventListener('visibilitychange', onVisible)
+
+    return () => {
+      window.removeEventListener('focus', onFocus)
+      document.removeEventListener('visibilitychange', onVisible)
+    }
   }, [])
 
-  useEffect(() => {
-    const newLeadsCount = leads.filter(l => l.status === 'new').length
-    if (newLeadsCount === 0 && 'clearAppBadge' in navigator) {
-      navigator.clearAppBadge()
-    } else if (newLeadsCount > 0 && 'setAppBadge' in navigator) {
-      navigator.setAppBadge(newLeadsCount)
-    }
-  }, [leads])
 
   useEffect(() => {
     const initPush = async () => {
