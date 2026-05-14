@@ -30,7 +30,39 @@ const DashboardPage = () => {
   const [activeTab, setActiveTab] = useState<DashTab>("overview");
   const [userId, setUserId] = useState<string | null>(null);
   const { leads, loading, updateLead, deleteLead } = useLeads();
-  const navigate = useNavigate();
+
+  useEffect(() => {
+    const clearBadge = async () => {
+      try {
+        // Metodo 1: API direta
+        if ('clearAppBadge' in navigator) {
+          await (navigator as any).clearAppBadge()
+        }
+        // Metodo 2: setAppBadge(0) como fallback
+        if ('setAppBadge' in navigator) {
+          await (navigator as any).setAppBadge(0)
+        }
+        // Metodo 3: via service worker
+        if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+          navigator.serviceWorker.controller.postMessage({ type: 'CLEAR_BADGE' })
+        }
+      } catch (err) {
+        console.log('Badge clear:', err)
+      }
+    }
+
+    clearBadge()
+
+    // Limpar tambem ao voltar para a aba (visibilitychange)
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') {
+        clearBadge()
+      }
+    }
+    document.addEventListener('visibilitychange', handleVisibility)
+    return () => document.removeEventListener('visibilitychange', handleVisibility)
+  }, [])
+
 
   useEffect(() => {
     const newLeadsCount = leads.filter(l => l.status === 'new').length
