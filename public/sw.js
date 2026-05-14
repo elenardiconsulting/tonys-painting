@@ -44,4 +44,19 @@ self.addEventListener('notificationclick', e => {
       return clients.openWindow('/dashboard')
     })
   )
+
+})
+
+self.addEventListener('message', async e => {
+  if (e.data?.type === 'CLEAR_BADGE') {
+    try {
+      if ('clearAppBadge' in self.navigator) {
+        await self.navigator.clearAppBadge()
+      } else if ('setAppBadge' in self.navigator) {
+        await self.navigator.setAppBadge(0)
+      }
+    } catch (err) {
+      console.log('SW badge clear:', err)
+    }
+  }
 })
