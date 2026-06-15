@@ -6,7 +6,7 @@ import VideoShowcase from "@/components/site/VideoShowcase";
 import ServicesPreview from "@/components/site/ServicesPreview";
 import PortfolioPreview from "@/components/site/PortfolioPreview";
 import PartnersSection from "@/components/site/PartnersSection";
-import Reviews from "@/components/site/Reviews";
+import { ReviewsSection } from "@/components/ReviewsSection";
 import AboutSnippet from "@/components/site/AboutSnippet";
 import InstagramReels from "@/components/site/InstagramReels";
 import FinalCTA from "@/components/site/FinalCTA";
