@@ -95,7 +95,7 @@ const Index = () => {
         <ServicesPreview />
         <PortfolioPreview />
         <PartnersSection />
-        <Reviews />
+        <ReviewsSection />
         <InstagramReels />
         <AboutSnippet />
         <FinalCTA />
