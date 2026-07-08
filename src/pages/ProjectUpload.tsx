@@ -213,20 +213,43 @@ const ProjectUpload = () => {
     }
     setSubmitting(true);
     try {
-      // Placeholder: real submit-project-lead edge function wired in next stage.
-      await new Promise((r) => setTimeout(r, 900));
-      // eslint-disable-next-line no-console
-      console.log("[project-upload] payload preview", {
-        tag,
-        sid,
-        tag_type: tagType,
-        source_type: tagType,
-        created_from: tag || sid ? "nfc" : "website",
-        project_type: projectType,
-        name, phone, email, city, state,
-        timeline, budget, message,
-        photo_count: photos.length,
-      });
+      const form = new FormData();
+      form.append("website", website); // honeypot pass-through
+      form.append(
+        "payload",
+        JSON.stringify({
+          name,
+          phone,
+          email,
+          city,
+          state,
+          message,
+          timeline,
+          budget_range: budget,
+          project_type: projectType,
+          tag_type: tagType,
+          tag_code: tag,
+          nfc_scan_id: sid,
+        }),
+      );
+      photos.forEach((p) => form.append("photos", p.file, p.file.name));
+
+      const { data, error: fnError } = await supabase.functions.invoke(
+        "submit-project-lead",
+        { body: form },
+      );
+
+      if (fnError) {
+        const details =
+          fnError instanceof FunctionsHttpError
+            ? await fnError.context.text()
+            : fnError.message;
+        console.error("submit-project-lead failed:", details);
+        throw new Error("We could not submit your project. Please try again.");
+      }
+      if (data && typeof data === "object" && "error" in data && data.error) {
+        throw new Error(String(data.error));
+      }
       setSubmitted(true);
     } catch (e: unknown) {
       setError(e instanceof Error ? e.message : "Something went wrong. Please try again.");
@@ -234,6 +257,7 @@ const ProjectUpload = () => {
       setSubmitting(false);
     }
   };
+
 
   if (submitted) {
     return (
