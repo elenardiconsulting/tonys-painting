@@ -101,8 +101,22 @@ interface PhotoItem {
   compressed: boolean;
 }
 
-async function compressImage(file: File): Promise<File> {
-  if (!file.type.startsWith("image/")) return file;
+const IMAGE_EXT_RE = /\.(jpe?g|png|webp|heic|heif|gif|bmp|tiff?)$/i;
+
+function looksLikeImage(file: File): boolean {
+  if (file.type && file.type.startsWith("image/")) return true;
+  return IMAGE_EXT_RE.test(file.name || "");
+}
+
+/**
+ * Always returns a File with an explicit image/* MIME type, or null if the
+ * input is not a usable image. Compression normalizes to image/jpeg. If the
+ * browser can't decode it (e.g. HEIC on some platforms), we return null so
+ * the caller can reject that single file cleanly — we never emit a Blob
+ * with an empty or application/octet-stream type.
+ */
+async function compressImage(file: File): Promise<File | null> {
+  if (!looksLikeImage(file)) return null;
   try {
     const bitmap = await createImageBitmap(file);
     const scale = Math.min(1, MAX_DIMENSION / Math.max(bitmap.width, bitmap.height));
@@ -112,18 +126,23 @@ async function compressImage(file: File): Promise<File> {
     canvas.width = w;
     canvas.height = h;
     const ctx = canvas.getContext("2d");
-    if (!ctx) return file;
+    if (!ctx) throw new Error("no 2d context");
     ctx.drawImage(bitmap, 0, 0, w, h);
     const blob: Blob | null = await new Promise((res) =>
       canvas.toBlob(res, "image/jpeg", 0.82),
     );
-    if (!blob) return file;
+    if (!blob) throw new Error("toBlob failed");
     return new File([blob], file.name.replace(/\.[^.]+$/, "") + ".jpg", {
       type: "image/jpeg",
       lastModified: Date.now(),
     });
   } catch {
-    return file;
+    // Compression/decoding failed. Only pass the original through if we can
+    // vouch for a real image MIME — never send octet-stream or empty type.
+    if (file.type && /^image\/(jpeg|png|webp|gif)$/i.test(file.type)) {
+      return file;
+    }
+    return null;
   }
 }
 
