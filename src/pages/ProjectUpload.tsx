@@ -219,7 +219,9 @@ const ProjectUpload = () => {
       console.log("[project-upload] payload preview", {
         tag,
         sid,
-        source_type: tag ? "nfc" : null,
+        tag_type: tagType,
+        source_type: tagType,
+        created_from: tag || sid ? "nfc" : "website",
         project_type: projectType,
         name, phone, email, city, state,
         timeline, budget, message,
