@@ -828,6 +828,10 @@ const LeadsTab = ({ leads, updateLead, deleteLead }: Props) => {
             min-width: 0 !important;
           }
           .leads-toolbar { gap: 0 !important; margin-bottom: 12px !important; }
+          .leads-source-filters {
+            padding: 0 16px 4px !important;
+            margin-bottom: 8px !important;
+          }
           .leads-grid {
             grid-template-columns: 1fr !important;
             padding: 0 16px !important;
