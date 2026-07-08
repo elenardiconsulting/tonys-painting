@@ -126,13 +126,39 @@ const LeadCard = ({
         <div style={{ flex: 1, minWidth: 0 }}>
           <div
             style={{
-              fontFamily: "'Montserrat', sans-serif",
-              fontWeight: 600,
-              fontSize: 15,
-              color: "#1A1A1A",
+              display: "flex",
+              alignItems: "center",
+              gap: 6,
+              flexWrap: "wrap",
             }}
           >
-            {lead.name}
+            <span
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                fontWeight: 600,
+                fontSize: 15,
+                color: "#1A1A1A",
+              }}
+            >
+              {lead.name}
+            </span>
+            {lead.source === "NFC Keychain" && (
+              <span
+                style={{
+                  background: "#1A1A1A",
+                  color: "#FFFFFF",
+                  padding: "2px 6px",
+                  borderRadius: 4,
+                  fontSize: 10,
+                  fontWeight: 700,
+                  letterSpacing: 0.4,
+                  fontFamily: "'Montserrat', sans-serif",
+                }}
+                title="Lead created from NFC keychain"
+              >
+                NFC
+              </span>
+            )}
           </div>
           <div
             style={{
