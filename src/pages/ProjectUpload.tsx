@@ -6,24 +6,87 @@ import SEO from "@/components/SEO";
 import { cn } from "@/lib/utils";
 
 type ProjectType =
-  | "interior_painting"
-  | "exterior_painting"
-  | "cabinets"
-  | "remodeling"
-  | "deck_staining"
+  | "kitchen_remodeling"
+  | "bathroom_remodeling"
+  | "painting"
+  | "siding"
+  | "flooring"
+  | "carpentry"
+  | "deck_and_exterior"
+  | "full_home_remodel"
   | "other";
 
 const PROJECT_TYPES: { value: ProjectType; label: string }[] = [
-  { value: "interior_painting", label: "Interior Painting" },
-  { value: "exterior_painting", label: "Exterior Painting" },
-  { value: "cabinets", label: "Cabinet Refinishing" },
-  { value: "remodeling", label: "Remodeling" },
-  { value: "deck_staining", label: "Deck Staining" },
+  { value: "kitchen_remodeling", label: "Kitchen Remodeling" },
+  { value: "bathroom_remodeling", label: "Bathroom Remodeling" },
+  { value: "painting", label: "Painting" },
+  { value: "siding", label: "Siding" },
+  { value: "flooring", label: "Flooring" },
+  { value: "carpentry", label: "Carpentry" },
+  { value: "deck_and_exterior", label: "Deck and Exterior" },
+  { value: "full_home_remodel", label: "Full Home Remodel" },
   { value: "other", label: "Something Else" },
 ];
 
+type TagType =
+  | "showroom_gift"
+  | "post_project_gift"
+  | "referral_keychain"
+  | "vip_client"
+  | "support_keychain"
+  | "general_business_card";
+
+const VALID_TAG_TYPES: TagType[] = [
+  "showroom_gift",
+  "post_project_gift",
+  "referral_keychain",
+  "vip_client",
+  "support_keychain",
+  "general_business_card",
+];
+
+interface TagCopy {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+}
+
+const TAG_COPY: Record<TagType, TagCopy> = {
+  showroom_gift: {
+    eyebrow: "A gift from our showroom",
+    title: "Let's bring your project to life",
+    subtitle: "Thanks for stopping by. Share a few details and photos and we'll put together a real plan for your space.",
+  },
+  post_project_gift: {
+    eyebrow: "Thank you for trusting us",
+    title: "Ready for the next project?",
+    subtitle: "It was a pleasure working with you. Tell us what you have in mind next and we'll take care of the rest.",
+  },
+  referral_keychain: {
+    eyebrow: "Referred by someone who trusts us",
+    title: "Let's talk about your project",
+    subtitle: "Someone you know recommended Tony's Painting. Share your details and we'll reach out with the same care they got.",
+  },
+  vip_client: {
+    eyebrow: "Priority client access",
+    title: "Your next project, handled personally",
+    subtitle: "You go straight to the top of our list. Send over the details and Otoniel or a project lead will follow up directly.",
+  },
+  support_keychain: {
+    eyebrow: "Need something looked at?",
+    title: "Tell us what's going on",
+    subtitle: "Warranty question, touch up, or a new project. Share the details and photos and we'll take it from there.",
+  },
+  general_business_card: {
+    eyebrow: "Tony's Painting and Remodeling",
+    title: "Tell us about your project",
+    subtitle: "A few quick details and a couple photos are all we need to get you a real estimate.",
+  },
+};
+
 const TIMELINES = ["ASAP", "Within 2 weeks", "Within a month", "1 to 3 months", "Just exploring"];
 const BUDGETS = ["Under $2k", "$2k to $5k", "$5k to $15k", "$15k to $50k", "$50k+", "Not sure yet"];
+
 
 const MAX_PHOTOS = 10;
 const MAX_SIZE_MB = 8;
@@ -68,10 +131,13 @@ const ProjectUpload = () => {
   const sid = params.get("sid") || "";
   const typeParam = (params.get("type") || "").toLowerCase();
 
-  const initialProjectType = useMemo<ProjectType | "">(() => {
-    const match = PROJECT_TYPES.find((p) => p.value === typeParam);
-    return match ? match.value : "";
+  const tagType: TagType = useMemo(() => {
+    return (VALID_TAG_TYPES as string[]).includes(typeParam)
+      ? (typeParam as TagType)
+      : "general_business_card";
   }, [typeParam]);
+
+  const copy = TAG_COPY[tagType];
 
   const [step, setStep] = useState(1);
   const [submitting, setSubmitting] = useState(false);
@@ -83,7 +149,7 @@ const ProjectUpload = () => {
   const [email, setEmail] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
-  const [projectType, setProjectType] = useState<ProjectType | "">(initialProjectType);
+  const [projectType, setProjectType] = useState<ProjectType | "">("");
   const [timeline, setTimeline] = useState("");
   const [budget, setBudget] = useState("");
   const [message, setMessage] = useState("");
@@ -94,9 +160,6 @@ const ProjectUpload = () => {
   const [processing, setProcessing] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    if (initialProjectType) setProjectType(initialProjectType);
-  }, [initialProjectType]);
 
   useEffect(() => {
     return () => {
@@ -156,7 +219,9 @@ const ProjectUpload = () => {
       console.log("[project-upload] payload preview", {
         tag,
         sid,
-        source_type: tag ? "nfc" : null,
+        tag_type: tagType,
+        source_type: tagType,
+        created_from: tag || sid ? "nfc" : "website",
         project_type: projectType,
         name, phone, email, city, state,
         timeline, budget, message,
@@ -238,16 +303,24 @@ const ProjectUpload = () => {
       </div>
 
       <main className="max-w-3xl mx-auto px-4 py-10">
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-xs uppercase tracking-[0.18em] text-primary font-medium mb-3"
+        >
+          {copy.eyebrow}
+        </motion.p>
         <motion.h1
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          className="font-serif text-3xl md:text-5xl text-foreground leading-tight mb-2"
+          className="font-serif text-3xl md:text-5xl text-foreground leading-tight mb-3"
         >
-          Tell us about your project
+          {copy.title}
         </motion.h1>
         <p className="text-muted-foreground mb-8 md:mb-10">
-          A few quick details and a couple photos are all we need to get you a real estimate.
+          {copy.subtitle}
         </p>
+
 
         <div className="bg-surface border border-stone rounded-2xl p-6 md:p-10 shadow-sm">
           {/* Honeypot */}
