@@ -397,6 +397,92 @@ const LeadCard = ({
         </div>
       )}
 
+      {(lead.source ||
+        lead.tag_code ||
+        lead.campaign_name ||
+        lead.project_type ||
+        lead.timeline ||
+        lead.budget_range ||
+        lead.city ||
+        lead.state) && (
+        <div style={{ padding: "12px 16px 0" }}>
+          <label
+            style={{
+              display: "block",
+              fontFamily: "'Montserrat', sans-serif",
+              fontWeight: 500,
+              fontSize: 12,
+              color: "#9CA3AF",
+              marginBottom: 6,
+            }}
+          >
+            Origin
+          </label>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "auto 1fr",
+              rowGap: 4,
+              columnGap: 8,
+              fontFamily: "'Montserrat', sans-serif",
+              fontSize: 12,
+              color: "#1A1A1A",
+            }}
+          >
+            {lead.source && (
+              <>
+                <span style={{ color: "#9CA3AF" }}>Source</span>
+                <span>
+                  {lead.source}
+                  {lead.source_type
+                    ? ` · ${prettyLabel(TAG_TYPE_LABELS, lead.source_type)}`
+                    : ""}
+                </span>
+              </>
+            )}
+            {lead.tag_code && (
+              <>
+                <span style={{ color: "#9CA3AF" }}>Tag</span>
+                <span style={{ fontFamily: "monospace" }}>{lead.tag_code}</span>
+              </>
+            )}
+            {lead.campaign_name && (
+              <>
+                <span style={{ color: "#9CA3AF" }}>Campaign</span>
+                <span>{lead.campaign_name}</span>
+              </>
+            )}
+            {lead.project_type && (
+              <>
+                <span style={{ color: "#9CA3AF" }}>Project</span>
+                <span>{prettyLabel(PROJECT_TYPE_LABELS, lead.project_type)}</span>
+              </>
+            )}
+            {lead.timeline && (
+              <>
+                <span style={{ color: "#9CA3AF" }}>Timeline</span>
+                <span>{lead.timeline}</span>
+              </>
+            )}
+            {lead.budget_range && (
+              <>
+                <span style={{ color: "#9CA3AF" }}>Budget</span>
+                <span>{lead.budget_range}</span>
+              </>
+            )}
+            {(lead.city || lead.state) && (
+              <>
+                <span style={{ color: "#9CA3AF" }}>Location</span>
+                <span>{[lead.city, lead.state].filter(Boolean).join(", ")}</span>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+
+      {(lead.photo_count ?? 0) > 0 && <LeadPhotos leadId={lead.id} />}
+
+
       <div style={{ padding: "12px 16px 0" }}>
         <label
           style={{
