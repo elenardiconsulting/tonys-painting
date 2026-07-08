@@ -16,6 +16,7 @@ import LPInteriorPainting from "./pages/lp/InteriorPainting.tsx";
 import LPExteriorPainting from "./pages/lp/ExteriorPainting.tsx";
 import LPRemodeling from "./pages/lp/Remodeling.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import ProjectUpload from "./pages/ProjectUpload.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
 import DashboardPage from "./pages/DashboardPage.tsx";
 import ProtectedRoute from "./components/ProtectedRoute.tsx";
@@ -53,6 +54,7 @@ const AnimatedRoutes = () => {
           <Route path="/lp/interior-painting" element={<LPInteriorPainting />} />
           <Route path="/lp/exterior-painting" element={<LPExteriorPainting />} />
           <Route path="/lp/remodeling" element={<LPRemodeling />} />
+          <Route path="/project-upload" element={<ProjectUpload />} />
           <Route path="/login" element={<LoginPage />} />
           <Route
             path="/dashboard"
