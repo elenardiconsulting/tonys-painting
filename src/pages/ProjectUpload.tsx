@@ -2,6 +2,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Upload, X, ArrowLeft, ArrowRight, Loader2, Camera, ShieldCheck } from "lucide-react";
+import { FunctionsHttpError } from "@supabase/supabase-js";
+import { supabase } from "@/integrations/supabase/client";
 import SEO from "@/components/SEO";
 import { cn } from "@/lib/utils";
 
