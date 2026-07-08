@@ -166,21 +166,32 @@ serve(async (req) => {
         ? tagTypeRaw
         : "general_business_card";
 
-    // Collect files.
-    const files: File[] = [];
-    for (const [key, value] of form.entries()) {
-      if (key === "photos" && value instanceof File) files.push(value);
+    // Collect files and validate each independently. Never fail the whole
+    // submission because one file has a generic/missing MIME — infer it,
+    // skip only files that are genuinely not images.
+    interface AcceptedPhoto {
+      file: File;
+      mime: string;
     }
-    if (files.length > MAX_PHOTOS) {
+    const rawFiles: File[] = [];
+    for (const [key, value] of form.entries()) {
+      if (key === "photos" && value instanceof File) rawFiles.push(value);
+    }
+    if (rawFiles.length > MAX_PHOTOS) {
       return json({ error: `Maximum ${MAX_PHOTOS} photos` }, 400);
     }
-    for (const f of files) {
+    const accepted: AcceptedPhoto[] = [];
+    for (const f of rawFiles) {
       if (f.size > MAX_PHOTO_BYTES) {
-        return json({ error: `File too large: ${f.name}` }, 400);
+        console.warn("Skipping oversized photo", { name: f.name, size: f.size });
+        continue;
       }
-      if (f.type && !ALLOWED_MIME.test(f.type)) {
-        return json({ error: `Unsupported file type: ${f.type}` }, 400);
+      const mime = resolveImageMime(f);
+      if (!mime) {
+        console.warn("Skipping non-image photo", { name: f.name, type: f.type });
+        continue;
       }
+      accepted.push({ file: f, mime });
     }
 
     const supabase = createClient(supabaseUrl, serviceKey, {
