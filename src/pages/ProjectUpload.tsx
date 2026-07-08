@@ -131,10 +131,13 @@ const ProjectUpload = () => {
   const sid = params.get("sid") || "";
   const typeParam = (params.get("type") || "").toLowerCase();
 
-  const initialProjectType = useMemo<ProjectType | "">(() => {
-    const match = PROJECT_TYPES.find((p) => p.value === typeParam);
-    return match ? match.value : "";
+  const tagType: TagType = useMemo(() => {
+    return (VALID_TAG_TYPES as string[]).includes(typeParam)
+      ? (typeParam as TagType)
+      : "general_business_card";
   }, [typeParam]);
+
+  const copy = TAG_COPY[tagType];
 
   const [step, setStep] = useState(1);
   const [submitting, setSubmitting] = useState(false);
@@ -146,7 +149,7 @@ const ProjectUpload = () => {
   const [email, setEmail] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
-  const [projectType, setProjectType] = useState<ProjectType | "">(initialProjectType);
+  const [projectType, setProjectType] = useState<ProjectType | "">("");
   const [timeline, setTimeline] = useState("");
   const [budget, setBudget] = useState("");
   const [message, setMessage] = useState("");
@@ -157,9 +160,6 @@ const ProjectUpload = () => {
   const [processing, setProcessing] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    if (initialProjectType) setProjectType(initialProjectType);
-  }, [initialProjectType]);
 
   useEffect(() => {
     return () => {
