@@ -37,7 +37,29 @@ const VALID_PROJECT_TYPES = new Set([
 
 const MAX_PHOTOS = 10;
 const MAX_PHOTO_BYTES = 10 * 1024 * 1024; // 10MB per file
-const ALLOWED_MIME = /^image\/(jpeg|png|webp|heic|heif)$/i;
+const IMAGE_EXT_RE = /\.(jpe?g|png|webp|heic|heif|gif|bmp|tiff?)$/i;
+
+// Infer a real image/* MIME when the client sends a missing/generic type
+// (e.g. application/octet-stream from some browsers/HEIC sources).
+const resolveImageMime = (file: File): string | null => {
+  const raw = (file.type || "").toLowerCase().trim();
+  if (raw && raw.startsWith("image/") && raw !== "image/octet-stream") {
+    return raw;
+  }
+  const name = (file.name || "").toLowerCase();
+  const m = name.match(IMAGE_EXT_RE);
+  if (!m) return null;
+  const ext = m[1];
+  if (ext === "jpg" || ext === "jpeg") return "image/jpeg";
+  if (ext === "png") return "image/png";
+  if (ext === "webp") return "image/webp";
+  if (ext === "heic") return "image/heic";
+  if (ext === "heif") return "image/heif";
+  if (ext === "gif") return "image/gif";
+  if (ext === "bmp") return "image/bmp";
+  if (ext === "tif" || ext === "tiff") return "image/tiff";
+  return null;
+};
 
 // Naive in-memory rate limit per IP: 5 submissions / 10 min per warm instance.
 const rateBucket = new Map<string, number[]>();
@@ -144,21 +166,32 @@ serve(async (req) => {
         ? tagTypeRaw
         : "general_business_card";
 
-    // Collect files.
-    const files: File[] = [];
-    for (const [key, value] of form.entries()) {
-      if (key === "photos" && value instanceof File) files.push(value);
+    // Collect files and validate each independently. Never fail the whole
+    // submission because one file has a generic/missing MIME — infer it,
+    // skip only files that are genuinely not images.
+    interface AcceptedPhoto {
+      file: File;
+      mime: string;
     }
-    if (files.length > MAX_PHOTOS) {
+    const rawFiles: File[] = [];
+    for (const [key, value] of form.entries()) {
+      if (key === "photos" && value instanceof File) rawFiles.push(value);
+    }
+    if (rawFiles.length > MAX_PHOTOS) {
       return json({ error: `Maximum ${MAX_PHOTOS} photos` }, 400);
     }
-    for (const f of files) {
+    const accepted: AcceptedPhoto[] = [];
+    for (const f of rawFiles) {
       if (f.size > MAX_PHOTO_BYTES) {
-        return json({ error: `File too large: ${f.name}` }, 400);
+        console.warn("Skipping oversized photo", { name: f.name, size: f.size });
+        continue;
       }
-      if (f.type && !ALLOWED_MIME.test(f.type)) {
-        return json({ error: `Unsupported file type: ${f.type}` }, 400);
+      const mime = resolveImageMime(f);
+      if (!mime) {
+        console.warn("Skipping non-image photo", { name: f.name, type: f.type });
+        continue;
       }
+      accepted.push({ file: f, mime });
     }
 
     const supabase = createClient(supabaseUrl, serviceKey, {
@@ -186,7 +219,7 @@ serve(async (req) => {
         nfc_scan_id: sid,
         created_from: "nfc",
         status: "new",
-        photo_count: files.length,
+        photo_count: accepted.length,
       })
       .select("id")
       .single();
@@ -200,14 +233,14 @@ serve(async (req) => {
 
     // Upload files to project-photos/<lead_id>/<uuid>.<ext>
     let uploadedCount = 0;
-    for (const f of files) {
-      const ext = extFromMime(f.type || "image/jpeg");
+    for (const { file: f, mime } of accepted) {
+      const ext = extFromMime(mime);
       const path = `${leadId}/${crypto.randomUUID()}.${ext}`;
       const buf = new Uint8Array(await f.arrayBuffer());
       const { error: upErr } = await supabase.storage
         .from("project-photos")
         .upload(path, buf, {
-          contentType: f.type || "image/jpeg",
+          contentType: mime,
           upsert: false,
         });
       if (upErr) {
@@ -218,7 +251,7 @@ serve(async (req) => {
         lead_id: leadId,
         file_path: path,
         file_name: f.name?.slice(0, 200) || null,
-        file_type: f.type || null,
+        file_type: mime,
         file_size: f.size,
       });
       if (rowErr) {
