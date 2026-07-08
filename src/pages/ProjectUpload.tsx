@@ -303,16 +303,24 @@ const ProjectUpload = () => {
       </div>
 
       <main className="max-w-3xl mx-auto px-4 py-10">
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-xs uppercase tracking-[0.18em] text-primary font-medium mb-3"
+        >
+          {copy.eyebrow}
+        </motion.p>
         <motion.h1
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          className="font-serif text-3xl md:text-5xl text-foreground leading-tight mb-2"
+          className="font-serif text-3xl md:text-5xl text-foreground leading-tight mb-3"
         >
-          Tell us about your project
+          {copy.title}
         </motion.h1>
         <p className="text-muted-foreground mb-8 md:mb-10">
-          A few quick details and a couple photos are all we need to get you a real estimate.
+          {copy.subtitle}
         </p>
+
 
         <div className="bg-surface border border-stone rounded-2xl p-6 md:p-10 shadow-sm">
           {/* Honeypot */}
