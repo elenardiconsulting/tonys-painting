@@ -37,7 +37,29 @@ const VALID_PROJECT_TYPES = new Set([
 
 const MAX_PHOTOS = 10;
 const MAX_PHOTO_BYTES = 10 * 1024 * 1024; // 10MB per file
-const ALLOWED_MIME = /^image\/(jpeg|png|webp|heic|heif)$/i;
+const IMAGE_EXT_RE = /\.(jpe?g|png|webp|heic|heif|gif|bmp|tiff?)$/i;
+
+// Infer a real image/* MIME when the client sends a missing/generic type
+// (e.g. application/octet-stream from some browsers/HEIC sources).
+const resolveImageMime = (file: File): string | null => {
+  const raw = (file.type || "").toLowerCase().trim();
+  if (raw && raw.startsWith("image/") && raw !== "image/octet-stream") {
+    return raw;
+  }
+  const name = (file.name || "").toLowerCase();
+  const m = name.match(IMAGE_EXT_RE);
+  if (!m) return null;
+  const ext = m[1];
+  if (ext === "jpg" || ext === "jpeg") return "image/jpeg";
+  if (ext === "png") return "image/png";
+  if (ext === "webp") return "image/webp";
+  if (ext === "heic") return "image/heic";
+  if (ext === "heif") return "image/heif";
+  if (ext === "gif") return "image/gif";
+  if (ext === "bmp") return "image/bmp";
+  if (ext === "tif" || ext === "tiff") return "image/tiff";
+  return null;
+};
 
 // Naive in-memory rate limit per IP: 5 submissions / 10 min per warm instance.
 const rateBucket = new Map<string, number[]>();
