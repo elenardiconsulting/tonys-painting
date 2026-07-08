@@ -729,10 +729,32 @@ const ScheduleModal = ({
 const LeadsTab = ({ leads, updateLead, deleteLead }: Props) => {
   const [filter, setFilter] = useState<LeadStatus | "all">("all");
   const [search, setSearch] = useState("");
+  const [sourceFilter, setSourceFilter] = useState<string>("all");
+  const [sourceTypeFilter, setSourceTypeFilter] = useState<string>("all");
+  const [tagCodeFilter, setTagCodeFilter] = useState<string>("");
   const [scheduleLead, setScheduleLead] = useState<Lead | null>(null);
+
+  const sourceOptions = useMemo(() => {
+    const s = new Set<string>();
+    leads.forEach((l) => l.source && s.add(l.source));
+    return Array.from(s).sort();
+  }, [leads]);
+
+  const sourceTypeOptions = useMemo(() => {
+    const s = new Set<string>();
+    leads.forEach((l) => l.source_type && s.add(l.source_type));
+    return Array.from(s).sort();
+  }, [leads]);
 
   const filtered = leads.filter((l) => {
     if (filter !== "all" && l.status !== filter) return false;
+    if (sourceFilter !== "all" && (l.source || "") !== sourceFilter) return false;
+    if (sourceTypeFilter !== "all" && (l.source_type || "") !== sourceTypeFilter)
+      return false;
+    if (tagCodeFilter.trim()) {
+      const q = tagCodeFilter.trim().toLowerCase();
+      if (!(l.tag_code || "").toLowerCase().includes(q)) return false;
+    }
     if (search) {
       const q = search.toLowerCase();
       const inName = l.name?.toLowerCase().includes(q);
@@ -747,6 +769,18 @@ const LeadsTab = ({ leads, updateLead, deleteLead }: Props) => {
     { id: "all", label: "All" },
     ...STATUSES.map((s) => ({ id: s, label: getStatusBadge(s).label })),
   ];
+
+  const selectStyle: React.CSSProperties = {
+    padding: "6px 10px",
+    border: "1px solid #E8E2D8",
+    borderRadius: 6,
+    fontSize: 12,
+    fontFamily: "'Montserrat', sans-serif",
+    background: "#FFFFFF",
+    color: "#1A1A1A",
+    outline: "none",
+    minHeight: 32,
+  };
 
   return (
     <div className="leads-wrap" style={{ padding: 24 }}>
