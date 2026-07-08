@@ -1,8 +1,33 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Phone, Mail, Trash2 } from "lucide-react";
 import type { Lead, LeadStatus } from "@/types/lead";
 import { getStatusBadge } from "@/types/lead";
 import { supabase } from "@/integrations/supabase/client";
+import LeadPhotos from "../LeadPhotos";
+
+const TAG_TYPE_LABELS: Record<string, string> = {
+  showroom_gift: "Showroom",
+  post_project_gift: "Post-Project",
+  referral_keychain: "Referral",
+  vip_client: "VIP",
+  support_keychain: "Support",
+  general_business_card: "Business Card",
+};
+
+const PROJECT_TYPE_LABELS: Record<string, string> = {
+  kitchen_remodeling: "Kitchen Remodeling",
+  bathroom_remodeling: "Bathroom Remodeling",
+  painting: "Painting",
+  siding: "Siding",
+  flooring: "Flooring",
+  carpentry: "Carpentry",
+  deck_and_exterior: "Deck & Exterior",
+  full_home_remodel: "Full Home Remodel",
+  other: "Other",
+};
+
+const prettyLabel = (map: Record<string, string>, v?: string | null) =>
+  v ? map[v] || v : null;
 
 interface Props {
   leads: Lead[];
@@ -101,13 +126,39 @@ const LeadCard = ({
         <div style={{ flex: 1, minWidth: 0 }}>
           <div
             style={{
-              fontFamily: "'Montserrat', sans-serif",
-              fontWeight: 600,
-              fontSize: 15,
-              color: "#1A1A1A",
+              display: "flex",
+              alignItems: "center",
+              gap: 6,
+              flexWrap: "wrap",
             }}
           >
-            {lead.name}
+            <span
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                fontWeight: 600,
+                fontSize: 15,
+                color: "#1A1A1A",
+              }}
+            >
+              {lead.name}
+            </span>
+            {lead.source === "NFC Keychain" && (
+              <span
+                style={{
+                  background: "#1A1A1A",
+                  color: "#FFFFFF",
+                  padding: "2px 6px",
+                  borderRadius: 4,
+                  fontSize: 10,
+                  fontWeight: 700,
+                  letterSpacing: 0.4,
+                  fontFamily: "'Montserrat', sans-serif",
+                }}
+                title="Lead created from NFC keychain"
+              >
+                NFC
+              </span>
+            )}
           </div>
           <div
             style={{
@@ -345,6 +396,92 @@ const LeadCard = ({
           {lead.message}
         </div>
       )}
+
+      {(lead.source ||
+        lead.tag_code ||
+        lead.campaign_name ||
+        lead.project_type ||
+        lead.timeline ||
+        lead.budget_range ||
+        lead.city ||
+        lead.state) && (
+        <div style={{ padding: "12px 16px 0" }}>
+          <label
+            style={{
+              display: "block",
+              fontFamily: "'Montserrat', sans-serif",
+              fontWeight: 500,
+              fontSize: 12,
+              color: "#9CA3AF",
+              marginBottom: 6,
+            }}
+          >
+            Origin
+          </label>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "auto 1fr",
+              rowGap: 4,
+              columnGap: 8,
+              fontFamily: "'Montserrat', sans-serif",
+              fontSize: 12,
+              color: "#1A1A1A",
+            }}
+          >
+            {lead.source && (
+              <>
+                <span style={{ color: "#9CA3AF" }}>Source</span>
+                <span>
+                  {lead.source}
+                  {lead.source_type
+                    ? ` · ${prettyLabel(TAG_TYPE_LABELS, lead.source_type)}`
+                    : ""}
+                </span>
+              </>
+            )}
+            {lead.tag_code && (
+              <>
+                <span style={{ color: "#9CA3AF" }}>Tag</span>
+                <span style={{ fontFamily: "monospace" }}>{lead.tag_code}</span>
+              </>
+            )}
+            {lead.campaign_name && (
+              <>
+                <span style={{ color: "#9CA3AF" }}>Campaign</span>
+                <span>{lead.campaign_name}</span>
+              </>
+            )}
+            {lead.project_type && (
+              <>
+                <span style={{ color: "#9CA3AF" }}>Project</span>
+                <span>{prettyLabel(PROJECT_TYPE_LABELS, lead.project_type)}</span>
+              </>
+            )}
+            {lead.timeline && (
+              <>
+                <span style={{ color: "#9CA3AF" }}>Timeline</span>
+                <span>{lead.timeline}</span>
+              </>
+            )}
+            {lead.budget_range && (
+              <>
+                <span style={{ color: "#9CA3AF" }}>Budget</span>
+                <span>{lead.budget_range}</span>
+              </>
+            )}
+            {(lead.city || lead.state) && (
+              <>
+                <span style={{ color: "#9CA3AF" }}>Location</span>
+                <span>{[lead.city, lead.state].filter(Boolean).join(", ")}</span>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+
+      {(lead.photo_count ?? 0) > 0 && <LeadPhotos leadId={lead.id} />}
+
 
       <div style={{ padding: "12px 16px 0" }}>
         <label
@@ -592,10 +729,32 @@ const ScheduleModal = ({
 const LeadsTab = ({ leads, updateLead, deleteLead }: Props) => {
   const [filter, setFilter] = useState<LeadStatus | "all">("all");
   const [search, setSearch] = useState("");
+  const [sourceFilter, setSourceFilter] = useState<string>("all");
+  const [sourceTypeFilter, setSourceTypeFilter] = useState<string>("all");
+  const [tagCodeFilter, setTagCodeFilter] = useState<string>("");
   const [scheduleLead, setScheduleLead] = useState<Lead | null>(null);
+
+  const sourceOptions = useMemo(() => {
+    const s = new Set<string>();
+    leads.forEach((l) => l.source && s.add(l.source));
+    return Array.from(s).sort();
+  }, [leads]);
+
+  const sourceTypeOptions = useMemo(() => {
+    const s = new Set<string>();
+    leads.forEach((l) => l.source_type && s.add(l.source_type));
+    return Array.from(s).sort();
+  }, [leads]);
 
   const filtered = leads.filter((l) => {
     if (filter !== "all" && l.status !== filter) return false;
+    if (sourceFilter !== "all" && (l.source || "") !== sourceFilter) return false;
+    if (sourceTypeFilter !== "all" && (l.source_type || "") !== sourceTypeFilter)
+      return false;
+    if (tagCodeFilter.trim()) {
+      const q = tagCodeFilter.trim().toLowerCase();
+      if (!(l.tag_code || "").toLowerCase().includes(q)) return false;
+    }
     if (search) {
       const q = search.toLowerCase();
       const inName = l.name?.toLowerCase().includes(q);
@@ -610,6 +769,18 @@ const LeadsTab = ({ leads, updateLead, deleteLead }: Props) => {
     { id: "all", label: "All" },
     ...STATUSES.map((s) => ({ id: s, label: getStatusBadge(s).label })),
   ];
+
+  const selectStyle: React.CSSProperties = {
+    padding: "6px 10px",
+    border: "1px solid #E8E2D8",
+    borderRadius: 6,
+    fontSize: 12,
+    fontFamily: "'Montserrat', sans-serif",
+    background: "#FFFFFF",
+    color: "#1A1A1A",
+    outline: "none",
+    minHeight: 32,
+  };
 
   return (
     <div className="leads-wrap" style={{ padding: 24 }}>
@@ -657,6 +828,10 @@ const LeadsTab = ({ leads, updateLead, deleteLead }: Props) => {
             min-width: 0 !important;
           }
           .leads-toolbar { gap: 0 !important; margin-bottom: 12px !important; }
+          .leads-source-filters {
+            padding: 0 16px 4px !important;
+            margin-bottom: 8px !important;
+          }
           .leads-grid {
             grid-template-columns: 1fr !important;
             padding: 0 16px !important;
@@ -710,6 +885,84 @@ const LeadsTab = ({ leads, updateLead, deleteLead }: Props) => {
           }}
         />
       </div>
+
+      <div
+        className="leads-source-filters"
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: 8,
+          alignItems: "center",
+          marginBottom: 16,
+        }}
+      >
+        <span
+          style={{
+            fontFamily: "'Montserrat', sans-serif",
+            fontSize: 11,
+            fontWeight: 600,
+            color: "#9CA3AF",
+            textTransform: "uppercase",
+            letterSpacing: 0.5,
+          }}
+        >
+          Origin
+        </span>
+        <select
+          value={sourceFilter}
+          onChange={(e) => setSourceFilter(e.target.value)}
+          style={selectStyle}
+          aria-label="Filter by source"
+        >
+          <option value="all">All sources</option>
+          {sourceOptions.map((s) => (
+            <option key={s} value={s}>
+              {s}
+            </option>
+          ))}
+        </select>
+        <select
+          value={sourceTypeFilter}
+          onChange={(e) => setSourceTypeFilter(e.target.value)}
+          style={selectStyle}
+          aria-label="Filter by tag type"
+        >
+          <option value="all">All tag types</option>
+          {sourceTypeOptions.map((s) => (
+            <option key={s} value={s}>
+              {TAG_TYPE_LABELS[s] || s}
+            </option>
+          ))}
+        </select>
+        <input
+          type="text"
+          value={tagCodeFilter}
+          onChange={(e) => setTagCodeFilter(e.target.value)}
+          placeholder="Tag code..."
+          style={{ ...selectStyle, minWidth: 140 }}
+          aria-label="Filter by tag code"
+        />
+        {(sourceFilter !== "all" ||
+          sourceTypeFilter !== "all" ||
+          tagCodeFilter.trim()) && (
+          <button
+            onClick={() => {
+              setSourceFilter("all");
+              setSourceTypeFilter("all");
+              setTagCodeFilter("");
+            }}
+            style={{
+              ...selectStyle,
+              cursor: "pointer",
+              color: "#6B6560",
+            }}
+          >
+            Clear
+          </button>
+        )}
+      </div>
+
+
 
       <div className="leads-grid">
         {filtered.map((lead) => (

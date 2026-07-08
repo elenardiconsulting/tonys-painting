@@ -20,6 +20,19 @@ export interface Lead {
   prefer_phone: boolean;
   created_at: string;
   updated_at: string;
+  // NFC / origin fields (all optional / nullable — additive)
+  source?: string | null;
+  source_type?: string | null;
+  tag_code?: string | null;
+  campaign_name?: string | null;
+  project_type?: string | null;
+  timeline?: string | null;
+  budget_range?: string | null;
+  city?: string | null;
+  state?: string | null;
+  photo_count?: number | null;
+  nfc_scan_id?: string | null;
+  created_from?: string | null;
 }
 
 interface BadgeStyle {
