@@ -76,6 +76,89 @@ const Skeleton = () => (
   />
 );
 
+const BreakdownCard = ({
+  title,
+  rows,
+  total,
+}: {
+  title: string;
+  rows: { label: string; value: number }[];
+  total: number;
+}) => (
+  <div
+    style={{
+      background: "#FFFFFF",
+      border: "0.5px solid #E8E2D8",
+      borderRadius: 10,
+      padding: 16,
+    }}
+  >
+    <div
+      style={{
+        fontFamily: "'Montserrat', sans-serif",
+        fontWeight: 600,
+        fontSize: 13,
+        color: "#1A1A1A",
+        marginBottom: 10,
+      }}
+    >
+      {title}
+    </div>
+    {rows.length === 0 ? (
+      <div
+        style={{
+          fontFamily: "'Montserrat', sans-serif",
+          fontSize: 12,
+          color: "#9CA3AF",
+        }}
+      >
+        No data yet.
+      </div>
+    ) : (
+      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        {rows.map((r) => {
+          const pct = total > 0 ? Math.round((r.value / total) * 100) : 0;
+          return (
+            <div key={r.label}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: 12,
+                  color: "#1A1A1A",
+                  marginBottom: 4,
+                }}
+              >
+                <span>{r.label}</span>
+                <span style={{ color: "#6B6560" }}>
+                  {r.value} · {pct}%
+                </span>
+              </div>
+              <div
+                style={{
+                  height: 6,
+                  background: "#F1EFE8",
+                  borderRadius: 3,
+                  overflow: "hidden",
+                }}
+              >
+                <div
+                  style={{
+                    width: `${pct}%`,
+                    height: "100%",
+                    background: "#1A1A1A",
+                  }}
+                />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    )}
+  </div>
+);
+
 const TAG_TYPE_LABELS: Record<string, string> = {
   showroom_gift: "Showroom",
   post_project_gift: "Post-Project",
