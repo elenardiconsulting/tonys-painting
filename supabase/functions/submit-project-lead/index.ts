@@ -233,14 +233,14 @@ serve(async (req) => {
 
     // Upload files to project-photos/<lead_id>/<uuid>.<ext>
     let uploadedCount = 0;
-    for (const f of files) {
-      const ext = extFromMime(f.type || "image/jpeg");
+    for (const { file: f, mime } of accepted) {
+      const ext = extFromMime(mime);
       const path = `${leadId}/${crypto.randomUUID()}.${ext}`;
       const buf = new Uint8Array(await f.arrayBuffer());
       const { error: upErr } = await supabase.storage
         .from("project-photos")
         .upload(path, buf, {
-          contentType: f.type || "image/jpeg",
+          contentType: mime,
           upsert: false,
         });
       if (upErr) {
@@ -251,7 +251,7 @@ serve(async (req) => {
         lead_id: leadId,
         file_path: path,
         file_name: f.name?.slice(0, 200) || null,
-        file_type: f.type || null,
+        file_type: mime,
         file_size: f.size,
       });
       if (rowErr) {
