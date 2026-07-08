@@ -200,21 +200,33 @@ const ProjectUpload = () => {
   const handleFiles = async (files: FileList | null) => {
     if (!files || !files.length) return;
     setProcessing(true);
+    setError(null);
     const remaining = MAX_PHOTOS - photos.length;
     const list = Array.from(files).slice(0, Math.max(0, remaining));
     const next: PhotoItem[] = [];
+    const rejected: string[] = [];
     for (const raw of list) {
-      if (raw.size > MAX_SIZE_MB * 1024 * 1024 * 4) continue;
-      const compressed = await compressImage(raw);
+      if (raw.size > MAX_SIZE_MB * 1024 * 1024 * 4) {
+        rejected.push(`${raw.name || "file"} (too large)`);
+        continue;
+      }
+      const processed = await compressImage(raw);
+      if (!processed) {
+        rejected.push(`${raw.name || "file"} (unsupported format)`);
+        continue;
+      }
       next.push({
         id: crypto.randomUUID(),
-        file: compressed,
-        previewUrl: URL.createObjectURL(compressed),
-        compressed: compressed !== raw,
+        file: processed,
+        previewUrl: URL.createObjectURL(processed),
+        compressed: processed !== raw,
       });
     }
     setPhotos((prev) => [...prev, ...next]);
     setProcessing(false);
+    if (rejected.length) {
+      setError(`Could not use: ${rejected.join(", ")}. Please upload JPG, PNG, or WEBP.`);
+    }
     if (fileRef.current) fileRef.current.value = "";
   };
 
