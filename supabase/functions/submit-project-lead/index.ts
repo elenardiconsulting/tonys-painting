@@ -186,7 +186,7 @@ serve(async (req) => {
         nfc_scan_id: sid,
         created_from: "nfc",
         status: "new",
-        photo_count: 0,
+        photo_count: files.length,
       })
       .select("id")
       .single();
