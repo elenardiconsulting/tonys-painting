@@ -131,13 +131,18 @@ const ProjectUpload = () => {
   const [params] = useSearchParams();
   const tag = params.get("tag") || "";
   const sid = params.get("sid") || "";
-  const typeParam = (params.get("type") || "").toLowerCase();
+  const typeParam = (params.get("type") || "").trim().toLowerCase();
 
-  const tagType: TagType = useMemo(() => {
-    return (VALID_TAG_TYPES as string[]).includes(typeParam)
-      ? (typeParam as TagType)
-      : "general_business_card";
-  }, [typeParam]);
+  const isValidTagType = useMemo(
+    () => (VALID_TAG_TYPES as string[]).includes(typeParam),
+    [typeParam],
+  );
+
+  // Used only for copy fallback on the page. The submitted tag_type
+  // is the RAW url param (see handleSubmit) — never this fallback.
+  const tagType: TagType = isValidTagType
+    ? (typeParam as TagType)
+    : "general_business_card";
 
   const copy = TAG_COPY[tagType];
 
@@ -229,7 +234,7 @@ const ProjectUpload = () => {
           timeline,
           budget_range: budget,
           project_type: projectType,
-          tag_type: tagType,
+          tag_type: isValidTagType ? typeParam : null,
           tag_code: tag,
           nfc_scan_id: sid,
         }),
