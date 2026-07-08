@@ -5,3 +5,6 @@ verify_jwt = false
 
 [functions.notify-new-lead]
 verify_jwt = false
+
+[functions.submit-project-lead]
+verify_jwt = false
