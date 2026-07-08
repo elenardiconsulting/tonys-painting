@@ -234,7 +234,7 @@ const ProjectUpload = () => {
           timeline,
           budget_range: budget,
           project_type: projectType,
-          tag_type: tagType,
+          tag_type: isValidTagType ? typeParam : null,
           tag_code: tag,
           nfc_scan_id: sid,
         }),
