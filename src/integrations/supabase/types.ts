@@ -16,48 +16,122 @@ export type Database = {
     Tables: {
       leads: {
         Row: {
+          budget_range: string | null
+          campaign_name: string | null
+          city: string | null
           created_at: string | null
+          created_from: string | null
           email: string | null
           id: string
           message: string | null
           name: string
+          nfc_scan_id: string | null
           notes: string | null
           phone: string | null
+          photo_count: number
           prefer_phone: boolean | null
+          project_type: string | null
           scheduled_at: string | null
           service_type: string | null
+          source: string
+          source_type: string | null
+          state: string | null
           status: string
+          tag_code: string | null
+          timeline: string | null
           updated_at: string | null
         }
         Insert: {
+          budget_range?: string | null
+          campaign_name?: string | null
+          city?: string | null
           created_at?: string | null
+          created_from?: string | null
           email?: string | null
           id?: string
           message?: string | null
           name: string
+          nfc_scan_id?: string | null
           notes?: string | null
           phone?: string | null
+          photo_count?: number
           prefer_phone?: boolean | null
+          project_type?: string | null
           scheduled_at?: string | null
           service_type?: string | null
+          source?: string
+          source_type?: string | null
+          state?: string | null
           status?: string
+          tag_code?: string | null
+          timeline?: string | null
           updated_at?: string | null
         }
         Update: {
+          budget_range?: string | null
+          campaign_name?: string | null
+          city?: string | null
           created_at?: string | null
+          created_from?: string | null
           email?: string | null
           id?: string
           message?: string | null
           name?: string
+          nfc_scan_id?: string | null
           notes?: string | null
           phone?: string | null
+          photo_count?: number
           prefer_phone?: boolean | null
+          project_type?: string | null
           scheduled_at?: string | null
           service_type?: string | null
+          source?: string
+          source_type?: string | null
+          state?: string | null
           status?: string
+          tag_code?: string | null
+          timeline?: string | null
           updated_at?: string | null
         }
         Relationships: []
+      }
+      project_photos: {
+        Row: {
+          file_name: string | null
+          file_path: string
+          file_size: number | null
+          file_type: string | null
+          id: string
+          lead_id: string
+          uploaded_at: string
+        }
+        Insert: {
+          file_name?: string | null
+          file_path: string
+          file_size?: number | null
+          file_type?: string | null
+          id?: string
+          lead_id: string
+          uploaded_at?: string
+        }
+        Update: {
+          file_name?: string | null
+          file_path?: string
+          file_size?: number | null
+          file_type?: string | null
+          id?: string
+          lead_id?: string
+          uploaded_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_photos_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       push_subscriptions: {
         Row: {
