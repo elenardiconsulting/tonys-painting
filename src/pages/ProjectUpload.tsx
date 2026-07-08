@@ -182,11 +182,11 @@ const ProjectUpload = () => {
           <div className="mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6">
             <Check className="w-8 h-8 text-primary" />
           </div>
-          <h1 className="font-serif text-3xl md:text-4xl text-text-primary mb-3">Got it. Thank you.</h1>
-          <p className="text-text-secondary mb-2">
+          <h1 className="font-serif text-3xl md:text-4xl text-foreground mb-3">Got it. Thank you.</h1>
+          <p className="text-muted-foreground mb-2">
             Your project details are with our team. Otoniel or a project lead will reach out shortly.
           </p>
-          <p className="text-text-secondary text-sm">Typical response time is under 24 hours on business days.</p>
+          <p className="text-muted-foreground text-sm">Typical response time is under 24 hours on business days.</p>
           <Link
             to="/"
             className="inline-block mt-8 text-primary hover:text-primary-dark font-medium"
@@ -219,7 +219,7 @@ const ProjectUpload = () => {
 
       {/* Progress */}
       <div className="max-w-3xl mx-auto px-4 pt-8">
-        <div className="flex items-center justify-between mb-2 text-xs uppercase tracking-wider text-text-secondary">
+        <div className="flex items-center justify-between mb-2 text-xs uppercase tracking-wider text-muted-foreground">
           <span>Step {step} of 3</span>
           <span>
             {step === 1 && "Your details"}
@@ -241,11 +241,11 @@ const ProjectUpload = () => {
         <motion.h1
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          className="font-serif text-3xl md:text-5xl text-text-primary leading-tight mb-2"
+          className="font-serif text-3xl md:text-5xl text-foreground leading-tight mb-2"
         >
           Tell us about your project
         </motion.h1>
-        <p className="text-text-secondary mb-8 md:mb-10">
+        <p className="text-muted-foreground mb-8 md:mb-10">
           A few quick details and a couple photos are all we need to get you a real estimate.
         </p>
 
@@ -322,7 +322,7 @@ const ProjectUpload = () => {
                     />
                   </Field>
                 </div>
-                <p className="text-xs text-text-secondary">
+                <p className="text-xs text-muted-foreground">
                   We need at least a phone number or an email to reach you.
                 </p>
               </motion.div>
@@ -338,7 +338,7 @@ const ProjectUpload = () => {
                 className="space-y-6"
               >
                 <div>
-                  <label className="block text-sm font-medium text-text-primary mb-3">
+                  <label className="block text-sm font-medium text-foreground mb-3">
                     Project type <span className="text-primary">*</span>
                   </label>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5">
@@ -350,8 +350,8 @@ const ProjectUpload = () => {
                         className={cn(
                           "text-left px-4 py-3 rounded-lg border transition-all text-sm",
                           projectType === opt.value
-                            ? "border-primary bg-primary/5 text-text-primary"
-                            : "border-stone bg-background hover:border-text-secondary text-text-primary",
+                            ? "border-primary bg-primary/5 text-foreground"
+                            : "border-stone bg-background hover:border-text-secondary text-foreground",
                         )}
                       >
                         {opt.label}
@@ -408,10 +408,10 @@ const ProjectUpload = () => {
                 className="space-y-6"
               >
                 <div>
-                  <label className="block text-sm font-medium text-text-primary mb-1">
+                  <label className="block text-sm font-medium text-foreground mb-1">
                     Project photos
                   </label>
-                  <p className="text-xs text-text-secondary mb-3">
+                  <p className="text-xs text-muted-foreground mb-3">
                     Up to {MAX_PHOTOS} photos. We auto-resize large images so uploads are fast.
                   </p>
 
@@ -441,7 +441,7 @@ const ProjectUpload = () => {
                       <button
                         type="button"
                         onClick={() => fileRef.current?.click()}
-                        className="aspect-square rounded-lg border-2 border-dashed border-stone hover:border-primary hover:bg-primary/5 transition-colors flex flex-col items-center justify-center text-text-secondary"
+                        className="aspect-square rounded-lg border-2 border-dashed border-stone hover:border-primary hover:bg-primary/5 transition-colors flex flex-col items-center justify-center text-muted-foreground"
                       >
                         {processing ? (
                           <Loader2 className="w-5 h-5 animate-spin" />
@@ -473,7 +473,7 @@ const ProjectUpload = () => {
                       onChange={(e) => setConsent(e.target.checked)}
                       className="mt-1 w-4 h-4 accent-primary"
                     />
-                    <span className="text-sm text-text-secondary">
+                    <span className="text-sm text-muted-foreground">
                       I agree to be contacted by Tony's Painting about my project. My information stays private and is never sold.
                     </span>
                   </label>
@@ -494,7 +494,7 @@ const ProjectUpload = () => {
               <button
                 type="button"
                 onClick={() => setStep((s) => s - 1)}
-                className="inline-flex items-center gap-2 text-text-secondary hover:text-text-primary text-sm font-medium"
+                className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground text-sm font-medium"
               >
                 <ArrowLeft className="w-4 h-4" /> Back
               </button>
@@ -528,7 +528,7 @@ const ProjectUpload = () => {
           </div>
         </div>
 
-        <p className="text-center text-xs text-text-secondary mt-6">
+        <p className="text-center text-xs text-muted-foreground mt-6">
           Tony's Painting and Remodeling · Serving Martha's Vineyard and New England since 2004
         </p>
       </main>
@@ -546,7 +546,7 @@ const Field = ({
   children: React.ReactNode;
 }) => (
   <div>
-    <label className="block text-sm font-medium text-text-primary mb-2">
+    <label className="block text-sm font-medium text-foreground mb-2">
       {label} {required && <span className="text-primary">*</span>}
     </label>
     {children}
