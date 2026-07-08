@@ -268,18 +268,19 @@ serve(async (req) => {
         .eq("id", leadId);
     }
 
-    // Fire-and-forget conversion ping to Elenardi (endpoint not live yet — Prompt 1 Stage 4).
-    // Intentionally awaited-less and wrapped so any failure never blocks the lead.
-    // try {
-    //   const elenardiUrl = Deno.env.get("ELENARDI_CONVERSION_URL");
-    //   if (elenardiUrl && sid) {
-    //     fetch(elenardiUrl, {
-    //       method: "POST",
-    //       headers: { "Content-Type": "application/json" },
-    //       body: JSON.stringify({ sid, tag_code: tagCode, lead_id: leadId }),
-    //     }).catch((e) => console.warn("Elenardi ping failed", e));
-    //   }
-    // } catch (_) { /* never throw */ }
+    // Fire-and-forget conversion ping to Elenardi. Must never block or fail the lead.
+    if (sid) {
+      try {
+        fetch("https://smart.elenardimidia.com/api/public/mark-converted", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ sid }),
+          keepalive: true,
+        }).catch((e) => console.warn("Elenardi ping failed", e));
+      } catch (e) {
+        console.warn("Elenardi ping threw", e);
+      }
+    }
 
     return json({ ok: true, lead_id: leadId, photo_count: uploadedCount });
   } catch (err) {
