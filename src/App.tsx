@@ -54,6 +54,7 @@ const AnimatedRoutes = () => {
           <Route path="/lp/interior-painting" element={<LPInteriorPainting />} />
           <Route path="/lp/exterior-painting" element={<LPExteriorPainting />} />
           <Route path="/lp/remodeling" element={<LPRemodeling />} />
+          <Route path="/project-upload" element={<ProjectUpload />} />
           <Route path="/login" element={<LoginPage />} />
           <Route
             path="/dashboard"
