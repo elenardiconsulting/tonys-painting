@@ -651,7 +651,7 @@ img {
 
 @layer components {
   .input {
-    @apply w-full bg-background border border-stone rounded-lg px-4 py-3 text-text-primary placeholder:text-text-secondary/60 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors;
+    @apply w-full bg-background border border-stone rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors;
   }
 }
 
