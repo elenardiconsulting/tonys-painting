@@ -1,5 +1,6 @@
 import { Link, useSearchParams } from "react-router-dom";
-import { ArrowRight, Phone, MessageCircle, MessageSquare, Globe, Instagram, Star, ShieldCheck } from "lucide-react";
+import { ArrowRight, Phone, MessageCircle, MessageSquare, Globe, Instagram, Star } from "lucide-react";
+import PublicPageHeader from "@/components/site/PublicPageHeader";
 import SEO from "@/components/SEO";
 
 const PHONE_DISPLAY = "508 982 9675";
