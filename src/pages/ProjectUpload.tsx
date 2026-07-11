@@ -6,6 +6,7 @@ import { FunctionsHttpError } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 import SEO from "@/components/SEO";
 import { cn } from "@/lib/utils";
+import PublicPageHeader from "@/components/site/PublicPageHeader";
 
 type ProjectType =
   | "kitchen_remodeling"
@@ -333,16 +334,7 @@ const ProjectUpload = () => {
       />
 
       {/* Header */}
-      <header className="bg-dark text-white">
-        <div className="max-w-3xl mx-auto px-4 py-5 flex items-center justify-between">
-          <Link to="/" className="font-serif text-xl md:text-2xl tracking-tight">
-            Tony's Painting
-          </Link>
-          <span className="text-xs md:text-sm text-white/70 flex items-center gap-1.5">
-            <ShieldCheck className="w-4 h-4" /> Private and secure
-          </span>
-        </div>
-      </header>
+      <PublicPageHeader />
 
       {/* Progress */}
       <div className="max-w-3xl mx-auto px-4 pt-8">
