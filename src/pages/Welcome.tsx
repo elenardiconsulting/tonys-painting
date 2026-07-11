@@ -123,17 +123,7 @@ const Welcome = () => {
         description="Thanks for visiting our showroom. Send project photos, call, or explore our work."
       />
 
-      {/* Header */}
-      <header className="bg-dark text-white">
-        <div className="max-w-2xl mx-auto px-4 py-5 flex items-center justify-between">
-          <Link to="/" className="font-serif text-xl md:text-2xl tracking-tight">
-            Tony's Painting
-          </Link>
-          <span className="text-xs md:text-sm text-white/70 flex items-center gap-1.5">
-            <ShieldCheck className="w-4 h-4" /> Trusted since 2004
-          </span>
-        </div>
-      </header>
+      <PublicPageHeader />
 
       <main className="max-w-2xl mx-auto px-4 pt-10 pb-16">
         {/* Warm header */}
