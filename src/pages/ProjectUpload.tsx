@@ -6,6 +6,7 @@ import { FunctionsHttpError } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 import SEO from "@/components/SEO";
 import { cn } from "@/lib/utils";
+import PublicPageHeader from "@/components/site/PublicPageHeader";
 
 type ProjectType =
   | "kitchen_remodeling"
