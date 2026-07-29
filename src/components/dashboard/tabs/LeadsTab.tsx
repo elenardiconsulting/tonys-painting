@@ -386,19 +386,40 @@ const LeadCard = ({
       </div>
 
       {lead.message && (
-        <div
-          style={{
-            padding: "12px 16px 0",
-            fontFamily: "'Montserrat', sans-serif",
-            fontSize: 13,
-            color: "#6B6560",
-            display: "-webkit-box",
-            WebkitLineClamp: 3,
-            WebkitBoxOrient: "vertical",
-            overflow: "hidden",
-          }}
-        >
-          {lead.message}
+        <div style={{ padding: "12px 16px 0" }}>
+          <p
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+              fontSize: 13,
+              color: "#6B6560",
+              lineHeight: 1.65,
+              margin: 0,
+              overflow: messageExpanded ? "visible" : "hidden",
+              display: messageExpanded ? "block" : "-webkit-box",
+              WebkitLineClamp: messageExpanded ? "unset" : 3,
+              WebkitBoxOrient: "vertical",
+            }}
+          >
+            {lead.message}
+          </p>
+          {lead.message.length > 120 && (
+            <button
+              onClick={() => setMessageExpanded((v) => !v)}
+              style={{
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: 12,
+                fontWeight: 600,
+                color: "#C4291C",
+                padding: "4px 0 0",
+                display: "block",
+              }}
+            >
+              {messageExpanded ? "Show less ↑" : "Read more ↓"}
+            </button>
+          )}
         </div>
       )}
 
