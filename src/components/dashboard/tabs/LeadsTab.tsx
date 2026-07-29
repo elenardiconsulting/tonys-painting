@@ -510,36 +510,170 @@ const LeadCard = ({
 
 
       <div style={{ padding: "12px 16px 0" }}>
-        <label
+        <div
           style={{
-            display: "block",
-            fontFamily: "'Montserrat', sans-serif",
-            fontWeight: 500,
-            fontSize: 12,
-            color: "#9CA3AF",
-            marginBottom: 4,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginBottom: 6,
           }}
         >
-          Notes
-        </label>
-        <textarea
-          value={notes}
-          onChange={(e) => setNotes(e.target.value)}
-          onBlur={saveNotes}
-          style={{
-            width: "100%",
-            minHeight: 60,
-            resize: "none",
-            border: "1px solid #E8E2D8",
-            borderRadius: 6,
-            padding: 8,
-            fontFamily: "'Montserrat', sans-serif",
-            fontSize: 13,
-            color: "#1A1A1A",
-            outline: "none",
-            boxSizing: "border-box",
-          }}
-        />
+          <span
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+              fontSize: 11,
+              fontWeight: 500,
+              color: "#9CA3AF",
+              textTransform: "uppercase",
+              letterSpacing: "0.08em",
+            }}
+          >
+            Notes
+          </span>
+          {!editingNote && (
+            <button
+              onClick={() => {
+                setEditingNote(true);
+                setNoteSaved(false);
+              }}
+              style={{
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: 11,
+                fontWeight: 600,
+                color: "#C4291C",
+                padding: 0,
+              }}
+            >
+              {noteValue ? "Edit" : "+ Add note"}
+            </button>
+          )}
+        </div>
+
+        {editingNote ? (
+          <div>
+            <textarea
+              value={noteValue}
+              onChange={(e) => setNoteValue(e.target.value)}
+              autoFocus
+              rows={3}
+              placeholder="Add a note about this lead..."
+              style={{
+                width: "100%",
+                border: "1.5px solid #C4291C",
+                borderRadius: 8,
+                padding: "10px 12px",
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: 13,
+                color: "#1A1A1A",
+                resize: "none",
+                outline: "none",
+                lineHeight: 1.6,
+                background: "white",
+                boxSizing: "border-box",
+              }}
+            />
+            <div
+              style={{
+                display: "flex",
+                gap: 8,
+                marginTop: 8,
+                justifyContent: "flex-end",
+              }}
+            >
+              <button
+                onClick={() => {
+                  setNoteValue(lead.notes || "");
+                  setEditingNote(false);
+                }}
+                style={{
+                  background: "transparent",
+                  border: "1px solid #E8E2D8",
+                  borderRadius: 6,
+                  padding: "6px 14px",
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: 12,
+                  color: "#6B6560",
+                  cursor: "pointer",
+                }}
+              >
+                Cancel
+              </button>
+              <button
+                onClick={saveNote}
+                style={{
+                  background: "#1A1A1A",
+                  border: "none",
+                  borderRadius: 6,
+                  padding: "6px 14px",
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: 12,
+                  fontWeight: 600,
+                  color: "white",
+                  cursor: "pointer",
+                }}
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div
+            onClick={() => setEditingNote(true)}
+            style={{
+              minHeight: 40,
+              padding: "10px 12px",
+              background: noteValue ? "#F8F8F6" : "transparent",
+              border: noteValue ? "1px solid #E8E2D8" : "1px dashed #E8E2D8",
+              borderRadius: 8,
+              cursor: "pointer",
+              position: "relative",
+            }}
+          >
+            {noteValue ? (
+              <p
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: 13,
+                  color: "#1A1A1A",
+                  lineHeight: 1.6,
+                  margin: 0,
+                }}
+              >
+                {noteValue}
+              </p>
+            ) : (
+              <p
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: 13,
+                  color: "#C4B8B0",
+                  margin: 0,
+                  fontStyle: "italic",
+                }}
+              >
+                Click to add a note...
+              </p>
+            )}
+            {noteSaved && (
+              <span
+                style={{
+                  position: "absolute",
+                  top: 8,
+                  right: 10,
+                  fontSize: 11,
+                  color: "#3B6D11",
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontWeight: 500,
+                }}
+              >
+                Saved
+              </span>
+            )}
+          </div>
+        )}
       </div>
 
       <div
