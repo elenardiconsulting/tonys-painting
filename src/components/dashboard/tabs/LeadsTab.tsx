@@ -81,9 +81,11 @@ const LeadCard = ({
     }, 300);
   };
 
-  const saveNotes = async () => {
-    if (notes === lead.notes) return;
-    await supabase.from("leads").update({ notes }).eq("id", lead.id);
+  const saveNote = async () => {
+    await supabase.from("leads").update({ notes: noteValue }).eq("id", lead.id);
+    setEditingNote(false);
+    setNoteSaved(true);
+    setTimeout(() => setNoteSaved(false), 2000);
   };
 
   return (
