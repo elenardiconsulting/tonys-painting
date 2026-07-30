@@ -65,21 +65,56 @@ serve(async (req) => {
       )
     }
 
-    const count = appointments.length
-    const title = count === 1
-      ? 'Reminder: 1 appointment tomorrow'
-      : `Reminder: ${count} appointments tomorrow`
+    const formatTime = (isoString: string) =>
+      new Date(isoString).toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true,
+        timeZone: 'America/New_York',
+      })
 
-    const body = count === 1
-      ? `${appointments[0].title}${appointments[0].lead_name ? ' - ' + appointments[0].lead_name : ''}`
-      : appointments.map((a: any) => a.title).join(', ')
+    const formatDate = (isoString: string) =>
+      new Date(isoString).toLocaleDateString('en-US', {
+        weekday: 'long',
+        month: 'long',
+        day: 'numeric',
+        timeZone: 'America/New_York',
+      })
+
+    let notifTitle: string
+    let notifBody: string
+
+    if (appointments.length === 1) {
+      const a = appointments[0]
+      notifTitle = `Tomorrow: ${a.title}`
+      const parts: string[] = []
+      parts.push(`📅 ${formatDate(a.scheduled_at)}`)
+      parts.push(`⏰ ${formatTime(a.scheduled_at)} ET`)
+      if (a.lead_name) parts.push(`👤 ${a.lead_name}`)
+      if (a.notes) parts.push(`📝 ${a.notes}`)
+      notifBody = parts.join(' · ')
+    } else {
+      notifTitle = `Tomorrow: ${appointments.length} Appointments`
+      const lines = appointments.map((a: any) => {
+        const lead = a.lead_name ? ` · ${a.lead_name}` : ''
+        return `${formatTime(a.scheduled_at)} ET · ${a.title}${lead}`
+      })
+      notifBody = `📅 ${formatDate(appointments[0].scheduled_at)}\n` + lines.join('\n')
+    }
+
+    const pushPayload = {
+      title: notifTitle,
+      body: notifBody,
+      count: appointments.length,
+      type: 'reminder',
+    }
 
     let sent = 0
     for (const sub of subscriptions) {
       try {
         await webpush.sendNotification(
           { endpoint: sub.endpoint, keys: { p256dh: sub.p256dh, auth: sub.auth } },
-          JSON.stringify({ title, body, count, type: 'reminder' })
+          JSON.stringify(pushPayload)
         )
         sent++
       } catch (err: any) {
