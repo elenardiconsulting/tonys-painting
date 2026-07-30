@@ -1,4 +1,4 @@
-// v3 - force redeploy
+// v4 - redeploy 2026-07-30
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 const corsHeaders = {
