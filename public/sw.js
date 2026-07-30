@@ -1,32 +1,38 @@
-const CACHE_NAME = 'tonys-crm-v1'
-
 self.addEventListener('install', e => self.skipWaiting())
 
 self.addEventListener('activate', e => {
-  e.waitUntil(clients.claim())
+  e.waitUntil(
+    Promise.all([
+      clients.claim(),
+      clearBadgeNow()
+    ])
+  )
 })
 
-// Limpar badge sempre que o app e focado/aberto
-self.addEventListener('activate', () => {
-  clearBadgeNow()
-})
-
-self.clients.matchAll({ includeUncontrolled: true, type: 'window' })
-
-// Listener para quando cliente (app) ganha foco
 self.addEventListener('message', async e => {
   if (e.data?.type === 'CLEAR_BADGE' || e.data?.type === 'APP_FOCUSED') {
     await clearBadgeNow()
   }
 })
 
+// Badge: usar navigator diretamente (sem self.)
+// O contexto do Service Worker expoe navigator globalmente
+async function setAppBadgeNow(count) {
+  try {
+    if ('setAppBadge' in navigator) {
+      await navigator.setAppBadge(count)
+    }
+  } catch(e) {
+    console.log('setAppBadge error:', e)
+  }
+}
+
 async function clearBadgeNow() {
   try {
-    if ('clearAppBadge' in self.navigator) {
-      await self.navigator.clearAppBadge()
-    }
-    if ('setAppBadge' in self.navigator) {
-      await self.navigator.setAppBadge(0)
+    if ('clearAppBadge' in navigator) {
+      await navigator.clearAppBadge()
+    } else if ('setAppBadge' in navigator) {
+      await navigator.setAppBadge(0)
     }
   } catch(e) {}
 }
@@ -39,6 +45,7 @@ self.addEventListener('push', async e => {
 
   e.waitUntil(
     Promise.all([
+      // Mostrar notificacao
       self.registration.showNotification(title, {
         body,
         icon: '/favicon.ico',
@@ -48,18 +55,11 @@ self.addEventListener('push', async e => {
         renotify: true,
         data: { url: '/dashboard', count }
       }),
+      // Atualizar badge no icone do app
       setAppBadgeNow(count)
     ])
   )
 })
-
-async function setAppBadgeNow(count) {
-  try {
-    if ('setAppBadge' in self.navigator) {
-      await self.navigator.setAppBadge(count)
-    }
-  } catch(e) {}
-}
 
 self.addEventListener('notificationclick', e => {
   e.notification.close()
@@ -78,5 +78,5 @@ self.addEventListener('notificationclick', e => {
   )
 })
 
-// Detectar quando janela ganha foco e limpar badge
+// Limpar badge quando a janela ganha foco
 self.addEventListener('focus', () => clearBadgeNow())
