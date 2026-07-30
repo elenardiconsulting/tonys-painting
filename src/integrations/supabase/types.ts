@@ -14,6 +14,44 @@ export type Database = {
   }
   public: {
     Tables: {
+      appointments: {
+        Row: {
+          created_at: string | null
+          id: string
+          lead_id: string | null
+          notes: string | null
+          scheduled_at: string
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          lead_id?: string | null
+          notes?: string | null
+          scheduled_at: string
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          lead_id?: string | null
+          notes?: string | null
+          scheduled_at?: string
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "appointments_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       leads: {
         Row: {
           budget_range: string | null
@@ -195,7 +233,17 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_tomorrows_appointments: {
+        Args: never
+        Returns: {
+          id: string
+          lead_name: string
+          lead_phone: string
+          notes: string
+          scheduled_at: string
+          title: string
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never
