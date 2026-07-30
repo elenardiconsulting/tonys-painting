@@ -1,10 +1,9 @@
-// v2 - redeployed
+// v3 - force redeploy
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
 serve(async (req) => {
@@ -19,14 +18,13 @@ serve(async (req) => {
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 
-    // Website (default) message — UNCHANGED.
     const defaultBody =
       (lead.name || "Someone") +
       " is interested in " +
       (lead.service_type || "your services") +
       ".";
 
-    await fetch(supabaseUrl + "/functions/v1/send-push", {
+    const response = await fetch(supabaseUrl + "/functions/v1/send-push", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -35,18 +33,14 @@ serve(async (req) => {
       body: JSON.stringify({
         title: "New Lead Received",
         body: defaultBody,
-        // Extra context so send-push can branch on source for NFC.
         source: lead.source ?? null,
-        source_type: lead.source_type ?? null,
-        project_type: lead.project_type ?? null,
-        photo_count: lead.photo_count ?? 0,
-        city: lead.city ?? null,
-        state: lead.state ?? null,
         name: lead.name ?? null,
       }),
     });
 
-    return new Response(JSON.stringify({ ok: true }), {
+    const result = await response.json();
+
+    return new Response(JSON.stringify({ ok: true, result }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (err) {
