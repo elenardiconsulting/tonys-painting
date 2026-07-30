@@ -1,10 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 import type { Lead } from "@/types/lead";
-import { getStatusBadge } from "@/types/lead";
 
 interface Props {
   leads: Lead[];
+}
+
+interface Appointment {
+  id: string;
+  title: string;
+  notes: string | null;
+  scheduled_at: string;
+  lead_id: string | null;
+  leads?: { name: string | null; phone: string | null; service_type: string | null } | null;
 }
 
 const isSameDay = (d1: Date, d2: Date) =>
@@ -14,9 +23,65 @@ const isSameDay = (d1: Date, d2: Date) =>
 
 const DAY_LABELS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
+/** Offset em horas do fuso America/New_York para uma data (EST -5, EDT -4). */
+const nyOffsetHours = (date: Date): number => {
+  const tzDate = new Date(
+    date.toLocaleString("en-US", { timeZone: "America/New_York" }),
+  );
+  const utcDate = new Date(date.toLocaleString("en-US", { timeZone: "UTC" }));
+  return Math.round((tzDate.getTime() - utcDate.getTime()) / 3600000);
+};
+
+const fmtTimeET = (iso: string) =>
+  new Date(iso).toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZone: "America/New_York",
+  });
+
 const CalendarTab = ({ leads }: Props) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [appointments, setAppointments] = useState<Appointment[]>([]);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedDayForModal, setSelectedDayForModal] = useState<Date | null>(null);
+
+  const [formTitle, setFormTitle] = useState("");
+  const [formTime, setFormTime] = useState("09:00");
+  const [formNotes, setFormNotes] = useState("");
+  const [formLeadId, setFormLeadId] = useState("");
+  const [saving, setSaving] = useState(false);
+
+  useEffect(() => {
+    let mounted = true;
+
+    const load = () => {
+      supabase
+        .from("appointments")
+        .select("*, leads(name, phone, service_type)")
+        .order("scheduled_at", { ascending: true })
+        .then(({ data }) => {
+          if (!mounted) return;
+          setAppointments((data as unknown as Appointment[]) || []);
+        });
+    };
+
+    load();
+
+    const channel = supabase
+      .channel("appointments-changes")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "appointments" },
+        () => load(),
+      )
+      .subscribe();
+
+    return () => {
+      mounted = false;
+      supabase.removeChannel(channel);
+    };
+  }, []);
 
   const today = new Date();
   const year = currentMonth.getFullYear();
@@ -32,28 +97,13 @@ const CalendarTab = ({ leads }: Props) => {
     cells.push(new Date(year, month, i - startOffset + 1));
   }
 
-  const getDots = (date: Date) => {
-    const dayLeads = leads.filter(
-      (l) => l.scheduled_at && isSameDay(new Date(l.scheduled_at), date),
-    );
-    return dayLeads.slice(0, 3).map((l) => getStatusBadge(l.status).color);
-  };
+  const appointmentsFor = (date: Date) =>
+    appointments.filter((a) => isSameDay(new Date(a.scheduled_at), date));
 
-  const selectedAppointments = leads
-    .filter(
-      (l) => l.scheduled_at && isSameDay(new Date(l.scheduled_at), selectedDate),
-    )
-    .sort(
-      (a, b) =>
-        new Date(a.scheduled_at!).getTime() - new Date(b.scheduled_at!).getTime(),
-    );
+  const dayAppointments = appointmentsFor(selectedDate);
 
-  const upcoming = leads
-    .filter((l) => l.scheduled_at && new Date(l.scheduled_at) > new Date())
-    .sort(
-      (a, b) =>
-        new Date(a.scheduled_at!).getTime() - new Date(b.scheduled_at!).getTime(),
-    )
+  const upcoming = appointments
+    .filter((a) => new Date(a.scheduled_at) > new Date())
     .slice(0, 5);
 
   const monthLabel = currentMonth.toLocaleDateString("en-US", {
@@ -63,6 +113,47 @@ const CalendarTab = ({ leads }: Props) => {
 
   const isCurrentMonth =
     today.getMonth() === month && today.getFullYear() === year;
+
+  const openModalFor = (date: Date) => {
+    setSelectedDayForModal(date);
+    setShowModal(true);
+  };
+
+  const deleteAppointment = async (id: string) => {
+    setAppointments((prev) => prev.filter((a) => a.id !== id));
+    await supabase.from("appointments").delete().eq("id", id);
+  };
+
+  const saveAppointment = async () => {
+    if (!formTitle.trim() || !selectedDayForModal || saving) return;
+    setSaving(true);
+    try {
+      const y = selectedDayForModal.getFullYear();
+      const m = String(selectedDayForModal.getMonth() + 1).padStart(2, "0");
+      const d = String(selectedDayForModal.getDate()).padStart(2, "0");
+      const [hh, mm] = formTime.split(":").map(Number);
+
+      // Base UTC com a hora "local de NY", depois corrigida pelo offset real do dia
+      const base = new Date(Date.UTC(y, Number(m) - 1, Number(d), hh || 0, mm || 0));
+      const offset = nyOffsetHours(base);
+      const utcTime = new Date(base.getTime() - offset * 60 * 60 * 1000);
+
+      await supabase.from("appointments").insert({
+        title: formTitle.trim(),
+        notes: formNotes,
+        lead_id: formLeadId || null,
+        scheduled_at: utcTime.toISOString(),
+      });
+
+      setShowModal(false);
+      setFormTitle("");
+      setFormTime("09:00");
+      setFormNotes("");
+      setFormLeadId("");
+    } finally {
+      setSaving(false);
+    }
+  };
 
   return (
     <div className="calendar-container" style={{ padding: 24 }}>
@@ -81,7 +172,7 @@ const CalendarTab = ({ leads }: Props) => {
           gap: 4px;
         }
         .calendar-cell {
-          height: 40px;
+          height: 44px;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -97,14 +188,17 @@ const CalendarTab = ({ leads }: Props) => {
           position: relative;
         }
         .calendar-cell:hover { background: #F5F1EB; }
+        .day-add-btn { display: none; }
+        .calendar-cell:hover .day-add-btn { display: flex !important; }
         @media (max-width: 767px) {
           .calendar-container { padding: 16px !important; }
-          .calendar-cell { height: 36px !important; font-size: 13px !important; }
+          .calendar-cell { height: 40px !important; font-size: 13px !important; }
           .calendar-day-label { font-size: 10px !important; padding: 4px 0 !important; }
           .calendar-month-label { font-size: 16px !important; }
           .calendar-nav-btn { padding: 8px !important; }
           .calendar-today-btn { font-size: 12px !important; padding: 4px 10px !important; }
           .upcoming-item { padding: 10px 0 !important; }
+          .appt-modal { border-radius: 16px 16px 0 0 !important; align-self: flex-end; }
         }
       `}</style>
 
@@ -213,7 +307,7 @@ const CalendarTab = ({ leads }: Props) => {
               const inMonth = date.getMonth() === month;
               const isToday = isSameDay(date, today);
               const isSelected = isSameDay(date, selectedDate);
-              const dots = getDots(date);
+              const dayAppts = appointmentsFor(date);
 
               let bg = "transparent";
               let color = "#1A1A1A";
@@ -226,7 +320,7 @@ const CalendarTab = ({ leads }: Props) => {
               }
 
               return (
-                <button
+                <div
                   key={i}
                   className="calendar-cell"
                   onClick={() => setSelectedDate(date)}
@@ -238,22 +332,56 @@ const CalendarTab = ({ leads }: Props) => {
                   }}
                 >
                   <span>{date.getDate()}</span>
-                  {dots.length > 0 && !isToday && !isSelected && (
-                    <div style={{ display: "flex", gap: 2, marginTop: 2 }}>
-                      {dots.map((c, idx) => (
-                        <span
+                  {dayAppts.length > 0 && (
+                    <div
+                      style={{
+                        display: "flex",
+                        gap: 2,
+                        justifyContent: "center",
+                        marginTop: 2,
+                      }}
+                    >
+                      {dayAppts.slice(0, 3).map((_, idx) => (
+                        <div
                           key={idx}
                           style={{
-                            width: 4,
-                            height: 4,
+                            width: 5,
+                            height: 5,
                             borderRadius: "50%",
-                            background: c,
+                            background:
+                              isToday || isSelected ? "#FFFFFF" : "#C4291C",
                           }}
                         />
                       ))}
                     </div>
                   )}
-                </button>
+                  <button
+                    className="day-add-btn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      openModalFor(date);
+                    }}
+                    style={{
+                      position: "absolute",
+                      top: 2,
+                      right: 2,
+                      width: 16,
+                      height: 16,
+                      borderRadius: "50%",
+                      background: "#C4291C",
+                      color: "white",
+                      border: "none",
+                      fontSize: 12,
+                      cursor: "pointer",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      lineHeight: 1,
+                      padding: 0,
+                    }}
+                  >
+                    +
+                  </button>
+                </div>
               );
             })}
           </div>
@@ -268,108 +396,163 @@ const CalendarTab = ({ leads }: Props) => {
               padding: 20,
             }}
           >
-            <h3
+            <div
               style={{
-                fontFamily: "'Montserrat', sans-serif",
-                fontWeight: 600,
-                fontSize: 14,
-                color: "#1A1A1A",
-                margin: "0 0 12px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                marginBottom: 12,
               }}
             >
-              {selectedDate.toLocaleDateString("en-US", {
-                weekday: "long",
-                month: "long",
-                day: "numeric",
-              })}
-            </h3>
-
-            {selectedAppointments.length === 0 ? (
-              <div
+              <h3
                 style={{
                   fontFamily: "'Montserrat', sans-serif",
+                  fontWeight: 600,
                   fontSize: 14,
-                  color: "#9CA3AF",
-                  textAlign: "center",
-                  padding: "20px 0",
+                  color: "#1A1A1A",
+                  margin: 0,
                 }}
               >
-                No appointments for this day.
-              </div>
-            ) : (
-              selectedAppointments.map((lead, idx) => {
-                const badge = getStatusBadge(lead.status);
-                const t = new Date(lead.scheduled_at!);
-                return (
-                  <div
-                    key={lead.id}
-                    style={{
-                      display: "flex",
-                      gap: 10,
-                      padding: "10px 0",
-                      borderTop: idx === 0 ? "none" : "1px solid #F1EFE8",
-                    }}
-                  >
-                    <div
+                {selectedDate.toLocaleDateString("en-US", {
+                  weekday: "long",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </h3>
+              <button
+                onClick={() => openModalFor(selectedDate)}
+                style={{
+                  background: "#C4291C",
+                  color: "white",
+                  border: "none",
+                  borderRadius: 8,
+                  padding: "6px 12px",
+                  fontFamily: "Inter, sans-serif",
+                  fontSize: 12,
+                  fontWeight: 600,
+                  cursor: "pointer",
+                }}
+              >
+                + Add
+              </button>
+            </div>
+
+            {dayAppointments.map((appt) => (
+              <div
+                key={appt.id}
+                style={{
+                  padding: 14,
+                  background: "white",
+                  borderRadius: 10,
+                  border: "1px solid #E8E2D8",
+                  borderLeft: "4px solid #C4291C",
+                  marginBottom: 10,
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  <div>
+                    <p
                       style={{
-                        width: 3,
-                        background: badge.color,
-                        borderRadius: 2,
-                        flexShrink: 0,
-                      }}
-                    />
-                    <div style={{ flex: 1, minWidth: 0 }}>
-                      <div
-                        style={{
-                          fontFamily: "'Montserrat', sans-serif",
-                          fontWeight: 700,
-                          fontSize: 14,
-                          color: "#1A1A1A",
-                        }}
-                      >
-                        {t.toLocaleTimeString("en-US", {
-                          hour: "2-digit",
-                          minute: "2-digit",
-                          hour12: false,
-                        })}
-                      </div>
-                      <div
-                        style={{
-                          fontFamily: "'Montserrat', sans-serif",
-                          fontSize: 13,
-                          color: "#1A1A1A",
-                          fontWeight: 500,
-                        }}
-                      >
-                        {lead.name}
-                      </div>
-                      <div
-                        style={{
-                          fontFamily: "'Montserrat', sans-serif",
-                          fontSize: 12,
-                          color: "#6B6560",
-                        }}
-                      >
-                        {lead.service_type || "General"}
-                      </div>
-                    </div>
-                    <span
-                      style={{
-                        background: badge.bg,
-                        color: badge.color,
-                        padding: "2px 8px",
-                        borderRadius: 999,
-                        fontSize: 10,
+                        fontFamily: "Inter, sans-serif",
                         fontWeight: 600,
-                        fontFamily: "'Montserrat', sans-serif",
-                        height: "fit-content",
+                        fontSize: 14,
+                        color: "#1A1A1A",
+                        margin: "0 0 4px",
                       }}
                     >
-                      {badge.label}
-                    </span>
+                      {appt.title}
+                    </p>
+                    {appt.leads && (
+                      <p
+                        style={{
+                          fontFamily: "Inter, sans-serif",
+                          fontSize: 12,
+                          color: "#6B6560",
+                          margin: "0 0 4px",
+                        }}
+                      >
+                        {appt.leads.name}
+                        {appt.leads.service_type
+                          ? ` • ${appt.leads.service_type}`
+                          : ""}
+                      </p>
+                    )}
+                    <p
+                      style={{
+                        fontFamily: "Inter, sans-serif",
+                        fontSize: 12,
+                        color: "#C4291C",
+                        fontWeight: 500,
+                        margin: 0,
+                      }}
+                    >
+                      {fmtTimeET(appt.scheduled_at)} ET
+                    </p>
+                    {appt.notes && (
+                      <p
+                        style={{
+                          fontFamily: "Inter, sans-serif",
+                          fontSize: 12,
+                          color: "#6B6560",
+                          margin: "6px 0 0",
+                        }}
+                      >
+                        {appt.notes}
+                      </p>
+                    )}
                   </div>
-                );
-              })
+                  <button
+                    onClick={() => deleteAppointment(appt.id)}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      color: "#9CA3AF",
+                      fontSize: 16,
+                      padding: "0 0 0 8px",
+                    }}
+                  >
+                    ×
+                  </button>
+                </div>
+              </div>
+            ))}
+
+            {dayAppointments.length === 0 && (
+              <div style={{ textAlign: "center", padding: "24px 0" }}>
+                <p
+                  style={{
+                    fontFamily: "Inter, sans-serif",
+                    fontSize: 13,
+                    color: "#9CA3AF",
+                    margin: "0 0 12px",
+                  }}
+                >
+                  No appointments for this day.
+                </p>
+                <button
+                  onClick={() => openModalFor(selectedDate)}
+                  style={{
+                    background: "#C4291C",
+                    color: "white",
+                    border: "none",
+                    borderRadius: 8,
+                    padding: "8px 16px",
+                    fontFamily: "Inter, sans-serif",
+                    fontSize: 13,
+                    fontWeight: 600,
+                    cursor: "pointer",
+                  }}
+                >
+                  + Add Appointment
+                </button>
+              </div>
             )}
           </div>
 
@@ -403,11 +586,12 @@ const CalendarTab = ({ leads }: Props) => {
                 No upcoming appointments.
               </div>
             ) : (
-              upcoming.map((lead, idx) => {
-                const t = new Date(lead.scheduled_at!);
+              upcoming.map((appt, idx) => {
+                const t = new Date(appt.scheduled_at);
                 return (
                   <div
-                    key={lead.id}
+                    key={appt.id}
+                    className="upcoming-item"
                     style={{
                       padding: "8px 0",
                       borderTop: idx === 0 ? "none" : "1px solid #F1EFE8",
@@ -418,22 +602,20 @@ const CalendarTab = ({ leads }: Props) => {
                       {t.toLocaleDateString("en-US", {
                         month: "short",
                         day: "numeric",
+                        timeZone: "America/New_York",
                       })}{" "}
-                      ·{" "}
-                      {t.toLocaleTimeString("en-US", {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      })}
+                      · {fmtTimeET(appt.scheduled_at)} ET
                     </div>
                     <div
-                      style={{
-                        fontSize: 13,
-                        fontWeight: 500,
-                        color: "#1A1A1A",
-                      }}
+                      style={{ fontSize: 13, fontWeight: 500, color: "#1A1A1A" }}
                     >
-                      {lead.name}
+                      {appt.title}
                     </div>
+                    {appt.leads?.name && (
+                      <div style={{ fontSize: 12, color: "#6B6560" }}>
+                        {appt.leads.name}
+                      </div>
+                    )}
                   </div>
                 );
               })
@@ -441,6 +623,225 @@ const CalendarTab = ({ leads }: Props) => {
           </div>
         </div>
       </div>
+
+      {showModal && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "rgba(0,0,0,0.5)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 200,
+            padding: 20,
+          }}
+          onClick={() => setShowModal(false)}
+        >
+          <div
+            className="appt-modal"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              background: "white",
+              borderRadius: 16,
+              padding: 28,
+              width: "100%",
+              maxWidth: 440,
+              boxShadow: "0 20px 60px rgba(0,0,0,0.2)",
+              maxHeight: "90vh",
+              overflowY: "auto",
+            }}
+          >
+            <h3
+              style={{
+                fontFamily: "'Playfair Display', serif",
+                fontWeight: 700,
+                fontSize: 20,
+                color: "#1A1A1A",
+                marginBottom: 8,
+              }}
+            >
+              New Appointment
+            </h3>
+            <p
+              style={{
+                fontFamily: "Inter, sans-serif",
+                fontSize: 13,
+                color: "#6B6560",
+                marginBottom: 20,
+              }}
+            >
+              {selectedDayForModal?.toLocaleDateString("en-US", {
+                weekday: "long",
+                month: "long",
+                day: "numeric",
+              })}
+            </p>
+
+            <label
+              style={{
+                fontFamily: "Inter, sans-serif",
+                fontSize: 12,
+                fontWeight: 500,
+                color: "#1A1A1A",
+                display: "block",
+                marginBottom: 6,
+              }}
+            >
+              Title *
+            </label>
+            <input
+              value={formTitle}
+              onChange={(e) => setFormTitle(e.target.value)}
+              placeholder="Ex: Estimate visit, Follow-up call..."
+              style={{
+                width: "100%",
+                height: 42,
+                border: "1.5px solid #E8E2D8",
+                borderRadius: 8,
+                padding: "0 12px",
+                fontFamily: "Inter, sans-serif",
+                fontSize: 13,
+                marginBottom: 16,
+                outline: "none",
+              }}
+            />
+
+            <label
+              style={{
+                fontFamily: "Inter, sans-serif",
+                fontSize: 12,
+                fontWeight: 500,
+                color: "#1A1A1A",
+                display: "block",
+                marginBottom: 6,
+              }}
+            >
+              Time (New York ET)
+            </label>
+            <input
+              type="time"
+              value={formTime}
+              onChange={(e) => setFormTime(e.target.value)}
+              style={{
+                width: "100%",
+                height: 42,
+                border: "1.5px solid #E8E2D8",
+                borderRadius: 8,
+                padding: "0 12px",
+                fontFamily: "Inter, sans-serif",
+                fontSize: 13,
+                marginBottom: 16,
+                outline: "none",
+              }}
+            />
+
+            <label
+              style={{
+                fontFamily: "Inter, sans-serif",
+                fontSize: 12,
+                fontWeight: 500,
+                color: "#1A1A1A",
+                display: "block",
+                marginBottom: 6,
+              }}
+            >
+              Link to Lead (optional)
+            </label>
+            <select
+              value={formLeadId}
+              onChange={(e) => setFormLeadId(e.target.value)}
+              style={{
+                width: "100%",
+                height: 42,
+                border: "1.5px solid #E8E2D8",
+                borderRadius: 8,
+                padding: "0 12px",
+                fontFamily: "Inter, sans-serif",
+                fontSize: 13,
+                marginBottom: 16,
+                outline: "none",
+                background: "white",
+              }}
+            >
+              <option value="">No lead selected</option>
+              {leads.map((lead) => (
+                <option key={lead.id} value={lead.id}>
+                  {lead.name} — {lead.service_type || "No service"}
+                </option>
+              ))}
+            </select>
+
+            <label
+              style={{
+                fontFamily: "Inter, sans-serif",
+                fontSize: 12,
+                fontWeight: 500,
+                color: "#1A1A1A",
+                display: "block",
+                marginBottom: 6,
+              }}
+            >
+              Notes (optional)
+            </label>
+            <textarea
+              value={formNotes}
+              onChange={(e) => setFormNotes(e.target.value)}
+              rows={3}
+              placeholder="Any details about this appointment..."
+              style={{
+                width: "100%",
+                border: "1.5px solid #E8E2D8",
+                borderRadius: 8,
+                padding: "10px 12px",
+                fontFamily: "Inter, sans-serif",
+                fontSize: 13,
+                resize: "none",
+                outline: "none",
+                marginBottom: 20,
+              }}
+            />
+
+            <div
+              style={{ display: "flex", gap: 10, justifyContent: "flex-end" }}
+            >
+              <button
+                onClick={() => setShowModal(false)}
+                style={{
+                  padding: "10px 20px",
+                  borderRadius: 8,
+                  border: "1px solid #E8E2D8",
+                  background: "transparent",
+                  fontFamily: "Inter, sans-serif",
+                  fontSize: 13,
+                  color: "#6B6560",
+                  cursor: "pointer",
+                }}
+              >
+                Cancel
+              </button>
+              <button
+                onClick={saveAppointment}
+                disabled={saving || !formTitle.trim()}
+                style={{
+                  padding: "10px 24px",
+                  borderRadius: 8,
+                  border: "none",
+                  background: "#C4291C",
+                  color: "white",
+                  fontFamily: "Inter, sans-serif",
+                  fontSize: 13,
+                  fontWeight: 600,
+                  cursor: saving || !formTitle.trim() ? "not-allowed" : "pointer",
+                  opacity: saving || !formTitle.trim() ? 0.6 : 1,
+                }}
+              >
+                {saving ? "Saving..." : "Save Appointment"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
