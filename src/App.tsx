@@ -16,9 +16,6 @@ import LPInteriorPainting from "./pages/lp/InteriorPainting.tsx";
 import LPExteriorPainting from "./pages/lp/ExteriorPainting.tsx";
 import LPRemodeling from "./pages/lp/Remodeling.tsx";
 import NotFound from "./pages/NotFound.tsx";
-import LoginPage from "./pages/LoginPage.tsx";
-import DashboardPage from "./pages/DashboardPage.tsx";
-import ProtectedRoute from "./components/ProtectedRoute.tsx";
 import ReviewButton from "./components/site/ReviewButton.tsx";
 
 
