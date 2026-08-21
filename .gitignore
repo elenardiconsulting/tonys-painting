@@ -26,8 +26,7 @@ dist-ssr
 *.sw?
 
 # Private Backend & Dashboard Infrastructure
-supabase/
-src/integrations/supabase/
+/supabase/
 src/types/lead.ts
 src/hooks/useLeads.ts
 src/lib/pushNotifications.ts
