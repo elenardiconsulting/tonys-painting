@@ -788,9 +788,6 @@ const ScheduleModal = ({
 const LeadsTab = ({ leads, updateLead, deleteLead }: Props) => {
   const [filter, setFilter] = useState<LeadStatus | "all">("all");
   const [search, setSearch] = useState("");
-  const [sourceFilter, setSourceFilter] = useState<string>("all");
-  const [sourceTypeFilter, setSourceTypeFilter] = useState<string>("all");
-  const [tagCodeFilter, setTagCodeFilter] = useState<string>("");
   const [scheduleLead, setScheduleLead] = useState<Lead | null>(null);
 
   const sourceOptions = useMemo(() => {
