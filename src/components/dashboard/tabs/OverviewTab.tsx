@@ -159,26 +159,6 @@ const BreakdownCard = ({
   </div>
 );
 
-const TAG_TYPE_LABELS: Record<string, string> = {
-  showroom_gift: "Showroom",
-  post_project_gift: "Post-Project",
-  referral_keychain: "Referral",
-  vip_client: "VIP",
-  support_keychain: "Support",
-  general_business_card: "Business Card",
-};
-
-const PROJECT_TYPE_LABELS: Record<string, string> = {
-  kitchen_remodeling: "Kitchen",
-  bathroom_remodeling: "Bathroom",
-  painting: "Painting",
-  siding: "Siding",
-  flooring: "Flooring",
-  carpentry: "Carpentry",
-  deck_and_exterior: "Deck & Exterior",
-  full_home_remodel: "Full Home",
-  other: "Other",
-};
 
 const OverviewTab = ({ leads, loading }: Props) => {
   const newCount = leads.filter((l) => l.status === "new").length;
