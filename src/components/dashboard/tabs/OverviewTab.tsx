@@ -186,27 +186,6 @@ const OverviewTab = ({ leads, loading }: Props) => {
   const wonCount = leads.filter((l) => l.status === "closed_won").length;
   const recent = leads.slice(0, 5);
 
-  const nfcLeads = leads.filter((l) => l.source === "NFC Keychain");
-  const nfcNewCount = nfcLeads.filter((l) => l.status === "new").length;
-  const nfcPhotosTotal = nfcLeads.reduce(
-    (sum, l) => sum + (l.photo_count || 0),
-    0,
-  );
-
-  const groupCount = (
-    getter: (l: (typeof leads)[number]) => string | null | undefined,
-  ) => {
-    const map = new Map<string, number>();
-    nfcLeads.forEach((l) => {
-      const key = getter(l);
-      if (!key) return;
-      map.set(key, (map.get(key) || 0) + 1);
-    });
-    return Array.from(map.entries()).sort((a, b) => b[1] - a[1]);
-  };
-
-  const byProjectType = groupCount((l) => l.project_type);
-  const bySourceType = groupCount((l) => l.source_type);
 
   return (
     <div className="overview-wrap" style={{ padding: 24 }}>
