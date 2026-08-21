@@ -16,9 +16,6 @@ import LPInteriorPainting from "./pages/lp/InteriorPainting.tsx";
 import LPExteriorPainting from "./pages/lp/ExteriorPainting.tsx";
 import LPRemodeling from "./pages/lp/Remodeling.tsx";
 import NotFound from "./pages/NotFound.tsx";
-import LoginPage from "./pages/LoginPage.tsx";
-import DashboardPage from "./pages/DashboardPage.tsx";
-import ProtectedRoute from "./components/ProtectedRoute.tsx";
 import ReviewButton from "./components/site/ReviewButton.tsx";
 
 
@@ -53,15 +50,6 @@ const AnimatedRoutes = () => {
           <Route path="/lp/interior-painting" element={<LPInteriorPainting />} />
           <Route path="/lp/exterior-painting" element={<LPExteriorPainting />} />
           <Route path="/lp/remodeling" element={<LPRemodeling />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <DashboardPage />
-              </ProtectedRoute>
-            }
-          />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
