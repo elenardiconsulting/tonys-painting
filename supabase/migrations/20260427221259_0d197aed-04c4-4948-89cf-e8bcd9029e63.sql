@@ -1,1 +1,0 @@
-revoke execute on function public.notify_new_lead() from public, anon, authenticated;
