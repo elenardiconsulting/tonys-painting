@@ -790,27 +790,8 @@ const LeadsTab = ({ leads, updateLead, deleteLead }: Props) => {
   const [search, setSearch] = useState("");
   const [scheduleLead, setScheduleLead] = useState<Lead | null>(null);
 
-  const sourceOptions = useMemo(() => {
-    const s = new Set<string>();
-    leads.forEach((l) => l.source && s.add(l.source));
-    return Array.from(s).sort();
-  }, [leads]);
-
-  const sourceTypeOptions = useMemo(() => {
-    const s = new Set<string>();
-    leads.forEach((l) => l.source_type && s.add(l.source_type));
-    return Array.from(s).sort();
-  }, [leads]);
-
   const filtered = leads.filter((l) => {
     if (filter !== "all" && l.status !== filter) return false;
-    if (sourceFilter !== "all" && (l.source || "") !== sourceFilter) return false;
-    if (sourceTypeFilter !== "all" && (l.source_type || "") !== sourceTypeFilter)
-      return false;
-    if (tagCodeFilter.trim()) {
-      const q = tagCodeFilter.trim().toLowerCase();
-      if (!(l.tag_code || "").toLowerCase().includes(q)) return false;
-    }
     if (search) {
       const q = search.toLowerCase();
       const inName = l.name?.toLowerCase().includes(q);
