@@ -6,8 +6,6 @@ import { supabase } from "@/integrations/supabase/client";
 import LeadPhotos from "../LeadPhotos";
 
 
-const prettyLabel = (map: Record<string, string>, v?: string | null) =>
-  v ? map[v] || v : null;
 
 interface Props {
   leads: Lead[];
