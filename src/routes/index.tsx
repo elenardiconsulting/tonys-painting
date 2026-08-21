@@ -1,18 +1,6 @@
 export const Index = () => (
   <div>
-    Apply these visual text edits: 1. Change text from 'O build esta falhando porque alguns arquivos foram removidos do Git 
-    mas ainda sao importados no codigo. Preciso que voce:
-    1. Verifique todos os imports quebrados causados pela ausencia de:
-       - src/hooks/useLeads.ts
-       - src/lib/pushNotifications.ts
-       - src/pages/DashboardPage.tsx
-       - src/pages/LoginPage.tsx
-       - src/components/ProtectedRoute.tsx
-       - src/components/dashboard/
-       - src/integrations/supabase/
-    2. Remova ou substitua esses imports em todos os arquivos que os referenciam,
-       especialmente em App.tsx
-    3. Garanta que o build passa sem erros
-    4. Nao alterar nenhuma funcionalidade do site publico visivel' (on element 'body' at '/src/routes/index.tsx:1')
+    Apply these visual text edits:
+1. Change text (text node 0) from "Apply these visual text edits: 1. Change text from 'O site esta carregando mas sem conteudo. O build passou mas os componentes \n\ndo site publico foram afetados. \n\nPreciso que voce restaure todos os componentes e paginas do site publico \n\nque possam ter sido removidos ou quebrados:\n\n- src/pages/Index.tsx (Home)\n\n- src/pages/About.tsx\n\n- src/pages/Contact.tsx\n\n- src/pages/Portfolio.tsx\n\n- src/pages/Reviews.tsx\n\n- src/pages/Services.tsx\n\n- src/pages/ServiceDetail.tsx\n\n- src/pages/ThankYou.tsx\n\n- src/pages/NotFound.tsx\n\n- src/pages/lp/\n\n- src/components/site/ (todos os componentes)\n\n- src/App.tsx (rotas do site publico)\n\nRestaurar o App.tsx para ter apenas as rotas publicas sem dashboard e login.\n\nGarantir que o site publico funciona completamente.\n\nNao adicionar nenhum arquivo de backend ou dashboard.'" to "'O site esta carregando mas sem conteudo. O build passou mas os componentes \n\ndo site publico foram afetados. \n\nPreciso que voce restaure todos os componentes e paginas do site publico \n\nque possam ter sido removidos ou quebrados:\n\n- src/pages/Index.tsx (Home)\n\n- src/pages/About.tsx\n\n- src/pages/Contact.tsx\n\n- src/pages/Portfolio.tsx\n\n- src/pages/Reviews.tsx\n\n- src/pages/Services.tsx\n\n- src/pages/ServiceDetail.tsx\n\n- src/pages/ThankYou.tsx\n\n- src/pages/NotFound.tsx\n\n- src/pages/lp/\n\n- src/components/site/ (todos os componentes)\n\n- src/App.tsx (rotas do site publico)\n\nRestaurar o App.tsx para ter apenas as rotas publicas sem dashboard e login.\n\nGarantir que o site publico funciona completamente.\n\nNao adicionar nenhum arquivo de backend ou dashboard.' (on element 'body' at '/src/routes/index.tsx:1')" (on element "body" at "src/routes/index.tsx:1")
   </div>
 );
