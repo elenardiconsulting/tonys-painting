@@ -22,3 +22,15 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Private Backend & Dashboard Infrastructure
+supabase/
+src/integrations/supabase/
+src/types/lead.ts
+src/hooks/useLeads.ts
+src/lib/pushNotifications.ts
+src/components/dashboard/
+src/pages/DashboardPage.tsx
+src/pages/LoginPage.tsx
+src/components/ProtectedRoute.tsx
+public/sw.js
