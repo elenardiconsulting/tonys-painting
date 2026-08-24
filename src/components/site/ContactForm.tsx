@@ -250,33 +250,29 @@ const ContactForm = ({ compact = false }: ContactFormProps) => {
       </div>
 
       <div>
-        <Label style={labelStyle}>How did you hear about us?</Label>
-        <div
-          className="mt-2 flex flex-wrap gap-2"
-          role="radiogroup"
-          aria-label="How did you hear about us?"
+        <Label style={labelStyle}>
+          How did you hear about us?{" "}
+          <span style={{ fontWeight: 400, color: "#6B6560", fontSize: 12 }}>(optional)</span>
+        </Label>
+        <Select
+          value={formData.referralSource}
+          onValueChange={(v) => setField("referralSource", v)}
         >
-          {REFERRAL_OPTIONS.map((opt) => {
-            const selected = formData.referralSource === opt.value;
-            return (
-              <button
-                key={opt.value}
-                type="button"
-                role="radio"
-                aria-checked={selected}
-                onClick={() => setField("referralSource", opt.value)}
-                className={cn(
-                  "rounded-full px-3.5 py-1.5 text-[13px] font-medium transition-colors",
-                  "border bg-[#F5F1EB] text-foreground hover:border-primary/60",
-                  selected && "border-[#C4291C] bg-[#C4291C] text-white",
-                )}
-                style={{ fontFamily: "Inter, sans-serif" }}
-              >
-                {opt.label}
-              </button>
-            );
-          })}
-        </div>
+          <SelectTrigger
+            className="mt-1.5 rounded-sm"
+            style={inputStyle}
+          >
+            <SelectValue placeholder="Select an option" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="Facebook or Instagram Ad">I saw your ad on Facebook or Instagram</SelectItem>
+            <SelectItem value="Friend or Family Referral">A friend or family member recommended you</SelectItem>
+            <SelectItem value="Google Search">I found you on Google</SelectItem>
+            <SelectItem value="Van or Vehicle">I saw your van or truck in my area</SelectItem>
+            <SelectItem value="Yard Sign">I saw a yard sign near my neighborhood</SelectItem>
+            <SelectItem value="Other">Other</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
 
       <div>
