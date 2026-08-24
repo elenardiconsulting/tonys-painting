@@ -24,12 +24,22 @@ const SERVICES = [
   "Not Sure Yet",
 ];
 
+const REFERRAL_OPTIONS = [
+  { value: "Facebook or Instagram Ad", label: "I saw your ad on Facebook or Instagram" },
+  { value: "Friend or Family Referral", label: "A friend or family recommended you" },
+  { value: "Google Search", label: "I found you on Google" },
+  { value: "Van or Vehicle", label: "I saw your van or vehicle in my area" },
+  { value: "Yard Sign", label: "I saw a yard sign near my neighborhood" },
+  { value: "Other", label: "Other" },
+];
+
 type FormState = {
   fullName: string;
   phone: string;
   email: string;
   address: string;
   service: string;
+  referralSource: string;
   project: string;
 };
 
@@ -41,6 +51,7 @@ const emptyForm: FormState = {
   email: "",
   address: "",
   service: "",
+  referralSource: "",
   project: "",
 };
 
