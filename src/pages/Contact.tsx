@@ -26,7 +26,7 @@ const contactBlocks = [
 const trustItems = [
   "Licensed and Insured",
   "Free Estimates",
-  "20 Years of Experience",
+  "20 Years of Transforming Homes & Experiences",
 ];
 
 const Contact = () => {
