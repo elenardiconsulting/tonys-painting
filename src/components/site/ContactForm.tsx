@@ -250,6 +250,36 @@ const ContactForm = ({ compact = false }: ContactFormProps) => {
       </div>
 
       <div>
+        <Label style={labelStyle}>How did you hear about us?</Label>
+        <div
+          className="mt-2 flex flex-wrap gap-2"
+          role="radiogroup"
+          aria-label="How did you hear about us?"
+        >
+          {REFERRAL_OPTIONS.map((opt) => {
+            const selected = formData.referralSource === opt.value;
+            return (
+              <button
+                key={opt.value}
+                type="button"
+                role="radio"
+                aria-checked={selected}
+                onClick={() => setField("referralSource", opt.value)}
+                className={cn(
+                  "rounded-full px-3.5 py-1.5 text-[13px] font-medium transition-colors",
+                  "border bg-[#F5F1EB] text-foreground hover:border-primary/60",
+                  selected && "border-[#C4291C] bg-[#C4291C] text-white",
+                )}
+                style={{ fontFamily: "Inter, sans-serif" }}
+              >
+                {opt.label}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      <div>
         <Label htmlFor="project" style={labelStyle}>
           Tell us about your project{" "}
           <span className="text-muted-foreground font-normal">(optional)</span>
