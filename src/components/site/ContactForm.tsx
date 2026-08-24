@@ -24,12 +24,22 @@ const SERVICES = [
   "Not Sure Yet",
 ];
 
+const REFERRAL_OPTIONS = [
+  { value: "Facebook or Instagram Ad", label: "I saw your ad on Facebook or Instagram" },
+  { value: "Friend or Family Referral", label: "A friend or family recommended you" },
+  { value: "Google Search", label: "I found you on Google" },
+  { value: "Van or Vehicle", label: "I saw your van or vehicle in my area" },
+  { value: "Yard Sign", label: "I saw a yard sign near my neighborhood" },
+  { value: "Other", label: "Other" },
+];
+
 type FormState = {
   fullName: string;
   phone: string;
   email: string;
   address: string;
   service: string;
+  referralSource: string;
   project: string;
 };
 
@@ -41,6 +51,7 @@ const emptyForm: FormState = {
   email: "",
   address: "",
   service: "",
+  referralSource: "",
   project: "",
 };
 
@@ -94,6 +105,8 @@ const ContactForm = ({ compact = false }: ContactFormProps) => {
         .join("\n\n"),
       prefer_phone: false,
       status: "new",
+      source: "Website Form",
+      campaign_name: formData.referralSource || null,
     });
     setSubmitting(false);
 
@@ -234,6 +247,36 @@ const ContactForm = ({ compact = false }: ContactFormProps) => {
           </SelectContent>
         </Select>
         {errorMsg("service")}
+      </div>
+
+      <div>
+        <Label style={labelStyle}>How did you hear about us?</Label>
+        <div
+          className="mt-2 flex flex-wrap gap-2"
+          role="radiogroup"
+          aria-label="How did you hear about us?"
+        >
+          {REFERRAL_OPTIONS.map((opt) => {
+            const selected = formData.referralSource === opt.value;
+            return (
+              <button
+                key={opt.value}
+                type="button"
+                role="radio"
+                aria-checked={selected}
+                onClick={() => setField("referralSource", opt.value)}
+                className={cn(
+                  "rounded-full px-3.5 py-1.5 text-[13px] font-medium transition-colors",
+                  "border bg-[#F5F1EB] text-foreground hover:border-primary/60",
+                  selected && "border-[#C4291C] bg-[#C4291C] text-white",
+                )}
+                style={{ fontFamily: "Inter, sans-serif" }}
+              >
+                {opt.label}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       <div>
