@@ -105,6 +105,8 @@ const ContactForm = ({ compact = false }: ContactFormProps) => {
         .join("\n\n"),
       prefer_phone: false,
       status: "new",
+      source: "Website Form",
+      campaign_name: formData.referralSource || null,
     });
     setSubmitting(false);
 
