@@ -62,7 +62,19 @@ interface ContactFormProps {
 const ContactForm = ({ compact = false }: ContactFormProps) => {
   const { toast } = useToast();
   const navigate = useNavigate();
-  const [formData, setFormData] = useState<FormState>(emptyForm);
+
+  const searchParams = new URLSearchParams(window.location.search);
+  const utmSource = searchParams.get("utm_source");
+  const utmMedium = searchParams.get("utm_medium");
+
+  const getAutoSource = () => {
+    if (utmSource === "google" && utmMedium === "cpc") return "Google Ads";
+    if (utmSource === "facebook" || utmSource === "instagram") return "Facebook or Instagram Ad";
+    if (utmSource) return utmSource;
+    return "";
+  };
+
+  const [formData, setFormData] = useState<FormState>({ ...emptyForm, referralSource: getAutoSource() });
   const [errors, setErrors] = useState<Errors>({});
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -105,8 +117,8 @@ const ContactForm = ({ compact = false }: ContactFormProps) => {
         .join("\n\n"),
       prefer_phone: false,
       status: "new",
-      source: "Website Form",
-      campaign_name: formData.referralSource || null,
+      source: formData.referralSource || "Website Form",
+      campaign_name: utmSource ? `${utmSource}/${utmMedium || "organic"}` : null,
     });
     setSubmitting(false);
 
