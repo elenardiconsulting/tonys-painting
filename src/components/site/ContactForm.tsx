@@ -117,8 +117,8 @@ const ContactForm = ({ compact = false }: ContactFormProps) => {
         .join("\n\n"),
       prefer_phone: false,
       status: "new",
-      source: "Website Form",
-      campaign_name: formData.referralSource || null,
+      source: formData.referralSource || "Website Form",
+      campaign_name: utmSource ? `${utmSource}/${utmMedium || "organic"}` : null,
     });
     setSubmitting(false);
 
