@@ -97,7 +97,6 @@ const Index = () => {
         <PartnersSection />
         <InstagramReels />
         <AboutSnippet />
-        <ReviewsSection />
         <FinalCTA />
       </main>
       <Footer />
