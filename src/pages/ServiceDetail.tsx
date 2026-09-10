@@ -353,28 +353,45 @@ const ServiceDetail = () => {
               <h2 className="font-display text-3xl md:text-4xl text-foreground">Selected projects.</h2>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            {(() => {
-              const gallery: Record<string, string[]> = {
-                "interior-painting": ["/images/interior-04.jpg", "/images/interior-03.jpg", "/images/interior-05.jpg", "/images/interior-01.jpg", "/images/interior-02.jpg", "/images/project-05.jpg"],
-                "exterior-painting": ["/images/project-02.jpg", "/images/project-12.jpg", "/images/project-14.jpg", "/images/project-13.jpg", "/images/project-03.jpg", "/images/project-01.jpg"],
-                "remodeling": ["/images/remodeling-02.jpg", "/images/flooring-01.jpg", "/images/project-04.jpg", "/images/project-16.jpg", "/images/project-15.jpg", "/images/project-08.jpg"],
-                "flooring": ["/images/flooring-01.jpg", "/images/flooring-03.jpg", "/images/flooring-02.jpg", "/images/project-08.jpg", "/images/project-07.jpg", "/images/project-09.jpg"],
-                "countertop": ["/images/interior-02.jpg", "/images/interior-01.jpg", "/images/interior-04.jpg", "/images/project-16.jpg"],
-                "handyman": ["/images/project-08.jpg", "/images/project-07.jpg", "/images/project-09.jpg", "/images/project-11.jpg"],
-                "deck-stairs": [deck01.url, deck02.url, deck03.url, deck04.url, deck05.url, deck06.url, deck07.url]
-              };
-              const images = service.slug ? (gallery[service.slug] || []) : [];
-              return images.map((src, i) => (
-                <div
-                  key={i}
-                  className="aspect-[4/5] bg-background overflow-hidden"
-                >
-                  <img src={src} alt={`Tony's ${service.name} project detail`} className="w-full h-full object-cover" loading="lazy" decoding="async" style={{ objectPosition: "center" }} />
+          {(() => {
+            const gallery: Record<string, string[]> = {
+              "interior-painting": ["/images/interior-04.jpg", "/images/interior-03.jpg", "/images/interior-05.jpg", "/images/interior-01.jpg", "/images/interior-02.jpg", "/images/project-05.jpg"],
+              "exterior-painting": ["/images/project-02.jpg", "/images/project-12.jpg", "/images/project-14.jpg", "/images/project-13.jpg", "/images/project-03.jpg", "/images/project-01.jpg"],
+              "remodeling": ["/images/remodeling-02.jpg", "/images/flooring-01.jpg", "/images/project-04.jpg", "/images/project-16.jpg", "/images/project-15.jpg", "/images/project-08.jpg"],
+              "flooring": ["/images/flooring-01.jpg", "/images/flooring-03.jpg", "/images/flooring-02.jpg", "/images/project-08.jpg", "/images/project-07.jpg", "/images/project-09.jpg"],
+              "countertop": ["/images/interior-02.jpg", "/images/interior-01.jpg", "/images/interior-04.jpg", "/images/project-16.jpg"],
+              "handyman": ["/images/project-08.jpg", "/images/project-07.jpg", "/images/project-09.jpg", "/images/project-11.jpg"],
+              "deck-stairs": [deck01.url, deck02.url, deck03.url, deck04.url, deck05.url, deck06.url, deck07.url]
+            };
+            const images = service.slug ? (gallery[service.slug] || []) : [];
+            return (
+              <>
+                {/* Mobile: one-photo slide carousel */}
+                <div className="flex md:hidden overflow-x-auto snap-x snap-mandatory gap-4 -mx-6 px-6 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                  {images.map((src, i) => (
+                    <div
+                      key={i}
+                      className="aspect-[4/5] w-[82%] sm:w-[70%] shrink-0 snap-center bg-background overflow-hidden rounded-sm"
+                    >
+                      <img src={src} alt={`Tony's ${service.name} project detail`} className="w-full h-full object-cover" loading="lazy" decoding="async" style={{ objectPosition: "center" }} />
+                    </div>
+                  ))}
                 </div>
-              ));
-            })()}
-          </div>
+                {/* Desktop: 3-column grid */}
+                <div className="hidden md:grid md:grid-cols-3 gap-4 md:gap-6">
+                  {images.map((src, i) => (
+                    <div
+                      key={i}
+                      className="aspect-[4/5] bg-background overflow-hidden"
+                    >
+                      <img src={src} alt={`Tony's ${service.name} project detail`} className="w-full h-full object-cover" loading="lazy" decoding="async" style={{ objectPosition: "center" }} />
+                    </div>
+                  ))}
+                </div>
+              </>
+            );
+          })()}
+        </div>
         </div>
       </section>
 
