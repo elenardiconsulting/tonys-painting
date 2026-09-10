@@ -392,7 +392,6 @@ const ServiceDetail = () => {
             );
           })()}
         </div>
-        </div>
       </section>
 
       {service.slug === "deck-stairs" && (
