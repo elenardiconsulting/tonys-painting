@@ -4,6 +4,7 @@ import SEO from "@/components/SEO";
 import PageLayout from "@/components/site/PageLayout";
 import InnerHero from "@/components/site/InnerHero";
 import { Button } from "@/components/ui/button";
+import BeforeAfter from "@/components/site/BeforeAfter";
 import deck01 from "@/assets/deck-IMG_2914.jpg.asset.json";
 import deck02 from "@/assets/deck-IMG_2900.jpg.asset.json";
 import deck03 from "@/assets/deck-IMG_2916.jpg.asset.json";
@@ -376,6 +377,30 @@ const ServiceDetail = () => {
           </div>
         </div>
       </section>
+
+      {service.slug === "deck-stairs" && (
+        <section className="bg-background">
+          <div className="container py-16 md:py-24">
+            <div className="max-w-2xl mb-10">
+              <p className="text-xs uppercase tracking-[0.25em] text-primary mb-3">Before and After</p>
+              <h2 className="font-display text-3xl md:text-4xl text-foreground leading-tight">
+                From weathered to warm.
+              </h2>
+              <p className="mt-4 text-muted-foreground leading-relaxed">
+                Same deck, same angle. Sanded, cleaned and finished with a rich protective stain.
+                Drag the handle to see the change.
+              </p>
+            </div>
+            <BeforeAfter
+              beforeSrc={deck07.url}
+              afterSrc={deck06.url}
+              beforeAlt="Deck before restoration, weathered gray boards and benches"
+              afterAlt="Deck after restoration, rich brown stained boards and benches"
+              className="max-w-4xl"
+            />
+          </div>
+        </section>
+      )}
 
       <section className="bg-dark">
         <div className="container py-16 md:py-24 text-center">
