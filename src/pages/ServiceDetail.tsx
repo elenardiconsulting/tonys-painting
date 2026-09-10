@@ -4,6 +4,13 @@ import SEO from "@/components/SEO";
 import PageLayout from "@/components/site/PageLayout";
 import InnerHero from "@/components/site/InnerHero";
 import { Button } from "@/components/ui/button";
+import deck01 from "@/assets/deck-IMG_2914.jpg.asset.json";
+import deck02 from "@/assets/deck-IMG_2900.jpg.asset.json";
+import deck03 from "@/assets/deck-IMG_2916.jpg.asset.json";
+import deck04 from "@/assets/deck-IMG_2905.jpg.asset.json";
+import deck05 from "@/assets/deck-IMG_2913.jpg.asset.json";
+import deck06 from "@/assets/deck-IMG_2904.jpg.asset.json";
+import deck07 from "@/assets/deck-IMG_2896.jpg.asset.json";
 
 const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords: string; schema?: object }> = {
   "interior-painting": {
