@@ -4,6 +4,7 @@ import SEO from "@/components/SEO";
 import PageLayout from "@/components/site/PageLayout";
 import InnerHero from "@/components/site/InnerHero";
 import { Button } from "@/components/ui/button";
+import BeforeAfter from "@/components/site/BeforeAfter";
 import deck01 from "@/assets/deck-IMG_2914.jpg.asset.json";
 import deck02 from "@/assets/deck-IMG_2900.jpg.asset.json";
 import deck03 from "@/assets/deck-IMG_2916.jpg.asset.json";
