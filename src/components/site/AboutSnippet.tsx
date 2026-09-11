@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import FadeUpSection from "@/components/site/FadeUpSection";
 import otonielSantos from "@/assets/otoniel-santos-founder.png";
+import marcelaCoCeo from "@/assets/marcela-co-ceo.jpeg.asset.json";
 
 const people = [
   {
@@ -10,7 +11,7 @@ const people = [
     role: "Founder and CEO",
   },
   {
-    image: "/images/co_ceo.png",
+    image: marcelaCoCeo.url,
     name: "Marcela S.",
     role: "Co-CEO",
   },
