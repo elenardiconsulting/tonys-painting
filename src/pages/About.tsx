@@ -6,6 +6,7 @@ import FadeUpSection from "@/components/site/FadeUpSection";
 import RippleButton from "@/components/site/RippleButton";
 import AnimatedPhotoBorder from "@/components/site/AnimatedPhotoBorder";
 import otonielSantos from "@/assets/otoniel-santos-founder.png";
+import cintiaPhoto from "@/assets/cintia-sales.jpeg.asset.json";
 
 const values = [
   {
@@ -270,21 +271,17 @@ const About = () => {
               border: '1px solid #E8E2D8',
               boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
             }}>
-              <div style={{
-                width: '100%',
-                aspectRatio: '1/1',
-                background: '#E8E2D8',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-                <span style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: '20px',
-                  fontWeight: 600,
-                  color: '#9CA3AF',
-                }}>Cintia</span>
-              </div>
+              <img
+                src={cintiaPhoto.url}
+                alt="Cintia, Sales Representative at Tony's Painting"
+                style={{
+                  width: '100%',
+                  aspectRatio: '1/1',
+                  objectFit: 'cover',
+                  objectPosition: 'center top',
+                  display: 'block',
+                }}
+              />
               <div style={{ padding: '24px' }}>
                 <h3 style={{
                   fontFamily: "'Playfair Display', serif",
