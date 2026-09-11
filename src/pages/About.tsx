@@ -86,14 +86,12 @@ const About = () => {
 
             {/* Tony */}
             <FadeUpSection className="flex flex-col items-center text-center gap-4">
-              <div className="w-[160px] h-[200px] md:w-[260px] md:h-[320px]">
-                <AnimatedPhotoBorder className="w-full h-full">
-                  <img
-                    src={otonielSantos}
-                    alt="Otoniel Santos, Founder and CEO of Tony's Painting"
-                    className="block w-full h-full object-cover object-[top_center] rounded-[6px]"
-                  />
-                </AnimatedPhotoBorder>
+              <div className="w-[160px] h-[200px] md:w-[260px] md:h-[320px] overflow-hidden rounded-[6px]">
+                <img
+                  src={otonielSantos}
+                  alt="Otoniel Santos, Founder and CEO of Tony's Painting"
+                  className="block w-full h-full object-cover object-[top_center]"
+                />
               </div>
               <h3 className="font-sans font-semibold text-[15px] md:text-[18px] text-foreground leading-tight mt-2">
                 Otoniel Santos
