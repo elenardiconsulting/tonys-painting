@@ -4,9 +4,9 @@ import PageLayout from "@/components/site/PageLayout";
 import InnerHero from "@/components/site/InnerHero";
 import FadeUpSection from "@/components/site/FadeUpSection";
 import RippleButton from "@/components/site/RippleButton";
-import AnimatedPhotoBorder from "@/components/site/AnimatedPhotoBorder";
 import otonielSantos from "@/assets/otoniel-santos-founder.png";
 import cintiaPhoto from "@/assets/cintia-sales.jpeg.asset.json";
+import marcelaPhoto from "@/assets/marcela-co-ceo.jpeg.asset.json";
 
 const values = [
   {
@@ -86,14 +86,12 @@ const About = () => {
 
             {/* Tony */}
             <FadeUpSection className="flex flex-col items-center text-center gap-4">
-              <div className="w-[160px] h-[200px] md:w-[260px] md:h-[320px]">
-                <AnimatedPhotoBorder className="w-full h-full">
-                  <img
-                    src={otonielSantos}
-                    alt="Otoniel Santos, Founder and CEO of Tony's Painting"
-                    className="block w-full h-full object-cover object-[top_center] rounded-[6px]"
-                  />
-                </AnimatedPhotoBorder>
+              <div className="w-[160px] h-[200px] md:w-[260px] md:h-[320px] overflow-hidden rounded-[6px]">
+                <img
+                  src={otonielSantos}
+                  alt="Otoniel Santos, Founder and CEO of Tony's Painting"
+                  className="block w-full h-full object-cover object-[top_center]"
+                />
               </div>
               <h3 className="font-sans font-semibold text-[15px] md:text-[18px] text-foreground leading-tight mt-2">
                 Otoniel Santos
@@ -108,14 +106,12 @@ const About = () => {
 
             {/* Marcela */}
             <FadeUpSection delay={0.1} className="flex flex-col items-center text-center gap-4">
-              <div className="w-[160px] h-[200px] md:w-[260px] md:h-[320px]">
-                <AnimatedPhotoBorder className="w-full h-full" delay={1.2}>
-                  <img
-                    src="/images/co_ceo.png"
-                    alt="Marcela S., Co-CEO of Tony's Painting"
-                    className="block w-full h-full object-cover object-[top_center] rounded-[6px]"
-                  />
-                </AnimatedPhotoBorder>
+              <div className="w-[160px] h-[200px] md:w-[260px] md:h-[320px] overflow-hidden rounded-[6px]">
+                <img
+                  src={marcelaPhoto.url}
+                  alt="Marcela S., Co-CEO of Tony's Painting"
+                  className="block w-full h-full object-cover object-[top_center]"
+                />
               </div>
               <h3 className="font-sans font-semibold text-[15px] md:text-[18px] text-foreground leading-tight mt-2">
                 Marcela S.
