@@ -12,6 +12,7 @@ import deck04 from "@/assets/deck-IMG_2905.jpg.asset.json";
 import deck05 from "@/assets/deck-IMG_2913.jpg.asset.json";
 import deck06 from "@/assets/deck-IMG_2904.jpg.asset.json";
 import deck07 from "@/assets/deck-IMG_2896.jpg.asset.json";
+import deck08 from "@/assets/deck-project-07.jpg.asset.json";
 
 const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords: string; schema?: object }> = {
   "interior-painting": {
