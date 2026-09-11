@@ -12,6 +12,7 @@ import deck04 from "@/assets/deck-IMG_2905.jpg.asset.json";
 import deck05 from "@/assets/deck-IMG_2913.jpg.asset.json";
 import deck06 from "@/assets/deck-IMG_2904.jpg.asset.json";
 import deck07 from "@/assets/deck-IMG_2896.jpg.asset.json";
+import deck08 from "@/assets/deck-project-07.jpg.asset.json";
 
 const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords: string; schema?: object }> = {
   "interior-painting": {
@@ -361,7 +362,7 @@ const ServiceDetail = () => {
               "flooring": ["/images/flooring-01.jpg", "/images/flooring-03.jpg", "/images/flooring-02.jpg", "/images/project-08.jpg", "/images/project-07.jpg", "/images/project-09.jpg"],
               "countertop": ["/images/interior-02.jpg", "/images/interior-01.jpg", "/images/interior-04.jpg", "/images/project-16.jpg"],
               "handyman": ["/images/project-08.jpg", "/images/project-07.jpg", "/images/project-09.jpg", "/images/project-11.jpg"],
-              "deck-stairs": [deck01.url, deck02.url, deck03.url, deck04.url, deck05.url, deck06.url, deck07.url]
+              "deck-stairs": [deck01.url, deck02.url, deck03.url, deck04.url, deck05.url, deck06.url, deck07.url, deck08.url]
             };
             const images = service.slug ? (gallery[service.slug] || []) : [];
             return (
