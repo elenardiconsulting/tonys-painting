@@ -97,7 +97,9 @@ const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState<Category>("All Projects");
   const [lightboxId, setLightboxId] = useState<number | string | null>(null);
   const [activeSlide, setActiveSlide] = useState(0);
+  const [galleryIndex, setGalleryIndex] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef<number | null>(null);
 
   const filtered =
     activeFilter === "All Projects"
