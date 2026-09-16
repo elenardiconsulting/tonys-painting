@@ -12,6 +12,14 @@ import ri11 from "@/assets/portfolio/residential-interior/residential-interior-p
 import ri12 from "@/assets/portfolio/residential-interior/residential-interior-painting-12.webp.asset.json";
 import ri13 from "@/assets/portfolio/residential-interior/residential-interior-painting-13.webp.asset.json";
 
+import cs01 from "@/assets/portfolio/commercial-school/commercial-school-painting-01.webp.asset.json";
+import cs02 from "@/assets/portfolio/commercial-school/commercial-school-painting-02.webp.asset.json";
+import cs03 from "@/assets/portfolio/commercial-school/commercial-school-painting-03.webp.asset.json";
+import cs04 from "@/assets/portfolio/commercial-school/commercial-school-painting-04.webp.asset.json";
+import cs05 from "@/assets/portfolio/commercial-school/commercial-school-painting-05.webp.asset.json";
+import cs06 from "@/assets/portfolio/commercial-school/commercial-school-painting-06.webp.asset.json";
+import cs07 from "@/assets/portfolio/commercial-school/commercial-school-painting-07.webp.asset.json";
+
 import dr2896 from "@/assets/deck-IMG_2896.jpg.asset.json";
 import dr2900 from "@/assets/deck-IMG_2900.jpg.asset.json";
 import dr2904 from "@/assets/deck-IMG_2904.jpg.asset.json";
@@ -61,6 +69,16 @@ const RESIDENTIAL_INTERIOR_IMAGES: PortfolioImage[] = [
   { src: ri11.url, alt: "Primary bathroom with corner tub, bright walls and painted trim" },
   { src: ri12.url, alt: "Long hallway with even neutral paint and white trim" },
   { src: ri13.url, alt: "Window lined hallway with freshly painted walls and trim" },
+];
+
+const COMMERCIAL_SCHOOL_IMAGES: PortfolioImage[] = [
+  { src: cs01.url, alt: "School hallway with navy blue accent walls and painted door frames" },
+  { src: cs02.url, alt: "Large classroom with fresh neutral walls and navy blue trim" },
+  { src: cs03.url, alt: "School entry area with skylight, light blue walls and navy window trim" },
+  { src: cs04.url, alt: "Classroom with painted walls, blue accent wall and interior window" },
+  { src: cs05.url, alt: "Classroom with clean neutral walls and dark baseboards" },
+  { src: cs06.url, alt: "Classroom corner with smooth wall finish and dark baseboards" },
+  { src: cs07.url, alt: "Interior window with navy painted frame between classrooms" },
 ];
 
 const KITCHEN_IMAGES: PortfolioImage[] = [
@@ -124,6 +142,17 @@ export const COLLECTIONS: PortfolioCollection[] = [
     cover: ri01.url,
     images: RESIDENTIAL_INTERIOR_IMAGES,
     featured: true,
+  },
+  {
+    slug: "commercial-school-painting",
+    title: "School Interior Painting",
+    category: "Commercial",
+    categoryLabel: "Commercial Painting",
+    location: "New England",
+    description:
+      "Full interior painting for a new school building. Classrooms, hallways and common areas finished with clean neutral walls and navy blue accents and trim.",
+    cover: cs01.url,
+    images: COMMERCIAL_SCHOOL_IMAGES,
   },
   {
     slug: "kitchens-and-cabinetry",
