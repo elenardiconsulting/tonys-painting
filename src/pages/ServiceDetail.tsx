@@ -414,8 +414,8 @@ const ServiceDetail = () => {
                 From weathered to warm.
               </h2>
               <p className="mt-4 text-muted-foreground leading-relaxed">
-                Same deck, same angle. Sanded, cleaned and finished with a rich protective stain.
-                Drag the handle to see the change.
+                The same deck, before and after. Sanded, cleaned and finished with a rich
+                protective stain. Drag the handle to see the change.
               </p>
             </div>
             <BeforeAfter
