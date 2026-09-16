@@ -385,20 +385,36 @@ const Portfolio = () => {
           <div
             className="w-full max-w-[900px] flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
+            onTouchStart={onTouchStart}
+            onTouchEnd={onTouchEnd}
           >
             <img
-              src={currentProject.src}
-              alt={`${currentProject.title}, ${currentProject.location}`}
-              className="w-full aspect-[4/3] object-cover"
+              src={currentImage?.src ?? currentProject.src}
+              alt={currentImage?.alt ?? `${currentProject.title}, ${currentProject.location}`}
+              className={
+                hasGallery
+                  ? "w-auto max-w-full max-h-[70vh] object-contain"
+                  : "w-full aspect-[4/3] object-cover"
+              }
             />
             <div className="mt-6 text-center">
               <p className="text-xs uppercase tracking-[0.25em] text-primary mb-2">
-                {currentProject.category}
+                {currentProject.categoryLabel ?? currentProject.category}
               </p>
               <h3 className="font-display text-2xl md:text-4xl text-background">
                 {currentProject.title}
               </h3>
               <p className="text-sm text-background/70 mt-2">{currentProject.location}</p>
+              {currentProject.description && (
+                <p className="text-sm text-background/70 mt-3 max-w-xl mx-auto leading-relaxed">
+                  {currentProject.description}
+                </p>
+              )}
+              {hasGallery && (
+                <p className="text-xs text-background/60 mt-3">
+                  {galleryIndex + 1} of {galleryImages.length}
+                </p>
+              )}
             </div>
           </div>
         </div>
