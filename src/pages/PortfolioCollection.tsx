@@ -6,6 +6,7 @@ import PageLayout from "@/components/site/PageLayout";
 import InnerHero from "@/components/site/InnerHero";
 import FadeUpSection from "@/components/site/FadeUpSection";
 import RippleButton from "@/components/site/RippleButton";
+import BeforeAfter from "@/components/site/BeforeAfter";
 import NotFound from "./NotFound";
 import { COLLECTIONS, getCollectionBySlug } from "@/data/portfolio";
 
@@ -98,6 +99,31 @@ const PortfolioCollectionPage = () => {
               {collection.images.length} photos
             </p>
           </FadeUpSection>
+
+          {collection.beforeAfter && (
+            <FadeUpSection>
+              <div className="mt-12 md:mt-16">
+                <div className="max-w-2xl mb-8">
+                  <p className="text-xs uppercase tracking-[0.25em] text-primary mb-3">
+                    Before and After
+                  </p>
+                  <h2 className="font-display text-3xl md:text-4xl text-foreground leading-tight">
+                    From weathered to warm.
+                  </h2>
+                  <p className="mt-4 text-muted-foreground leading-relaxed">
+                    Same deck, same angle. Drag the handle to see the change.
+                  </p>
+                </div>
+                <BeforeAfter
+                  beforeSrc={collection.beforeAfter.before}
+                  afterSrc={collection.beforeAfter.after}
+                  beforeAlt={collection.beforeAfter.beforeAlt}
+                  afterAlt={collection.beforeAfter.afterAlt}
+                  className="max-w-4xl"
+                />
+              </div>
+            </FadeUpSection>
+          )}
 
           {/* Masonry grid */}
           <div className="mt-10 columns-1 md:columns-2 lg:columns-3 gap-4 [column-fill:_balance]">

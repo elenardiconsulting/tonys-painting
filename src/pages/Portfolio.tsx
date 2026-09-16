@@ -128,9 +128,16 @@ const Portfolio = () => {
                       loading="lazy"
                       className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <span className="absolute top-3 right-3 rounded-full bg-foreground/70 px-3 py-1 text-[11px] font-medium text-background">
-                      {c.images.length} photos
-                    </span>
+                    <div className="absolute top-3 right-3 flex flex-wrap justify-end gap-2">
+                      {c.beforeAfter && (
+                        <span className="rounded-full bg-primary px-3 py-1 text-[11px] font-medium text-primary-foreground">
+                          Before and After
+                        </span>
+                      )}
+                      <span className="rounded-full bg-foreground/70 px-3 py-1 text-[11px] font-medium text-background">
+                        {c.images.length} photos
+                      </span>
+                    </div>
                   </div>
                   <p className="text-xs uppercase tracking-[0.2em] text-primary mt-4">
                     {c.categoryLabel}

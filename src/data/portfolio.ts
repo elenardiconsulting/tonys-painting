@@ -12,11 +12,26 @@ import ri11 from "@/assets/portfolio/residential-interior/residential-interior-p
 import ri12 from "@/assets/portfolio/residential-interior/residential-interior-painting-12.webp.asset.json";
 import ri13 from "@/assets/portfolio/residential-interior/residential-interior-painting-13.webp.asset.json";
 
+import dr2896 from "@/assets/deck-IMG_2896.jpg.asset.json";
+import dr2900 from "@/assets/deck-IMG_2900.jpg.asset.json";
+import dr2904 from "@/assets/deck-IMG_2904.jpg.asset.json";
+import dr2905 from "@/assets/deck-IMG_2905.jpg.asset.json";
+import dr2913 from "@/assets/deck-IMG_2913.jpg.asset.json";
+import dr2914 from "@/assets/deck-IMG_2914.jpg.asset.json";
+import dr2916 from "@/assets/deck-IMG_2916.jpg.asset.json";
+
 export type PortfolioCategory = "Interior" | "Exterior" | "Remodeling" | "Commercial";
 
 export interface PortfolioImage {
   src: string;
   alt: string;
+}
+
+export interface PortfolioBeforeAfter {
+  before: string;
+  after: string;
+  beforeAlt: string;
+  afterAlt: string;
 }
 
 export interface PortfolioCollection {
@@ -29,6 +44,7 @@ export interface PortfolioCollection {
   cover: string;
   images: PortfolioImage[];
   featured?: boolean;
+  beforeAfter?: PortfolioBeforeAfter;
 }
 
 const RESIDENTIAL_INTERIOR_IMAGES: PortfolioImage[] = [
@@ -66,6 +82,16 @@ const EXTERIOR_IMAGES: PortfolioImage[] = [
   { src: "/images/project-06.jpg", alt: "Shingle style residence with refreshed exterior finish, New England" },
   { src: "/images/project-13.jpg", alt: "Classic colonial house with new exterior paint, New England" },
   { src: "/images/project-14.jpg", alt: "Wood siding project with protective exterior coating, New England" },
+];
+
+const DECK_RESTORATION_IMAGES: PortfolioImage[] = [
+  { src: dr2904.url, alt: "Restored deck with rich brown stained boards and built in benches" },
+  { src: dr2914.url, alt: "Freshly stained deck boards running toward the water view railing" },
+  { src: dr2900.url, alt: "Deck bench and railing finished with a warm protective stain" },
+  { src: dr2916.url, alt: "Wide view of the restored deck with clean stained planks and steps" },
+  { src: dr2905.url, alt: "Corner of the restored deck with stained bench seating and railing" },
+  { src: dr2913.url, alt: "Deck stairs and landing sealed with a rich brown finish" },
+  { src: dr2896.url, alt: "Deck before restoration, weathered gray boards and benches" },
 ];
 
 const DECK_IMAGES: PortfolioImage[] = [
@@ -130,6 +156,23 @@ export const COLLECTIONS: PortfolioCollection[] = [
       "Coastal, colonial and shingle style homes protected with exterior paint and siding work built for New England weather.",
     cover: EXTERIOR_IMAGES[0].src,
     images: EXTERIOR_IMAGES,
+  },
+  {
+    slug: "deck-restoration",
+    title: "Deck Restoration",
+    category: "Exterior",
+    categoryLabel: "Decks",
+    location: "New England",
+    description:
+      "A weathered deck brought back to life. Boards and benches sanded, cleaned and finished with a rich protective stain.",
+    cover: dr2904.url,
+    images: DECK_RESTORATION_IMAGES,
+    beforeAfter: {
+      before: dr2896.url,
+      after: dr2904.url,
+      beforeAlt: "Deck before restoration, weathered gray boards and benches",
+      afterAlt: "Deck after restoration, rich brown stained boards and benches",
+    },
   },
   {
     slug: "decks",
