@@ -8,17 +8,66 @@ import FadeUpSection from "@/components/site/FadeUpSection";
 import RippleButton from "@/components/site/RippleButton";
 import { cn } from "@/lib/utils";
 
+import ri01 from "@/assets/portfolio/residential-interior/residential-interior-painting-01.webp.asset.json";
+import ri02 from "@/assets/portfolio/residential-interior/residential-interior-painting-02.webp.asset.json";
+import ri03 from "@/assets/portfolio/residential-interior/residential-interior-painting-03.webp.asset.json";
+import ri04 from "@/assets/portfolio/residential-interior/residential-interior-painting-04.webp.asset.json";
+import ri05 from "@/assets/portfolio/residential-interior/residential-interior-painting-05.webp.asset.json";
+import ri06 from "@/assets/portfolio/residential-interior/residential-interior-painting-06.webp.asset.json";
+import ri07 from "@/assets/portfolio/residential-interior/residential-interior-painting-07.webp.asset.json";
+import ri08 from "@/assets/portfolio/residential-interior/residential-interior-painting-08.webp.asset.json";
+import ri09 from "@/assets/portfolio/residential-interior/residential-interior-painting-09.webp.asset.json";
+import ri10 from "@/assets/portfolio/residential-interior/residential-interior-painting-10.webp.asset.json";
+import ri11 from "@/assets/portfolio/residential-interior/residential-interior-painting-11.webp.asset.json";
+import ri12 from "@/assets/portfolio/residential-interior/residential-interior-painting-12.webp.asset.json";
+import ri13 from "@/assets/portfolio/residential-interior/residential-interior-painting-13.webp.asset.json";
+
 type Category = "All Projects" | "Interior" | "Exterior" | "Remodeling" | "Commercial";
+
+interface GalleryImage {
+  src: string;
+  alt: string;
+}
 
 interface Project {
   id: number | string;
   title: string;
   category: Exclude<Category, "All Projects">;
+  categoryLabel?: string;
   location: string;
   src: string;
+  description?: string;
+  gallery?: GalleryImage[];
 }
 
+const RESIDENTIAL_INTERIOR_GALLERY: GalleryImage[] = [
+  { src: ri01.url, alt: "Vaulted wood ceiling bedroom with arched window after interior repaint" },
+  { src: ri02.url, alt: "Open bedroom with pine vaulted ceiling, skylight and freshly painted walls" },
+  { src: ri03.url, alt: "Primary bedroom with arched window and clean neutral wall finish" },
+  { src: ri04.url, alt: "Bay window sitting room with natural wood ceiling and painted trim" },
+  { src: ri05.url, alt: "Hallway with crisp white trim and freshly painted neutral walls" },
+  { src: ri06.url, alt: "Bedroom entry with painted walls, trim and hardwood floors" },
+  { src: ri07.url, alt: "Bright bedroom with large window and fresh interior paint" },
+  { src: ri08.url, alt: "Bedroom corner with smooth wall finish and white baseboards" },
+  { src: ri09.url, alt: "Upstairs landing with painted walls and clean white trim" },
+  { src: ri10.url, alt: "Primary bathroom with soaking tub and refreshed painted walls" },
+  { src: ri11.url, alt: "Primary bathroom with corner tub, bright walls and painted trim" },
+  { src: ri12.url, alt: "Long hallway with even neutral paint and white trim" },
+  { src: ri13.url, alt: "Window lined hallway with freshly painted walls and trim" },
+];
+
 const PROJECTS: Project[] = [
+  {
+    id: "residential-interior-painting",
+    title: "Residential Interior Painting",
+    category: "Interior",
+    categoryLabel: "Interior Painting",
+    location: "Martha's Vineyard, MA",
+    src: ri01.url,
+    description:
+      "Full interior repaint of a residence with vaulted wood ceilings, bay windows and a primary suite. Walls, trim and doors refreshed with a clean, bright finish that lets the natural wood stand out.",
+    gallery: RESIDENTIAL_INTERIOR_GALLERY,
+  },
   { id: 'int-luxury-01', title: "Luxury Kitchen Renovation", category: "Interior", location: "Martha's Vineyard", src: "/images/interior-04.jpg" },
   { id: 1, title: "Coastal Residence", category: "Exterior", location: "New England", src: "/images/project-02.jpg" },
   { id: 'int-luxury-02', title: "Open Plan Living Space", category: "Interior", location: "Martha's Vineyard", src: "/images/interior-03.jpg" },
