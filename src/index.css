@@ -357,9 +357,6 @@ section {
   contain: layout style;
 }
 
-img {
-  content-visibility: auto;
-}
 
 /* Instagram Reels: visibilidade desktop/mobile */
 .ig-desktop { display: none; }

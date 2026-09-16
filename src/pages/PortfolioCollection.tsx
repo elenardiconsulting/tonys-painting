@@ -154,7 +154,7 @@ const PortfolioCollectionPage = () => {
                       alt={img.alt}
                       decoding="async"
                       loading={index < 6 ? "eager" : "lazy"}
-                      className="block w-full h-auto transition-transform duration-500 group-hover:scale-105"
+                      className="block w-full h-auto transition-transform duration-500 group-hover:scale-105 [content-visibility:visible]"
                     />
                   </button>
                 ))}
