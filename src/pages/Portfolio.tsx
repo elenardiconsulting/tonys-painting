@@ -241,19 +241,19 @@ const Portfolio = () => {
             {filtered.map((p, i) => (
               <FadeUpSection key={p.id} delay={(i % 3) * 0.1}>
                 <button
-                  onClick={() => setLightboxId(p.id)}
+                  onClick={() => openLightbox(p.id)}
                   className="portfolio-item group relative aspect-[4/3] overflow-hidden text-left w-full"
                 >
                   <img
                     src={p.src}
-                    alt={`${p.title}, ${p.location}`}
-                    loading="lazy"
+                    alt={p.gallery?.[0]?.alt ?? `${p.title}, ${p.location}`}
+                    loading={i === 0 ? "eager" : "lazy"}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="portfolio-overlay absolute inset-0 flex flex-col items-center justify-center text-center p-6">
                     <div className="portfolio-caption">
                       <p className="text-xs uppercase tracking-[0.2em] text-primary mb-2">
-                        {p.category}
+                        {p.categoryLabel ?? p.category}
                       </p>
                       <h3 className="font-display text-2xl md:text-3xl text-background">
                         {p.title}
