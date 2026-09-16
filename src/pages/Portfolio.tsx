@@ -148,10 +148,10 @@ const Portfolio = () => {
     setLightboxId(id);
   };
 
-  const onTouchStart = (e: React.TouchEvent) => {
+  const onTouchStart = (e: ReactTouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
   };
-  const onTouchEnd = (e: React.TouchEvent) => {
+  const onTouchEnd = (e: ReactTouchEvent) => {
     if (touchStartX.current == null) return;
     const delta = e.changedTouches[0].clientX - touchStartX.current;
     touchStartX.current = null;
