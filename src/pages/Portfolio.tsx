@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, type TouchEvent as ReactTouchEvent } from "react";
 import { Link } from "react-router-dom";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import SEO from "@/components/SEO";
@@ -8,17 +8,66 @@ import FadeUpSection from "@/components/site/FadeUpSection";
 import RippleButton from "@/components/site/RippleButton";
 import { cn } from "@/lib/utils";
 
+import ri01 from "@/assets/portfolio/residential-interior/residential-interior-painting-01.webp.asset.json";
+import ri02 from "@/assets/portfolio/residential-interior/residential-interior-painting-02.webp.asset.json";
+import ri03 from "@/assets/portfolio/residential-interior/residential-interior-painting-03.webp.asset.json";
+import ri04 from "@/assets/portfolio/residential-interior/residential-interior-painting-04.webp.asset.json";
+import ri05 from "@/assets/portfolio/residential-interior/residential-interior-painting-05.webp.asset.json";
+import ri06 from "@/assets/portfolio/residential-interior/residential-interior-painting-06.webp.asset.json";
+import ri07 from "@/assets/portfolio/residential-interior/residential-interior-painting-07.webp.asset.json";
+import ri08 from "@/assets/portfolio/residential-interior/residential-interior-painting-08.webp.asset.json";
+import ri09 from "@/assets/portfolio/residential-interior/residential-interior-painting-09.webp.asset.json";
+import ri10 from "@/assets/portfolio/residential-interior/residential-interior-painting-10.webp.asset.json";
+import ri11 from "@/assets/portfolio/residential-interior/residential-interior-painting-11.webp.asset.json";
+import ri12 from "@/assets/portfolio/residential-interior/residential-interior-painting-12.webp.asset.json";
+import ri13 from "@/assets/portfolio/residential-interior/residential-interior-painting-13.webp.asset.json";
+
 type Category = "All Projects" | "Interior" | "Exterior" | "Remodeling" | "Commercial";
+
+interface GalleryImage {
+  src: string;
+  alt: string;
+}
 
 interface Project {
   id: number | string;
   title: string;
   category: Exclude<Category, "All Projects">;
+  categoryLabel?: string;
   location: string;
   src: string;
+  description?: string;
+  gallery?: GalleryImage[];
 }
 
+const RESIDENTIAL_INTERIOR_GALLERY: GalleryImage[] = [
+  { src: ri01.url, alt: "Vaulted wood ceiling bedroom with arched window after interior repaint" },
+  { src: ri02.url, alt: "Open bedroom with pine vaulted ceiling, skylight and freshly painted walls" },
+  { src: ri03.url, alt: "Primary bedroom with arched window and clean neutral wall finish" },
+  { src: ri04.url, alt: "Bay window sitting room with natural wood ceiling and painted trim" },
+  { src: ri05.url, alt: "Hallway with crisp white trim and freshly painted neutral walls" },
+  { src: ri06.url, alt: "Bedroom entry with painted walls, trim and hardwood floors" },
+  { src: ri07.url, alt: "Bright bedroom with large window and fresh interior paint" },
+  { src: ri08.url, alt: "Bedroom corner with smooth wall finish and white baseboards" },
+  { src: ri09.url, alt: "Upstairs landing with painted walls and clean white trim" },
+  { src: ri10.url, alt: "Primary bathroom with soaking tub and refreshed painted walls" },
+  { src: ri11.url, alt: "Primary bathroom with corner tub, bright walls and painted trim" },
+  { src: ri12.url, alt: "Long hallway with even neutral paint and white trim" },
+  { src: ri13.url, alt: "Window lined hallway with freshly painted walls and trim" },
+];
+
 const PROJECTS: Project[] = [
+  {
+    id: "residential-interior-painting",
+    title: "Residential Interior Painting",
+    category: "Interior",
+    categoryLabel: "Interior Painting",
+    location: "Martha's Vineyard, MA",
+    src: ri01.url,
+    description:
+      "Full interior repaint of a residence with vaulted wood ceilings, bay windows and a primary suite. Walls, trim and doors refreshed with a clean, bright finish that lets the natural wood stand out.",
+    gallery: RESIDENTIAL_INTERIOR_GALLERY,
+  },
   { id: 'int-luxury-01', title: "Luxury Kitchen Renovation", category: "Interior", location: "Martha's Vineyard", src: "/images/interior-04.jpg" },
   { id: 1, title: "Coastal Residence", category: "Exterior", location: "New England", src: "/images/project-02.jpg" },
   { id: 'int-luxury-02', title: "Open Plan Living Space", category: "Interior", location: "Martha's Vineyard", src: "/images/interior-03.jpg" },
@@ -48,7 +97,9 @@ const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState<Category>("All Projects");
   const [lightboxId, setLightboxId] = useState<number | string | null>(null);
   const [activeSlide, setActiveSlide] = useState(0);
+  const [galleryIndex, setGalleryIndex] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef<number | null>(null);
 
   const filtered =
     activeFilter === "All Projects"
@@ -62,17 +113,53 @@ const Portfolio = () => {
   const lightboxIndex = lightboxId != null ? filtered.findIndex((p) => p.id === lightboxId) : -1;
   const currentProject = lightboxIndex >= 0 ? filtered[lightboxIndex] : null;
 
+  const galleryImages: GalleryImage[] = currentProject
+    ? currentProject.gallery ?? [
+        { src: currentProject.src, alt: `${currentProject.title}, ${currentProject.location}` },
+      ]
+    : [];
+  const hasGallery = (currentProject?.gallery?.length ?? 0) > 1;
+  const currentImage = galleryImages[Math.min(galleryIndex, galleryImages.length - 1)] ?? null;
+
   const closeLightbox = () => setLightboxId(null);
   const showPrev = () => {
     if (lightboxIndex < 0) return;
+    if (hasGallery) {
+      setGalleryIndex((i) => (i - 1 + galleryImages.length) % galleryImages.length);
+      return;
+    }
     const next = (lightboxIndex - 1 + filtered.length) % filtered.length;
+    setGalleryIndex(0);
     setLightboxId(filtered[next].id);
   };
   const showNext = () => {
     if (lightboxIndex < 0) return;
+    if (hasGallery) {
+      setGalleryIndex((i) => (i + 1) % galleryImages.length);
+      return;
+    }
     const next = (lightboxIndex + 1) % filtered.length;
+    setGalleryIndex(0);
     setLightboxId(filtered[next].id);
   };
+
+  const openLightbox = (id: number | string) => {
+    setGalleryIndex(0);
+    setLightboxId(id);
+  };
+
+  const onTouchStart = (e: ReactTouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = (e: ReactTouchEvent) => {
+    if (touchStartX.current == null) return;
+    const delta = e.changedTouches[0].clientX - touchStartX.current;
+    touchStartX.current = null;
+    if (Math.abs(delta) < 50) return;
+    if (delta > 0) showPrev();
+    else showNext();
+  };
+
 
   useEffect(() => {
     if (lightboxId == null) return;
@@ -154,19 +241,19 @@ const Portfolio = () => {
             {filtered.map((p, i) => (
               <FadeUpSection key={p.id} delay={(i % 3) * 0.1}>
                 <button
-                  onClick={() => setLightboxId(p.id)}
+                  onClick={() => openLightbox(p.id)}
                   className="portfolio-item group relative aspect-[4/3] overflow-hidden text-left w-full"
                 >
                   <img
                     src={p.src}
-                    alt={`${p.title}, ${p.location}`}
-                    loading="lazy"
+                    alt={p.gallery?.[0]?.alt ?? `${p.title}, ${p.location}`}
+                    loading={i === 0 ? "eager" : "lazy"}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="portfolio-overlay absolute inset-0 flex flex-col items-center justify-center text-center p-6">
                     <div className="portfolio-caption">
                       <p className="text-xs uppercase tracking-[0.2em] text-primary mb-2">
-                        {p.category}
+                        {p.categoryLabel ?? p.category}
                       </p>
                       <h3 className="font-display text-2xl md:text-3xl text-background">
                         {p.title}
@@ -197,11 +284,11 @@ const Portfolio = () => {
                       key={p.id}
                       type="button"
                       className="relative aspect-square overflow-hidden rounded-[10px] text-left"
-                      onClick={() => setLightboxId(p.id)}
+                      onClick={() => openLightbox(p.id)}
                     >
                       <img
                         src={p.src}
-                        alt={`${p.title}, ${p.location}`}
+                        alt={p.gallery?.[0]?.alt ?? `${p.title}, ${p.location}`}
                         loading={pageIdx === 0 && itemIdx < 2 ? "eager" : "lazy"}
                         className="absolute inset-0 h-full w-full object-cover"
                       />
@@ -298,20 +385,36 @@ const Portfolio = () => {
           <div
             className="w-full max-w-[900px] flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
+            onTouchStart={onTouchStart}
+            onTouchEnd={onTouchEnd}
           >
             <img
-              src={currentProject.src}
-              alt={`${currentProject.title}, ${currentProject.location}`}
-              className="w-full aspect-[4/3] object-cover"
+              src={currentImage?.src ?? currentProject.src}
+              alt={currentImage?.alt ?? `${currentProject.title}, ${currentProject.location}`}
+              className={
+                hasGallery
+                  ? "w-auto max-w-full max-h-[70vh] object-contain"
+                  : "w-full aspect-[4/3] object-cover"
+              }
             />
             <div className="mt-6 text-center">
               <p className="text-xs uppercase tracking-[0.25em] text-primary mb-2">
-                {currentProject.category}
+                {currentProject.categoryLabel ?? currentProject.category}
               </p>
               <h3 className="font-display text-2xl md:text-4xl text-background">
                 {currentProject.title}
               </h3>
               <p className="text-sm text-background/70 mt-2">{currentProject.location}</p>
+              {currentProject.description && (
+                <p className="text-sm text-background/70 mt-3 max-w-xl mx-auto leading-relaxed">
+                  {currentProject.description}
+                </p>
+              )}
+              {hasGallery && (
+                <p className="text-xs text-background/60 mt-3">
+                  {galleryIndex + 1} of {galleryImages.length}
+                </p>
+              )}
             </div>
           </div>
         </div>
