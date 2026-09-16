@@ -284,11 +284,11 @@ const Portfolio = () => {
                       key={p.id}
                       type="button"
                       className="relative aspect-square overflow-hidden rounded-[10px] text-left"
-                      onClick={() => setLightboxId(p.id)}
+                      onClick={() => openLightbox(p.id)}
                     >
                       <img
                         src={p.src}
-                        alt={`${p.title}, ${p.location}`}
+                        alt={p.gallery?.[0]?.alt ?? `${p.title}, ${p.location}`}
                         loading={pageIdx === 0 && itemIdx < 2 ? "eager" : "lazy"}
                         className="absolute inset-0 h-full w-full object-cover"
                       />
