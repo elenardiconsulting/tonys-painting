@@ -111,17 +111,53 @@ const Portfolio = () => {
   const lightboxIndex = lightboxId != null ? filtered.findIndex((p) => p.id === lightboxId) : -1;
   const currentProject = lightboxIndex >= 0 ? filtered[lightboxIndex] : null;
 
+  const galleryImages: GalleryImage[] = currentProject
+    ? currentProject.gallery ?? [
+        { src: currentProject.src, alt: `${currentProject.title}, ${currentProject.location}` },
+      ]
+    : [];
+  const hasGallery = (currentProject?.gallery?.length ?? 0) > 1;
+  const currentImage = galleryImages[Math.min(galleryIndex, galleryImages.length - 1)] ?? null;
+
   const closeLightbox = () => setLightboxId(null);
   const showPrev = () => {
     if (lightboxIndex < 0) return;
+    if (hasGallery) {
+      setGalleryIndex((i) => (i - 1 + galleryImages.length) % galleryImages.length);
+      return;
+    }
     const next = (lightboxIndex - 1 + filtered.length) % filtered.length;
+    setGalleryIndex(0);
     setLightboxId(filtered[next].id);
   };
   const showNext = () => {
     if (lightboxIndex < 0) return;
+    if (hasGallery) {
+      setGalleryIndex((i) => (i + 1) % galleryImages.length);
+      return;
+    }
     const next = (lightboxIndex + 1) % filtered.length;
+    setGalleryIndex(0);
     setLightboxId(filtered[next].id);
   };
+
+  const openLightbox = (id: number | string) => {
+    setGalleryIndex(0);
+    setLightboxId(id);
+  };
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current == null) return;
+    const delta = e.changedTouches[0].clientX - touchStartX.current;
+    touchStartX.current = null;
+    if (Math.abs(delta) < 50) return;
+    if (delta > 0) showPrev();
+    else showNext();
+  };
+
 
   useEffect(() => {
     if (lightboxId == null) return;
