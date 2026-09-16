@@ -84,6 +84,16 @@ const EXTERIOR_IMAGES: PortfolioImage[] = [
   { src: "/images/project-14.jpg", alt: "Wood siding project with protective exterior coating, New England" },
 ];
 
+const DECK_RESTORATION_IMAGES: PortfolioImage[] = [
+  { src: dr2904.url, alt: "Restored deck with rich brown stained boards and built in benches" },
+  { src: dr2914.url, alt: "Freshly stained deck boards running toward the water view railing" },
+  { src: dr2900.url, alt: "Deck bench and railing finished with a warm protective stain" },
+  { src: dr2916.url, alt: "Wide view of the restored deck with clean stained planks and steps" },
+  { src: dr2905.url, alt: "Corner of the restored deck with stained bench seating and railing" },
+  { src: dr2913.url, alt: "Deck stairs and landing sealed with a rich brown finish" },
+  { src: dr2896.url, alt: "Deck before restoration, weathered gray boards and benches" },
+];
+
 const DECK_IMAGES: PortfolioImage[] = [
   { src: "/images/project-08.jpg", alt: "Waterfront deck with fresh finish, New England" },
   { src: "/images/project-07.jpg", alt: "Outdoor deck build with railing and stairs, New England" },
@@ -146,6 +156,23 @@ export const COLLECTIONS: PortfolioCollection[] = [
       "Coastal, colonial and shingle style homes protected with exterior paint and siding work built for New England weather.",
     cover: EXTERIOR_IMAGES[0].src,
     images: EXTERIOR_IMAGES,
+  },
+  {
+    slug: "deck-restoration",
+    title: "Deck Restoration",
+    category: "Exterior",
+    categoryLabel: "Decks",
+    location: "New England",
+    description:
+      "A weathered deck brought back to life. Boards and benches sanded, cleaned and finished with a rich protective stain.",
+    cover: dr2904.url,
+    images: DECK_RESTORATION_IMAGES,
+    beforeAfter: {
+      before: dr2896.url,
+      after: dr2904.url,
+      beforeAlt: "Deck before restoration, weathered gray boards and benches",
+      afterAlt: "Deck after restoration, rich brown stained boards and benches",
+    },
   },
   {
     slug: "decks",
