@@ -12,11 +12,26 @@ import ri11 from "@/assets/portfolio/residential-interior/residential-interior-p
 import ri12 from "@/assets/portfolio/residential-interior/residential-interior-painting-12.webp.asset.json";
 import ri13 from "@/assets/portfolio/residential-interior/residential-interior-painting-13.webp.asset.json";
 
+import dr2896 from "@/assets/deck-IMG_2896.jpg.asset.json";
+import dr2900 from "@/assets/deck-IMG_2900.jpg.asset.json";
+import dr2904 from "@/assets/deck-IMG_2904.jpg.asset.json";
+import dr2905 from "@/assets/deck-IMG_2905.jpg.asset.json";
+import dr2913 from "@/assets/deck-IMG_2913.jpg.asset.json";
+import dr2914 from "@/assets/deck-IMG_2914.jpg.asset.json";
+import dr2916 from "@/assets/deck-IMG_2916.jpg.asset.json";
+
 export type PortfolioCategory = "Interior" | "Exterior" | "Remodeling" | "Commercial";
 
 export interface PortfolioImage {
   src: string;
   alt: string;
+}
+
+export interface PortfolioBeforeAfter {
+  before: string;
+  after: string;
+  beforeAlt: string;
+  afterAlt: string;
 }
 
 export interface PortfolioCollection {
@@ -29,6 +44,7 @@ export interface PortfolioCollection {
   cover: string;
   images: PortfolioImage[];
   featured?: boolean;
+  beforeAfter?: PortfolioBeforeAfter;
 }
 
 const RESIDENTIAL_INTERIOR_IMAGES: PortfolioImage[] = [
