@@ -104,9 +104,11 @@ const PortfolioCollectionPage = () => {
             </p>
             <h1 className="font-display text-3xl md:text-5xl leading-tight">{collection.title}</h1>
             <p className="text-sm text-muted-foreground mt-2">{collection.location}</p>
-            <p className="text-base text-muted-foreground mt-4 max-w-2xl leading-relaxed">
-              {collection.description}
-            </p>
+            {collection.description && (
+              <p className="text-base text-muted-foreground mt-4 max-w-2xl leading-relaxed">
+                {collection.description}
+              </p>
+            )}
             <p className="text-sm text-muted-foreground mt-4">
               {collection.images.length} photos
             </p>
