@@ -40,7 +40,7 @@ export interface PortfolioCollection {
   category: PortfolioCategory;
   categoryLabel: string;
   location: string;
-  description: string;
+  description?: string;
   cover: string;
   images: PortfolioImage[];
   featured?: boolean;
