@@ -392,6 +392,16 @@ const ServiceDetail = () => {
               </>
             );
           })()}
+          {service.slug === "deck-stairs" && (
+            <div className="mt-8">
+              <Link
+                to="/portfolio/deck-restoration"
+                className="text-sm font-medium text-primary underline underline-offset-4 hover:text-primary-dark transition-colors"
+              >
+                View the full Deck Restoration project
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
