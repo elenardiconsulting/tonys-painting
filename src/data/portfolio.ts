@@ -40,7 +40,7 @@ export interface PortfolioCollection {
   category: PortfolioCategory;
   categoryLabel: string;
   location: string;
-  description: string;
+  description?: string;
   cover: string;
   images: PortfolioImage[];
   featured?: boolean;
@@ -163,16 +163,8 @@ export const COLLECTIONS: PortfolioCollection[] = [
     category: "Exterior",
     categoryLabel: "Decks",
     location: "New England",
-    description:
-      "A weathered deck brought back to life. Boards and benches sanded, cleaned and finished with a rich protective stain.",
     cover: dr2904.url,
     images: DECK_RESTORATION_IMAGES,
-    beforeAfter: {
-      before: dr2896.url,
-      after: dr2904.url,
-      beforeAlt: "Deck before restoration, weathered gray boards and benches",
-      afterAlt: "Deck after restoration, rich brown stained boards and benches",
-    },
   },
   {
     slug: "decks",

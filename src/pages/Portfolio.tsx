@@ -106,9 +106,11 @@ const Portfolio = () => {
                     {featured.title}
                   </h2>
                   <p className="text-sm text-muted-foreground mt-2">{featured.location}</p>
-                  <p className="text-base text-muted-foreground mt-4 leading-relaxed max-w-xl">
-                    {featured.description}
-                  </p>
+                  {featured.description && (
+                    <p className="text-base text-muted-foreground mt-4 leading-relaxed max-w-xl">
+                      {featured.description}
+                    </p>
+                  )}
                   <span className="mt-6 inline-flex items-center rounded-sm bg-primary px-8 py-3 text-sm font-medium text-primary-foreground transition-colors group-hover:bg-primary-dark">
                     View {featured.images.length} photos
                   </span>

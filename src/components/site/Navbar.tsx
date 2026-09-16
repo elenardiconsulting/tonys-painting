@@ -147,7 +147,7 @@ const Navbar = () => {
       <button
         aria-label="Toggle menu"
         onClick={() => setOpen((v) => !v)}
-        className="md:hidden"
+        className="flex md:hidden"
         style={{
           position: "fixed",
           top: "14px",
@@ -158,7 +158,6 @@ const Navbar = () => {
           padding: "8px",
           cursor: "pointer",
           color: "white",
-          display: "flex",
         }}
       >
         {open ? <X size={28} /> : <Menu size={28} />}
@@ -166,7 +165,7 @@ const Navbar = () => {
 
       {/* MOBILE MENU - fora do header */}
       <div
-        className="md:hidden"
+        className="flex md:hidden"
         style={{
           position: "fixed",
           inset: 0,
@@ -176,7 +175,6 @@ const Navbar = () => {
           visibility: open ? "visible" : "hidden",
           pointerEvents: open ? "auto" : "none",
           transition: "opacity 0.25s ease, visibility 0.25s ease",
-          display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           padding: "0 40px",
