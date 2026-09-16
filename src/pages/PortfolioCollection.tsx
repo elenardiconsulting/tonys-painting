@@ -8,15 +8,27 @@ import FadeUpSection from "@/components/site/FadeUpSection";
 import RippleButton from "@/components/site/RippleButton";
 import BeforeAfter from "@/components/site/BeforeAfter";
 import NotFound from "./NotFound";
-import { COLLECTIONS, getCollectionBySlug } from "@/data/portfolio";
+import { COLLECTIONS, getCollectionBySlug, type PortfolioImage } from "@/data/portfolio";
+import { useColumnCount } from "@/hooks/useColumnCount";
+
+interface MasonryItem {
+  img: PortfolioImage;
+  index: number;
+}
 
 const PortfolioCollectionPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const collection = getCollectionBySlug(slug);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const touchStartX = useRef<number | null>(null);
+  const columnCount = useColumnCount();
 
   const total = collection?.images.length ?? 0;
+
+  const columns: MasonryItem[][] = Array.from({ length: columnCount }, () => []);
+  (collection?.images ?? []).forEach((img, index) => {
+    columns[index % columnCount].push({ img, index });
+  });
 
   const close = useCallback(() => setLightboxIndex(null), []);
   const showPrev = useCallback(() => {
