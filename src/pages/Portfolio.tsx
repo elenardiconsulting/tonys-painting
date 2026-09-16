@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, type TouchEvent as ReactTouchEvent } from "react";
 import { Link } from "react-router-dom";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import SEO from "@/components/SEO";
