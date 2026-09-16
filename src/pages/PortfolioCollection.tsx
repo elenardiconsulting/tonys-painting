@@ -111,7 +111,8 @@ const PortfolioCollectionPage = () => {
                     From weathered to warm.
                   </h2>
                   <p className="mt-4 text-muted-foreground leading-relaxed">
-                    Same deck, same angle. Drag the handle to see the change.
+                    The same deck, before and after the restoration. Drag the handle to see the
+                    change.
                   </p>
                 </div>
                 <BeforeAfter
@@ -126,21 +127,26 @@ const PortfolioCollectionPage = () => {
           )}
 
           {/* Masonry grid */}
-          <div className="mt-10 columns-1 md:columns-2 lg:columns-3 gap-4 [column-fill:_balance]">
-            {collection.images.map((img, i) => (
-              <button
-                key={img.src}
-                type="button"
-                onClick={() => setLightboxIndex(i)}
-                className="group mb-4 block w-full overflow-hidden rounded-[10px] break-inside-avoid"
-              >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  loading={i === 0 ? "eager" : "lazy"}
-                  className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
-                />
-              </button>
+          <div className="mt-10 flex gap-4">
+            {columns.map((column, colIdx) => (
+              <div key={colIdx} className="flex flex-1 min-w-0 flex-col gap-4">
+                {column.map(({ img, index }) => (
+                  <button
+                    key={img.src}
+                    type="button"
+                    onClick={() => setLightboxIndex(index)}
+                    className="group block w-full overflow-hidden rounded-[10px] bg-stone"
+                  >
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      decoding="async"
+                      loading={index < 6 ? "eager" : "lazy"}
+                      className="block w-full h-auto transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </button>
+                ))}
+              </div>
             ))}
           </div>
         </div>
