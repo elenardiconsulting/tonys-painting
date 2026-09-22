@@ -796,6 +796,20 @@ const InteriorPaintingTemplate = ({
             gap: 16px;
           }
           .lp2-hero-stat-divider { display: none; }
+          .lp2-work-grid { grid-template-columns: 1fr; }
+          .lp2-work-hero { aspect-ratio: 3 / 4; }
+          .lp2-video-grid {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            gap: 12px;
+            padding-bottom: 8px;
+          }
+          .lp2-video-card {
+            flex: 0 0 78%;
+            scroll-snap-align: center;
+          }
         }
       `}</style>
     </div>
