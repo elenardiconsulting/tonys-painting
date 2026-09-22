@@ -292,7 +292,7 @@ const InteriorPaintingTemplate = ({
           <p style={{ color: "#6B6560", fontSize: "16px", marginTop: "8px" }}>
             Everything you need from one experienced team.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
+          <div className="lp2-included grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
             {included.map((item) => (
               <div
                 key={item.title}
@@ -377,7 +377,7 @@ const InteriorPaintingTemplate = ({
           >
             What our clients say.
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+          <div className="lp2-reviews grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
             {reviews.map((r) => (
               <div
                 key={r.name}
@@ -785,8 +785,15 @@ const InteriorPaintingTemplate = ({
 
           /* Mobile conversion-focused hero (paid traffic) */
           .lp2-hero-section {
-            min-height: 0;
-            align-items: flex-start;
+            min-height: 100svh;
+            height: 100svh;
+            align-items: stretch;
+          }
+          .lp2-hero-layout-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100%;
           }
           .lp2-hero-overlay-main {
             background: linear-gradient(
@@ -876,15 +883,40 @@ const InteriorPaintingTemplate = ({
           .lp2-work-hero { aspect-ratio: 3 / 4; }
           .lp2-carousel > * { flex: 0 0 82vw; }
           .lp2-carousel-video > * { flex: 0 0 72vw; }
+
+          /* Uniform photo size on mobile */
+          .lp2-photo-item { height: 240px; }
+          .lp2-photo-item img { height: 100%; width: 100%; object-fit: cover; }
+
+          /* Shared mobile carousel behavior: snap one card at a time */
+          .lp2-carousel,
+          .lp2-included,
+          .lp2-reviews,
           .lp2-steps {
+            display: flex;
+            flex-wrap: nowrap;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
+            scroll-padding-left: 0;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
-            gap: 16px;
+            -ms-overflow-style: none;
+            gap: 12px;
           }
+          .lp2-carousel::-webkit-scrollbar,
+          .lp2-included::-webkit-scrollbar,
+          .lp2-reviews::-webkit-scrollbar,
           .lp2-steps::-webkit-scrollbar { display: none; }
-          .lp2-steps > * { flex: 0 0 78%; scroll-snap-align: start; }
+          .lp2-carousel > *,
+          .lp2-included > *,
+          .lp2-reviews > *,
+          .lp2-steps > * {
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+          }
+          .lp2-included > * { flex: 0 0 80vw; }
+          .lp2-reviews > * { flex: 0 0 82vw; }
+          .lp2-steps > * { flex: 0 0 78vw; }
         }
       `}</style>
     </div>
