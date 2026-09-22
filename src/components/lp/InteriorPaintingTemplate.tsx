@@ -785,8 +785,15 @@ const InteriorPaintingTemplate = ({
 
           /* Mobile conversion-focused hero (paid traffic) */
           .lp2-hero-section {
-            min-height: 0;
-            align-items: flex-start;
+            min-height: 100svh;
+            height: 100svh;
+            align-items: stretch;
+          }
+          .lp2-hero-layout-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100%;
           }
           .lp2-hero-overlay-main {
             background: linear-gradient(
