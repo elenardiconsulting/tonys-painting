@@ -277,38 +277,6 @@ const LandingTemplate = ({
         </div>
       </section>
 
-      {/* REVIEWS */}
-      <section style={{ backgroundColor: "#FFFFFF", padding: "clamp(36px,5vw,64px) 24px" }}>
-        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <h2 className="font-display" style={{ fontWeight: 900, fontSize: "clamp(26px,3vw,36px)", color: "#1A1A1A", letterSpacing: "-0.02em", marginBottom: "20px" }}>
-            What our clients say.
-          </h2>
-          <Carousel peekWidth="80vw" desktopCols={3} maxWidthDesktop="1100px" cardHeight="180px">
-            {reviews.map(r => (
-              <div
-                key={r.name}
-                style={{
-                  backgroundColor: "#F5F1EB",
-                  border: "1px solid #E8E2D8",
-                  borderRadius: "8px",
-                  padding: "20px",
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                }}
-              >
-                <div>
-                  <Stars5 />
-                  <p style={{ color: "#1A1A1A", fontSize: "13px", lineHeight: 1.65, marginTop: "12px" }}>&ldquo;{r.text}&rdquo;</p>
-                </div>
-                <p style={{ color: "#6B6560", fontSize: "12px", fontWeight: 600, marginTop: "12px" }}>{r.name}</p>
-              </div>
-            ))}
-          </Carousel>
-        </div>
-      </section>
-
       {/* RECENT WORK */}
       <section style={{ backgroundColor: "#F5F1EB", padding: "clamp(36px,5vw,64px) 24px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
@@ -337,6 +305,38 @@ const LandingTemplate = ({
                   )}
                 </div>
                 <p style={{ color: "#6B6560", fontSize: "11px", marginTop: "6px" }}>{loc}</p>
+              </div>
+            ))}
+          </Carousel>
+        </div>
+      </section>
+
+      {/* REVIEWS */}
+      <section style={{ backgroundColor: "#FFFFFF", padding: "clamp(36px,5vw,64px) 24px" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <h2 className="font-display" style={{ fontWeight: 900, fontSize: "clamp(26px,3vw,36px)", color: "#1A1A1A", letterSpacing: "-0.02em", marginBottom: "20px" }}>
+            What our clients say.
+          </h2>
+          <Carousel peekWidth="80vw" desktopCols={3} maxWidthDesktop="1100px" cardHeight="180px">
+            {reviews.map(r => (
+              <div
+                key={r.name}
+                style={{
+                  backgroundColor: "#F5F1EB",
+                  border: "1px solid #E8E2D8",
+                  borderRadius: "8px",
+                  padding: "20px",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                }}
+              >
+                <div>
+                  <Stars5 />
+                  <p style={{ color: "#1A1A1A", fontSize: "13px", lineHeight: 1.65, marginTop: "12px" }}>&ldquo;{r.text}&rdquo;</p>
+                </div>
+                <p style={{ color: "#6B6560", fontSize: "12px", fontWeight: 600, marginTop: "12px" }}>{r.name}</p>
               </div>
             ))}
           </Carousel>
