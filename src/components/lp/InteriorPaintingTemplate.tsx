@@ -404,17 +404,6 @@ const InteriorPaintingTemplate = ({
       {/* Recent work: masonry gallery preserving full photos, no forced cropping */}
       <section style={{ backgroundColor: "#F5F1EB", padding: "80px 24px" }}>
         <div className="max-w-6xl mx-auto">
-          <span
-            style={{
-              textTransform: "uppercase",
-              color: "#C4291C",
-              fontSize: "12px",
-              letterSpacing: "0.18em",
-              fontWeight: 600,
-            }}
-          >
-            On the job
-          </span>
           <h2
             className="font-display"
             style={{
@@ -422,7 +411,6 @@ const InteriorPaintingTemplate = ({
               fontSize: "clamp(32px, 4vw, 40px)",
               color: "#1A1A1A",
               letterSpacing: "-0.02em",
-              marginTop: "10px",
             }}
           >
             Recent work.
