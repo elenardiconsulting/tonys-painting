@@ -292,7 +292,7 @@ const InteriorPaintingTemplate = ({
           <p style={{ color: "#6B6560", fontSize: "16px", marginTop: "8px" }}>
             Everything you need from one experienced team.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
+          <div className="lp2-included grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
             {included.map((item) => (
               <div
                 key={item.title}
@@ -377,7 +377,7 @@ const InteriorPaintingTemplate = ({
           >
             What our clients say.
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+          <div className="lp2-reviews grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
             {reviews.map((r) => (
               <div
                 key={r.name}
