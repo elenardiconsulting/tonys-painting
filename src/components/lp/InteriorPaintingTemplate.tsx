@@ -594,7 +594,7 @@ const InteriorPaintingTemplate = ({
           z-index: 10;
           width: 100%;
           display: flex;
-          padding: 96px 80px 64px 80px;
+          padding: 80px 80px 48px 80px;
           align-items: center;
           justify-content: space-between;
           gap: 40px;
