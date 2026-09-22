@@ -780,6 +780,7 @@ const InteriorPaintingTemplate = ({
             gap: 16px;
           }
           .lp2-hero-stat-divider { display: none; }
+          .lp2-photo-masonry { column-count: 1; }
           .lp2-work-grid { grid-template-columns: 1fr; }
           .lp2-work-hero { aspect-ratio: 3 / 4; }
           .lp2-video-grid {
