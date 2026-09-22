@@ -158,13 +158,6 @@ const InteriorPaintingTemplate = ({
         <div className="lp2-hero-overlay-top" />
         <div className="lp2-hero-layout-container">
           <div className="lp2-hero-content">
-            <motion.span
-              {...fadeUp(0.05)}
-              className="lp2-hero-eyebrow"
-            >
-              <span className="lp2-txt-d">{tag}</span>
-              <span className="lp2-txt-m">INTERIOR PAINTING • NEW ENGLAND</span>
-            </motion.span>
             <motion.h1
               {...fadeUp(0.15)}
               className="lp2-hero-headline"
@@ -411,17 +404,6 @@ const InteriorPaintingTemplate = ({
       {/* Recent work: masonry gallery preserving full photos, no forced cropping */}
       <section style={{ backgroundColor: "#F5F1EB", padding: "80px 24px" }}>
         <div className="max-w-6xl mx-auto">
-          <span
-            style={{
-              textTransform: "uppercase",
-              color: "#C4291C",
-              fontSize: "12px",
-              letterSpacing: "0.18em",
-              fontWeight: 600,
-            }}
-          >
-            On the job
-          </span>
           <h2
             className="font-display"
             style={{
@@ -429,7 +411,6 @@ const InteriorPaintingTemplate = ({
               fontSize: "clamp(32px, 4vw, 40px)",
               color: "#1A1A1A",
               letterSpacing: "-0.02em",
-              marginTop: "10px",
             }}
           >
             Recent work.
@@ -456,17 +437,6 @@ const InteriorPaintingTemplate = ({
       {/* Video section: 9:16 cards matching native portrait, no crop */}
       <section style={{ backgroundColor: "#2C2C2A", padding: "80px 24px" }}>
         <div className="max-w-6xl mx-auto">
-          <span
-            style={{
-              textTransform: "uppercase",
-              color: "#C4291C",
-              fontSize: "12px",
-              letterSpacing: "0.18em",
-              fontWeight: 600,
-            }}
-          >
-            Inside the work
-          </span>
           <h2
             className="font-display"
             style={{
@@ -474,7 +444,6 @@ const InteriorPaintingTemplate = ({
               fontSize: "clamp(32px, 4vw, 40px)",
               color: "#F5F1EB",
               letterSpacing: "-0.02em",
-              marginTop: "10px",
             }}
           >
             See it in motion.
