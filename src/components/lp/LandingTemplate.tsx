@@ -97,9 +97,9 @@ const LandingTemplate = ({ tag, headline, subline, service, heroReview, reviews,
       </header>
 
       {/* HERO — texto escuro a esquerda, form a direita no desktop / empilhado no mobile */}
-      <section className="grid grid-cols-1 md:grid-cols-[55fr_45fr]" style={{ paddingTop:"56px", minHeight:"100svh" }}>
+      <section className="grid grid-cols-1 md:grid-cols-[55fr_45fr]" style={{ paddingTop:"56px" }}>
         <div className="px-6 py-8 md:px-[60px] md:py-[80px] flex flex-col justify-center gap-5 md:gap-7"
-          style={{ backgroundColor:"#1A1A1A", backgroundImage: heroImage ? `linear-gradient(rgba(26,26,26,0.75),rgba(26,26,26,0.75)),url(${heroImage})` : "none", backgroundSize:"cover", backgroundPosition:"center" }}>
+          style={{ backgroundColor:"#1A1A1A", backgroundImage: heroImage ? `linear-gradient(rgba(26,26,26,0.75),rgba(26,26,26,0.75)),url(${heroImage})` : "none", backgroundSize:"cover", backgroundPosition:"center", minHeight:"calc(100svh - 56px)" }}>
           <div>
             <span className="inline-block uppercase" style={{ color:"#C4291C", fontSize:"11px", letterSpacing:"0.1em", fontWeight:600 }}>{tag}</span>
             <h1 className="font-display mt-3" style={{ fontWeight:900, fontSize:"clamp(32px,4vw,52px)", lineHeight:1.05, letterSpacing:"-0.02em", color:"#F5F1EB" }}>{headline}</h1>
@@ -124,6 +124,26 @@ const LandingTemplate = ({ tag, headline, subline, service, heroReview, reviews,
             <p className="mt-2 italic" style={{ color:"#E8E2D8", fontSize:"13px", lineHeight:1.6 }}>&ldquo;{heroReview.text}&rdquo;</p>
             <p className="mt-2" style={{ color:"#9CA3AF", fontSize:"12px", fontWeight:500 }}>{heroReview.name}</p>
           </div>
+          <a
+            href="#form-mobile"
+            className="md:hidden"
+            style={{
+              display: "inline-block",
+              marginTop: "8px",
+              background: "#C4291C",
+              color: "white",
+              padding: "14px 28px",
+              borderRadius: "6px",
+              fontFamily: "Inter, sans-serif",
+              fontWeight: 600,
+              fontSize: "15px",
+              textDecoration: "none",
+              textAlign: "center",
+              width: "100%",
+            }}
+          >
+            Get My Free Estimate
+          </a>
         </div>
         {/* Form no desktop fica no hero. No mobile some — vai aparecer no final da pagina */}
         <div className="hidden md:flex px-12 py-[60px] flex-col justify-center" style={{ backgroundColor:"#F5F1EB" }}>
