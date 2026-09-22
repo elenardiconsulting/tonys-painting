@@ -692,8 +692,9 @@ const InteriorPaintingTemplate = ({
         }
         .lp2-carousel::-webkit-scrollbar { display: none; }
         .lp2-carousel > * {
-          flex: 0 0 calc((100% - 24px) / 3);
+          flex: 0 0 calc((100% - 24px) / 3.35);
           scroll-snap-align: start;
+          scroll-snap-stop: always;
         }
         .lp2-steps {
           display: flex;
