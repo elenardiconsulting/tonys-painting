@@ -437,17 +437,6 @@ const InteriorPaintingTemplate = ({
       {/* Video section: 9:16 cards matching native portrait, no crop */}
       <section style={{ backgroundColor: "#2C2C2A", padding: "80px 24px" }}>
         <div className="max-w-6xl mx-auto">
-          <span
-            style={{
-              textTransform: "uppercase",
-              color: "#C4291C",
-              fontSize: "12px",
-              letterSpacing: "0.18em",
-              fontWeight: 600,
-            }}
-          >
-            Inside the work
-          </span>
           <h2
             className="font-display"
             style={{
@@ -455,7 +444,6 @@ const InteriorPaintingTemplate = ({
               fontSize: "clamp(32px, 4vw, 40px)",
               color: "#F5F1EB",
               letterSpacing: "-0.02em",
-              marginTop: "10px",
             }}
           >
             See it in motion.
