@@ -1075,6 +1075,11 @@ const InteriorPaintingTemplate = ({
           .lp2-carousel > * { flex: 0 0 82vw; }
           .lp2-carousel-video > * { flex: 0 0 72vw; }
 
+          /* Hide desktop arrows/dots on mobile; native swipe only */
+          .lp2-carousel-arrow { display: none; }
+          .lp2-carousel-dots { display: none; }
+          .lp2-carousel-photos { margin: 0; }
+
           /* Uniform 3:4 portrait photos on mobile */
           .lp2-photo-item { height: auto; aspect-ratio: 3 / 4; }
           .lp2-photo-item img { height: 100%; width: 100%; object-fit: cover; }
