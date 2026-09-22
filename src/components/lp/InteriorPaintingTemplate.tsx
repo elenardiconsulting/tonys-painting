@@ -760,10 +760,12 @@ const InteriorPaintingTemplate = ({
           border-radius: 10px;
           overflow: hidden;
           background: #E8E2D8;
+          aspect-ratio: 3 / 4;
         }
         .lp2-photo-item img {
           width: 100%;
-          height: auto;
+          height: 100%;
+          object-fit: cover;
           display: block;
           content-visibility: visible;
           transition: transform 0.6s ease;
