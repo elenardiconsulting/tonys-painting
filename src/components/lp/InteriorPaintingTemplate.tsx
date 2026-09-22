@@ -91,6 +91,97 @@ const Stars5 = ({ size = 14 }: { size?: number }) => (
   </div>
 );
 
+interface PhotoItem {
+  src: string;
+  alt: string;
+}
+
+const PhotoCarousel = ({ photos }: { photos: PhotoItem[] }) => {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
+
+  const scrollToIndex = useCallback((idx: number) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const child = track.children[idx] as HTMLElement | undefined;
+    if (child) {
+      track.scrollTo({ left: child.offsetLeft - track.offsetLeft, behavior: "smooth" });
+    }
+  }, []);
+
+  const onScroll = useCallback(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const trackLeft = track.getBoundingClientRect().left;
+    let best = 0;
+    let bestDist = Infinity;
+    Array.from(track.children).forEach((child, i) => {
+      const el = child as HTMLElement;
+      const dist = Math.abs(el.getBoundingClientRect().left - trackLeft);
+      if (dist < bestDist) {
+        bestDist = dist;
+        best = i;
+      }
+    });
+    setActive(best);
+  }, []);
+
+  const goPrev = useCallback(() => {
+    scrollToIndex(Math.max(0, active - 1));
+  }, [active, scrollToIndex]);
+  const goNext = useCallback(() => {
+    scrollToIndex(Math.min(photos.length - 1, active + 1));
+  }, [active, scrollToIndex, photos.length]);
+
+  return (
+    <div className="lp2-photo-carousel">
+      <button
+        type="button"
+        className="lp2-carousel-arrow lp2-carousel-arrow-prev"
+        onClick={goPrev}
+        aria-label="Previous photos"
+        disabled={active === 0}
+      >
+        <ChevronLeft size={22} />
+      </button>
+      <div
+        ref={trackRef}
+        className="lp2-carousel lp2-carousel-photos"
+        onScroll={onScroll}
+      >
+        {photos.map((p) => (
+          <figure key={p.src} className="lp2-photo-item">
+            <img src={p.src} alt={p.alt} loading="lazy" decoding="async" />
+          </figure>
+        ))}
+      </div>
+      <button
+        type="button"
+        className="lp2-carousel-arrow lp2-carousel-arrow-next"
+        onClick={goNext}
+        aria-label="Next photos"
+        disabled={active === photos.length - 1}
+      >
+        <ChevronRight size={22} />
+      </button>
+      <div className="lp2-carousel-dots" role="tablist" aria-label="Photo pagination">
+        {photos.map((p, i) => (
+          <button
+            key={p.src}
+            type="button"
+            role="tab"
+            aria-selected={i === active}
+            aria-label={`Go to photo ${i + 1}`}
+            className={`lp2-carousel-dot${i === active ? " is-active" : ""}`}
+            onClick={() => scrollToIndex(i)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+
 const InteriorPaintingTemplate = ({
   tag,
   headline,
