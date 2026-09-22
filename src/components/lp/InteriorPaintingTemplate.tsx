@@ -712,13 +712,27 @@ const InteriorPaintingTemplate = ({
           box-shadow: 0 20px 60px rgba(0,0,0,0.35);
         }
 
-        .lp2-photo-masonry {
-          column-count: 3;
-          column-gap: 14px;
+        .lp2-carousel {
+          display: flex;
+          gap: 12px;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
         }
+        .lp2-carousel::-webkit-scrollbar { display: none; }
+        .lp2-carousel > * {
+          flex: 0 0 calc((100% - 24px) / 3);
+          scroll-snap-align: start;
+        }
+        .lp2-steps {
+          display: flex;
+          gap: 40px;
+        }
+        .lp2-steps > * { flex: 1 1 0; min-width: 0; }
         .lp2-photo-item {
-          margin: 0 0 14px 0;
-          break-inside: avoid;
+          margin: 0;
           border-radius: 10px;
           overflow: hidden;
           background: #E8E2D8;
