@@ -8,6 +8,33 @@ import LPMiniForm from "./LPMiniForm";
 import PartnersSection from "@/components/site/PartnersSection";
 import heroBgDesktop from "@/assets/hero-bg-desktop.jpg";
 import heroBgMobile from "@/assets/hero-bg-mobile.jpg";
+import photo01 from "@/assets/lp/lp-photo-01.jpg.asset.json";
+import photo02 from "@/assets/lp/lp-photo-02.jpg.asset.json";
+import photo03 from "@/assets/lp/lp-photo-03.jpg.asset.json";
+import photo04 from "@/assets/lp/lp-photo-04.jpg.asset.json";
+import photo05 from "@/assets/lp/lp-photo-05.jpg.asset.json";
+import photo06 from "@/assets/lp/lp-photo-06.jpg.asset.json";
+import video01 from "@/assets/lp/lp-video-01.mp4.asset.json";
+import video02 from "@/assets/lp/lp-video-02.mp4.asset.json";
+import video03 from "@/assets/lp/lp-video-03.mp4.asset.json";
+import poster01 from "@/assets/lp/lp-video-01-poster.jpg.asset.json";
+import poster02 from "@/assets/lp/lp-video-02-poster.jpg.asset.json";
+import poster03 from "@/assets/lp/lp-video-03-poster.jpg.asset.json";
+
+const PHOTOS = [
+  { src: photo01.url, alt: "Tony's Painting crew finishing interior walls in a Martha's Vineyard home" },
+  { src: photo02.url, alt: "Interior painting project with fresh neutral walls and crisp trim" },
+  { src: photo03.url, alt: "Painter rolling a clean coat on a living room wall" },
+  { src: photo04.url, alt: "Finished interior with smooth walls and painted accent detail" },
+  { src: photo05.url, alt: "Crew member cutting in a ceiling line by hand" },
+  { src: photo06.url, alt: "Completed interior room with soft painted finish" },
+];
+
+const VIDEOS = [
+  { src: video01.url, poster: poster01.url },
+  { src: video02.url, poster: poster02.url },
+  { src: video03.url, poster: poster03.url },
+];
 
 interface Review {
   name: string;
