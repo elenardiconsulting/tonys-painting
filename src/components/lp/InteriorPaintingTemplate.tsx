@@ -807,12 +807,15 @@ const InteriorPaintingTemplate = ({
           box-shadow: 0 20px 60px rgba(0,0,0,0.35);
         }
         /* Compact the hero form so it fits within the desktop viewport */
-        .lp2-hero-form-panel .lp2-form-card { padding: 22px; }
-        .lp2-hero-form-panel .lp2-form-card > h2 { font-size: 20px; }
-        .lp2-hero-form-panel .lp2-form-card > p { font-size: 12.5px; margin-top: 4px; }
-        .lp2-hero-form-panel form { margin-top: 16px; }
-        .lp2-hero-form-panel form > * + * { margin-top: 12px; }
-        .lp2-hero-form-panel textarea { min-height: 56px; }
+        .lp2-hero-form-panel .lp2-form-card { padding: 18px 20px; }
+        .lp2-hero-form-panel .lp2-form-card > h2 { font-size: 18px; }
+        .lp2-hero-form-panel .lp2-form-card > p { font-size: 12px; margin-top: 3px; }
+        .lp2-hero-form-panel form { margin-top: 12px; }
+        .lp2-hero-form-panel form > * + * { margin-top: 10px; }
+        .lp2-hero-form-panel label { font-size: 13px; }
+        .lp2-hero-form-panel input { height: 38px; font-size: 14px; }
+        .lp2-hero-form-panel textarea { min-height: 52px; font-size: 14px; }
+        .lp2-hero-form-panel button[type="submit"] { height: 42px; font-size: 14px; }
         .lp2-hero-form-panel .lp2-form-card > h2,
         .lp2-hero-form-panel .lp2-form-card > p,
         .lp2-hero-form-panel form { margin-bottom: 0; }
