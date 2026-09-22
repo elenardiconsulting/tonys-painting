@@ -835,6 +835,49 @@ const InteriorPaintingTemplate = ({
           scroll-snap-align: start;
           scroll-snap-stop: always;
         }
+
+        /* Desktop photo carousel: arrows + dots (mobile uses native swipe) */
+        .lp2-photo-carousel { position: relative; }
+        .lp2-carousel-photos { margin: 0 44px; }
+        .lp2-carousel-arrow {
+          position: absolute;
+          top: 40%;
+          transform: translateY(-50%);
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          border: 1px solid rgba(232,226,216,0.9);
+          background: rgba(245,241,235,0.92);
+          color: #1A1A1A;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+          transition: background 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+          z-index: 5;
+        }
+        .lp2-carousel-arrow:hover { background: #C4291C; color: #fff; border-color: #C4291C; }
+        .lp2-carousel-arrow:disabled { opacity: 0.35; cursor: default; }
+        .lp2-carousel-arrow-prev { left: 0; }
+        .lp2-carousel-arrow-next { right: 0; }
+        .lp2-carousel-dots {
+          display: flex;
+          justify-content: center;
+          gap: 8px;
+          margin-top: 16px;
+        }
+        .lp2-carousel-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          border: none;
+          padding: 0;
+          background: #E8E2D8;
+          cursor: pointer;
+          transition: background 0.2s ease, transform 0.2s ease;
+        }
+        .lp2-carousel-dot.is-active { background: #C4291C; transform: scale(1.25); }
         .lp2-steps {
           display: flex;
           gap: 40px;
