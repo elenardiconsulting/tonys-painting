@@ -1,5 +1,5 @@
 import SEO from "@/components/SEO";
-import LandingTemplate from "@/components/lp/LandingTemplate";
+import InteriorPaintingTemplate from "@/components/lp/InteriorPaintingTemplate";
 
 const LPInteriorPainting = () => (
   <>
@@ -9,15 +9,11 @@ const LPInteriorPainting = () => (
       canonical="/lp/interior-painting"
       keywords="interior painting Martha's Vineyard, interior painters New England, interior house painting Edgartown, painting contractor Falmouth MA, interior painting Hyannis"
     />
-    <LandingTemplate
+    <InteriorPaintingTemplate
       tag="INTERIOR PAINTING IN NEW ENGLAND"
       headline="Your home deserves a fresh start."
       subline="Professional interior painting for homeowners and businesses across Martha's Vineyard, Falmouth, Edgartown, and New England. Clean work. On time. No surprises."
       service="Interior Painting"
-      heroReview={{
-        name: "Shane Sanders",
-        text: "Tony and his team just finished painting the entire inside of our house. Very professional and detail oriented. The quality of work was top notch.",
-      }}
       reviews={[
         {
           name: "Shane Sanders",
