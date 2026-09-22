@@ -138,7 +138,7 @@ const InteriorPaintingTemplate = ({
   ];
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#F5F1EB" }}>
+    <div className="lp2-root min-h-screen flex flex-col" style={{ backgroundColor: "#F5F1EB" }}>
       <Navbar />
 
       {/* HERO adapted from site hero: dark image, overlay, Playfair headline, stats, conversion form on the right */}
@@ -364,7 +364,7 @@ const InteriorPaintingTemplate = ({
       <PartnersSection />
 
       {/* Reviews */}
-      <section style={{ backgroundColor: "#FFFFFF", padding: "80px 24px" }}>
+      <section className="lp2-sec-reviews" style={{ backgroundColor: "#FFFFFF", padding: "80px 24px" }}>
         <div className="max-w-6xl mx-auto">
           <h2
             className="font-display"
