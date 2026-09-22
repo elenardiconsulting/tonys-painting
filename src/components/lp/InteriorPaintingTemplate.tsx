@@ -162,19 +162,22 @@ const InteriorPaintingTemplate = ({
               {...fadeUp(0.05)}
               className="lp2-hero-eyebrow"
             >
-              {tag}
+              <span className="lp2-txt-d">{tag}</span>
+              <span className="lp2-txt-m">INTERIOR PAINTING • NEW ENGLAND</span>
             </motion.span>
             <motion.h1
               {...fadeUp(0.15)}
               className="lp2-hero-headline"
             >
-              {headline}
+              <span className="lp2-txt-d">{headline}</span>
+              <span className="lp2-txt-m">Professional Interior Painting Done Right.</span>
             </motion.h1>
             <motion.p
               {...fadeUp(0.3)}
               className="lp2-hero-subline"
             >
-              {subline}
+              <span className="lp2-txt-d">{subline}</span>
+              <span className="lp2-txt-m">Professional painting for homeowners across Martha&apos;s Vineyard, Falmouth &amp; New England.</span>
             </motion.p>
 
             {/* Mobile CTA scrolls to the form */}
@@ -183,8 +186,33 @@ const InteriorPaintingTemplate = ({
               href="#estimate"
               className="lp2-mobile-only lp2-hero-mobile-btn"
             >
-              Request My Free Estimate
+              Request My Free Estimate <span aria-hidden="true">→</span>
             </motion.a>
+
+            <motion.p
+              {...fadeUp(0.5)}
+              className="lp2-mobile-only lp2-hero-microcopy"
+            >
+              Free estimate • No commitment
+            </motion.p>
+
+            <motion.div
+              {...fadeUp(0.58)}
+              className="lp2-mobile-only lp2-hero-trustm"
+            >
+              <div className="lp2-hero-trustm-item">
+                <Shield size={18} aria-hidden="true" />
+                <span>Licensed<br />&amp; Insured</span>
+              </div>
+              <div className="lp2-hero-trustm-item">
+                <Star size={18} aria-hidden="true" />
+                <span>5-Star<br />Rated</span>
+              </div>
+              <div className="lp2-hero-trustm-item">
+                <span className="lp2-hero-trustm-num" aria-hidden="true">20+</span>
+                <span>Years<br />Experience</span>
+              </div>
+            </motion.div>
 
             <motion.ul
               {...fadeUp(0.5)}
@@ -504,6 +532,7 @@ const InteriorPaintingTemplate = ({
       <style>{`
         .lp2-desktop-only { display: block; }
         .lp2-mobile-only { display: none; }
+        .lp2-txt-m { display: none; }
 
         .lp2-hero-section {
           position: relative;
@@ -769,15 +798,96 @@ const InteriorPaintingTemplate = ({
 
           .lp2-desktop-only { display: none !important; }
           .lp2-mobile-only { display: block; }
+          .lp2-txt-d { display: none !important; }
+          .lp2-txt-m { display: inline; }
+
+          /* Mobile conversion-focused hero (paid traffic) */
+          .lp2-hero-section {
+            min-height: 0;
+            align-items: flex-start;
+          }
+          .lp2-hero-overlay-main {
+            background: linear-gradient(
+              180deg,
+              rgba(0,0,0,0.20) 0%,
+              rgba(0,0,0,0.40) 32%,
+              rgba(0,0,0,0.76) 72%,
+              rgba(0,0,0,0.92) 100%
+            );
+          }
+          .lp2-hero-section::after { display: none; }
           .lp2-hero-layout-container {
-            padding: 96px 24px 56px 24px;
+            padding: 92px 24px 44px 24px;
           }
-          .lp2-hero-trust {
-            grid-template-columns: 1fr;
-            gap: 10px;
+          .lp2-hero-content {
+            gap: 0;
+            max-width: 500px;
           }
-          .lp2-hero-stats {
-            gap: 16px;
+          .lp2-hero-eyebrow {
+            font-size: 11.5px;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 12px;
+          }
+          .lp2-hero-headline {
+            font-size: clamp(38px, 10.4vw, 44px);
+            line-height: 1.02;
+            margin-bottom: 14px;
+          }
+          .lp2-hero-subline {
+            font-size: 16px;
+            line-height: 1.45;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 22px;
+          }
+          .lp2-hero-mobile-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            height: 56px;
+            padding: 0 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+          }
+          .lp2-hero-microcopy {
+            margin: 8px 0 0 0;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12.5px;
+            color: rgba(255,255,255,0.65);
+          }
+          .lp2-hero-trust { display: none; }
+          .lp2-hero-stats { display: none; }
+          .lp2-hero-trustm {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-top: 28px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255,255,255,0.14);
+          }
+          .lp2-hero-trustm-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            color: rgba(255,255,255,0.85);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1.3;
+          }
+          .lp2-hero-trustm-item svg { color: #C4291C; flex-shrink: 0; margin-top: 1px; }
+          .lp2-hero-trustm-num {
+            color: #C4291C;
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 18px;
+            line-height: 1.1;
+            flex-shrink: 0;
           }
           .lp2-hero-stat-divider { display: none; }
           .lp2-photo-masonry { column-count: 1; }
