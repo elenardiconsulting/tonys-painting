@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { Shield, Star, CheckCircle2 } from "lucide-react";
+import { useEffect, useRef, useState, useCallback } from "react";
+import { Shield, Star, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { useReducedMotion, motion } from "framer-motion";
 import Navbar from "@/components/site/Navbar";
 import Footer from "@/components/site/Footer";
@@ -90,6 +90,97 @@ const Stars5 = ({ size = 14 }: { size?: number }) => (
     ))}
   </div>
 );
+
+interface PhotoItem {
+  src: string;
+  alt: string;
+}
+
+const PhotoCarousel = ({ photos }: { photos: PhotoItem[] }) => {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
+
+  const scrollToIndex = useCallback((idx: number) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const child = track.children[idx] as HTMLElement | undefined;
+    if (child) {
+      track.scrollTo({ left: child.offsetLeft - track.offsetLeft, behavior: "smooth" });
+    }
+  }, []);
+
+  const onScroll = useCallback(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const trackLeft = track.getBoundingClientRect().left;
+    let best = 0;
+    let bestDist = Infinity;
+    Array.from(track.children).forEach((child, i) => {
+      const el = child as HTMLElement;
+      const dist = Math.abs(el.getBoundingClientRect().left - trackLeft);
+      if (dist < bestDist) {
+        bestDist = dist;
+        best = i;
+      }
+    });
+    setActive(best);
+  }, []);
+
+  const goPrev = useCallback(() => {
+    scrollToIndex(Math.max(0, active - 1));
+  }, [active, scrollToIndex]);
+  const goNext = useCallback(() => {
+    scrollToIndex(Math.min(photos.length - 1, active + 1));
+  }, [active, scrollToIndex, photos.length]);
+
+  return (
+    <div className="lp2-photo-carousel">
+      <button
+        type="button"
+        className="lp2-carousel-arrow lp2-carousel-arrow-prev"
+        onClick={goPrev}
+        aria-label="Previous photos"
+        disabled={active === 0}
+      >
+        <ChevronLeft size={22} />
+      </button>
+      <div
+        ref={trackRef}
+        className="lp2-carousel lp2-carousel-photos"
+        onScroll={onScroll}
+      >
+        {photos.map((p) => (
+          <figure key={p.src} className="lp2-photo-item">
+            <img src={p.src} alt={p.alt} loading="lazy" decoding="async" />
+          </figure>
+        ))}
+      </div>
+      <button
+        type="button"
+        className="lp2-carousel-arrow lp2-carousel-arrow-next"
+        onClick={goNext}
+        aria-label="Next photos"
+        disabled={active === photos.length - 1}
+      >
+        <ChevronRight size={22} />
+      </button>
+      <div className="lp2-carousel-dots" role="tablist" aria-label="Photo pagination">
+        {photos.map((p, i) => (
+          <button
+            key={p.src}
+            type="button"
+            role="tab"
+            aria-selected={i === active}
+            aria-label={`Go to photo ${i + 1}`}
+            className={`lp2-carousel-dot${i === active ? " is-active" : ""}`}
+            onClick={() => scrollToIndex(i)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 
 const InteriorPaintingTemplate = ({
   tag,
@@ -463,17 +554,8 @@ const InteriorPaintingTemplate = ({
             Real homes, real crews, finished the way we would want our own house done.
           </p>
 
-          <div className="lp2-carousel mt-10">
-            {PHOTOS.map((p) => (
-              <figure key={p.src} className="lp2-photo-item">
-                <img
-                  src={p.src}
-                  alt={p.alt}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </figure>
-            ))}
+          <div className="mt-10">
+            <PhotoCarousel photos={PHOTOS} />
           </div>
         </div>
       </section>
@@ -725,12 +807,15 @@ const InteriorPaintingTemplate = ({
           box-shadow: 0 20px 60px rgba(0,0,0,0.35);
         }
         /* Compact the hero form so it fits within the desktop viewport */
-        .lp2-hero-form-panel .lp2-form-card { padding: 22px; }
-        .lp2-hero-form-panel .lp2-form-card > h2 { font-size: 20px; }
-        .lp2-hero-form-panel .lp2-form-card > p { font-size: 12.5px; margin-top: 4px; }
-        .lp2-hero-form-panel form { margin-top: 16px; }
-        .lp2-hero-form-panel form > * + * { margin-top: 12px; }
-        .lp2-hero-form-panel textarea { min-height: 56px; }
+        .lp2-hero-form-panel .lp2-form-card { padding: 18px 20px; }
+        .lp2-hero-form-panel .lp2-form-card > h2 { font-size: 18px; }
+        .lp2-hero-form-panel .lp2-form-card > p { font-size: 12px; margin-top: 3px; }
+        .lp2-hero-form-panel form { margin-top: 12px; }
+        .lp2-hero-form-panel form > * + * { margin-top: 10px; }
+        .lp2-hero-form-panel label { font-size: 13px; }
+        .lp2-hero-form-panel input { height: 38px; font-size: 14px; }
+        .lp2-hero-form-panel textarea { min-height: 52px; font-size: 14px; }
+        .lp2-hero-form-panel button[type="submit"] { height: 42px; font-size: 14px; }
         .lp2-hero-form-panel .lp2-form-card > h2,
         .lp2-hero-form-panel .lp2-form-card > p,
         .lp2-hero-form-panel form { margin-bottom: 0; }
@@ -750,6 +835,49 @@ const InteriorPaintingTemplate = ({
           scroll-snap-align: start;
           scroll-snap-stop: always;
         }
+
+        /* Desktop photo carousel: arrows + dots (mobile uses native swipe) */
+        .lp2-photo-carousel { position: relative; }
+        .lp2-carousel-photos { margin: 0 44px; }
+        .lp2-carousel-arrow {
+          position: absolute;
+          top: 40%;
+          transform: translateY(-50%);
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          border: 1px solid rgba(232,226,216,0.9);
+          background: rgba(245,241,235,0.92);
+          color: #1A1A1A;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+          transition: background 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+          z-index: 5;
+        }
+        .lp2-carousel-arrow:hover { background: #C4291C; color: #fff; border-color: #C4291C; }
+        .lp2-carousel-arrow:disabled { opacity: 0.35; cursor: default; }
+        .lp2-carousel-arrow-prev { left: 0; }
+        .lp2-carousel-arrow-next { right: 0; }
+        .lp2-carousel-dots {
+          display: flex;
+          justify-content: center;
+          gap: 8px;
+          margin-top: 16px;
+        }
+        .lp2-carousel-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          border: none;
+          padding: 0;
+          background: #E8E2D8;
+          cursor: pointer;
+          transition: background 0.2s ease, transform 0.2s ease;
+        }
+        .lp2-carousel-dot.is-active { background: #C4291C; transform: scale(1.25); }
         .lp2-steps {
           display: flex;
           gap: 40px;
@@ -946,6 +1074,11 @@ const InteriorPaintingTemplate = ({
           .lp2-work-hero { aspect-ratio: 3 / 4; }
           .lp2-carousel > * { flex: 0 0 82vw; }
           .lp2-carousel-video > * { flex: 0 0 72vw; }
+
+          /* Hide desktop arrows/dots on mobile; native swipe only */
+          .lp2-carousel-arrow { display: none; }
+          .lp2-carousel-dots { display: none; }
+          .lp2-carousel-photos { margin: 0; }
 
           /* Uniform 3:4 portrait photos on mobile */
           .lp2-photo-item { height: auto; aspect-ratio: 3 / 4; }
