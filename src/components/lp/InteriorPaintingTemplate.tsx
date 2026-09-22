@@ -340,7 +340,7 @@ const InteriorPaintingTemplate = ({
           >
             How it works.
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-12">
+          <div className="lp2-steps mt-12">
             {STEPS.map((s) => (
               <div key={s.n}>
                 <div
@@ -438,7 +438,7 @@ const InteriorPaintingTemplate = ({
             Real homes, real crews, finished the way we would want our own house done.
           </p>
 
-          <div className="lp2-photo-masonry mt-10">
+          <div className="lp2-carousel mt-10">
             {PHOTOS.map((p) => (
               <figure key={p.src} className="lp2-photo-item">
                 <img
@@ -480,10 +480,10 @@ const InteriorPaintingTemplate = ({
             See it in motion.
           </h2>
           <p style={{ color: "rgba(245,241,235,0.65)", fontSize: "16px", marginTop: "8px" }}>
-            Short clips from recent interior jobs. Tap any video to hear the sound.
+            Short clips from recent interior jobs.
           </p>
 
-          <div className="lp2-video-grid mt-10">
+          <div className="lp2-carousel lp2-carousel-video mt-10">
             {VIDEOS.map((v, i) => (
               <div key={v.src} className="lp2-video-card">
                 <video
@@ -494,7 +494,6 @@ const InteriorPaintingTemplate = ({
                   playsInline
                   autoPlay
                   preload="metadata"
-                  controls
                   aria-label={`Tony's Painting interior work clip ${i + 1}`}
                 />
               </div>
