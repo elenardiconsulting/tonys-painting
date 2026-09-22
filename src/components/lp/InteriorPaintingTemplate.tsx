@@ -846,6 +846,7 @@ const InteriorPaintingTemplate = ({
             border-radius: 12px;
             font-weight: 700;
             font-size: 16px;
+            margin-top: auto;
           }
           .lp2-hero-microcopy {
             margin: 8px 0 0 0;
@@ -890,9 +891,13 @@ const InteriorPaintingTemplate = ({
           .lp2-carousel > * { flex: 0 0 82vw; }
           .lp2-carousel-video > * { flex: 0 0 72vw; }
 
-          /* Uniform photo size on mobile */
-          .lp2-photo-item { height: 240px; }
+          /* Uniform 3:4 portrait photos on mobile */
+          .lp2-photo-item { height: auto; aspect-ratio: 3 / 4; }
           .lp2-photo-item img { height: 100%; width: 100%; object-fit: cover; }
+
+          /* Reviews section moves to the end of the page on mobile */
+          .lp2-sec-reviews { order: 1; }
+          .lp2-root footer { order: 2; }
 
           /* Shared mobile carousel behavior: snap one card at a time */
           .lp2-carousel,
