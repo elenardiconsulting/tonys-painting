@@ -782,6 +782,9 @@ const InteriorPaintingTemplate = ({
           .lp2-hero-stat-divider { display: none; }
           .lp2-photo-masonry { column-count: 1; }
           .lp2-work-grid { grid-template-columns: 1fr; }
+          @media (min-width: 480px) and (max-width: 767px) {
+            .lp2-photo-masonry { column-count: 2; }
+          }
           .lp2-work-hero { aspect-ratio: 3 / 4; }
           .lp2-video-grid {
             display: flex;
