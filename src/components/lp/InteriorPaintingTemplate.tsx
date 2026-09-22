@@ -720,7 +720,69 @@ const InteriorPaintingTemplate = ({
           box-shadow: 0 20px 60px rgba(0,0,0,0.35);
         }
 
+        .lp2-work-grid {
+          display: grid;
+          grid-template-columns: 1.15fr 1fr;
+          gap: 12px;
+        }
+        .lp2-work-col {
+          display: grid;
+          grid-template-rows: 1fr 1fr;
+          gap: 12px;
+        }
+        .lp2-work-grid figure {
+          position: relative;
+          margin: 0;
+          overflow: hidden;
+          border-radius: 10px;
+          background: #E8E2D8;
+        }
+        .lp2-work-grid img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          content-visibility: visible;
+          transition: transform 0.6s ease;
+        }
+        .lp2-work-grid figure:hover img { transform: scale(1.04); }
+        .lp2-work-hero { aspect-ratio: 4 / 5; }
+        .lp2-work-tile { aspect-ratio: 16 / 10; }
+        .lp2-work-grid figcaption {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          padding: 28px 16px 14px 16px;
+          color: #F5F1EB;
+          font-family: 'Montserrat', sans-serif;
+          font-size: 12px;
+          letter-spacing: 0.04em;
+          background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);
+        }
+
+        .lp2-video-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 16px;
+        }
+        .lp2-video-card {
+          position: relative;
+          border-radius: 12px;
+          overflow: hidden;
+          background: #1A1A1A;
+          border: 1px solid rgba(245,241,235,0.10);
+          aspect-ratio: 9 / 16;
+        }
+        .lp2-video-card video {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
         @media (max-width: 767px) {
+
           .lp2-desktop-only { display: none !important; }
           .lp2-mobile-only { display: block; }
           .lp2-hero-layout-container {
