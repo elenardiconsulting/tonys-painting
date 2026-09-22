@@ -114,6 +114,50 @@ const InteriorPaintingTemplate = ({
     return () => window.removeEventListener("orientationchange", onOrientation);
   }, []);
 
+  // Desktop only: drag to scroll on carousels (mobile uses native touch swipe)
+  useEffect(() => {
+    if (window.matchMedia("(max-width: 767px)").matches) return;
+    const carousels = Array.from(document.querySelectorAll<HTMLElement>(".lp2-carousel"));
+    const cleanups: Array<() => void> = [];
+
+    carousels.forEach((el) => {
+      let isDown = false;
+      let startX = 0;
+      let startScroll = 0;
+
+      const onDown = (e: PointerEvent) => {
+        isDown = true;
+        startX = e.clientX;
+        startScroll = el.scrollLeft;
+        el.setPointerCapture(e.pointerId);
+        el.style.cursor = "grabbing";
+      };
+      const onMove = (e: PointerEvent) => {
+        if (!isDown) return;
+        el.scrollLeft = startScroll - (e.clientX - startX);
+      };
+      const onUp = () => {
+        isDown = false;
+        el.style.cursor = "grab";
+      };
+
+      el.style.cursor = "grab";
+      el.addEventListener("pointerdown", onDown);
+      el.addEventListener("pointermove", onMove);
+      el.addEventListener("pointerup", onUp);
+      el.addEventListener("pointercancel", onUp);
+
+      cleanups.push(() => {
+        el.removeEventListener("pointerdown", onDown);
+        el.removeEventListener("pointermove", onMove);
+        el.removeEventListener("pointerup", onUp);
+        el.removeEventListener("pointercancel", onUp);
+      });
+    });
+
+    return () => cleanups.forEach((fn) => fn());
+  }, []);
+
   const fadeUp = (delay: number) =>
     reduce
       ? {}
