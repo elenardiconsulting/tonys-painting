@@ -862,14 +862,14 @@ const InteriorPaintingTemplate = ({
             margin-top: auto;
             font-size: clamp(38px, 10.4vw, 44px);
             line-height: 1.02;
-            margin-bottom: 14px;
+            margin-bottom: 10px;
             text-align: center;
           }
           .lp2-hero-subline {
             font-size: 16px;
             line-height: 1.45;
             color: rgba(255,255,255,0.85);
-            margin-bottom: 22px;
+            margin-bottom: 18px;
             text-align: center;
             margin-left: auto;
             margin-right: auto;
