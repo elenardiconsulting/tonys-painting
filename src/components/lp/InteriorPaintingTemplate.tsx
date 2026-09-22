@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { Shield, Star, CheckCircle2 } from "lucide-react";
+import { useEffect, useRef, useState, useCallback } from "react";
+import { Shield, Star, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { useReducedMotion, motion } from "framer-motion";
 import Navbar from "@/components/site/Navbar";
 import Footer from "@/components/site/Footer";
