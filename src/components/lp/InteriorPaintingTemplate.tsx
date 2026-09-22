@@ -138,7 +138,7 @@ const InteriorPaintingTemplate = ({
   ];
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#F5F1EB" }}>
+    <div className="lp2-root min-h-screen flex flex-col" style={{ backgroundColor: "#F5F1EB" }}>
       <Navbar />
 
       {/* HERO adapted from site hero: dark image, overlay, Playfair headline, stats, conversion form on the right */}
@@ -364,7 +364,7 @@ const InteriorPaintingTemplate = ({
       <PartnersSection />
 
       {/* Reviews */}
-      <section style={{ backgroundColor: "#FFFFFF", padding: "80px 24px" }}>
+      <section className="lp2-sec-reviews" style={{ backgroundColor: "#FFFFFF", padding: "80px 24px" }}>
         <div className="max-w-6xl mx-auto">
           <h2
             className="font-display"
@@ -792,8 +792,8 @@ const InteriorPaintingTemplate = ({
           .lp2-hero-layout-container {
             display: flex;
             flex-direction: column;
-            justify-content: center;
             min-height: 100%;
+            padding: 92px 24px 36px 24px;
           }
           .lp2-hero-overlay-main {
             background: linear-gradient(
@@ -805,29 +805,35 @@ const InteriorPaintingTemplate = ({
             );
           }
           .lp2-hero-section::after { display: none; }
-          .lp2-hero-layout-container {
-            padding: 92px 24px 44px 24px;
-          }
           .lp2-hero-content {
             gap: 0;
             max-width: 500px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
           }
-          .lp2-hero-eyebrow {
-            font-size: 11.5px;
-            letter-spacing: 2px;
-            font-weight: 600;
-            margin-bottom: 12px;
-          }
+          /* Title and subline vertically centered; CTA anchored to the bottom */
           .lp2-hero-headline {
+            margin-top: auto;
             font-size: clamp(38px, 10.4vw, 44px);
             line-height: 1.02;
             margin-bottom: 14px;
+            text-align: center;
           }
           .lp2-hero-subline {
             font-size: 16px;
             line-height: 1.45;
             color: rgba(255,255,255,0.85);
             margin-bottom: 22px;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+          }
+          .lp2-hero-eyebrow {
+            font-size: 11.5px;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 12px;
           }
           .lp2-hero-mobile-btn {
             display: flex;
@@ -840,6 +846,7 @@ const InteriorPaintingTemplate = ({
             border-radius: 12px;
             font-weight: 700;
             font-size: 16px;
+            margin-top: auto;
           }
           .lp2-hero-microcopy {
             margin: 8px 0 0 0;
@@ -884,9 +891,13 @@ const InteriorPaintingTemplate = ({
           .lp2-carousel > * { flex: 0 0 82vw; }
           .lp2-carousel-video > * { flex: 0 0 72vw; }
 
-          /* Uniform photo size on mobile */
-          .lp2-photo-item { height: 240px; }
+          /* Uniform 3:4 portrait photos on mobile */
+          .lp2-photo-item { height: auto; aspect-ratio: 3 / 4; }
           .lp2-photo-item img { height: 100%; width: 100%; object-fit: cover; }
+
+          /* Reviews section moves to the end of the page on mobile */
+          .lp2-sec-reviews { order: 1; }
+          .lp2-root footer { order: 2; }
 
           /* Shared mobile carousel behavior: snap one card at a time */
           .lp2-carousel,
