@@ -162,19 +162,22 @@ const InteriorPaintingTemplate = ({
               {...fadeUp(0.05)}
               className="lp2-hero-eyebrow"
             >
-              {tag}
+              <span className="lp2-txt-d">{tag}</span>
+              <span className="lp2-txt-m">INTERIOR PAINTING • NEW ENGLAND</span>
             </motion.span>
             <motion.h1
               {...fadeUp(0.15)}
               className="lp2-hero-headline"
             >
-              {headline}
+              <span className="lp2-txt-d">{headline}</span>
+              <span className="lp2-txt-m">Professional Interior Painting Done Right.</span>
             </motion.h1>
             <motion.p
               {...fadeUp(0.3)}
               className="lp2-hero-subline"
             >
-              {subline}
+              <span className="lp2-txt-d">{subline}</span>
+              <span className="lp2-txt-m">Professional painting for homeowners across Martha&apos;s Vineyard, Falmouth &amp; New England.</span>
             </motion.p>
 
             {/* Mobile CTA scrolls to the form */}
@@ -183,8 +186,33 @@ const InteriorPaintingTemplate = ({
               href="#estimate"
               className="lp2-mobile-only lp2-hero-mobile-btn"
             >
-              Request My Free Estimate
+              Request My Free Estimate <span aria-hidden="true">→</span>
             </motion.a>
+
+            <motion.p
+              {...fadeUp(0.5)}
+              className="lp2-mobile-only lp2-hero-microcopy"
+            >
+              Free estimate • No commitment
+            </motion.p>
+
+            <motion.div
+              {...fadeUp(0.58)}
+              className="lp2-mobile-only lp2-hero-trustm"
+            >
+              <div className="lp2-hero-trustm-item">
+                <Shield size={18} aria-hidden="true" />
+                <span>Licensed<br />&amp; Insured</span>
+              </div>
+              <div className="lp2-hero-trustm-item">
+                <Star size={18} aria-hidden="true" />
+                <span>5-Star<br />Rated</span>
+              </div>
+              <div className="lp2-hero-trustm-item">
+                <span className="lp2-hero-trustm-num" aria-hidden="true">20+</span>
+                <span>Years<br />Experience</span>
+              </div>
+            </motion.div>
 
             <motion.ul
               {...fadeUp(0.5)}
