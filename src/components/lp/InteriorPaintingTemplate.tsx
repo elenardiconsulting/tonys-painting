@@ -594,7 +594,7 @@ const InteriorPaintingTemplate = ({
           z-index: 10;
           width: 100%;
           display: flex;
-          padding: 96px 80px 64px 80px;
+          padding: 80px 80px 48px 80px;
           align-items: center;
           justify-content: space-between;
           gap: 40px;
@@ -724,6 +724,16 @@ const InteriorPaintingTemplate = ({
           padding: 28px;
           box-shadow: 0 20px 60px rgba(0,0,0,0.35);
         }
+        /* Compact the hero form so it fits within the desktop viewport */
+        .lp2-hero-form-panel .lp2-form-card { padding: 22px; }
+        .lp2-hero-form-panel .lp2-form-card > h2 { font-size: 20px; }
+        .lp2-hero-form-panel .lp2-form-card > p { font-size: 12.5px; margin-top: 4px; }
+        .lp2-hero-form-panel form { margin-top: 16px; }
+        .lp2-hero-form-panel form > * + * { margin-top: 12px; }
+        .lp2-hero-form-panel textarea { min-height: 56px; }
+        .lp2-hero-form-panel .lp2-form-card > h2,
+        .lp2-hero-form-panel .lp2-form-card > p,
+        .lp2-hero-form-panel form { margin-bottom: 0; }
 
         .lp2-carousel {
           display: flex;
