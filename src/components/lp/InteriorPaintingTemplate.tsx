@@ -158,13 +158,6 @@ const InteriorPaintingTemplate = ({
         <div className="lp2-hero-overlay-top" />
         <div className="lp2-hero-layout-container">
           <div className="lp2-hero-content">
-            <motion.span
-              {...fadeUp(0.05)}
-              className="lp2-hero-eyebrow"
-            >
-              <span className="lp2-txt-d">{tag}</span>
-              <span className="lp2-txt-m">INTERIOR PAINTING • NEW ENGLAND</span>
-            </motion.span>
             <motion.h1
               {...fadeUp(0.15)}
               className="lp2-hero-headline"
