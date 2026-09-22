@@ -1,4 +1,4 @@
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -7,6 +7,12 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
+
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void;
+  }
+}
 
 type FormState = {
   fullName: string;
@@ -20,11 +26,15 @@ type Errors = Partial<Record<keyof FormState, string>>;
 
 interface LPFormProps {
   service: string;
+  idPrefix?: string;
 }
 
-const LPForm = ({ service }: LPFormProps) => {
+const LPForm = ({ service, idPrefix = "lp" }: LPFormProps) => {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const [utmSource, setUtmSource] = useState("");
+  const [utmMedium, setUtmMedium] = useState("");
+  const [utmCampaign, setUtmCampaign] = useState("");
   const [formData, setFormData] = useState<FormState>({
     fullName: "",
     phone: "",
@@ -34,6 +44,20 @@ const LPForm = ({ service }: LPFormProps) => {
   });
   const [errors, setErrors] = useState<Errors>({});
   const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setUtmSource(params.get("utm_source") || "");
+    setUtmMedium(params.get("utm_medium") || "");
+    setUtmCampaign(params.get("utm_campaign") || "");
+  }, []);
+
+  const getSource = () => {
+    if (utmSource === "facebook" || utmSource === "instagram") return "Facebook or Instagram Ad";
+    if (utmSource === "google" && utmMedium === "cpc") return "Google Ads";
+    if (utmSource) return utmSource;
+    return "Website Form";
+  };
 
   const setField = <K extends keyof FormState>(key: K, value: FormState[K]) => {
     setFormData((p) => ({ ...p, [key]: value }));
@@ -54,8 +78,6 @@ const LPForm = ({ service }: LPFormProps) => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log('Supabase URL:', import.meta.env.VITE_SUPABASE_URL ? 'present' : 'MISSING');
-    console.log('Supabase Key:', import.meta.env.VITE_SUPABASE_ANON_KEY ? 'present' : 'MISSING');
     const v = validate();
     setErrors(v);
     if (Object.keys(v).length > 0) return;
@@ -69,12 +91,12 @@ const LPForm = ({ service }: LPFormProps) => {
       message: formData.project,
       prefer_phone: false,
       status: "new",
+      source: getSource(),
+      campaign_name: utmCampaign || utmSource || null,
     });
     setSubmitting(false);
 
     if (error) {
-      console.error('Supabase insert error:', error);
-      console.error('Error details:', JSON.stringify(error, null, 2));
       toast({
         title: "Something went wrong",
         description: "Please try again or call us directly.",
@@ -82,6 +104,15 @@ const LPForm = ({ service }: LPFormProps) => {
       });
       return;
     }
+
+    // Disparar evento Lead no Meta Pixel
+    if (typeof window.fbq === "function") {
+      window.fbq("track", "Lead", {
+        content_name: formData.service,
+        content_category: "Interior Painting",
+      });
+    }
+
     navigate("/thank-you");
   };
 
@@ -105,9 +136,9 @@ const LPForm = ({ service }: LPFormProps) => {
 
       <form onSubmit={handleSubmit} noValidate className="mt-5 space-y-4">
         <div>
-          <Label htmlFor="lp-fullName">Full Name</Label>
+          <Label htmlFor={`${idPrefix}-fullName`}>Full Name</Label>
           <Input
-            id="lp-fullName"
+            id={`${idPrefix}-fullName`}
             value={formData.fullName}
             onChange={(e) => setField("fullName", e.target.value)}
             aria-invalid={!!errors.fullName}
@@ -117,9 +148,9 @@ const LPForm = ({ service }: LPFormProps) => {
         </div>
 
         <div>
-          <Label htmlFor="lp-phone">Phone Number</Label>
+          <Label htmlFor={`${idPrefix}-phone`}>Phone Number</Label>
           <Input
-            id="lp-phone"
+            id={`${idPrefix}-phone`}
             type="tel"
             value={formData.phone}
             onChange={(e) => setField("phone", e.target.value)}
@@ -130,9 +161,9 @@ const LPForm = ({ service }: LPFormProps) => {
         </div>
 
         <div>
-          <Label htmlFor="lp-email">Email Address</Label>
+          <Label htmlFor={`${idPrefix}-email`}>Email Address</Label>
           <Input
-            id="lp-email"
+            id={`${idPrefix}-email`}
             type="email"
             value={formData.email}
             onChange={(e) => setField("email", e.target.value)}
@@ -143,9 +174,9 @@ const LPForm = ({ service }: LPFormProps) => {
         </div>
 
         <div>
-          <Label htmlFor="lp-service">Service</Label>
+          <Label htmlFor={`${idPrefix}-service`}>Service</Label>
           <Input
-            id="lp-service"
+            id={`${idPrefix}-service`}
             value={formData.service}
             readOnly
             className="mt-2 rounded-sm bg-stone/60 cursor-default"
@@ -153,15 +184,16 @@ const LPForm = ({ service }: LPFormProps) => {
         </div>
 
         <div>
-          <Label htmlFor="lp-project">
+          <Label htmlFor={`${idPrefix}-project`}>
             Tell us about your project{" "}
             <span className="text-muted-foreground font-normal">(optional)</span>
           </Label>
           <Textarea
-            id="lp-project"
+            id={`${idPrefix}-project`}
             rows={3}
             value={formData.project}
             onChange={(e) => setField("project", e.target.value)}
+            placeholder="Describe the space, what needs to be done, and any details that help us prepare a better estimate."
             className="mt-2 rounded-sm"
           />
         </div>
@@ -169,9 +201,9 @@ const LPForm = ({ service }: LPFormProps) => {
         <Button
           type="submit"
           disabled={submitting}
-          className="w-full h-12 bg-primary text-primary-foreground hover:bg-primary-dark rounded-sm"
+          className="w-full h-12 bg-primary text-primary-foreground hover:bg-primary-dark rounded-sm text-base font-semibold"
         >
-          {submitting ? "Sending..." : "Send My Request"}
+          {submitting ? "Sending..." : "Request My Free Estimate"}
         </Button>
 
         <p className="text-center" style={{ fontSize: "12px", color: "#6B6560" }}>
