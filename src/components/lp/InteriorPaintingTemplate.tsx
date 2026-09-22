@@ -891,7 +891,6 @@ const InteriorPaintingTemplate = ({
             border-radius: 12px;
             font-weight: 700;
             font-size: 16px;
-            margin-top: auto;
           }
           .lp2-hero-microcopy {
             margin: 8px 0 0 0;
