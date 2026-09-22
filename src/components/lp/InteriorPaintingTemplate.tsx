@@ -8,6 +8,21 @@ import LPMiniForm from "./LPMiniForm";
 import PartnersSection from "@/components/site/PartnersSection";
 import heroBgDesktop from "@/assets/hero-bg-desktop.jpg";
 import heroBgMobile from "@/assets/hero-bg-mobile.jpg";
+import crewRolling from "@/assets/lp/lp-crew-rolling.jpg.asset.json";
+import cuttingIn from "@/assets/lp/lp-cutting-in.jpg.asset.json";
+import bathroomFinish from "@/assets/lp/lp-bathroom-finish.jpg.asset.json";
+import video01 from "@/assets/lp/lp-video-01.mp4.asset.json";
+import video02 from "@/assets/lp/lp-video-02.mp4.asset.json";
+import video03 from "@/assets/lp/lp-video-03.mp4.asset.json";
+import poster01 from "@/assets/lp/lp-video-01-poster.jpg.asset.json";
+import poster02 from "@/assets/lp/lp-video-02-poster.jpg.asset.json";
+import poster03 from "@/assets/lp/lp-video-03-poster.jpg.asset.json";
+
+const VIDEOS = [
+  { src: video01.url, poster: poster01.url },
+  { src: video02.url, poster: poster02.url },
+  { src: video03.url, poster: poster03.url },
+];
 
 interface Review {
   name: string;
