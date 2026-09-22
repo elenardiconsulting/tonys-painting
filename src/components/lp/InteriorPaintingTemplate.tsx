@@ -684,6 +684,26 @@ const InteriorPaintingTemplate = ({
           box-shadow: 0 20px 60px rgba(0,0,0,0.35);
         }
 
+        .lp2-photo-masonry {
+          column-count: 3;
+          column-gap: 14px;
+        }
+        .lp2-photo-item {
+          margin: 0 0 14px 0;
+          break-inside: avoid;
+          border-radius: 10px;
+          overflow: hidden;
+          background: #E8E2D8;
+        }
+        .lp2-photo-item img {
+          width: 100%;
+          height: auto;
+          display: block;
+          content-visibility: visible;
+          transition: transform 0.6s ease;
+        }
+        .lp2-photo-item:hover img { transform: scale(1.02); }
+
         .lp2-work-grid {
           display: grid;
           grid-template-columns: 1.15fr 1fr;
