@@ -216,7 +216,7 @@ const LandingTemplate = ({ tag, headline, subline, service, heroReview, reviews,
       </section>
 
       {/* FORM MOBILE — aparece aqui apenas no mobile, depois das provas sociais */}
-      <section className="md:hidden" style={{ backgroundColor:"#1A1A1A", padding:"clamp(40px,6vw,60px) 24px" }}>
+      <section id="form-mobile" className="md:hidden" style={{ backgroundColor:"#1A1A1A", padding:"clamp(40px,6vw,60px) 24px", scrollMarginTop:"56px" }}>
         <div style={{ maxWidth:"440px", margin:"0 auto" }}>
           <h2 className="font-display" style={{ fontWeight:900, fontSize:"clamp(28px,5vw,36px)", color:"#F5F1EB", letterSpacing:"-0.02em", lineHeight:1.1, marginBottom:"8px" }}>Get your free estimate.</h2>
           <p style={{ color:"#9CA3AF", fontSize:"14px", lineHeight:1.6, marginBottom:"24px" }}>No commitment. We respond within one business day.</p>
