@@ -792,8 +792,8 @@ const InteriorPaintingTemplate = ({
           .lp2-hero-layout-container {
             display: flex;
             flex-direction: column;
-            justify-content: center;
             min-height: 100%;
+            padding: 92px 24px 36px 24px;
           }
           .lp2-hero-overlay-main {
             background: linear-gradient(
@@ -805,29 +805,35 @@ const InteriorPaintingTemplate = ({
             );
           }
           .lp2-hero-section::after { display: none; }
-          .lp2-hero-layout-container {
-            padding: 92px 24px 44px 24px;
-          }
           .lp2-hero-content {
             gap: 0;
             max-width: 500px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
           }
-          .lp2-hero-eyebrow {
-            font-size: 11.5px;
-            letter-spacing: 2px;
-            font-weight: 600;
-            margin-bottom: 12px;
-          }
+          /* Title and subline vertically centered; CTA anchored to the bottom */
           .lp2-hero-headline {
+            margin-top: auto;
             font-size: clamp(38px, 10.4vw, 44px);
             line-height: 1.02;
             margin-bottom: 14px;
+            text-align: center;
           }
           .lp2-hero-subline {
             font-size: 16px;
             line-height: 1.45;
             color: rgba(255,255,255,0.85);
             margin-bottom: 22px;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+          }
+          .lp2-hero-eyebrow {
+            font-size: 11.5px;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 12px;
           }
           .lp2-hero-mobile-btn {
             display: flex;
