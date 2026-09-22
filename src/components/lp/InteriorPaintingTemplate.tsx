@@ -883,15 +883,40 @@ const InteriorPaintingTemplate = ({
           .lp2-work-hero { aspect-ratio: 3 / 4; }
           .lp2-carousel > * { flex: 0 0 82vw; }
           .lp2-carousel-video > * { flex: 0 0 72vw; }
+
+          /* Uniform photo size on mobile */
+          .lp2-photo-item { height: 240px; }
+          .lp2-photo-item img { height: 100%; width: 100%; object-fit: cover; }
+
+          /* Shared mobile carousel behavior: snap one card at a time */
+          .lp2-carousel,
+          .lp2-included,
+          .lp2-reviews,
           .lp2-steps {
+            display: flex;
+            flex-wrap: nowrap;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
+            scroll-padding-left: 0;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
-            gap: 16px;
+            -ms-overflow-style: none;
+            gap: 12px;
           }
+          .lp2-carousel::-webkit-scrollbar,
+          .lp2-included::-webkit-scrollbar,
+          .lp2-reviews::-webkit-scrollbar,
           .lp2-steps::-webkit-scrollbar { display: none; }
-          .lp2-steps > * { flex: 0 0 78%; scroll-snap-align: start; }
+          .lp2-carousel > *,
+          .lp2-included > *,
+          .lp2-reviews > *,
+          .lp2-steps > * {
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+          }
+          .lp2-included > * { flex: 0 0 80vw; }
+          .lp2-reviews > * { flex: 0 0 82vw; }
+          .lp2-steps > * { flex: 0 0 78vw; }
         }
       `}</style>
     </div>
