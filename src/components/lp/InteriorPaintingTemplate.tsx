@@ -8,6 +8,21 @@ import LPMiniForm from "./LPMiniForm";
 import PartnersSection from "@/components/site/PartnersSection";
 import heroBgDesktop from "@/assets/hero-bg-desktop.jpg";
 import heroBgMobile from "@/assets/hero-bg-mobile.jpg";
+import crewRolling from "@/assets/lp/lp-crew-rolling.jpg.asset.json";
+import cuttingIn from "@/assets/lp/lp-cutting-in.jpg.asset.json";
+import bathroomFinish from "@/assets/lp/lp-bathroom-finish.jpg.asset.json";
+import video01 from "@/assets/lp/lp-video-01.mp4.asset.json";
+import video02 from "@/assets/lp/lp-video-02.mp4.asset.json";
+import video03 from "@/assets/lp/lp-video-03.mp4.asset.json";
+import poster01 from "@/assets/lp/lp-video-01-poster.jpg.asset.json";
+import poster02 from "@/assets/lp/lp-video-02-poster.jpg.asset.json";
+import poster03 from "@/assets/lp/lp-video-03-poster.jpg.asset.json";
+
+const VIDEOS = [
+  { src: video01.url, poster: poster01.url },
+  { src: video02.url, poster: poster02.url },
+  { src: video03.url, poster: poster03.url },
+];
 
 interface Review {
   name: string;
@@ -353,9 +368,20 @@ const InteriorPaintingTemplate = ({
         </div>
       </section>
 
-      {/* Recent work */}
+      {/* Recent work: editorial grid with real job site photos */}
       <section style={{ backgroundColor: "#F5F1EB", padding: "80px 24px" }}>
         <div className="max-w-6xl mx-auto">
+          <span
+            style={{
+              textTransform: "uppercase",
+              color: "#C4291C",
+              fontSize: "12px",
+              letterSpacing: "0.18em",
+              fontWeight: 600,
+            }}
+          >
+            On the job
+          </span>
           <h2
             className="font-display"
             style={{
@@ -363,36 +389,127 @@ const InteriorPaintingTemplate = ({
               fontSize: "clamp(32px, 4vw, 40px)",
               color: "#1A1A1A",
               letterSpacing: "-0.02em",
+              marginTop: "10px",
             }}
           >
             Recent work.
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mt-10">
-            {portfolioLocations.map((loc, i) => (
-              <div key={`${loc}-${i}`}>
+          <p style={{ color: "#6B6560", fontSize: "16px", marginTop: "8px" }}>
+            Real homes, real crews, finished the way we would want our own house done.
+          </p>
+
+          <div className="lp2-work-grid mt-10">
+            <figure className="lp2-work-hero">
+              <img
+                src={crewRolling.url}
+                alt="Tony's Painting crew member rolling a fresh coat on interior trim and paneling"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>Prep and finish work on site</figcaption>
+            </figure>
+            <div className="lp2-work-col">
+              <figure className="lp2-work-tile">
+                <img
+                  src={cuttingIn.url}
+                  alt="Painter cutting in a clean ceiling line with a brush"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>Clean lines, cut by hand</figcaption>
+              </figure>
+              <figure className="lp2-work-tile">
+                <img
+                  src={bathroomFinish.url}
+                  alt="Finished bathroom with soft gray walls and white cabinetry"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>Finished bathroom in soft gray</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          {portfolioImages && portfolioImages.length > 0 && (
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-3">
+              {portfolioImages.map((src, i) => (
                 <div
+                  key={`${src}-${i}`}
                   style={{
                     backgroundColor: "#E8E2D8",
                     aspectRatio: "4 / 3",
-                    borderRadius: "6px",
+                    borderRadius: "8px",
                     overflow: "hidden",
                   }}
                 >
-                  {portfolioImages && portfolioImages[i] && (
-                    <img
-                      src={portfolioImages[i]}
-                      alt={`Tony's ${service} project in ${loc}`}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  )}
+                  <img
+                    src={src}
+                    alt={`Tony's ${service} project in ${portfolioLocations[i] ?? "New England"}`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
-                <p style={{ color: "#6B6560", fontSize: "12px", marginTop: "8px" }}>{loc}</p>
+              ))}
+            </div>
+          )}
+
+          <p style={{ color: "#6B6560", fontSize: "13px", marginTop: "16px" }}>
+            {portfolioLocations.join(" / ")}
+          </p>
+        </div>
+      </section>
+
+      {/* Video section */}
+      <section style={{ backgroundColor: "#2C2C2A", padding: "80px 24px" }}>
+        <div className="max-w-6xl mx-auto">
+          <span
+            style={{
+              textTransform: "uppercase",
+              color: "#C4291C",
+              fontSize: "12px",
+              letterSpacing: "0.18em",
+              fontWeight: 600,
+            }}
+          >
+            Inside the work
+          </span>
+          <h2
+            className="font-display"
+            style={{
+              fontWeight: 900,
+              fontSize: "clamp(32px, 4vw, 40px)",
+              color: "#F5F1EB",
+              letterSpacing: "-0.02em",
+              marginTop: "10px",
+            }}
+          >
+            See it in motion.
+          </h2>
+          <p style={{ color: "rgba(245,241,235,0.65)", fontSize: "16px", marginTop: "8px" }}>
+            Short clips from recent interior jobs. Tap any video to hear the sound.
+          </p>
+
+          <div className="lp2-video-grid mt-10">
+            {VIDEOS.map((v, i) => (
+              <div key={v.src} className="lp2-video-card">
+                <video
+                  src={v.src}
+                  poster={v.poster}
+                  muted
+                  loop
+                  playsInline
+                  autoPlay
+                  preload="metadata"
+                  controls
+                  aria-label={`Tony's Painting interior work clip ${i + 1}`}
+                />
               </div>
             ))}
           </div>
         </div>
       </section>
+
 
       {/* Final CTA */}
       <section style={{ backgroundColor: "#1A1A1A", padding: "100px 24px" }}>
@@ -603,7 +720,69 @@ const InteriorPaintingTemplate = ({
           box-shadow: 0 20px 60px rgba(0,0,0,0.35);
         }
 
+        .lp2-work-grid {
+          display: grid;
+          grid-template-columns: 1.15fr 1fr;
+          gap: 12px;
+        }
+        .lp2-work-col {
+          display: grid;
+          grid-template-rows: 1fr 1fr;
+          gap: 12px;
+        }
+        .lp2-work-grid figure {
+          position: relative;
+          margin: 0;
+          overflow: hidden;
+          border-radius: 10px;
+          background: #E8E2D8;
+        }
+        .lp2-work-grid img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          content-visibility: visible;
+          transition: transform 0.6s ease;
+        }
+        .lp2-work-grid figure:hover img { transform: scale(1.04); }
+        .lp2-work-hero { aspect-ratio: 4 / 5; }
+        .lp2-work-tile { aspect-ratio: 16 / 10; }
+        .lp2-work-grid figcaption {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          padding: 28px 16px 14px 16px;
+          color: #F5F1EB;
+          font-family: 'Montserrat', sans-serif;
+          font-size: 12px;
+          letter-spacing: 0.04em;
+          background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);
+        }
+
+        .lp2-video-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 16px;
+        }
+        .lp2-video-card {
+          position: relative;
+          border-radius: 12px;
+          overflow: hidden;
+          background: #1A1A1A;
+          border: 1px solid rgba(245,241,235,0.10);
+          aspect-ratio: 9 / 16;
+        }
+        .lp2-video-card video {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
         @media (max-width: 767px) {
+
           .lp2-desktop-only { display: none !important; }
           .lp2-mobile-only { display: block; }
           .lp2-hero-layout-container {
@@ -617,6 +796,20 @@ const InteriorPaintingTemplate = ({
             gap: 16px;
           }
           .lp2-hero-stat-divider { display: none; }
+          .lp2-work-grid { grid-template-columns: 1fr; }
+          .lp2-work-hero { aspect-ratio: 3 / 4; }
+          .lp2-video-grid {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            gap: 12px;
+            padding-bottom: 8px;
+          }
+          .lp2-video-card {
+            flex: 0 0 78%;
+            scroll-snap-align: center;
+          }
         }
       `}</style>
     </div>
