@@ -380,6 +380,101 @@ const InteriorPaintingTemplate = ({
         </div>
       </section>
 
+      {/* Recent work: masonry gallery preserving full photos, no forced cropping */}
+      <section style={{ backgroundColor: "#F5F1EB", padding: "80px 24px" }}>
+        <div className="max-w-6xl mx-auto">
+          <span
+            style={{
+              textTransform: "uppercase",
+              color: "#C4291C",
+              fontSize: "12px",
+              letterSpacing: "0.18em",
+              fontWeight: 600,
+            }}
+          >
+            On the job
+          </span>
+          <h2
+            className="font-display"
+            style={{
+              fontWeight: 900,
+              fontSize: "clamp(32px, 4vw, 40px)",
+              color: "#1A1A1A",
+              letterSpacing: "-0.02em",
+              marginTop: "10px",
+            }}
+          >
+            Recent work.
+          </h2>
+          <p style={{ color: "#6B6560", fontSize: "16px", marginTop: "8px" }}>
+            Real homes, real crews, finished the way we would want our own house done.
+          </p>
+
+          <div className="lp2-photo-masonry mt-10">
+            {PHOTOS.map((p) => (
+              <figure key={p.src} className="lp2-photo-item">
+                <img
+                  src={p.src}
+                  alt={p.alt}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Video section: 9:16 cards matching native portrait, no crop */}
+      <section style={{ backgroundColor: "#2C2C2A", padding: "80px 24px" }}>
+        <div className="max-w-6xl mx-auto">
+          <span
+            style={{
+              textTransform: "uppercase",
+              color: "#C4291C",
+              fontSize: "12px",
+              letterSpacing: "0.18em",
+              fontWeight: 600,
+            }}
+          >
+            Inside the work
+          </span>
+          <h2
+            className="font-display"
+            style={{
+              fontWeight: 900,
+              fontSize: "clamp(32px, 4vw, 40px)",
+              color: "#F5F1EB",
+              letterSpacing: "-0.02em",
+              marginTop: "10px",
+            }}
+          >
+            See it in motion.
+          </h2>
+          <p style={{ color: "rgba(245,241,235,0.65)", fontSize: "16px", marginTop: "8px" }}>
+            Short clips from recent interior jobs. Tap any video to hear the sound.
+          </p>
+
+          <div className="lp2-video-grid mt-10">
+            {VIDEOS.map((v, i) => (
+              <div key={v.src} className="lp2-video-card">
+                <video
+                  src={v.src}
+                  poster={v.poster}
+                  muted
+                  loop
+                  playsInline
+                  autoPlay
+                  preload="metadata"
+                  controls
+                  aria-label={`Tony's Painting interior work clip ${i + 1}`}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section style={{ backgroundColor: "#1A1A1A", padding: "100px 24px" }}>
         <div className="max-w-2xl mx-auto text-center">
