@@ -532,6 +532,7 @@ const InteriorPaintingTemplate = ({
       <style>{`
         .lp2-desktop-only { display: block; }
         .lp2-mobile-only { display: none; }
+        .lp2-txt-m { display: none; }
 
         .lp2-hero-section {
           position: relative;
