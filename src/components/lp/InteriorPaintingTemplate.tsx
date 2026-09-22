@@ -340,7 +340,7 @@ const InteriorPaintingTemplate = ({
           >
             How it works.
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-12">
+          <div className="lp2-steps mt-12">
             {STEPS.map((s) => (
               <div key={s.n}>
                 <div
@@ -438,7 +438,7 @@ const InteriorPaintingTemplate = ({
             Real homes, real crews, finished the way we would want our own house done.
           </p>
 
-          <div className="lp2-photo-masonry mt-10">
+          <div className="lp2-carousel mt-10">
             {PHOTOS.map((p) => (
               <figure key={p.src} className="lp2-photo-item">
                 <img
@@ -480,10 +480,10 @@ const InteriorPaintingTemplate = ({
             See it in motion.
           </h2>
           <p style={{ color: "rgba(245,241,235,0.65)", fontSize: "16px", marginTop: "8px" }}>
-            Short clips from recent interior jobs. Tap any video to hear the sound.
+            Short clips from recent interior jobs.
           </p>
 
-          <div className="lp2-video-grid mt-10">
+          <div className="lp2-carousel lp2-carousel-video mt-10">
             {VIDEOS.map((v, i) => (
               <div key={v.src} className="lp2-video-card">
                 <video
@@ -494,7 +494,6 @@ const InteriorPaintingTemplate = ({
                   playsInline
                   autoPlay
                   preload="metadata"
-                  controls
                   aria-label={`Tony's Painting interior work clip ${i + 1}`}
                 />
               </div>
@@ -713,13 +712,27 @@ const InteriorPaintingTemplate = ({
           box-shadow: 0 20px 60px rgba(0,0,0,0.35);
         }
 
-        .lp2-photo-masonry {
-          column-count: 3;
-          column-gap: 14px;
+        .lp2-carousel {
+          display: flex;
+          gap: 12px;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
         }
+        .lp2-carousel::-webkit-scrollbar { display: none; }
+        .lp2-carousel > * {
+          flex: 0 0 calc((100% - 24px) / 3);
+          scroll-snap-align: start;
+        }
+        .lp2-steps {
+          display: flex;
+          gap: 40px;
+        }
+        .lp2-steps > * { flex: 1 1 0; min-width: 0; }
         .lp2-photo-item {
-          margin: 0 0 14px 0;
-          break-inside: avoid;
+          margin: 0;
           border-radius: 10px;
           overflow: hidden;
           background: #E8E2D8;
@@ -890,24 +903,19 @@ const InteriorPaintingTemplate = ({
             flex-shrink: 0;
           }
           .lp2-hero-stat-divider { display: none; }
-          .lp2-photo-masonry { column-count: 1; }
           .lp2-work-grid { grid-template-columns: 1fr; }
-          @media (min-width: 480px) and (max-width: 767px) {
-            .lp2-photo-masonry { column-count: 2; }
-          }
           .lp2-work-hero { aspect-ratio: 3 / 4; }
-          .lp2-video-grid {
-            display: flex;
+          .lp2-carousel > * { flex: 0 0 82vw; }
+          .lp2-carousel-video > * { flex: 0 0 72vw; }
+          .lp2-steps {
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
-            gap: 12px;
-            padding-bottom: 8px;
+            scrollbar-width: none;
+            gap: 16px;
           }
-          .lp2-video-card {
-            flex: 0 0 78%;
-            scroll-snap-align: center;
-          }
+          .lp2-steps::-webkit-scrollbar { display: none; }
+          .lp2-steps > * { flex: 0 0 78%; scroll-snap-align: start; }
         }
       `}</style>
     </div>
