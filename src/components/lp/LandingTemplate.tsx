@@ -205,7 +205,7 @@ const LandingTemplate = ({ tag, headline, subline, service, heroReview, reviews,
           <Carousel peekWidth="75vw" desktopCols={3} maxWidthDesktop="1100px">
             {portfolioLocations.map((loc,i) => (
               <div key={`${loc}-${i}`}>
-                <div style={{ backgroundColor:"#E8E2D8", aspectRatio:"4/3", borderRadius:"8px", overflow:"hidden", maxHeight:"260px" }}>
+                <div style={{ backgroundColor:"#E8E2D8", width:"100%", height:"220px", borderRadius:"8px", overflow:"hidden", flexShrink:0 }}>
                   {portfolioImages?.[i] && <img src={portfolioImages[i]} alt={`Painting project in ${loc}`} style={{ width:"100%", height:"100%", objectFit:"cover", display:"block" }} loading="lazy"/>}
                 </div>
                 <p style={{ color:"#6B6560", fontSize:"11px", marginTop:"6px" }}>{loc}</p>
