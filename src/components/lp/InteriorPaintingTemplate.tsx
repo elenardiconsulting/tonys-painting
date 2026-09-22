@@ -554,17 +554,8 @@ const InteriorPaintingTemplate = ({
             Real homes, real crews, finished the way we would want our own house done.
           </p>
 
-          <div className="lp2-carousel mt-10">
-            {PHOTOS.map((p) => (
-              <figure key={p.src} className="lp2-photo-item">
-                <img
-                  src={p.src}
-                  alt={p.alt}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </figure>
-            ))}
+          <div className="mt-10">
+            <PhotoCarousel photos={PHOTOS} />
           </div>
         </div>
       </section>
