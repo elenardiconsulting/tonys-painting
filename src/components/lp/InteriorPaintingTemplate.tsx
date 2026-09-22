@@ -1,0 +1,626 @@
+import { useEffect } from "react";
+import { Shield, Star, CheckCircle2 } from "lucide-react";
+import { useReducedMotion, motion } from "framer-motion";
+import Navbar from "@/components/site/Navbar";
+import Footer from "@/components/site/Footer";
+import LPForm from "./LPForm";
+import LPMiniForm from "./LPMiniForm";
+import PartnersSection from "@/components/site/PartnersSection";
+import heroBgDesktop from "@/assets/hero-bg-desktop.jpg";
+import heroBgMobile from "@/assets/hero-bg-mobile.jpg";
+
+interface Review {
+  name: string;
+  text: string;
+}
+
+interface IncludedItem {
+  title: string;
+  description: string;
+}
+
+export interface InteriorPaintingTemplateProps {
+  tag: string;
+  headline: string;
+  subline: string;
+  service: string;
+  reviews: [Review, Review, Review];
+  included: IncludedItem[];
+  portfolioLocations: string[];
+  portfolioImages?: string[];
+}
+
+const TRUST_SIGNALS = [
+  "Licensed and Insured",
+  "Free Estimates, No Commitment",
+  "5-Star Rated on Google",
+  "Serving New England since 2004",
+  "Response within one business day",
+];
+
+const STEPS = [
+  {
+    n: "01",
+    title: "You reach out",
+    desc: "Fill out the form or call us directly. We will get back to you within one business day.",
+  },
+  {
+    n: "02",
+    title: "We visit and estimate",
+    desc: "A member of our team visits your space, evaluates the work and provides a free detailed estimate.",
+  },
+  {
+    n: "03",
+    title: "We get to work",
+    desc: "Once you approve the estimate, we schedule the job and deliver the finished result on time.",
+  },
+];
+
+const Stars5 = ({ size = 14 }: { size?: number }) => (
+  <div className="flex gap-0.5" aria-label="5 star rating">
+    {Array.from({ length: 5 }).map((_, i) => (
+      <Star key={i} size={size} style={{ color: "#C4291C", fill: "#C4291C" }} />
+    ))}
+  </div>
+);
+
+const InteriorPaintingTemplate = ({
+  tag,
+  headline,
+  subline,
+  service,
+  reviews,
+  included,
+  portfolioLocations,
+  portfolioImages,
+}: InteriorPaintingTemplateProps) => {
+  const reduce = useReducedMotion();
+
+  useEffect(() => {
+    const setVh = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh-lp2", `${vh}px`);
+    };
+    setVh();
+    const onOrientation = () => setVh();
+    window.addEventListener("orientationchange", onOrientation);
+    return () => window.removeEventListener("orientationchange", onOrientation);
+  }, []);
+
+  const fadeUp = (delay: number) =>
+    reduce
+      ? {}
+      : {
+          initial: { opacity: 0, y: 20 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.7, delay, ease: "easeOut" as const },
+        };
+
+  const imageMotion = reduce
+    ? {}
+    : {
+        initial: { scale: 1.06 },
+        animate: { scale: 1 },
+        transition: { duration: 1.4, ease: "easeOut" as const },
+      };
+
+  const stats = [
+    { icon: <Shield size={20} />, title: "20+ Years", desc: "Experience" },
+    { icon: <Star size={20} />, title: "5-Star Rated", desc: "Local Company" },
+    { icon: <CheckCircle2 size={20} />, title: "Quality Work", desc: "You Can Trust" },
+  ];
+
+  return (
+    <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#F5F1EB" }}>
+      <Navbar />
+
+      {/* HERO adapted from site hero: dark image, overlay, Playfair headline, stats, conversion form on the right */}
+      <section className="lp2-hero-section">
+        <motion.picture {...imageMotion} className="lp2-hero-bg-image" style={{ willChange: "transform" }}>
+          <source media="(min-width: 768px)" srcSet={heroBgDesktop} />
+          <img
+            src={heroBgMobile}
+            alt="Tony's Painting professional interior painting"
+            loading="eager"
+            decoding="async"
+            className="lp2-hero-bg-image"
+            style={{ willChange: "transform" }}
+          />
+        </motion.picture>
+        <div className="lp2-hero-overlay-main" />
+        <div className="lp2-hero-overlay-top" />
+        <div className="lp2-hero-layout-container">
+          <div className="lp2-hero-content">
+            <motion.span
+              {...fadeUp(0.05)}
+              className="lp2-hero-eyebrow"
+            >
+              {tag}
+            </motion.span>
+            <motion.h1
+              {...fadeUp(0.15)}
+              className="lp2-hero-headline"
+            >
+              {headline}
+            </motion.h1>
+            <motion.p
+              {...fadeUp(0.3)}
+              className="lp2-hero-subline"
+            >
+              {subline}
+            </motion.p>
+
+            {/* Mobile CTA scrolls to the form */}
+            <motion.a
+              {...fadeUp(0.45)}
+              href="#estimate"
+              className="lp2-mobile-only lp2-hero-mobile-btn"
+            >
+              Request My Free Estimate
+            </motion.a>
+
+            <motion.ul
+              {...fadeUp(0.5)}
+              className="lp2-hero-trust"
+            >
+              {TRUST_SIGNALS.map((s) => (
+                <li key={s}>
+                  <span className="lp2-hero-trust-dot" aria-hidden="true" />
+                  {s}
+                </li>
+              ))}
+            </motion.ul>
+
+            <motion.div
+              {...fadeUp(0.65)}
+              className="lp2-hero-stats"
+            >
+              {stats.map((stat, idx) => (
+                <div key={idx} className="lp2-hero-stat">
+                  <div className="lp2-hero-stat-icon">{stat.icon}</div>
+                  <div className="lp2-hero-stat-text">
+                    <span className="lp2-hero-stat-title">{stat.title}</span>
+                    <span className="lp2-hero-stat-sub">{stat.desc}</span>
+                  </div>
+                  {idx < stats.length - 1 && <div className="lp2-hero-stat-divider lp2-desktop-only" />}
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Desktop conversion form panel */}
+          <div className="lp2-hero-form-panel lp2-desktop-only">
+            <motion.div {...fadeUp(0.5)}>
+              <div className="lp2-form-card">
+                <LPForm service={service} />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mobile form section (linen) */}
+      <section
+        id="estimate"
+        className="lp2-mobile-only"
+        style={{ backgroundColor: "#F5F1EB", padding: "64px 24px" }}
+      >
+        <div className="max-w-md mx-auto">
+          <LPForm service={service} idPrefix="lpmobile" />
+        </div>
+      </section>
+
+      {/* Credentials bar */}
+      <section style={{ backgroundColor: "#2C2C2A" }} className="px-6 md:px-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-5" style={{ padding: "20px 0" }}>
+          {[
+            { icon: Shield, label: "Licensed and Insured" },
+            { icon: CheckCircle2, label: "Est. 2004" },
+            { icon: Star, label: "500+ Projects Completed" },
+            { icon: Star, label: "5-Star Google Rating" },
+          ].map(({ icon: Icon, label }) => (
+            <div key={label} className="flex items-center justify-center gap-2">
+              <Icon size={20} style={{ color: "#C4291C" }} />
+              <span style={{ color: "#F5F1EB", fontSize: "14px", fontWeight: 500 }}>{label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* What's included */}
+      <section style={{ backgroundColor: "#F5F1EB", padding: "80px 24px" }}>
+        <div className="max-w-6xl mx-auto">
+          <h2
+            className="font-display"
+            style={{
+              fontWeight: 900,
+              fontSize: "clamp(32px, 4vw, 40px)",
+              color: "#1A1A1A",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            What's included.
+          </h2>
+          <p style={{ color: "#6B6560", fontSize: "16px", marginTop: "8px" }}>
+            Everything you need from one experienced team.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
+            {included.map((item) => (
+              <div
+                key={item.title}
+                className="flex items-start gap-3"
+                style={{
+                  backgroundColor: "#FFFFFF",
+                  border: "1px solid #E8E2D8",
+                  borderRadius: "8px",
+                  padding: "20px",
+                }}
+              >
+                <CheckCircle2 size={18} style={{ color: "#C4291C", flexShrink: 0, marginTop: "2px" }} />
+                <div>
+                  <p style={{ color: "#1A1A1A", fontSize: "15px", fontWeight: 600 }}>{item.title}</p>
+                  {item.description && (
+                    <p style={{ color: "#6B6560", fontSize: "13px", marginTop: "2px" }}>
+                      {item.description}
+                    </p>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section style={{ backgroundColor: "#E8E2D8", padding: "80px 24px" }}>
+        <div className="max-w-6xl mx-auto">
+          <h2
+            className="font-display text-center"
+            style={{
+              fontWeight: 900,
+              fontSize: "clamp(32px, 4vw, 40px)",
+              color: "#1A1A1A",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            How it works.
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-12">
+            {STEPS.map((s) => (
+              <div key={s.n}>
+                <div
+                  className="font-display"
+                  style={{
+                    fontWeight: 900,
+                    fontSize: "64px",
+                    color: "#C4291C",
+                    opacity: 0.3,
+                    lineHeight: 1,
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  {s.n}
+                </div>
+                <h3 className="mt-2" style={{ color: "#1A1A1A", fontSize: "18px", fontWeight: 700 }}>
+                  {s.title}
+                </h3>
+                <p style={{ color: "#6B6560", fontSize: "14px", marginTop: "8px", lineHeight: 1.6 }}>
+                  {s.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <PartnersSection />
+
+      {/* Reviews */}
+      <section style={{ backgroundColor: "#FFFFFF", padding: "80px 24px" }}>
+        <div className="max-w-6xl mx-auto">
+          <h2
+            className="font-display"
+            style={{
+              fontWeight: 900,
+              fontSize: "clamp(32px, 4vw, 40px)",
+              color: "#1A1A1A",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            What our clients say.
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+            {reviews.map((r) => (
+              <div
+                key={r.name}
+                style={{
+                  backgroundColor: "#F5F1EB",
+                  border: "1px solid #E8E2D8",
+                  borderRadius: "8px",
+                  padding: "24px",
+                }}
+              >
+                <Stars5 />
+                <p className="mt-3" style={{ color: "#1A1A1A", fontSize: "14px", lineHeight: 1.7 }}>
+                  &ldquo;{r.text}&rdquo;
+                </p>
+                <p className="mt-3" style={{ color: "#6B6560", fontSize: "13px", fontWeight: 600 }}>
+                  {r.name}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Recent work */}
+      <section style={{ backgroundColor: "#F5F1EB", padding: "80px 24px" }}>
+        <div className="max-w-6xl mx-auto">
+          <h2
+            className="font-display"
+            style={{
+              fontWeight: 900,
+              fontSize: "clamp(32px, 4vw, 40px)",
+              color: "#1A1A1A",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Recent work.
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mt-10">
+            {portfolioLocations.map((loc, i) => (
+              <div key={`${loc}-${i}`}>
+                <div
+                  style={{
+                    backgroundColor: "#E8E2D8",
+                    aspectRatio: "4 / 3",
+                    borderRadius: "6px",
+                    overflow: "hidden",
+                  }}
+                >
+                  {portfolioImages && portfolioImages[i] && (
+                    <img
+                      src={portfolioImages[i]}
+                      alt={`Tony's ${service} project in ${loc}`}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  )}
+                </div>
+                <p style={{ color: "#6B6560", fontSize: "12px", marginTop: "8px" }}>{loc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section style={{ backgroundColor: "#1A1A1A", padding: "100px 24px" }}>
+        <div className="max-w-2xl mx-auto text-center">
+          <h2
+            className="font-display"
+            style={{
+              fontWeight: 900,
+              fontSize: "clamp(36px, 5vw, 48px)",
+              color: "#F5F1EB",
+              letterSpacing: "-0.02em",
+              lineHeight: 1.1,
+            }}
+          >
+            Ready to get started?
+          </h2>
+          <p className="mt-4" style={{ color: "#9CA3AF", fontSize: "16px", lineHeight: 1.6 }}>
+            Get in touch today and we will take care of the rest.
+          </p>
+          <div className="mt-10">
+            <LPMiniForm service={service} idPrefix="lpcta" />
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+
+      <style>{`
+        .lp2-desktop-only { display: block; }
+        .lp2-mobile-only { display: none; }
+
+        .lp2-hero-section {
+          position: relative;
+          width: 100%;
+          min-height: 100vh;
+          overflow: hidden;
+          background-color: #1A1A1A;
+          display: flex;
+          align-items: center;
+        }
+
+        .lp2-hero-bg-image {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center 30%;
+          z-index: 0;
+        }
+
+        .lp2-hero-overlay-main {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          background: linear-gradient(to right, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.65) 40%, rgba(0,0,0,0.20) 70%, rgba(0,0,0,0.05) 100%);
+        }
+
+        .lp2-hero-overlay-top {
+          position: absolute;
+          inset: 0;
+          z-index: 3;
+          background: linear-gradient(to bottom, rgba(0,0,0,0.40) 0%, transparent 20%);
+        }
+
+        .lp2-hero-section::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+          background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 40%);
+          pointer-events: none;
+        }
+
+        .lp2-hero-layout-container {
+          position: relative;
+          z-index: 10;
+          width: 100%;
+          display: flex;
+          padding: 96px 80px 64px 80px;
+          align-items: center;
+          justify-content: space-between;
+          gap: 40px;
+        }
+
+        .lp2-hero-content {
+          flex: 1;
+          max-width: 600px;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .lp2-hero-eyebrow {
+          display: inline-block;
+          text-transform: uppercase;
+          color: #C4291C;
+          font-family: 'Montserrat', sans-serif;
+          font-size: 12px;
+          letter-spacing: 0.18em;
+          font-weight: 600;
+        }
+
+        .lp2-hero-headline {
+          font-family: 'Playfair Display', serif;
+          font-weight: 900;
+          font-size: clamp(36px, 4.2vw, 60px);
+          line-height: 1.04;
+          letter-spacing: -0.025em;
+          color: #F5F1EB;
+          margin: 0;
+        }
+
+        .lp2-hero-subline {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 16px;
+          font-weight: 400;
+          color: rgba(255,255,255,0.78);
+          line-height: 1.7;
+          max-width: 500px;
+          margin: 0;
+        }
+
+        .lp2-hero-mobile-btn {
+          display: inline-block;
+          background: #C4291C;
+          color: #fff;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 600;
+          font-size: 15px;
+          padding: 14px 24px;
+          border-radius: 10px;
+          text-decoration: none;
+          width: fit-content;
+        }
+
+        .lp2-hero-trust {
+          list-style: none;
+          padding: 18px 0 0 0;
+          margin: 0;
+          border-top: 1px solid rgba(255,255,255,0.12);
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 10px 28px;
+        }
+        .lp2-hero-trust li {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: rgba(255,255,255,0.82);
+          font-family: 'Montserrat', sans-serif;
+          font-size: 13px;
+        }
+        .lp2-hero-trust-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #C4291C;
+          flex-shrink: 0;
+        }
+
+        .lp2-hero-stats {
+          display: flex;
+          align-items: center;
+          gap: 28px;
+          padding-top: 16px;
+        }
+        .lp2-hero-stat {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+        .lp2-hero-stat-text {
+          display: flex;
+          flex-direction: column;
+        }
+        .lp2-hero-stat-icon { color: #C4291C; display: flex; }
+        .lp2-hero-stat-title {
+          color: #fff;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 700;
+          font-size: 15px;
+          line-height: 1;
+        }
+        .lp2-hero-stat-sub {
+          color: rgba(255,255,255,0.45);
+          font-family: 'Montserrat', sans-serif;
+          font-size: 11px;
+          margin-top: 2px;
+        }
+        .lp2-hero-stat-divider {
+          width: 1px;
+          height: 28px;
+          background: rgba(255,255,255,0.12);
+        }
+
+        .lp2-hero-form-panel {
+          width: 420px;
+          flex-shrink: 0;
+        }
+        .lp2-form-card {
+          background: rgba(245,241,235,0.97);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          border: 1px solid rgba(232,226,216,0.8);
+          border-radius: 16px;
+          padding: 28px;
+          box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+        }
+
+        @media (max-width: 767px) {
+          .lp2-desktop-only { display: none !important; }
+          .lp2-mobile-only { display: block; }
+          .lp2-hero-layout-container {
+            padding: 96px 24px 56px 24px;
+          }
+          .lp2-hero-trust {
+            grid-template-columns: 1fr;
+            gap: 10px;
+          }
+          .lp2-hero-stats {
+            gap: 16px;
+          }
+          .lp2-hero-stat-divider { display: none; }
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default InteriorPaintingTemplate;
