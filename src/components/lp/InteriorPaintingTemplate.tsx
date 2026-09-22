@@ -8,6 +8,33 @@ import LPMiniForm from "./LPMiniForm";
 import PartnersSection from "@/components/site/PartnersSection";
 import heroBgDesktop from "@/assets/hero-bg-desktop.jpg";
 import heroBgMobile from "@/assets/hero-bg-mobile.jpg";
+import photo01 from "@/assets/lp/lp-photo-01.jpg.asset.json";
+import photo02 from "@/assets/lp/lp-photo-02.jpg.asset.json";
+import photo03 from "@/assets/lp/lp-photo-03.jpg.asset.json";
+import photo04 from "@/assets/lp/lp-photo-04.jpg.asset.json";
+import photo05 from "@/assets/lp/lp-photo-05.jpg.asset.json";
+import photo06 from "@/assets/lp/lp-photo-06.jpg.asset.json";
+import video01 from "@/assets/lp/lp-video-01.mp4.asset.json";
+import video02 from "@/assets/lp/lp-video-02.mp4.asset.json";
+import video03 from "@/assets/lp/lp-video-03.mp4.asset.json";
+import poster01 from "@/assets/lp/lp-video-01-poster.jpg.asset.json";
+import poster02 from "@/assets/lp/lp-video-02-poster.jpg.asset.json";
+import poster03 from "@/assets/lp/lp-video-03-poster.jpg.asset.json";
+
+const PHOTOS = [
+  { src: photo01.url, alt: "Tony's Painting crew finishing interior walls in a Martha's Vineyard home" },
+  { src: photo02.url, alt: "Interior painting project with fresh neutral walls and crisp trim" },
+  { src: photo03.url, alt: "Painter rolling a clean coat on a living room wall" },
+  { src: photo04.url, alt: "Finished interior with smooth walls and painted accent detail" },
+  { src: photo05.url, alt: "Crew member cutting in a ceiling line by hand" },
+  { src: photo06.url, alt: "Completed interior room with soft painted finish" },
+];
+
+const VIDEOS = [
+  { src: video01.url, poster: poster01.url },
+  { src: video02.url, poster: poster02.url },
+  { src: video03.url, poster: poster03.url },
+];
 
 interface Review {
   name: string;
@@ -353,6 +380,101 @@ const InteriorPaintingTemplate = ({
         </div>
       </section>
 
+      {/* Recent work: masonry gallery preserving full photos, no forced cropping */}
+      <section style={{ backgroundColor: "#F5F1EB", padding: "80px 24px" }}>
+        <div className="max-w-6xl mx-auto">
+          <span
+            style={{
+              textTransform: "uppercase",
+              color: "#C4291C",
+              fontSize: "12px",
+              letterSpacing: "0.18em",
+              fontWeight: 600,
+            }}
+          >
+            On the job
+          </span>
+          <h2
+            className="font-display"
+            style={{
+              fontWeight: 900,
+              fontSize: "clamp(32px, 4vw, 40px)",
+              color: "#1A1A1A",
+              letterSpacing: "-0.02em",
+              marginTop: "10px",
+            }}
+          >
+            Recent work.
+          </h2>
+          <p style={{ color: "#6B6560", fontSize: "16px", marginTop: "8px" }}>
+            Real homes, real crews, finished the way we would want our own house done.
+          </p>
+
+          <div className="lp2-photo-masonry mt-10">
+            {PHOTOS.map((p) => (
+              <figure key={p.src} className="lp2-photo-item">
+                <img
+                  src={p.src}
+                  alt={p.alt}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Video section: 9:16 cards matching native portrait, no crop */}
+      <section style={{ backgroundColor: "#2C2C2A", padding: "80px 24px" }}>
+        <div className="max-w-6xl mx-auto">
+          <span
+            style={{
+              textTransform: "uppercase",
+              color: "#C4291C",
+              fontSize: "12px",
+              letterSpacing: "0.18em",
+              fontWeight: 600,
+            }}
+          >
+            Inside the work
+          </span>
+          <h2
+            className="font-display"
+            style={{
+              fontWeight: 900,
+              fontSize: "clamp(32px, 4vw, 40px)",
+              color: "#F5F1EB",
+              letterSpacing: "-0.02em",
+              marginTop: "10px",
+            }}
+          >
+            See it in motion.
+          </h2>
+          <p style={{ color: "rgba(245,241,235,0.65)", fontSize: "16px", marginTop: "8px" }}>
+            Short clips from recent interior jobs. Tap any video to hear the sound.
+          </p>
+
+          <div className="lp2-video-grid mt-10">
+            {VIDEOS.map((v, i) => (
+              <div key={v.src} className="lp2-video-card">
+                <video
+                  src={v.src}
+                  poster={v.poster}
+                  muted
+                  loop
+                  playsInline
+                  autoPlay
+                  preload="metadata"
+                  controls
+                  aria-label={`Tony's Painting interior work clip ${i + 1}`}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section style={{ backgroundColor: "#1A1A1A", padding: "100px 24px" }}>
         <div className="max-w-2xl mx-auto text-center">
@@ -562,6 +684,26 @@ const InteriorPaintingTemplate = ({
           box-shadow: 0 20px 60px rgba(0,0,0,0.35);
         }
 
+        .lp2-photo-masonry {
+          column-count: 3;
+          column-gap: 14px;
+        }
+        .lp2-photo-item {
+          margin: 0 0 14px 0;
+          break-inside: avoid;
+          border-radius: 10px;
+          overflow: hidden;
+          background: #E8E2D8;
+        }
+        .lp2-photo-item img {
+          width: 100%;
+          height: auto;
+          display: block;
+          content-visibility: visible;
+          transition: transform 0.6s ease;
+        }
+        .lp2-photo-item:hover img { transform: scale(1.02); }
+
         .lp2-work-grid {
           display: grid;
           grid-template-columns: 1.15fr 1fr;
@@ -638,7 +780,11 @@ const InteriorPaintingTemplate = ({
             gap: 16px;
           }
           .lp2-hero-stat-divider { display: none; }
+          .lp2-photo-masonry { column-count: 1; }
           .lp2-work-grid { grid-template-columns: 1fr; }
+          @media (min-width: 480px) and (max-width: 767px) {
+            .lp2-photo-masonry { column-count: 2; }
+          }
           .lp2-work-hero { aspect-ratio: 3 / 4; }
           .lp2-video-grid {
             display: flex;
