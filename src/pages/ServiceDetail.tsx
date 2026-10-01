@@ -127,6 +127,8 @@ interface ServiceData {
   includes: string[];
 }
 
+export const SERVICE_SLUGS = () => Object.keys(SERVICES);
+
 const SERVICES: Record<string, ServiceData> = {
   "interior-painting": {
     slug: "interior-painting",

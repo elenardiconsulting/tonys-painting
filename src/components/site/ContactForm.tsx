@@ -63,7 +63,7 @@ const ContactForm = ({ compact = false }: ContactFormProps) => {
   const { toast } = useToast();
   const navigate = useNavigate();
 
-  const searchParams = new URLSearchParams(window.location.search);
+  const searchParams = new URLSearchParams(typeof window !== "undefined" ? window.location.search : "");
   const utmSource = searchParams.get("utm_source");
   const utmMedium = searchParams.get("utm_medium");
 

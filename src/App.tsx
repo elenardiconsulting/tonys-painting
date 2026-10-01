@@ -1,3 +1,4 @@
+import type React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -25,7 +26,10 @@ import ReviewButton from "./components/site/ReviewButton.tsx";
 
 const queryClient = new QueryClient();
 
-const AnimatedRoutes = () => {
+// Pré-renderização: true só durante o build (scripts/prerender.mjs). Evita que o HTML gerado saia com opacity 0.
+const IS_PRERENDER = typeof window === "undefined";
+
+export const AnimatedRoutes = () => {
   const location = useLocation();
   const reduce = useReducedMotion();
 
@@ -38,7 +42,7 @@ const AnimatedRoutes = () => {
 
       <motion.div
         key={location.pathname}
-        initial={reduce ? false : { opacity: 0 }}
+        initial={reduce || IS_PRERENDER ? false : { opacity: 0 }}
         animate={{ opacity: 1, transition: { duration: reduce ? 0 : 0.25, ease: "easeOut" } }}
         exit={reduce ? { opacity: 1 } : { opacity: 0, transition: { duration: 0.15, ease: "easeOut" } }}
       >
@@ -73,16 +77,22 @@ const AnimatedRoutes = () => {
   );
 };
 
-const App = () => (
+export const AppProviders = ({ children }: { children: React.ReactNode }) => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <AnimatedRoutes />
-      </BrowserRouter>
+      {children}
     </TooltipProvider>
   </QueryClientProvider>
+);
+
+const App = () => (
+  <AppProviders>
+    <BrowserRouter>
+      <AnimatedRoutes />
+    </BrowserRouter>
+  </AppProviders>
 );
 
 export default App;
