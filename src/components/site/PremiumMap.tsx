@@ -230,11 +230,11 @@ const PremiumMap = ({ variant = "footer" }: PremiumMapProps) => {
         </a>
       </div>
 
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 767px) {
           .footer-map iframe { height: 160px !important; }
         }
-      `}</style>
+      ` }} />
     </div>
   );
 };

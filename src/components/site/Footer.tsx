@@ -329,7 +329,7 @@ const Footer = () => {
         </a>
       </div>
 
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .footer-grid {
           grid-template-columns: 1fr;
         }
@@ -351,7 +351,7 @@ const Footer = () => {
           .footer-map-col { display: none; }
           .footer-map-mobile { display: block !important; }
         }
-      `}</style>
+      ` }} />
 
     </footer>
   );

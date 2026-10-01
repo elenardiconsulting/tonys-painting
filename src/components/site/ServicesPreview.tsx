@@ -143,7 +143,7 @@ const ServicesPreview = () => {
         </div>
       </div>
 
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .service-image-card {
           background: #FFFFFF;
           border-radius: 12px;
@@ -229,7 +229,7 @@ const ServicesPreview = () => {
             background: #C4291C;
           }
         }
-      `}</style>
+      ` }} />
     </section>
   );
 };

@@ -1,4 +1,5 @@
 import type React from "react";
+import { useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -28,10 +29,16 @@ const queryClient = new QueryClient();
 
 // Pré-renderização: true só durante o build (scripts/prerender.mjs). Evita que o HTML gerado saia com opacity 0.
 const IS_PRERENDER = typeof window === "undefined";
+// Primeira pintura no navegador: igual ao HTML pré-renderizado (sem animação de entrada), para a hidratação bater.
+let isFirstPaint = true;
 
 export const AnimatedRoutes = () => {
   const location = useLocation();
   const reduce = useReducedMotion();
+
+  useEffect(() => {
+    isFirstPaint = false;
+  }, []);
 
   const isPublicPage = !location.pathname.startsWith('/dashboard') && location.pathname !== '/login';
 
@@ -42,7 +49,7 @@ export const AnimatedRoutes = () => {
 
       <motion.div
         key={location.pathname}
-        initial={reduce || IS_PRERENDER ? false : { opacity: 0 }}
+        initial={reduce || IS_PRERENDER || isFirstPaint ? false : { opacity: 0 }}
         animate={{ opacity: 1, transition: { duration: reduce ? 0 : 0.25, ease: "easeOut" } }}
         exit={reduce ? { opacity: 1 } : { opacity: 0, transition: { duration: 0.15, ease: "easeOut" } }}
       >

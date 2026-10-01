@@ -354,7 +354,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .desktop-only { display: block; }
         .mobile-only { display: none; }
         
@@ -635,7 +635,7 @@ const Hero = () => {
             display: block;
           }
         }
-      `}</style>
+      ` }} />
     </section>
   );
 };

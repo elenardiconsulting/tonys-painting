@@ -141,7 +141,7 @@ const PortfolioPreview = () => {
         </div>
       </div>
 
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .portfolio-desktop-layout {
           display: block;
         }
@@ -198,7 +198,7 @@ const PortfolioPreview = () => {
             position: relative;
           }
         }
-      `}</style>
+      ` }} />
     </section>
   );
 };

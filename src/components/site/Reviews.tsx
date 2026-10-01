@@ -165,7 +165,7 @@ const Reviews = () => {
         </div> */}
       </div>
 
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 767px) {
           .reviews-grid {
             display: none !important;
@@ -244,7 +244,7 @@ const Reviews = () => {
             background: #C4291C;
           }
         }
-      `}</style>
+      ` }} />
     </section>
   );
 };

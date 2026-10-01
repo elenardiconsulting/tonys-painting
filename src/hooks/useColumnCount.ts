@@ -12,7 +12,8 @@ const getCount = (): number => {
 };
 
 export const useColumnCount = (): number => {
-  const [count, setCount] = useState<number>(getCount);
+  // Começa em 3 (igual à página pré-renderizada) e ajusta depois que a página carrega.
+  const [count, setCount] = useState<number>(3);
 
   useEffect(() => {
     const onResize = () => setCount(getCount());

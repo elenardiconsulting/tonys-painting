@@ -32,6 +32,8 @@
 - Serviço novo: adicionar em `SERVICES` (`src/pages/ServiceDetail.tsx`). Portfólio novo: `COLLECTIONS` (`src/data/portfolio.ts`). Entram sozinhos no sitemap.
 - Página nova: adicionar a rota em `src/App.tsx` e em `sitemapRoutes` (`src/entry-server.tsx`).
 - Código que roda na renderização não pode usar `window`/`document` direto (use dentro de `useEffect` ou com `typeof window !== "undefined"`).
+- O navegador "hidrata" a página pré-renderizada (`hydrateRoot` em `src/main.tsx`): o HTML do servidor e o do navegador precisam ser iguais. Nada de estado inicial que dependa de `window` (comece com um valor fixo e ajuste no `useEffect`), e `<style>` embutido sempre com `dangerouslySetInnerHTML`.
+- `src/lib/replayEarlyInput.ts`: se o visitante digitar antes do JS carregar, o texto é repassado ao formulário.
 - `npm run build:spa` gera a versão antiga, sem pré-renderização (plano B).
 
 ## Regras de trabalho
@@ -44,3 +46,4 @@
 - 2026-10-01 — Pré-renderização de 30 páginas + sitemap gerado automaticamente. Corrigido o robots.txt (apontava o sitemap para "tonyspaintingcmv.com"). Removidos lockfiles do bun (build com npm).
 - 2026-10-01 — /dashboard e /login recebem HTML vazio com noindex (antes mostravam a home por um instante).
 - 2026-10-01 — notify-new-lead v6: além do push, manda e-mail de cada lead novo via Resend (aguardando RESEND_API_KEY).
+- 2026-10-01 — Hidratação no lugar de recriar a página: o que o visitante digita antes do site carregar não se perde mais. Corrigidos 7 blocos <style> que saíam quebrados na pré-renderização.

@@ -623,7 +623,7 @@ const InteriorPaintingTemplate = ({
 
       <Footer />
 
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .lp2-desktop-only { display: block; }
         .lp2-mobile-only { display: none; }
         .lp2-txt-m { display: none; }
@@ -1118,7 +1118,7 @@ const InteriorPaintingTemplate = ({
           .lp2-reviews > * { flex: 0 0 82vw; }
           .lp2-steps > * { flex: 0 0 78vw; }
         }
-      `}</style>
+      ` }} />
     </div>
   );
 };
