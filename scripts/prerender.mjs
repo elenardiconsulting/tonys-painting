@@ -9,7 +9,7 @@ const dist = path.join(root, "dist");
 const serverDir = path.join(root, "dist-server");
 
 const entry = fs.readdirSync(serverDir).find((f) => /^entry-server\.(m?js)$/.test(f));
-const { render, routes, sitemapRoutes, siteUrl } = await import(pathToFileURL(path.join(serverDir, entry)).href);
+const { render, routes, sitemapRoutes, siteUrl, privateRoutes = [] } = await import(pathToFileURL(path.join(serverDir, entry)).href);
 
 // Tags que cada página define sozinha (via SEOHead). Tiramos a versão genérica do template para não duplicar.
 const perPage = [
@@ -35,6 +35,18 @@ for (const url of routes) {
   fs.mkdirSync(path.dirname(out), { recursive: true });
   fs.writeFileSync(out, page.replace(/\n\s*\n/g, "\n"));
   console.log("pré-renderizado:", url);
+}
+
+// Rotas privadas: HTML sem conteúdo, com título próprio e noindex.
+for (const url of privateRoutes) {
+  let page = template;
+  for (const re of perPage) page = page.replace(re, "");
+  page = page.replace("</head>", `    <title>Tony's Dashboard</title>\n    <meta name="robots" content="noindex, nofollow" />\n  </head>`);
+  page = page.replace(/<meta\s+name="robots" content="index[^>]*>/i, "");
+  const out = path.join(dist, url, "index.html");
+  fs.mkdirSync(path.dirname(out), { recursive: true });
+  fs.writeFileSync(out, page.replace(/\n\s*\n/g, "\n"));
+  console.log("página privada (vazia):", url);
 }
 
 const today = new Date().toISOString().slice(0, 10);

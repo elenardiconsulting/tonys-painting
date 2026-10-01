@@ -35,3 +35,4 @@
 
 ## Histórico
 - 2026-10-01 — Pré-renderização de 30 páginas + sitemap gerado automaticamente. Corrigido o robots.txt (apontava o sitemap para "tonyspaintingcmv.com"). Removidos lockfiles do bun (build com npm).
+- 2026-10-01 — /dashboard e /login recebem HTML vazio com noindex (antes mostravam a home por um instante).

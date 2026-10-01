@@ -22,6 +22,9 @@ export const sitemapRoutes = [
   "/contact",
 ];
 
+// Área privada: recebe uma página vazia (sem conteúdo da home) e noindex.
+export const privateRoutes = ["/dashboard", "/login"];
+
 export const routes = [...sitemapRoutes, "/lp/interior-painting", "/lp/exterior-painting", "/lp/remodeling"];
 
 export function render(url: string) {
