@@ -1,2 +1,5 @@
 ## Abertas
-- Instalar tag do Google Analytics (conta da Elenardi) no site tonyspaintingmv.com
+(nenhuma)
+
+## Concluídas
+- Tag do Google Analytics G-MKRCEJ6GKG inserida no index.html antes de </head>
