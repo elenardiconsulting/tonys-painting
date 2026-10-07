@@ -1,2 +1,5 @@
 ## Abertas
-- Instalar tag do Google Analytics G-MKRCEJ6GKG no index.html antes de </head> (bloco exato fornecido)
+(nenhuma)
+
+## Concluídas
+- Tag do Google Analytics G-MKRCEJ6GKG inserida no index.html antes de </head>
