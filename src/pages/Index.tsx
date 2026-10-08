@@ -26,7 +26,7 @@ const Index = () => {
           name: "Tony's Painting and Remodeling",
           description:
             "Professional painting and remodeling services serving New England since 2004.",
-          url: "https://tonyspaintingcmv.com",
+          url: "https://tonyspaintingmv.com",
           telephone: "+15089829675",
           email: "Tonyspainting11@gmail.com",
           foundingDate: "2004",
@@ -49,6 +49,14 @@ const Index = () => {
             { "@type": "Place", name: "Rhode Island" },
             { "@type": "Place", name: "New Hampshire" },
           ],
+          serviceArea: [
+            { "@type": "City", name: "Edgartown", containedInPlace: { "@type": "State", name: "Massachusetts" } },
+            { "@type": "City", name: "Chilmark", containedInPlace: { "@type": "State", name: "Massachusetts" } },
+            { "@type": "City", name: "West Tisbury", containedInPlace: { "@type": "State", name: "Massachusetts" } },
+            { "@type": "City", name: "Falmouth", containedInPlace: { "@type": "State", name: "Massachusetts" } },
+            { "@type": "City", name: "Hyannis", containedInPlace: { "@type": "State", name: "Massachusetts" } },
+            { "@type": "City", name: "Martha's Vineyard", containedInPlace: { "@type": "State", name: "Massachusetts" } },
+          ],
           openingHoursSpecification: {
             "@type": "OpeningHoursSpecification",
             dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
@@ -58,11 +66,11 @@ const Index = () => {
           aggregateRating: {
             "@type": "AggregateRating",
             ratingValue: "5",
-            reviewCount: "9",
+            reviewCount: "7",
             bestRating: "5",
           },
           priceRange: "$$",
-          image: "https://tonyspaintingcmv.com/og-image.jpg",
+          image: "https://tonyspaintingmv.com/og-image.jpg",
           sameAs: [
             "https://www.instagram.com/tonyspainting_remodeling/",
             "https://www.facebook.com/tonyspaintingmvLLC/",
