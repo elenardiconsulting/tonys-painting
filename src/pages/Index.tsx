@@ -26,7 +26,7 @@ const Index = () => {
           name: "Tony's Painting and Remodeling",
           description:
             "Professional painting and remodeling services serving New England since 2004.",
-          url: "https://tonyspaintingcmv.com",
+          url: "https://tonyspaintingmv.com",
           telephone: "+15089829675",
           email: "Tonyspainting11@gmail.com",
           foundingDate: "2004",
@@ -58,11 +58,11 @@ const Index = () => {
           aggregateRating: {
             "@type": "AggregateRating",
             ratingValue: "5",
-            reviewCount: "9",
+            reviewCount: "7",
             bestRating: "5",
           },
           priceRange: "$$",
-          image: "https://tonyspaintingcmv.com/og-image.jpg",
+          image: "https://tonyspaintingmv.com/og-image.jpg",
           sameAs: [
             "https://www.instagram.com/tonyspainting_remodeling/",
             "https://www.facebook.com/tonyspaintingmvLLC/",
