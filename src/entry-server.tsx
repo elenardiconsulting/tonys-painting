@@ -25,6 +25,10 @@ export const sitemapRoutes = [
   "/painting-contractor-hyannis",
   "/painting-contractor-chilmark",
   "/painting-contractor-west-tisbury",
+  "/painting-contractor-west-bridgewater",
+  "/painting-contractor-bourne",
+  "/painting-contractor-pocasset",
+  "/painting-contractor-sandwich",
 ];
 
 

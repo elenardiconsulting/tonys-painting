@@ -23,6 +23,10 @@ import Falmouth from "./pages/city/Falmouth.tsx";
 import Hyannis from "./pages/city/Hyannis.tsx";
 import Chilmark from "./pages/city/Chilmark.tsx";
 import WestTisbury from "./pages/city/WestTisbury.tsx";
+import WestBridgewater from "./pages/city/WestBridgewater.tsx";
+import Bourne from "./pages/city/Bourne.tsx";
+import Pocasset from "./pages/city/Pocasset.tsx";
+import Sandwich from "./pages/city/Sandwich.tsx";
 
 import NotFound from "./pages/NotFound.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
@@ -87,6 +91,10 @@ export const AnimatedRoutes = () => {
           <Route path="/painting-contractor-hyannis" element={<Hyannis />} />
           <Route path="/painting-contractor-chilmark" element={<Chilmark />} />
           <Route path="/painting-contractor-west-tisbury" element={<WestTisbury />} />
+          <Route path="/painting-contractor-west-bridgewater" element={<WestBridgewater />} />
+          <Route path="/painting-contractor-bourne" element={<Bourne />} />
+          <Route path="/painting-contractor-pocasset" element={<Pocasset />} />
+          <Route path="/painting-contractor-sandwich" element={<Sandwich />} />
           <Route path="*" element={<NotFound />} />
 
         </Routes>
