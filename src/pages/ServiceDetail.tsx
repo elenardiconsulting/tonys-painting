@@ -100,54 +100,99 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
     description:
       "Professional deck staining, sealing and repair across New England. Built to withstand harsh winters. Free estimate.",
     keywords: "deck staining New England, deck repair New England, deck sealing New England, outdoor deck refinishing MA",
+    breadcrumbs: [
+      { name: "Home", url: "https://tonyspaintingmv.com/" },
+      { name: "Services", url: "https://tonyspaintingmv.com/services" },
+      { name: "Deck and Stairs", url: "https://tonyspaintingmv.com/services/deck-stairs" },
+    ],
   },
   flooring: {
     title: "Flooring Installation in New England",
     description:
       "Hardwood, vinyl and LVP flooring installation across New England. Historic and modern homes. Free estimate.",
     keywords: "flooring installation New England, hardwood floors New England, vinyl flooring New England, floor refinishing MA",
+    breadcrumbs: [
+      { name: "Home", url: "https://tonyspaintingmv.com/" },
+      { name: "Services", url: "https://tonyspaintingmv.com/services" },
+      { name: "Flooring", url: "https://tonyspaintingmv.com/services/flooring" },
+    ],
   },
   "ceramic-tile": {
     title: "Ceramic Tile Installation in New England",
     description:
       "Precision tile work for bathrooms, kitchens and floors across New England. Clean lines, lasting results. Free estimate.",
     keywords: "tile installation New England, ceramic tile New England, bathroom tile New England, kitchen backsplash MA",
+    breadcrumbs: [
+      { name: "Home", url: "https://tonyspaintingmv.com/" },
+      { name: "Services", url: "https://tonyspaintingmv.com/services" },
+      { name: "Ceramic Tile", url: "https://tonyspaintingmv.com/services/ceramic-tile" },
+    ],
   },
   plastering: {
     title: "Plastering and Skim Coating in New England",
     description:
       "Crack repair, skim coating and plaster restoration across New England. Smooth walls, done properly. Free estimate.",
     keywords: "plastering New England, skim coating New England, plaster repair New England, drywall patching MA",
+    breadcrumbs: [
+      { name: "Home", url: "https://tonyspaintingmv.com/" },
+      { name: "Services", url: "https://tonyspaintingmv.com/services" },
+      { name: "Plastering", url: "https://tonyspaintingmv.com/services/plastering" },
+    ],
   },
   carpentry: {
     title: "Carpentry Services in New England",
     description:
       "Trim, moldings, built-ins and structural wood repairs across New England. Free estimate.",
     keywords: "carpentry New England, trim moldings New England, general carpentry New England, built-in shelving MA",
+    breadcrumbs: [
+      { name: "Home", url: "https://tonyspaintingmv.com/" },
+      { name: "Services", url: "https://tonyspaintingmv.com/services" },
+      { name: "Carpentry", url: "https://tonyspaintingmv.com/services/carpentry" },
+    ],
   },
   fence: {
     title: "Fence Installation and Repair in New England",
     description:
       "Wood and vinyl fence installation and repair across New England. Built to last through harsh winters. Free estimate.",
     keywords: "fence installation New England, fence repair New England, wood vinyl fence New England, fence contractor MA",
+    breadcrumbs: [
+      { name: "Home", url: "https://tonyspaintingmv.com/" },
+      { name: "Services", url: "https://tonyspaintingmv.com/services" },
+      { name: "Fence", url: "https://tonyspaintingmv.com/services/fence" },
+    ],
   },
   countertop: {
     title: "Countertop Installation in New England",
     description:
       "Kitchen and bathroom countertop installation across New England. Precise measurement, clean finish. Free estimate.",
     keywords: "countertop installation New England, kitchen countertop New England, bathroom vanity countertop New England",
+    breadcrumbs: [
+      { name: "Home", url: "https://tonyspaintingmv.com/" },
+      { name: "Services", url: "https://tonyspaintingmv.com/services" },
+      { name: "Countertop", url: "https://tonyspaintingmv.com/services/countertop" },
+    ],
   },
   "construction-cleaning": {
     title: "Construction Cleaning Services in New England",
     description:
       "Post-construction cleanup for residential and commercial spaces across New England. Ready to use from day one. Free estimate.",
     keywords: "construction cleaning New England, post construction cleanup New England, construction cleaning New England",
+    breadcrumbs: [
+      { name: "Home", url: "https://tonyspaintingmv.com/" },
+      { name: "Services", url: "https://tonyspaintingmv.com/services" },
+      { name: "Construction Cleaning", url: "https://tonyspaintingmv.com/services/construction-cleaning" },
+    ],
   },
   handyman: {
     title: "Handyman Services in New England",
     description:
       "Deck repair, fence, stairs and general repairs across New England. Small jobs done right. Free estimate.",
     keywords: "handyman New England, handyman services New England, property repairs New England, general repairs MA",
+    breadcrumbs: [
+      { name: "Home", url: "https://tonyspaintingmv.com/" },
+      { name: "Services", url: "https://tonyspaintingmv.com/services" },
+      { name: "Handyman Services", url: "https://tonyspaintingmv.com/services/handyman" },
+    ],
   },
 };
 
