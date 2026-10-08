@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import FadeUpSection from "@/components/site/FadeUpSection";
+import { responsiveSource } from "@/lib/responsiveImage";
 
 const services = [
   {
@@ -44,7 +45,8 @@ const ServiceCard = ({ service }: { service: typeof services[number] }) => (
   <article className="service-image-card">
     <div className="service-image-wrap">
       <img
-        src={service.image}
+        {...responsiveSource(service.image)}
+        sizes="(max-width: 767px) 85vw, 33vw"
         alt={service.name}
         loading="lazy"
         decoding="async"
