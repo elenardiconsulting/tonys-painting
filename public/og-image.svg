@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#1A1A1A"/>
+  <rect x="0" y="0" width="8" height="630" fill="#C4291C"/>
+  <text x="80" y="260" font-family="Georgia, serif" font-size="72" font-weight="bold" fill="#F5F1EB" letter-spacing="-2">Tony's Painting</text>
+  <text x="80" y="340" font-family="Georgia, serif" font-size="72" font-weight="bold" fill="#F5F1EB" letter-spacing="-2">and Remodeling</text>
+  <text x="80" y="420" font-family="Arial, sans-serif" font-size="28" fill="#C4291C" letter-spacing="2">MARTHA'S VINEYARD · CAPE COD · SOUTH SHORE</text>
+  <text x="80" y="480" font-family="Arial, sans-serif" font-size="22" fill="rgba(245,241,235,0.5)">Licensed and Insured · Since 2004 · Free Estimates</text>
+  <text x="80" y="560" font-family="Arial, sans-serif" font-size="22" fill="rgba(245,241,235,0.4)">tonyspaintingmv.com</text>
+</svg>
