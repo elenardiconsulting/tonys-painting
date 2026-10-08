@@ -14,7 +14,7 @@ import deck06 from "@/assets/deck-IMG_2904.jpg.asset.json";
 import deck07 from "@/assets/deck-IMG_2896.jpg.asset.json";
 import deck08 from "@/assets/deck-project-07.jpg.asset.json";
 
-const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords: string; schema?: object }> = {
+const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords: string; schema?: object; breadcrumbs?: { name: string; url: string }[]; faqs?: { question: string; answer: string }[] }> = {
   "interior-painting": {
     title: "Interior Painting Services in New England",
     description:
@@ -30,6 +30,17 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
       description: "Interior painting for residential and commercial spaces across New England. Walls, ceilings, trim, accent walls and more.",
       offers: { "@type": "Offer", availability: "https://schema.org/InStock", priceCurrency: "USD" },
     },
+    breadcrumbs: [
+      { name: "Home", url: "https://tonyspaintingmv.com/" },
+      { name: "Services", url: "https://tonyspaintingmv.com/services" },
+      { name: "Interior Painting", url: "https://tonyspaintingmv.com/services/interior-painting" },
+    ],
+    faqs: [
+      { question: "How much does interior painting cost in New England?", answer: "Interior painting costs vary based on room size, ceiling height and number of coats. Most rooms range from $300 to $800. We provide free estimates with no obligation." },
+      { question: "How long does an interior painting project take?", answer: "A single room typically takes one day. A full home interior takes 3 to 7 days depending on size and complexity. We provide a timeline before starting." },
+      { question: "Do you move furniture before painting?", answer: "Yes. Our team moves and protects all furniture before starting. We cover floors and surfaces and move everything back when the job is done." },
+      { question: "What paint brands do you use for interior projects?", answer: "We use Benjamin Moore and Sherwin-Williams premium interior paints. We also accept customer-supplied paint if you have a specific product in mind." },
+    ],
   },
   "exterior-painting": {
     title: "Exterior Painting Services in New England",
@@ -46,6 +57,17 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
       description: "Exterior painting with premium paints built for New England weather. Siding, trim, decks, fences and more.",
       offers: { "@type": "Offer", availability: "https://schema.org/InStock", priceCurrency: "USD" },
     },
+    breadcrumbs: [
+      { name: "Home", url: "https://tonyspaintingmv.com/" },
+      { name: "Services", url: "https://tonyspaintingmv.com/services" },
+      { name: "Exterior Painting", url: "https://tonyspaintingmv.com/services/exterior-painting" },
+    ],
+    faqs: [
+      { question: "How much does exterior painting cost in New England?", answer: "Exterior painting costs depend on the size of the home, siding material and condition. Most homes range from $2,500 to $8,000. We provide free on-site estimates." },
+      { question: "What is the best time of year to paint exterior in New England?", answer: "Late spring through early fall is ideal. We paint when temperatures are consistently above 50 degrees Fahrenheit and conditions are dry. We work within safe weather windows year-round." },
+      { question: "How long does exterior paint last in New England?", answer: "With proper preparation and premium paint, exterior paint lasts 7 to 10 years in New England. Proper surface prep is the most important factor in paint longevity." },
+      { question: "Do you pressure wash before exterior painting?", answer: "Yes. Power washing and surface preparation are included in every exterior project. Clean, properly prepped surfaces are essential for paint to bond and last." },
+    ],
   },
   remodeling: {
     title: "Home Remodeling Services in New England",
@@ -62,60 +84,115 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
       description: "Full remodeling services including flooring, tile, plastering, carpentry and countertop installation.",
       offers: { "@type": "Offer", availability: "https://schema.org/InStock", priceCurrency: "USD" },
     },
+    breadcrumbs: [
+      { name: "Home", url: "https://tonyspaintingmv.com/" },
+      { name: "Services", url: "https://tonyspaintingmv.com/services" },
+      { name: "Remodeling", url: "https://tonyspaintingmv.com/services/remodeling" },
+    ],
+    faqs: [
+      { question: "Do you handle full home remodels or only specific rooms?", answer: "We handle both. From a single bathroom to a full home renovation, our team manages flooring, tile, carpentry, plastering and more without requiring multiple contractors." },
+      { question: "How long does a remodeling project take?", answer: "A bathroom remodel typically takes 1 to 2 weeks. A kitchen can take 2 to 4 weeks. We provide a detailed timeline and milestone schedule before starting." },
+      { question: "Do you offer free estimates for remodeling projects?", answer: "Yes. We visit the site, assess the scope and provide a written estimate at no cost. There is no obligation to proceed after the estimate." },
+    ],
   },
   "deck-stairs": {
     title: "Deck Staining and Repair in New England",
     description:
       "Professional deck staining, sealing and repair across New England. Built to withstand harsh winters. Free estimate.",
     keywords: "deck staining New England, deck repair New England, deck sealing New England, outdoor deck refinishing MA",
+    breadcrumbs: [
+      { name: "Home", url: "https://tonyspaintingmv.com/" },
+      { name: "Services", url: "https://tonyspaintingmv.com/services" },
+      { name: "Deck and Stairs", url: "https://tonyspaintingmv.com/services/deck-stairs" },
+    ],
   },
   flooring: {
     title: "Flooring Installation in New England",
     description:
       "Hardwood, vinyl and LVP flooring installation across New England. Historic and modern homes. Free estimate.",
     keywords: "flooring installation New England, hardwood floors New England, vinyl flooring New England, floor refinishing MA",
+    breadcrumbs: [
+      { name: "Home", url: "https://tonyspaintingmv.com/" },
+      { name: "Services", url: "https://tonyspaintingmv.com/services" },
+      { name: "Flooring", url: "https://tonyspaintingmv.com/services/flooring" },
+    ],
   },
   "ceramic-tile": {
     title: "Ceramic Tile Installation in New England",
     description:
       "Precision tile work for bathrooms, kitchens and floors across New England. Clean lines, lasting results. Free estimate.",
     keywords: "tile installation New England, ceramic tile New England, bathroom tile New England, kitchen backsplash MA",
+    breadcrumbs: [
+      { name: "Home", url: "https://tonyspaintingmv.com/" },
+      { name: "Services", url: "https://tonyspaintingmv.com/services" },
+      { name: "Ceramic Tile", url: "https://tonyspaintingmv.com/services/ceramic-tile" },
+    ],
   },
   plastering: {
     title: "Plastering and Skim Coating in New England",
     description:
       "Crack repair, skim coating and plaster restoration across New England. Smooth walls, done properly. Free estimate.",
     keywords: "plastering New England, skim coating New England, plaster repair New England, drywall patching MA",
+    breadcrumbs: [
+      { name: "Home", url: "https://tonyspaintingmv.com/" },
+      { name: "Services", url: "https://tonyspaintingmv.com/services" },
+      { name: "Plastering", url: "https://tonyspaintingmv.com/services/plastering" },
+    ],
   },
   carpentry: {
     title: "Carpentry Services in New England",
     description:
       "Trim, moldings, built-ins and structural wood repairs across New England. Free estimate.",
     keywords: "carpentry New England, trim moldings New England, general carpentry New England, built-in shelving MA",
+    breadcrumbs: [
+      { name: "Home", url: "https://tonyspaintingmv.com/" },
+      { name: "Services", url: "https://tonyspaintingmv.com/services" },
+      { name: "Carpentry", url: "https://tonyspaintingmv.com/services/carpentry" },
+    ],
   },
   fence: {
     title: "Fence Installation and Repair in New England",
     description:
       "Wood and vinyl fence installation and repair across New England. Built to last through harsh winters. Free estimate.",
     keywords: "fence installation New England, fence repair New England, wood vinyl fence New England, fence contractor MA",
+    breadcrumbs: [
+      { name: "Home", url: "https://tonyspaintingmv.com/" },
+      { name: "Services", url: "https://tonyspaintingmv.com/services" },
+      { name: "Fence", url: "https://tonyspaintingmv.com/services/fence" },
+    ],
   },
   countertop: {
     title: "Countertop Installation in New England",
     description:
       "Kitchen and bathroom countertop installation across New England. Precise measurement, clean finish. Free estimate.",
     keywords: "countertop installation New England, kitchen countertop New England, bathroom vanity countertop New England",
+    breadcrumbs: [
+      { name: "Home", url: "https://tonyspaintingmv.com/" },
+      { name: "Services", url: "https://tonyspaintingmv.com/services" },
+      { name: "Countertop", url: "https://tonyspaintingmv.com/services/countertop" },
+    ],
   },
   "construction-cleaning": {
     title: "Construction Cleaning Services in New England",
     description:
       "Post-construction cleanup for residential and commercial spaces across New England. Ready to use from day one. Free estimate.",
     keywords: "construction cleaning New England, post construction cleanup New England, construction cleaning New England",
+    breadcrumbs: [
+      { name: "Home", url: "https://tonyspaintingmv.com/" },
+      { name: "Services", url: "https://tonyspaintingmv.com/services" },
+      { name: "Construction Cleaning", url: "https://tonyspaintingmv.com/services/construction-cleaning" },
+    ],
   },
   handyman: {
     title: "Handyman Services in New England",
     description:
       "Deck repair, fence, stairs and general repairs across New England. Small jobs done right. Free estimate.",
     keywords: "handyman New England, handyman services New England, property repairs New England, general repairs MA",
+    breadcrumbs: [
+      { name: "Home", url: "https://tonyspaintingmv.com/" },
+      { name: "Services", url: "https://tonyspaintingmv.com/services" },
+      { name: "Handyman Services", url: "https://tonyspaintingmv.com/services/handyman" },
+    ],
   },
 };
 
@@ -310,6 +387,8 @@ const ServiceDetail = () => {
           canonical={`/services/${slug}`}
           keywords={seo.keywords}
           schema={seo.schema}
+          breadcrumbs={seo.breadcrumbs}
+          faqs={seo.faqs}
         />
       )}
       <InnerHero
