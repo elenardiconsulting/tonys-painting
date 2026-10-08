@@ -82,7 +82,13 @@ export const AnimatedRoutes = () => {
             }
           />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/painting-contractor-edgartown" element={<Edgartown />} />
+          <Route path="/painting-contractor-falmouth" element={<Falmouth />} />
+          <Route path="/painting-contractor-hyannis" element={<Hyannis />} />
+          <Route path="/painting-contractor-chilmark" element={<Chilmark />} />
+          <Route path="/painting-contractor-west-tisbury" element={<WestTisbury />} />
           <Route path="*" element={<NotFound />} />
+
         </Routes>
       </motion.div>
     </AnimatePresence>
