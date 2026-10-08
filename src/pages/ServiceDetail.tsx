@@ -16,11 +16,11 @@ import deck08 from "@/assets/deck-project-07.jpg.asset.json";
 
 const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords: string; schema?: object; breadcrumbs?: { name: string; url: string }[]; faqs?: { question: string; answer: string }[] }> = {
   "interior-painting": {
-    title: "Interior Painting Services in New England",
+    title: "Interior Painting in Martha's Vineyard, MA",
     description:
-      "Professional interior painting for homes and businesses across New England. Clean, on schedule, 20 years of experience. Free estimate.",
+      "Professional interior painters serving Martha's Vineyard & Cape Cod. Clean work, on time, 20+ years experience. Free estimate — call 508-982-9675.",
     keywords:
-      "interior painting New England, interior painters New England, interior house painting New England, residential interior painters, room painting contractor MA",
+      "interior painting Martha's Vineyard MA, interior painters Cape Cod, house painters Martha's Vineyard, interior painting Edgartown, interior painting Falmouth MA",
     schema: {
       "@context": "https://schema.org",
       "@type": "Service",
@@ -43,11 +43,11 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
     ],
   },
   "exterior-painting": {
-    title: "Exterior Painting Services in New England",
+    title: "Exterior Painting in Martha's Vineyard, MA",
     description:
-      "Premium exterior painting built to handle New England weather. Serving New England since 2004. Benjamin Moore certified. Free estimate.",
+      "Premium exterior painting built for New England weather. Serving Martha's Vineyard & Cape Cod since 2004. Free estimate — call 508-982-9675.",
     keywords:
-      "exterior painting New England, exterior painters New England, exterior house painting New England, Benjamin Moore painters MA, siding painting contractor",
+      "exterior painting Martha's Vineyard MA, exterior painters Cape Cod, house painting Martha's Vineyard, exterior painting Edgartown, exterior painting Falmouth MA",
     schema: {
       "@context": "https://schema.org",
       "@type": "Service",
@@ -70,11 +70,11 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
     ],
   },
   remodeling: {
-    title: "Home Remodeling Services in New England",
+    title: "Home Remodeling in Martha's Vineyard, MA",
     description:
-      "Flooring, tile, plastering, carpentry and countertop installation across New England. One team for every job. Free estimate.",
+      "Full remodeling services in Martha's Vineyard & Cape Cod. Flooring, tile, carpentry & more. One team, one estimate. Free quote — call 508-982-9675.",
     keywords:
-      "home remodeling New England, remodeling contractor New England, flooring tile New England, kitchen bathroom remodel MA, carpentry contractor New England",
+      "home remodeling Martha's Vineyard MA, remodeling contractor Cape Cod, kitchen bathroom remodel Martha's Vineyard, flooring tile Martha's Vineyard MA",
     schema: {
       "@context": "https://schema.org",
       "@type": "Service",
