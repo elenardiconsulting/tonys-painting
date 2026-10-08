@@ -38,7 +38,7 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; h1: stri
       { name: "Interior Painting", url: "https://tonyspaintingmv.com/services/interior-painting" },
     ],
     faqs: [
-      { question: "How much does interior painting cost in New England?", answer: "Interior painting costs vary based on room size, ceiling height and number of coats. Most rooms range from $300 to $800. We provide free estimates with no obligation." },
+      { question: "How much does interior painting cost in Massachusetts?", answer: "Interior painting costs vary based on room size, ceiling height and number of coats. Most rooms range from $300 to $800. We provide free estimates with no obligation." },
       { question: "How long does an interior painting project take?", answer: "A single room typically takes one day. A full home interior takes 3 to 7 days depending on size and complexity. We provide a timeline before starting." },
       { question: "Do you move furniture before painting?", answer: "Yes. Our team moves and protects all furniture before starting. We cover floors and surfaces and move everything back when the job is done." },
       { question: "What paint brands do you use for interior projects?", answer: "We use Benjamin Moore and Sherwin-Williams premium interior paints. We also accept customer-supplied paint if you have a specific product in mind." },
@@ -67,7 +67,7 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; h1: stri
       { name: "Exterior Painting", url: "https://tonyspaintingmv.com/services/exterior-painting" },
     ],
     faqs: [
-      { question: "How much does exterior painting cost in New England?", answer: "Exterior painting costs depend on the size of the home, siding material and condition. Most homes range from $2,500 to $8,000. We provide free on-site estimates." },
+      { question: "How much does exterior painting cost in Massachusetts?", answer: "Exterior painting costs depend on the size of the home, siding material and condition. Most homes range from $2,500 to $8,000. We provide free on-site estimates." },
       { question: "What is the best time of year to paint exterior in New England?", answer: "Late spring through early fall is ideal. We paint when temperatures are consistently above 50 degrees Fahrenheit and conditions are dry. We work within safe weather windows year-round." },
       { question: "How long does exterior paint last in New England?", answer: "With proper preparation and premium paint, exterior paint lasts 7 to 10 years in New England. Proper surface prep is the most important factor in paint longevity." },
       { question: "Do you pressure wash before exterior painting?", answer: "Yes. Power washing and surface preparation are included in every exterior project. Clean, properly prepped surfaces are essential for paint to bond and last." },
