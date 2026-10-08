@@ -2,39 +2,32 @@ self.addEventListener('install', e => self.skipWaiting())
 
 self.addEventListener('activate', e => {
   e.waitUntil(
-    Promise.all([
-      clients.claim(),
-      clearBadgeNow()
-    ])
+    clients.claim()
   )
 })
 
-self.addEventListener('message', async e => {
-  if (e.data?.type === 'CLEAR_BADGE' || e.data?.type === 'APP_FOCUSED') {
-    await clearBadgeNow()
-  }
-})
-
-// Badge: usar navigator diretamente (sem self.)
+// Badge: usar navigator diretamente (sem self).
 // O contexto do Service Worker expoe navigator globalmente
 async function setAppBadgeNow(count) {
-  try {
-    if ('setAppBadge' in navigator) {
+  if (typeof navigator !== 'undefined' && 'setAppBadge' in navigator) {
+    try {
       await navigator.setAppBadge(count)
+    } catch(e) {
+      console.log('setAppBadge error:', e)
     }
-  } catch(e) {
-    console.log('setAppBadge error:', e)
   }
 }
 
 async function clearBadgeNow() {
-  try {
-    if ('clearAppBadge' in navigator) {
-      await navigator.clearAppBadge()
-    } else if ('setAppBadge' in navigator) {
-      await navigator.setAppBadge(0)
-    }
-  } catch(e) {}
+  if (typeof navigator !== 'undefined' && ('clearAppBadge' in navigator || 'setAppBadge' in navigator)) {
+    try {
+      if ('clearAppBadge' in navigator) {
+        await navigator.clearAppBadge()
+      } else {
+        await navigator.setAppBadge(0)
+      }
+    } catch(e) {}
+  }
 }
 
 self.addEventListener('push', async e => {
@@ -77,6 +70,3 @@ self.addEventListener('notificationclick', e => {
     ])
   )
 })
-
-// Limpar badge quando a janela ganha foco
-self.addEventListener('focus', () => clearBadgeNow())

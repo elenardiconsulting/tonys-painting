@@ -8,8 +8,12 @@ export const useLeads = () => {
 
   // Limpar badge ao abrir o dashboard
   useEffect(() => {
-    if ('clearAppBadge' in navigator) {
-      navigator.clearAppBadge()
+    if (typeof navigator !== 'undefined' && 'clearAppBadge' in navigator) {
+      try {
+        navigator.clearAppBadge()
+      } catch (e) {
+        // Badge API not supported or blocked; ignore
+      }
     }
   }, [])
 
