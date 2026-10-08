@@ -97,7 +97,7 @@ const Services = () => {
             name: "Tony's Painting and Remodeling",
             telephone: "+15089829675",
           },
-          areaServed: "New England, USA",
+          areaServed: "Massachusetts, USA",
           description:
             "Professional painting and remodeling services including interior painting, exterior painting, flooring, tile, carpentry and more.",
           offers: {
