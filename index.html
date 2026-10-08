@@ -2,30 +2,98 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="AHg_5AZIxoEwIVLPAHmOgGC1PyGrcmzyg187zXSvpvc" />
+
+    <!-- Preconnect para fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- Preload fonte critica -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" /></noscript>
+
+    <!-- Titulo e descricao padrao (cada pagina sobrescreve via Helmet) -->
     <title>Tony's Painting and Remodeling | New England</title>
     <meta name="description" content="Professional painting and remodeling across New England since 2004. Free estimates. Call 508 982 9675." />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="language" content="English" />
+
+    <!-- Indexacao -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large" />
+
+    <!-- Informacoes do autor e empresa -->
     <meta name="author" content="Tony's Painting and Remodeling" />
+    <meta name="language" content="en-US" />
+    <meta name="rating" content="general" />
+
+    <!-- Geo tags para SEO local -->
     <meta name="geo.region" content="US-MA" />
-    <meta name="geo.placename" content="New England, Massachusetts" />
+    <meta name="geo.placename" content="Martha's Vineyard, Massachusetts" />
     <meta name="geo.position" content="41.3805;-70.6453" />
     <meta name="ICBM" content="41.3805, -70.6453" />
+
+    <!-- Open Graph base (cada pagina sobrescreve via Helmet) -->
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/0zNrZXJbvKNmRRBhJfX3PJShfiD3/social-images/social-1777320625260-tonys_logo.webp" />
+    <meta property="og:site_name" content="Tony's Painting and Remodeling" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://tonyspaintingmv.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Tony's Painting and Remodeling - New England" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/0zNrZXJbvKNmRRBhJfX3PJShfiD3/social-images/social-1777320625260-tonys_logo.webp" />
+    <meta name="twitter:site" content="@tonyspainting_remodeling" />
+    <meta name="twitter:image" content="https://tonyspaintingmv.com/og-image.jpg" />
+
+    <!-- Schema WebSite com SearchAction -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Tony's Painting and Remodeling",
+      "url": "https://tonyspaintingmv.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://tonyspaintingmv.com/services?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- Schema Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Tony's Painting and Remodeling",
+      "url": "https://tonyspaintingmv.com",
+      "logo": "https://tonyspaintingmv.com/favicon.ico",
+      "telephone": "+15089829675",
+      "email": "Tonyspainting11@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Martha's Vineyard",
+        "addressRegion": "MA",
+        "addressCountry": "US"
+      },
+      "sameAs": [
+        "https://www.instagram.com/tonyspainting_remodeling/",
+        "https://www.facebook.com/tonyspaintingmvLLC/"
+      ]
+    }
+    </script>
+
+    <!-- PWA -->
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#C4291C" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="Tony's Dashboard" />
+    <meta name="apple-mobile-web-app-title" content="Tony's Painting" />
     <link rel="apple-touch-icon" href="/favicon.ico" />
+
     <!-- Meta Pixel Code -->
     <script>
 !function(f,b,e,v,n,t,s)
@@ -40,13 +108,13 @@ fbq('init', '1004158805431458');
 fbq('track', 'PageView');
     </script>
     <!-- End Meta Pixel Code -->
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MKRCEJ6GKG"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-MKRCEJ6GKG');
     </script>
   </head>
