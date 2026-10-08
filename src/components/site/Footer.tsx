@@ -125,6 +125,10 @@ const Footer = () => {
               { label: "Hyannis, MA", href: "/painting-contractor-hyannis" },
               { label: "Chilmark, MA", href: "/painting-contractor-chilmark" },
               { label: "West Tisbury, MA", href: "/painting-contractor-west-tisbury" },
+              { label: "West Bridgewater, MA", href: "/painting-contractor-west-bridgewater" },
+              { label: "Bourne, MA", href: "/painting-contractor-bourne" },
+              { label: "Pocasset, MA", href: "/painting-contractor-pocasset" },
+              { label: "Sandwich, MA", href: "/painting-contractor-sandwich" },
             ].map((l) => (
               <li key={l.label}>
                 <a href={l.href} className="text-background/80 hover:text-primary transition-colors">
