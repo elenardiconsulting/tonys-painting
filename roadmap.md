@@ -1,5 +1,5 @@
 ## Abertas
-- (nenhuma no momento)
+- Portfolio content expansion: add exact supplied details to nine collections and index; verify service links, preserved original presentation, regional text and word counts. No deploy.
 
 ## Concluídas
 - Pre-deploy fixes: homepage aggregateRating removed; Hero form heading changed h3 to h2; 38 ServiceDetail regional references and two paragraph dashes corrected; exact public/llms.txt added. Public-file handling verified and tsgo exited 0. No deploy. Browser heading verification could not complete.

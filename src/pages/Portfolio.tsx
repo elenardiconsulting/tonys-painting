@@ -42,14 +42,14 @@ const Portfolio = () => {
   return (
     <PageLayout>
       <SEO
-        title="Painting and Remodeling Portfolio | New England Projects"
-        description="Browse our work across New England. Interior, exterior, remodeling and deck projects since 2004."
+        title="Painting and Remodeling Portfolio | Massachusetts Projects"
+        description="Browse our work across Martha's Vineyard, Cape Cod and the South Shore. Interior, exterior, remodeling and deck projects in Massachusetts since 2004."
         canonical="/portfolio"
-        keywords="painting portfolio New England, painting projects New England, before after painting New England, remodeling projects MA"
+        keywords="painting portfolio Massachusetts, painting projects Martha's Vineyard, before after painting Cape Cod, remodeling projects MA"
       />
       <InnerHero
         title="Our work speaks for itself."
-        subtitle="20 years of projects across New England."
+        subtitle="20 years of projects across Massachusetts."
         crumbs={[{ label: "Home", to: "/" }, { label: "Portfolio" }]}
       />
 
@@ -150,6 +150,32 @@ const Portfolio = () => {
               </FadeUpSection>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* About our work */}
+      <section className="bg-background border-t border-border">
+        <div className="container py-12 md:py-16">
+          <FadeUpSection>
+            <div className="max-w-3xl">
+              <h2 className="font-display text-3xl md:text-4xl text-foreground leading-tight">
+                Twenty years of painting and remodeling in Massachusetts.
+              </h2>
+              <p className="mt-4 text-muted-foreground leading-relaxed">
+                Tony's Painting & Remodeling has been working in homes and commercial buildings across Massachusetts since 2004. Our portfolio is organized by the kind of work we do most: interior painting, exterior painting and siding, kitchen and bath remodeling, deck building and restoration, hardwood floor refinishing and commercial painting. Every collection on this page is a real project completed by our own crews, not stock photography.
+              </p>
+              <p className="mt-4 text-muted-foreground leading-relaxed">
+                Most of our work is on Martha's Vineyard, where the company started, and along Cape Cod and the South Shore, including Falmouth, Hyannis, Bourne, Sandwich, Pocasset and West Bridgewater. Island and coastal homes come with their own challenges: salt air, humidity, older construction and tight schedules around the summer season. The projects here show how we handle those conditions, from the preparation that goes into an exterior repaint to the finish work on cabinets, trim and floors.
+              </p>
+              <p className="mt-4 text-muted-foreground leading-relaxed">
+                Browse by category using the filters above, or go straight to the kind of project you are planning. Each collection includes a full photo gallery and a description of the scope, the materials and the process. If you want to see the service behind the work, visit our{" "}
+                <Link to="/services/interior-painting" className="text-primary hover:underline">interior painting</Link>,{" "}
+                <Link to="/services/exterior-painting" className="text-primary hover:underline">exterior painting</Link> and{" "}
+                <Link to="/services/remodeling" className="text-primary hover:underline">remodeling</Link> pages, or{" "}
+                <Link to="/contact" className="text-primary hover:underline">request a free estimate</Link> and we will come out to look at your project.
+              </p>
+            </div>
+          </FadeUpSection>
         </div>
       </section>
 
