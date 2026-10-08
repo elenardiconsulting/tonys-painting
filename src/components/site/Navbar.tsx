@@ -313,6 +313,26 @@ const Navbar = () => {
         </ul>
 
         <a
+          href="https://g.page/r/CRCRcjd7niVbEBM/review"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => setOpen(false)}
+          style={{
+            marginTop: "20px",
+            alignSelf: "flex-start",
+            color: "#C4291C",
+            fontFamily: "'Inter', sans-serif",
+            fontWeight: 500,
+            fontSize: "14px",
+            letterSpacing: "0.04em",
+            textTransform: "uppercase",
+            textDecoration: "none",
+          }}
+        >
+          Leave a Google Review →
+        </a>
+
+        <a
           href="/contact"
           onClick={() => setOpen(false)}
           style={{
