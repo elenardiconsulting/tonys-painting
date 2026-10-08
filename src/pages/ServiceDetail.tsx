@@ -16,9 +16,9 @@ import deck08 from "@/assets/deck-project-07.jpg.asset.json";
 
 const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords: string; schema?: object; breadcrumbs?: { name: string; url: string }[]; faqs?: { question: string; answer: string }[] }> = {
   "interior-painting": {
-    title: "Interior Painting in Martha's Vineyard, MA",
+    title: "Interior Painting in Martha's Vineyard | Tony's Painting",
     description:
-      "Professional interior painters serving Martha's Vineyard & Cape Cod. Clean work, on time, 20+ years experience. Free estimate — call 508-982-9675.",
+      "Professional interior painters serving Martha's Vineyard and Cape Cod. Clean work, on time, 20+ years experience. Free estimate. Call 508-982-9675.",
     keywords:
       "interior painting Martha's Vineyard MA, interior painters Cape Cod, house painters Martha's Vineyard, interior painting Edgartown, interior painting Falmouth MA",
     schema: {
@@ -43,9 +43,9 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
     ],
   },
   "exterior-painting": {
-    title: "Exterior Painting in Martha's Vineyard, MA",
+    title: "Exterior Painting in Martha's Vineyard | Tony's Painting",
     description:
-      "Premium exterior painting built for New England weather. Serving Martha's Vineyard & Cape Cod since 2004. Free estimate — call 508-982-9675.",
+      "Premium exterior painting built for New England weather. Serving Martha's Vineyard and Cape Cod since 2004. Free estimate. Call 508-982-9675.",
     keywords:
       "exterior painting Martha's Vineyard MA, exterior painters Cape Cod, house painting Martha's Vineyard, exterior painting Edgartown, exterior painting Falmouth MA",
     schema: {
@@ -70,9 +70,9 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
     ],
   },
   remodeling: {
-    title: "Home Remodeling in Martha's Vineyard, MA",
+    title: "Home Remodeling in Martha's Vineyard | Tony's Painting",
     description:
-      "Full remodeling services in Martha's Vineyard & Cape Cod. Flooring, tile, carpentry & more. One team, one estimate. Free quote — call 508-982-9675.",
+      "Full remodeling services in Martha's Vineyard and Cape Cod. Flooring, tile, carpentry and more. One team, one estimate. Free quote. Call 508-982-9675.",
     keywords:
       "home remodeling Martha's Vineyard MA, remodeling contractor Cape Cod, kitchen bathroom remodel Martha's Vineyard, flooring tile Martha's Vineyard MA",
     schema: {

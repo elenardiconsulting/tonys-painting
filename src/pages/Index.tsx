@@ -16,8 +16,8 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Painters & Remodelers | Martha's Vineyard, MA"
-        description="Licensed painting & remodeling contractor serving Martha's Vineyard and Cape Cod since 2004. Interior, exterior & more. Free estimate — call 508-982-9675."
+        title="Painters & Remodelers in Martha's Vineyard | Tony's Painting"
+        description="Licensed painting and remodeling contractor serving Martha's Vineyard and Cape Cod since 2004. Interior, exterior and more. Free estimate. Call 508-982-9675."
         canonical="/"
         keywords="painting contractor Martha's Vineyard MA, exterior painting Martha's Vineyard, interior painting Cape Cod, remodeling Martha's Vineyard, house painters Martha's Vineyard MA"
         schema={{
