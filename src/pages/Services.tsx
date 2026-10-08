@@ -4,6 +4,7 @@ import PageLayout from "@/components/site/PageLayout";
 import InnerHero from "@/components/site/InnerHero";
 import FadeUpSection from "@/components/site/FadeUpSection";
 import RippleButton from "@/components/site/RippleButton";
+import { responsiveSource } from "@/lib/responsiveImage";
 
 const services = [
   {
@@ -124,7 +125,8 @@ const Services = () => {
                   <article className="service-image-card">
                     <div className="service-image-wrap">
                       <img
-                        src={service.image}
+                        {...responsiveSource(service.image)}
+                        sizes="(max-width: 767px) 85vw, 33vw"
                         alt={service.name}
                         loading="lazy"
                         decoding="async"
