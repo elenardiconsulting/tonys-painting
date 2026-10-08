@@ -1,5 +1,5 @@
 ## Abertas
-- Responsive images remaining: using rounded-aspect variants on auto-sized logos and non-exact-ratio masonry originals requires permission for an explicit aspect-ratio style or subpixel size changes; currently preserve originals for these images to honor unchanged styles/layout.
+- Responsive image follow-up: enable all generated variants under the accepted below-1px tolerance; verify selection, layout and unchanged originals. No deploy.
 
 ## Concluídas
 - Responsive images: generated WebP variants and static manifest/map idempotently; updated requested components and removed only dead Hero import; original fallback URLs and existing styles/copy/videos/tracking preserved. Five resolver tests pass; automatic build log reports OK. Ten Chromium screenshot pairs and paired same-session photo-only comparisons captured; all measured image/heading/section/footer bounds unchanged; lightbox open/next/close works desktop/mobile. No deploy. Manual build/typecheck prohibited by environment instructions; no exit codes claimed.

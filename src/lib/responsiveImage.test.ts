@@ -22,7 +22,10 @@ describe("responsive images", () => {
   it("recognizes imported logos even when filenames are hashed", () => {
     expect(responsive(tonysLogo).src).toBe(tonysLogo);
     expect(responsiveSource(tonysLogo).srcSet).toContain("/images/r/tonys-logo-240.webp 240w");
-    expect(responsive(tonysLogo).srcSet).toBeUndefined();
+    expect(responsive(tonysLogo).srcSet).toBe(responsiveSource(tonysLogo).srcSet);
+    expect(responsive("/images/project-09.jpg").srcSet).toBe(
+      responsiveMap["project-09"].widths.map((w) => `/images/r/project-09-${w}.webp ${w}w`).join(", "),
+    );
   });
   it("does not add intrinsic attributes to fixed crops or lightboxes", () => {
     const source = responsiveSource("/images/project-01.jpg");
