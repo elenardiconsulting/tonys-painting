@@ -1,4 +1,8 @@
 import { useState, useRef, useEffect } from "react";
+import reel01Asset from "@/assets/videos/reel-01.mp4.asset.json";
+import reel02Asset from "@/assets/videos/reel-02.mp4.asset.json";
+import reel03Asset from "@/assets/videos/reel-03.mp4.asset.json";
+import reel04Asset from "@/assets/videos/reel-04.mp4.asset.json";
 
 /**
  * Matches the CSS breakpoint that toggles .ig-desktop / .ig-mobile (src/index.css, 768px).
@@ -20,10 +24,10 @@ const useIsDesktop = (): boolean | null => {
 };
 
 const reels = [
-  { video: "/videos/reel-01.mp4", url: "https://www.instagram.com/reel/DXnh0eujkbr/" },
-  { video: "/videos/reel-02.mp4", url: "https://www.instagram.com/reel/DXfU0FhCax4/" },
-  { video: "/videos/reel-03.mp4", url: "https://www.instagram.com/reel/DXk-G4QDmP5/" },
-  { video: "/videos/reel-04.mp4", url: "https://www.instagram.com/reel/DXWuvwnjjIX/" },
+  { video: reel01Asset.url, url: "https://www.instagram.com/reel/DXnh0eujkbr/" },
+  { video: reel02Asset.url, url: "https://www.instagram.com/reel/DXfU0FhCax4/" },
+  { video: reel03Asset.url, url: "https://www.instagram.com/reel/DXk-G4QDmP5/" },
+  { video: reel04Asset.url, url: "https://www.instagram.com/reel/DXWuvwnjjIX/" },
 ];
 
 const INSTAGRAM_PROFILE = "https://www.instagram.com/tonyspainting_remodeling/";

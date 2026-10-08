@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import FadeUpSection from "./FadeUpSection";
+import showreelAsset from "@/assets/videos/tonys-showreel.mp4.asset.json";
 
 const VideoShowcase = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -122,7 +123,7 @@ const VideoShowcase = () => {
           >
             <video
               ref={videoRef}
-              src="/videos/tonys-showreel.mp4"
+              src={showreelAsset.url}
               controls
               muted
               preload="none"
