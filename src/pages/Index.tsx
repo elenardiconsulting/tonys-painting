@@ -16,7 +16,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Professional House Painting & Remodeling in Massachusetts | Tony's"
+        title="House Painting & Remodeling in Massachusetts | Tony's"
         description="Tony's Painting & Remodeling serves Martha's Vineyard, Cape Cod and the South Shore. Interior painting, exterior painting, cabinet refinishing and remodeling since 2004. Request a free estimate."
         canonical="/"
         keywords="house painters Massachusetts, interior painting Martha's Vineyard, exterior painting Cape Cod, painting contractor South Shore, home remodeling Massachusetts, cabinet refinishing MA"
