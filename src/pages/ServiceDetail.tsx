@@ -387,6 +387,8 @@ const ServiceDetail = () => {
           canonical={`/services/${slug}`}
           keywords={seo.keywords}
           schema={seo.schema}
+          breadcrumbs={seo.breadcrumbs}
+          faqs={seo.faqs}
         />
       )}
       <InnerHero
