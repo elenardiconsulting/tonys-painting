@@ -18,6 +18,12 @@ import ThankYou from "./pages/ThankYou.tsx";
 import LPInteriorPainting from "./pages/lp/InteriorPainting.tsx";
 import LPExteriorPainting from "./pages/lp/ExteriorPainting.tsx";
 import LPRemodeling from "./pages/lp/Remodeling.tsx";
+import Edgartown from "./pages/city/Edgartown.tsx";
+import Falmouth from "./pages/city/Falmouth.tsx";
+import Hyannis from "./pages/city/Hyannis.tsx";
+import Chilmark from "./pages/city/Chilmark.tsx";
+import WestTisbury from "./pages/city/WestTisbury.tsx";
+
 import NotFound from "./pages/NotFound.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
 import DashboardPage from "./pages/DashboardPage.tsx";
