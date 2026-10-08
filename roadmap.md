@@ -1,5 +1,5 @@
 ## Abertas
-- (nenhuma no momento)
+- Pre-deploy fixes: remove homepage aggregateRating, correct skipped heading tag, replace ServiceDetail New England references and two paragraph dashes, add exact public/llms.txt; verify scope and public-file handling without deploying.
 
 ## Concluídas
 - Requested SEO copy updated in 18 source files. Syntax, exact service values and unchanged styles/classes/URLs/images verified; existing test passed and build logs show success. Browser verification was attempted but Chromium crashed.
