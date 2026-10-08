@@ -92,7 +92,7 @@ const GlassForm = () => {
       }}
     >
       <div>
-        <h3
+        <h2
           style={{
             fontFamily: "'Playfair Display', serif",
             fontWeight: 700,
@@ -102,7 +102,7 @@ const GlassForm = () => {
           }}
         >
           Request a Free Estimate
-        </h3>
+        </h2>
         <p
           style={{
             fontFamily: "'Montserrat', sans-serif",
