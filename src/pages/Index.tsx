@@ -22,8 +22,8 @@ const Index = () => {
         keywords="house painters Massachusetts, interior painting Martha's Vineyard, exterior painting Cape Cod, painting contractor South Shore, home remodeling Massachusetts, cabinet refinishing MA"
         schema={{
           "@context": "https://schema.org",
-          "@type": "LocalBusiness",
-          name: "Tony's Painting and Remodeling",
+"@type": "PaintingContractor",
+          name: "Tony's Painting & Remodeling",
           description:
             "Licensed residential painting and remodeling contractor serving Martha's Vineyard, Cape Cod and the South Shore of Massachusetts since 2004.",
           url: "https://tonyspaintingmv.com",
@@ -45,19 +45,20 @@ const Index = () => {
             longitude: -70.6453,
           },
           areaServed: [
-            { "@type": "Place", name: "New England" },
-            { "@type": "Place", name: "Massachusetts" },
-            { "@type": "Place", name: "Connecticut" },
-            { "@type": "Place", name: "Rhode Island" },
-            { "@type": "Place", name: "New Hampshire" },
+            { "@type": "State", name: "Massachusetts" },
           ],
           serviceArea: [
+            { "@type": "City", name: "Martha's Vineyard", containedInPlace: { "@type": "State", name: "Massachusetts" } },
             { "@type": "City", name: "Edgartown", containedInPlace: { "@type": "State", name: "Massachusetts" } },
             { "@type": "City", name: "Chilmark", containedInPlace: { "@type": "State", name: "Massachusetts" } },
             { "@type": "City", name: "West Tisbury", containedInPlace: { "@type": "State", name: "Massachusetts" } },
+            { "@type": "City", name: "Vineyard Haven", containedInPlace: { "@type": "State", name: "Massachusetts" } },
             { "@type": "City", name: "Falmouth", containedInPlace: { "@type": "State", name: "Massachusetts" } },
+            { "@type": "City", name: "Bourne", containedInPlace: { "@type": "State", name: "Massachusetts" } },
             { "@type": "City", name: "Hyannis", containedInPlace: { "@type": "State", name: "Massachusetts" } },
-            { "@type": "City", name: "Martha's Vineyard", containedInPlace: { "@type": "State", name: "Massachusetts" } },
+            { "@type": "City", name: "Cape Cod", containedInPlace: { "@type": "State", name: "Massachusetts" } },
+            { "@type": "City", name: "West Bridgewater", containedInPlace: { "@type": "State", name: "Massachusetts" } },
+            { "@type": "City", name: "South Shore", containedInPlace: { "@type": "State", name: "Massachusetts" } },
           ],
           openingHoursSpecification: {
             "@type": "OpeningHoursSpecification",
