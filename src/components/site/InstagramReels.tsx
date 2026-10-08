@@ -1,5 +1,24 @@
 import { useState, useRef, useEffect } from "react";
 
+/**
+ * Matches the CSS breakpoint that toggles .ig-desktop / .ig-mobile (src/index.css, 768px).
+ * Returns null during SSR/prerender and the first client render so hydration markup
+ * matches the server HTML (both blocks); resolves to true/false after mount.
+ */
+const IG_DESKTOP_QUERY = "(min-width: 768px)";
+const useIsDesktop = (): boolean | null => {
+  const [isDesktop, setIsDesktop] = useState<boolean | null>(null);
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return;
+    const mql = window.matchMedia(IG_DESKTOP_QUERY);
+    const update = () => setIsDesktop(mql.matches);
+    update();
+    mql.addEventListener("change", update);
+    return () => mql.removeEventListener("change", update);
+  }, []);
+  return isDesktop;
+};
+
 const reels = [
   { video: "/videos/reel-01.mp4", url: "https://www.instagram.com/reel/DXnh0eujkbr/" },
   { video: "/videos/reel-02.mp4", url: "https://www.instagram.com/reel/DXfU0FhCax4/" },
@@ -60,7 +79,7 @@ const ReelCard = ({ reel }: { reel: typeof reels[0] }) => {
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="none"
         style={{
           width: "100%",
           height: "100%",
@@ -99,6 +118,7 @@ const ReelCard = ({ reel }: { reel: typeof reels[0] }) => {
 const InstagramReels = () => {
   const sliderRef = useRef<HTMLDivElement | null>(null);
   const [active, setActive] = useState(0);
+  const isDesktop = useIsDesktop();
 
   useEffect(() => {
     const el = sliderRef.current;
@@ -106,7 +126,8 @@ const InstagramReels = () => {
     const onScroll = () => setActive(Math.round(el.scrollLeft / el.offsetWidth));
     el.addEventListener("scroll", onScroll, { passive: true });
     return () => el.removeEventListener("scroll", onScroll);
-  }, []);
+    // Re-attach if the mobile slider mounts after a breakpoint change.
+  }, [isDesktop]);
 
   const Avatar = (
     <a
@@ -230,6 +251,7 @@ const InstagramReels = () => {
       </div>
 
       {/* DESKTOP: 4 colunas */}
+      {isDesktop !== false && (
       <div className="ig-desktop">
         <div
           className="container"
@@ -249,8 +271,10 @@ const InstagramReels = () => {
           ))}
         </div>
       </div>
+      )}
 
       {/* MOBILE: slider 1 por vez */}
+      {isDesktop !== true && (
       <div className="ig-mobile">
         <div
           ref={sliderRef}
@@ -307,6 +331,7 @@ const InstagramReels = () => {
           ))}
         </div>
       </div>
+      )}
     </section>
   );
 };
