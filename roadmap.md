@@ -1,4 +1,5 @@
 ## Abertas
+- Remaining responsive images: wire eligible site/page callers; verify services image selection and resolver tests. No deploy.
 
 ## Concluídas
 - Responsive image follow-up: exact-ratio filter removed; all generated widths used with original fallbacks. Five tests pass; automatic build OK. Six Chromium comparisons show unchanged body heights and max raw delta 0.90625px (rounded boxes produce 1.0px). In-scope local gallery/cover/logo images select WebP; untouched ServicesPreview images and externally blocked covers remain exceptions. Originals byte-identical to HEAD; no deploy. Manual builds/typechecks not run per environment restrictions.
