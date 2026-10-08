@@ -4,8 +4,8 @@ import App from "./App.tsx";
 import { captureEarlyInput, replayEarlyInput } from "./lib/replayEarlyInput";
 import "./index.css";
 
-// Register Service Worker for PWA
-if ('serviceWorker' in navigator) {
+// Register Service Worker for PWA (dashboard only; public pages must not register it)
+if ('serviceWorker' in navigator && window.location.pathname.startsWith('/dashboard')) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(registration => {
