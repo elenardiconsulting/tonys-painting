@@ -1,0 +1,1 @@
+Portfolio collection detail content is stored with its collection in the shared portfolio data model and rendered conditionally on collection pages, keeping gallery data and project copy in one source of truth.

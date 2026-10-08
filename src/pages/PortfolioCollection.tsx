@@ -166,6 +166,31 @@ const PortfolioCollectionPage = () => {
         </div>
       </section>
 
+      {collection.details && (
+        <section className="bg-background border-t border-border">
+          <div className="container py-12 md:py-16">
+            <FadeUpSection>
+              <div className="max-w-3xl">
+                <h2 className="font-display text-3xl md:text-4xl text-foreground leading-tight">
+                  {collection.details.heading}
+                </h2>
+                {collection.details.paragraphs.map((p) => (
+                  <p key={p} className="mt-4 text-muted-foreground leading-relaxed">
+                    {p}
+                  </p>
+                ))}
+                <Link
+                  to={collection.details.serviceTo}
+                  className="inline-flex items-center gap-2 text-sm text-primary hover:underline mt-6"
+                >
+                  Learn more about our {collection.details.serviceLabel} service
+                </Link>
+              </div>
+            </FadeUpSection>
+          </div>
+        </section>
+      )}
+
       {/* Prev / Next collection */}
       <section className="bg-background border-t border-border">
         <div className="container py-12 grid gap-4 md:grid-cols-2">
