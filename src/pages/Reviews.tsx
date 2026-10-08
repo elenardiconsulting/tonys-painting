@@ -57,9 +57,9 @@ const Reviews = () => {
     <PageLayout>
       <SEO
         title="5-Star Reviews | Tony's Painting and Remodeling"
-        description="Real Google reviews from clients across New England. See why Tony's is the most trusted painting company in the region."
+        description="Real Google reviews from clients across Martha's Vineyard, Cape Cod and the South Shore. See why homeowners in Massachusetts trust Tony's Painting & Remodeling."
         canonical="/reviews"
-        keywords="Tony's Painting reviews, painting company reviews New England, best painters New England, 5 star painting contractor MA"
+        keywords="Tony's Painting reviews, painting company reviews Massachusetts, best painters Massachusetts, 5 star painting contractor MA"
         schema={{
           "@context": "https://schema.org",
           "@type": "LocalBusiness",

@@ -46,13 +46,13 @@ const About = () => {
         title="About Tony's Painting & Remodeling | Licensed MA Contractor Since 2004"
         description="Tony's Painting & Remodeling was founded in 2004 by Otoniel Santos. We serve Martha's Vineyard, Cape Cod and the South Shore with interior and exterior painting, remodeling and more."
         canonical="/about"
-        keywords="Tony's Painting history, painting company New England, Otoniel Santos painter, painting remodeling New England since 2004"
+        keywords="Tony's Painting history, painting company Massachusetts, Otoniel Santos painter, painting remodeling Massachusetts since 2004"
         schema={{
           "@context": "https://schema.org",
           "@type": "AboutPage",
           name: "About Tony's Painting and Remodeling",
           description:
-            "Founded in 2004 by Otoniel Santos in New England, serving New England for over 20 years.",
+            "Founded in 2004 by Otoniel Santos on Martha's Vineyard, serving Massachusetts for over 20 years.",
           mainEntity: {
             "@type": "LocalBusiness",
             name: "Tony's Painting and Remodeling",

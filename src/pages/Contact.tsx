@@ -49,8 +49,10 @@ const Contact = () => {
             email: "Tonyspainting11@gmail.com",
             address: {
               "@type": "PostalAddress",
-              addressLocality: "New England",
+              streetAddress: "11 Cook Rd",
+              addressLocality: "Vineyard Haven",
               addressRegion: "MA",
+              postalCode: "02568",
               addressCountry: "US",
             },
           },

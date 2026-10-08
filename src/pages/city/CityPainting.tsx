@@ -61,12 +61,6 @@ const CityPainting = ({
             addressCountry: "US",
           },
           areaServed: { "@type": "City", name: city },
-          aggregateRating: {
-            "@type": "AggregateRating",
-            ratingValue: "5",
-            reviewCount: "7",
-            bestRating: "5",
-          },
           hasOfferCatalog: {
             "@type": "OfferCatalog",
             name: "Painting and Remodeling Services",
