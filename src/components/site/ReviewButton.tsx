@@ -13,6 +13,9 @@ const ReviewButton = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Escondido no mobile: o review fica no footer e no menu do site.
+  if (isMobile) return null;
+
   return (
     <a
       href="https://g.page/r/CRCRcjd7niVbEBM/review"
