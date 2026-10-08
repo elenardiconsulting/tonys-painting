@@ -49,6 +49,14 @@ const Index = () => {
             { "@type": "Place", name: "Rhode Island" },
             { "@type": "Place", name: "New Hampshire" },
           ],
+          serviceArea: [
+            { "@type": "City", name: "Edgartown", containedInPlace: { "@type": "State", name: "Massachusetts" } },
+            { "@type": "City", name: "Chilmark", containedInPlace: { "@type": "State", name: "Massachusetts" } },
+            { "@type": "City", name: "West Tisbury", containedInPlace: { "@type": "State", name: "Massachusetts" } },
+            { "@type": "City", name: "Falmouth", containedInPlace: { "@type": "State", name: "Massachusetts" } },
+            { "@type": "City", name: "Hyannis", containedInPlace: { "@type": "State", name: "Massachusetts" } },
+            { "@type": "City", name: "Martha's Vineyard", containedInPlace: { "@type": "State", name: "Massachusetts" } },
+          ],
           openingHoursSpecification: {
             "@type": "OpeningHoursSpecification",
             dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
