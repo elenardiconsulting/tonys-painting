@@ -28,7 +28,7 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; h1: stri
       "@type": "Service",
       name: "Interior Painting",
       provider: { "@type": "LocalBusiness", name: "Tony's Painting and Remodeling", telephone: "+15089829675" },
-      areaServed: "New England, USA",
+      areaServed: "Massachusetts, USA",
       description: "Interior painting for residential and commercial spaces across New England. Walls, ceilings, trim, accent walls and more.",
       offers: { "@type": "Offer", availability: "https://schema.org/InStock", priceCurrency: "USD" },
     },

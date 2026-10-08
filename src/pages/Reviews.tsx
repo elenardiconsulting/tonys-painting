@@ -60,6 +60,19 @@ const Reviews = () => {
         description="Real Google reviews from clients across New England. See why Tony's is the most trusted painting company in the region."
         canonical="/reviews"
         keywords="Tony's Painting reviews, painting company reviews New England, best painters New England, 5 star painting contractor MA"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: "Tony's Painting & Remodeling",
+          url: "https://tonyspaintingmv.com",
+          telephone: "+15089829675",
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "5",
+            reviewCount: "7",
+            bestRating: "5",
+          },
+        }}
       />
       <InnerHero
         title="What our clients say."
