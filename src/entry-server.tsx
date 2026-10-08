@@ -20,7 +20,13 @@ export const sitemapRoutes = [
   "/about",
   "/reviews",
   "/contact",
+  "/painting-contractor-edgartown",
+  "/painting-contractor-falmouth",
+  "/painting-contractor-hyannis",
+  "/painting-contractor-chilmark",
+  "/painting-contractor-west-tisbury",
 ];
+
 
 // Área privada: recebe uma página vazia (sem conteúdo da home) e noindex.
 export const privateRoutes = ["/dashboard", "/login"];

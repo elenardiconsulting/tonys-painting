@@ -18,6 +18,12 @@ import ThankYou from "./pages/ThankYou.tsx";
 import LPInteriorPainting from "./pages/lp/InteriorPainting.tsx";
 import LPExteriorPainting from "./pages/lp/ExteriorPainting.tsx";
 import LPRemodeling from "./pages/lp/Remodeling.tsx";
+import Edgartown from "./pages/city/Edgartown.tsx";
+import Falmouth from "./pages/city/Falmouth.tsx";
+import Hyannis from "./pages/city/Hyannis.tsx";
+import Chilmark from "./pages/city/Chilmark.tsx";
+import WestTisbury from "./pages/city/WestTisbury.tsx";
+
 import NotFound from "./pages/NotFound.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
 import DashboardPage from "./pages/DashboardPage.tsx";
@@ -76,7 +82,13 @@ export const AnimatedRoutes = () => {
             }
           />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/painting-contractor-edgartown" element={<Edgartown />} />
+          <Route path="/painting-contractor-falmouth" element={<Falmouth />} />
+          <Route path="/painting-contractor-hyannis" element={<Hyannis />} />
+          <Route path="/painting-contractor-chilmark" element={<Chilmark />} />
+          <Route path="/painting-contractor-west-tisbury" element={<WestTisbury />} />
           <Route path="*" element={<NotFound />} />
+
         </Routes>
       </motion.div>
     </AnimatePresence>
