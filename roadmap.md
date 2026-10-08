@@ -1,5 +1,5 @@
 ## Abertas
-- (nenhuma no momento)
+- Responsive images: capture baseline, generate WebP variants and maps, wire requested image elements without visual changes, compare screenshots and verify Chromium. No deploy.
 
 ## Concluídas
 - Portfolio content expansion: exact supplied details added to nine collections and index; existing classes/images/animations/data preserved; service links confirmed including deck-stairs; zero New England matches; paragraph word counts reported; all nine pages and filter/lightbox/service-link flow verified in Firefox, mobile overflow check passed, automatic build OK. No deploy. Manual typecheck not run under environment restrictions.

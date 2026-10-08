@@ -1,3 +1,4 @@
+import { responsive, responsiveSource } from "@/lib/responsiveImage";
 import { useCallback, useEffect, useRef, useState, type TouchEvent as ReactTouchEvent } from "react";
 import { Link, useParams } from "react-router-dom";
 import { X, ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react";
@@ -152,7 +153,8 @@ const PortfolioCollectionPage = () => {
                     className="group block w-full overflow-hidden rounded-[10px] bg-stone"
                   >
                     <img
-                      src={img.src}
+                      {...responsive(img.src)}
+                      sizes="(max-width: 767px) 50vw, 33vw"
                       alt={img.alt}
                       decoding="async"
                       loading={index < 6 ? "eager" : "lazy"}
@@ -282,7 +284,8 @@ const PortfolioCollectionPage = () => {
             onTouchEnd={onTouchEnd}
           >
             <img
-              src={current.src}
+              {...responsiveSource(current.src)}
+              sizes="100vw"
               alt={current.alt}
               className="w-auto max-w-full max-h-[65vh] object-contain"
             />

@@ -1,3 +1,4 @@
+import { responsiveSource } from "@/lib/responsiveImage";
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import FadeUpSection from "@/components/site/FadeUpSection";
@@ -61,7 +62,8 @@ const AboutPhotoSlideshow = () => {
         {people.map((person, index) => (
           <img
             key={index}
-            src={person.image}
+            {...responsiveSource(person.image)}
+            sizes="(max-width: 767px) 200px, 300px"
             alt={person.name}
             style={{
               position: "absolute",

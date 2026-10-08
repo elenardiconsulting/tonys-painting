@@ -1,3 +1,4 @@
+import { responsiveSource } from "@/lib/responsiveImage";
 import { useState, useRef, useEffect } from "react";
 import FadeUpSection from "@/components/site/FadeUpSection";
 
@@ -75,7 +76,8 @@ const PortfolioPreview = () => {
                 className="portfolio-item group relative aspect-[4/5] bg-background overflow-hidden"
               >
                 <img
-                  src={p.src}
+                  {...responsiveSource(p.src)}
+                  sizes="(max-width: 767px) 90vw, 33vw"
                   alt={p.alt}
                   loading={i < 2 ? "eager" : "lazy"}
                   // @ts-expect-error fetchpriority is valid HTML
@@ -107,7 +109,8 @@ const PortfolioPreview = () => {
                 className="portfolio-slide"
               >
                 <img
-                  src={p.src}
+                  {...responsiveSource(p.src)}
+                  sizes="(max-width: 767px) 90vw, 33vw"
                   alt={p.alt}
                   loading={i < 2 ? "eager" : "lazy"}
                   // @ts-expect-error fetchpriority is valid HTML

@@ -1,3 +1,4 @@
+import { responsive } from "@/lib/responsiveImage";
 import tonysLogo from "@/assets/tonys-logo.png";
 import elenardiLogo from "@/assets/elenardi-midia-logo.png";
 import { Instagram, Facebook } from "lucide-react";
@@ -17,7 +18,8 @@ const Footer = () => {
         <div>
           <a href="/" className="inline-block" aria-label="Tony's Remodeling home">
             <img
-              src={tonysLogo}
+              {...responsive(tonysLogo)}
+              sizes="210px"
               alt="Tony's Remodeling - Painting and Carpentry"
               className="h-[42px] md:h-[56px] w-auto object-contain"
             />
@@ -339,7 +341,8 @@ const Footer = () => {
           rel="noopener noreferrer"
         >
           <img
-            src={elenardiLogo}
+            {...responsive(elenardiLogo)}
+            sizes="82px"
             alt="Elenardi Mídia"
             style={{
               height: '24px',

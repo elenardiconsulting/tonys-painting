@@ -1,3 +1,4 @@
+import { responsiveSource } from "@/lib/responsiveImage";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { Check } from "lucide-react";
 import SEO from "@/components/SEO";
@@ -521,7 +522,7 @@ const ServiceDetail = () => {
                       key={i}
                       className="aspect-[4/5] w-[82%] sm:w-[70%] shrink-0 snap-center bg-background overflow-hidden rounded-sm"
                     >
-                      <img src={src} alt={`Tony's ${service.name} project detail`} className="w-full h-full object-cover" loading="lazy" decoding="async" width={800} height={1000} style={{ objectPosition: "center" }} />
+                      <img {...responsiveSource(src)} sizes="(max-width: 767px) 50vw, 33vw" alt={`Tony's ${service.name} project detail`} className="w-full h-full object-cover" loading="lazy" decoding="async" width={800} height={1000} style={{ objectPosition: "center" }} />
                     </div>
                   ))}
                 </div>
@@ -532,7 +533,7 @@ const ServiceDetail = () => {
                       key={i}
                       className="aspect-[4/5] bg-background overflow-hidden"
                     >
-                      <img src={src} alt={`Tony's ${service.name} project detail`} className="w-full h-full object-cover" loading="lazy" decoding="async" width={800} height={1000} style={{ objectPosition: "center" }} />
+                      <img {...responsiveSource(src)} sizes="(max-width: 767px) 50vw, 33vw" alt={`Tony's ${service.name} project detail`} className="w-full h-full object-cover" loading="lazy" decoding="async" width={800} height={1000} style={{ objectPosition: "center" }} />
                     </div>
                   ))}
                 </div>
