@@ -66,12 +66,6 @@ const Reviews = () => {
           name: "Tony's Painting & Remodeling",
           url: "https://tonyspaintingmv.com",
           telephone: "+15089829675",
-          aggregateRating: {
-            "@type": "AggregateRating",
-            ratingValue: "5",
-            reviewCount: "7",
-            bestRating: "5",
-          },
         }}
       />
       <InnerHero
