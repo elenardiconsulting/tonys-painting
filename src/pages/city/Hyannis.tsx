@@ -4,11 +4,11 @@ const Hyannis = () => (
     city="Hyannis"
     region="MA"
     slug="painting-contractor-hyannis"
-    headline="Painting contractor in Hyannis, MA."
-    description="Interior and exterior painting, remodeling and handyman services for homeowners in Hyannis and Barnstable County. Free estimates. Licensed and insured."
-    seoTitle="Painting Contractor in Hyannis MA | Tony's Painting and Remodeling"
-    seoDescription="Licensed painting contractor serving Hyannis, MA since 2004. Interior painting, exterior painting, remodeling and carpentry. Free estimates. Call 508-982-9675."
-    keywords="painting contractor Hyannis MA, interior painting Hyannis, exterior painting Hyannis, house painters Hyannis Massachusetts, painting contractor Barnstable"
+    headline="House painters and remodeling contractor in Hyannis, MA."
+    description="Tony's Painting & Remodeling serves Hyannis and Barnstable County. Interior painting, exterior painting, carpentry and remodeling for homeowners. Free estimates since 2004."
+    seoTitle="House Painters in Hyannis MA | Tony's Painting & Remodeling"
+    seoDescription="Interior and exterior painting, carpentry and remodeling for homeowners in Hyannis, MA. Licensed contractor serving Barnstable County since 2004. Free estimates. Call 508-982-9675."
+    keywords="house painters Hyannis MA, interior painting Hyannis, exterior painting Hyannis, painting contractor Hyannis MA, Barnstable County painting contractor"
     nearby={["Falmouth", "Edgartown", "Chilmark", "West Tisbury"]}
   />
 );

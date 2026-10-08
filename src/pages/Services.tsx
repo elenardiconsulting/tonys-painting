@@ -8,73 +8,73 @@ import RippleButton from "@/components/site/RippleButton";
 const services = [
   {
     name: 'Interior Painting',
-    description: 'Refined interior finishes for every room, from a single accent wall to your entire home.',
+    description: "Wall, ceiling and trim painting for every room. We protect your floors and furniture and do a final walkthrough with you before we leave.",
     href: '/services/interior-painting',
     image: '/images/interior-04.jpg',
   },
   {
     name: 'Exterior Painting',
-    description: 'Premium coatings built to handle New England weather, applied with proper prep and care.',
+    description: "Siding, trim and surface prep built for New England weather. We use exterior coatings rated for coastal and inland climates.",
     href: '/services/exterior-painting',
     image: '/images/project-13.jpg',
   },
   {
     name: 'Remodeling',
-    description: 'Full-scope remodeling for kitchens, bathrooms and living spaces across New England.',
+    description: "Kitchen, bathroom and living space remodeling with one crew handling flooring, tile, plastering and carpentry.",
     href: '/services/remodeling',
     image: '/images/remodeling-02.jpg',
   },
   {
     name: 'Flooring',
-    description: 'Hardwood installation, refinishing and restoration that transforms any space.',
+    description: "Hardwood installation, refinishing and restoration. We check the subfloor, sand evenly and apply a durable finish coat.",
     href: '/services/flooring',
     image: '/images/flooring-01.jpg',
   },
   {
     name: 'Ceramic Tile',
-    description: 'Precision tile work for bathrooms, kitchens and floors. Clean lines, lasting results.',
+    description: "Bathroom and kitchen tile installed with level lines and sealed grout. Precision from layout through final clean.",
     href: '/services/ceramic-tile',
     image: '/images/project-04.jpg',
   },
   {
     name: 'Deck and Stairs',
-    description: 'Staining, sealing and repair for decks and stairs built to withstand New England winters.',
+    description: "Deck cleaning, sanding, staining and repair for wood that holds up through the seasons.",
     href: '/services/deck-stairs',
     image: '/images/project-07.jpg',
   },
   {
     name: 'General Carpentry',
-    description: 'Trim, moldings, built-ins and structural wood repairs done with care and precision.',
+    description: "Trim, moldings, built-ins and wood repairs done with clean cuts and proper fastening.",
     href: '/services/carpentry',
     image: '/images/flooring-02.jpg',
   },
   {
     name: 'Plastering',
-    description: 'Crack repair, skim coating and plaster restoration for walls that look brand new.',
+    description: "Crack repair, skim coating and plaster restoration for walls that were never meant to look like that.",
     href: '/services/plastering',
     image: '/images/interior-01.jpg',
   },
   {
     name: 'Handyman Services',
-    description: 'Small repairs and fixes done right. No job is too small for our experienced team.',
+    description: "Repairs and small fixes done by an experienced crew. We show up when we say we will.",
     href: '/services/handyman',
     image: '/images/project-09.jpg',
   },
   {
     name: 'Fence',
-    description: 'Wood and vinyl fence installation and repair that stands strong through any season.',
+    description: "Wood and vinyl fence installation and repair. Properly set posts, level rails and a clean finish.",
     href: '/services/fence',
     image: '/images/project-14.jpg',
   },
   {
     name: 'Countertop',
-    description: 'Kitchen and bathroom countertop installation with precise measurement and clean finish.',
+    description: "Kitchen and bathroom countertop installation with accurate measurements and no guesswork.",
     href: '/services/countertop',
     image: '/images/interior-02.jpg',
   },
   {
     name: 'Construction Cleaning',
-    description: 'Post-construction cleanup for residential spaces. Ready to use from day one.',
+    description: "Post-construction cleanup that gets the space ready to live in. Dust, debris and residue — gone.",
     href: '/services/construction-cleaning',
     image: '/images/interior-05.jpg',
   },
@@ -84,10 +84,10 @@ const Services = () => {
   return (
     <PageLayout>
       <SEO
-        title="Painting and Remodeling Services in New England"
-        description="From interior and exterior painting to flooring, tile, carpentry and remodeling. Tony's serves New England. Free estimates."
+        title="Painting & Remodeling Services in Massachusetts | Tony's"
+        description="Interior painting, exterior painting, cabinet refinishing, remodeling, flooring, tile, carpentry and more. Serving Martha's Vineyard, Cape Cod and the South Shore. Free estimates."
         canonical="/services"
-        keywords="painting services New England, remodeling contractor New England, interior exterior painters New England, flooring tile carpentry New England"
+        keywords="interior painting Massachusetts, exterior painting Massachusetts, home remodeling MA, cabinet painting MA, flooring contractor MA, tile contractor MA, deck staining MA"
         schema={{
           "@context": "https://schema.org",
           "@type": "Service",
@@ -109,8 +109,8 @@ const Services = () => {
       />
       <FadeUpSection>
         <InnerHero
-          title="Everything your space needs."
-          subtitle="From a fresh coat of paint to a full remodel, we handle it all."
+          title="Painting and remodeling services for Massachusetts homeowners."
+          subtitle="From a single room to a full remodel, we handle every trade in-house. No coordinating multiple contractors."
           crumbs={[{ label: "Home", to: "/" }, { label: "Services" }]}
         />
       </FadeUpSection>
@@ -228,14 +228,14 @@ const Services = () => {
         <div className="container py-16 md:py-24 text-center">
           <FadeUpSection>
             <h2 className="font-display text-3xl md:text-5xl text-background leading-tight max-w-2xl mx-auto">
-              Not sure which service you need? We can help.
+              Have a project in mind? We'd like to hear about it.
             </h2>
             <RippleButton
               asChild
               size="lg"
               className="mt-8 bg-primary text-primary-foreground hover:bg-primary-dark rounded-sm h-12 px-10"
             >
-              <Link to="/contact">Request a Consultation</Link>
+              <Link to="/contact">Request a Free Estimate</Link>
             </RippleButton>
           </FadeUpSection>
         </div>

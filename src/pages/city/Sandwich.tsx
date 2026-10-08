@@ -4,11 +4,11 @@ const Sandwich = () => (
     city="Sandwich"
     region="MA"
     slug="painting-contractor-sandwich"
-    headline="Painting contractor in Sandwich, MA."
-    description="Interior and exterior painting and remodeling for homeowners in Sandwich and Cape Cod. Licensed, insured and serving New England since 2004. Free estimates."
-    seoTitle="Painting Contractor in Sandwich MA | Tony's Painting and Remodeling"
-    seoDescription="Licensed painting contractor serving Sandwich, MA since 2004. Interior painting, exterior painting and remodeling. Free estimates. Call 508-982-9675."
-    keywords="painting contractor Sandwich MA, interior painting Sandwich, exterior painting Sandwich, house painters Sandwich Massachusetts, Cape Cod painting contractor"
+    headline="House painters and remodeling contractor in Sandwich, MA."
+    description="Tony's Painting & Remodeling serves Sandwich and the Upper Cape. Interior painting, exterior painting and remodeling for homeowners. Free estimates. Licensed and insured since 2004."
+    seoTitle="House Painters in Sandwich MA | Tony's Painting & Remodeling"
+    seoDescription="Interior and exterior painting and remodeling for homeowners in Sandwich, MA. Licensed contractor serving Upper Cape Cod since 2004. Free estimates. Call 508-982-9675."
+    keywords="house painters Sandwich MA, interior painting Sandwich, exterior painting Sandwich, painting contractor Sandwich MA, Upper Cape Cod painting contractor"
     nearby={["Bourne", "Pocasset", "Falmouth", "Hyannis"]}
   />
 );

@@ -160,13 +160,12 @@ const AboutSnippet = () => {
           delay={0.1}
           className="w-full flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-none"
         >
-          <p className="text-xs uppercase tracking-[0.25em] text-primary mb-4 w-full">About Us</p>
+          <p className="text-xs uppercase tracking-[0.25em] text-primary mb-4 w-full">Who We Are</p>
           <h2 className="font-display text-[28px] md:text-5xl text-foreground leading-tight">
-            Built on trust, proven by results.
+            Twenty years of residential painting and remodeling in Massachusetts.
           </h2>
           <p className="mt-6 text-sm md:text-lg text-muted-foreground leading-relaxed max-w-full md:max-w-xl">
-            Tony started this company in 2004 with one goal: to do the work right. Two decades later,
-            that standard still defines every brushstroke and every project we deliver.
+            Otoniel Santos founded Tony's in 2004 with a straightforward goal: do the work right and treat the homeowner's property with respect. Two decades later, that approach still drives every project we take on — in Martha's Vineyard, Cape Cod and the South Shore.
           </p>
 
           <Button
@@ -174,7 +173,7 @@ const AboutSnippet = () => {
             variant="outline"
             className="mt-8 rounded-sm h-12 px-8 border-foreground text-foreground hover:bg-foreground hover:text-background w-full md:w-auto flex justify-center items-center"
           >
-            <a href="/about">Read our story</a>
+            <a href="/about">About our company</a>
           </Button>
         </FadeUpSection>
       </div>

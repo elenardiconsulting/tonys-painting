@@ -16,16 +16,16 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Painters & Remodelers in Martha's Vineyard | Tony's Painting"
-        description="Licensed painting and remodeling contractor serving Martha's Vineyard and Cape Cod since 2004. Interior, exterior and more. Free estimate. Call 508-982-9675."
+        title="Professional House Painting & Remodeling in Massachusetts | Tony's"
+        description="Tony's Painting & Remodeling serves Martha's Vineyard, Cape Cod and the South Shore. Interior painting, exterior painting, cabinet refinishing and remodeling since 2004. Request a free estimate."
         canonical="/"
-        keywords="painting contractor Martha's Vineyard MA, exterior painting Martha's Vineyard, interior painting Cape Cod, remodeling Martha's Vineyard, house painters Martha's Vineyard MA"
+        keywords="house painters Massachusetts, interior painting Martha's Vineyard, exterior painting Cape Cod, painting contractor South Shore, home remodeling Massachusetts, cabinet refinishing MA"
         schema={{
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           name: "Tony's Painting and Remodeling",
           description:
-            "Professional painting and remodeling services serving New England since 2004.",
+            "Licensed residential painting and remodeling contractor serving Martha's Vineyard, Cape Cod and the South Shore of Massachusetts since 2004.",
           url: "https://tonyspaintingmv.com",
           telephone: "+15089829675",
           email: "Tonyspainting11@gmail.com",

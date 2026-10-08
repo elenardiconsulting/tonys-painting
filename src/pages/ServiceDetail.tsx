@@ -14,11 +14,13 @@ import deck06 from "@/assets/deck-IMG_2904.jpg.asset.json";
 import deck07 from "@/assets/deck-IMG_2896.jpg.asset.json";
 import deck08 from "@/assets/deck-project-07.jpg.asset.json";
 
-const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords: string; schema?: object; breadcrumbs?: { name: string; url: string }[]; faqs?: { question: string; answer: string }[] }> = {
+const SEO_BY_SLUG: Record<string, { title: string; description: string; h1: string; h2: string; keywords: string; schema?: object; breadcrumbs?: { name: string; url: string }[]; faqs?: { question: string; answer: string }[] }> = {
   "interior-painting": {
-    title: "Interior Painting in Martha's Vineyard | Tony's Painting",
+    title: "Interior Painting Services in Massachusetts | Tony's Painting",
     description:
-      "Professional interior painters serving Martha's Vineyard and Cape Cod. Clean work, on time, 20+ years experience. Free estimate. Call 508-982-9675.",
+      "Professional interior painting for homes in Martha's Vineyard, Cape Cod and the South Shore. Surface prep, clean work and a final walkthrough included. Free estimates. Call 508-982-9675.",
+    h1: "Interior painting services for Massachusetts homeowners.",
+    h2: "What our interior painting work includes.",
     keywords:
       "interior painting Martha's Vineyard MA, interior painters Cape Cod, house painters Martha's Vineyard, interior painting Edgartown, interior painting Falmouth MA",
     schema: {
@@ -43,9 +45,11 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
     ],
   },
   "exterior-painting": {
-    title: "Exterior Painting in Martha's Vineyard | Tony's Painting",
+    title: "Exterior House Painting in Massachusetts | Tony's Painting",
     description:
-      "Premium exterior painting built for New England weather. Serving Martha's Vineyard and Cape Cod since 2004. Free estimate. Call 508-982-9675.",
+      "Exterior painting for homes in Martha's Vineyard, Cape Cod and the South Shore. Proper prep, New England–rated coatings and clean results. Free estimates. Call 508-982-9675.",
+    h1: "Exterior house painting in Massachusetts.",
+    h2: "How we approach exterior painting projects.",
     keywords:
       "exterior painting Martha's Vineyard MA, exterior painters Cape Cod, house painting Martha's Vineyard, exterior painting Edgartown, exterior painting Falmouth MA",
     schema: {
@@ -70,9 +74,11 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
     ],
   },
   remodeling: {
-    title: "Home Remodeling in Martha's Vineyard | Tony's Painting",
+    title: "Home Remodeling Contractor in Massachusetts | Tony's Painting",
     description:
-      "Full remodeling services in Martha's Vineyard and Cape Cod. Flooring, tile, carpentry and more. One team, one estimate. Free quote. Call 508-982-9675.",
+      "Kitchen, bathroom and living space remodeling for homes in Martha's Vineyard, Cape Cod and the South Shore. One crew, multiple trades. Free estimates. Call 508-982-9675.",
+    h1: "Home remodeling services in Massachusetts.",
+    h2: "What we handle on remodeling projects.",
     keywords:
       "home remodeling Martha's Vineyard MA, remodeling contractor Cape Cod, kitchen bathroom remodel Martha's Vineyard, flooring tile Martha's Vineyard MA",
     schema: {
@@ -96,9 +102,11 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
     ],
   },
   "deck-stairs": {
-    title: "Deck Staining and Repair in New England",
+    title: "Deck Staining & Repair in Massachusetts | Tony's Painting",
     description:
-      "Professional deck staining, sealing and repair across New England. Built to withstand harsh winters. Free estimate.",
+      "Deck and stair cleaning, sanding, staining and repair for homes in Martha's Vineyard, Cape Cod and the South Shore. Free estimates. Call 508-982-9675.",
+    h1: "Deck and stair work in Massachusetts.",
+    h2: "What we check and do before we stain.",
     keywords: "deck staining New England, deck repair New England, deck sealing New England, outdoor deck refinishing MA",
     breadcrumbs: [
       { name: "Home", url: "https://tonyspaintingmv.com/" },
@@ -112,9 +120,11 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
     ],
   },
   flooring: {
-    title: "Flooring Installation in New England",
+    title: "Flooring Installation & Refinishing in Massachusetts | Tony's",
     description:
-      "Hardwood, vinyl and LVP flooring installation across New England. Historic and modern homes. Free estimate.",
+      "Hardwood, vinyl plank and engineered wood flooring for homes in Martha's Vineyard, Cape Cod and the South Shore. Subfloor assessment included. Free estimates. Call 508-982-9675.",
+    h1: "Flooring installation and refinishing in Massachusetts.",
+    h2: "What goes into a flooring project.",
     keywords: "flooring installation New England, hardwood floors New England, vinyl flooring New England, floor refinishing MA",
     breadcrumbs: [
       { name: "Home", url: "https://tonyspaintingmv.com/" },
@@ -128,9 +138,11 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
     ],
   },
   "ceramic-tile": {
-    title: "Ceramic Tile Installation in New England",
+    title: "Ceramic Tile Installation in Massachusetts | Tony's Painting",
     description:
-      "Precision tile work for bathrooms, kitchens and floors across New England. Clean lines, lasting results. Free estimate.",
+      "Bathroom and kitchen tile installation for homes in Martha's Vineyard, Cape Cod and the South Shore. Level lines, sealed grout. Free estimates. Call 508-982-9675.",
+    h1: "Ceramic tile installation in Massachusetts.",
+    h2: "How we set tile on every project.",
     keywords: "tile installation New England, ceramic tile New England, bathroom tile New England, kitchen backsplash MA",
     breadcrumbs: [
       { name: "Home", url: "https://tonyspaintingmv.com/" },
@@ -143,9 +155,11 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
     ],
   },
   plastering: {
-    title: "Plastering and Skim Coating in New England",
+    title: "Plastering & Skim Coating in Massachusetts | Tony's Painting",
     description:
-      "Crack repair, skim coating and plaster restoration across New England. Smooth walls, done properly. Free estimate.",
+      "Plaster repair, skim coating and drywall patching for homes in Martha's Vineyard, Cape Cod and the South Shore. Smooth finish ready for paint. Free estimates. Call 508-982-9675.",
+    h1: "Plastering and wall repair in Massachusetts.",
+    h2: "What we address before we leave the wall.",
     keywords: "plastering New England, skim coating New England, plaster repair New England, drywall patching MA",
     breadcrumbs: [
       { name: "Home", url: "https://tonyspaintingmv.com/" },
@@ -158,9 +172,11 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
     ],
   },
   carpentry: {
-    title: "Carpentry Services in New England",
+    title: "General Carpentry Services in Massachusetts | Tony's Painting",
     description:
-      "Trim, moldings, built-ins and structural wood repairs across New England. Free estimate.",
+      "Trim, moldings, built-ins and wood repairs for homes in Martha's Vineyard, Cape Cod and the South Shore. Proper cuts and fastening. Free estimates. Call 508-982-9675.",
+    h1: "General carpentry for Massachusetts homeowners.",
+    h2: "What we build and repair.",
     keywords: "carpentry New England, trim moldings New England, general carpentry New England, built-in shelving MA",
     breadcrumbs: [
       { name: "Home", url: "https://tonyspaintingmv.com/" },
@@ -173,9 +189,11 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
     ],
   },
   fence: {
-    title: "Fence Installation and Repair in New England",
+    title: "Fence Installation & Repair in Massachusetts | Tony's Painting",
     description:
-      "Wood and vinyl fence installation and repair across New England. Built to last through harsh winters. Free estimate.",
+      "Wood and vinyl fence installation and repair for homes in Martha's Vineyard, Cape Cod and the South Shore. Properly set posts, level finish. Free estimates. Call 508-982-9675.",
+    h1: "Fence installation and repair in Massachusetts.",
+    h2: "How we build and repair fences.",
     keywords: "fence installation New England, fence repair New England, wood vinyl fence New England, fence contractor MA",
     breadcrumbs: [
       { name: "Home", url: "https://tonyspaintingmv.com/" },
@@ -188,9 +206,11 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
     ],
   },
   countertop: {
-    title: "Countertop Installation in New England",
+    title: "Countertop Installation in Massachusetts | Tony's Painting",
     description:
-      "Kitchen and bathroom countertop installation across New England. Precise measurement, clean finish. Free estimate.",
+      "Kitchen and bathroom countertop installation for homes in Martha's Vineyard, Cape Cod and the South Shore. Accurate measurements, clean finish. Free estimates. Call 508-982-9675.",
+    h1: "Countertop installation in Massachusetts.",
+    h2: "How we measure and install countertops.",
     keywords: "countertop installation New England, kitchen countertop New England, bathroom vanity countertop New England",
     breadcrumbs: [
       { name: "Home", url: "https://tonyspaintingmv.com/" },
@@ -203,9 +223,11 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
     ],
   },
   "construction-cleaning": {
-    title: "Construction Cleaning Services in New England",
+    title: "Post-Construction Cleaning in Massachusetts | Tony's Painting",
     description:
-      "Post-construction cleanup for residential and commercial spaces across New England. Ready to use from day one. Free estimate.",
+      "Post-construction cleaning for residential spaces in Martha's Vineyard, Cape Cod and the South Shore. We get the space ready to use. Free estimates. Call 508-982-9675.",
+    h1: "Post-construction cleaning in Massachusetts.",
+    h2: "What a post-construction clean covers.",
     keywords: "construction cleaning New England, post construction cleanup New England, construction cleaning New England",
     breadcrumbs: [
       { name: "Home", url: "https://tonyspaintingmv.com/" },
@@ -218,9 +240,11 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
     ],
   },
   handyman: {
-    title: "Handyman Services in New England",
+    title: "Handyman Services in Massachusetts | Tony's Painting & Remodeling",
     description:
-      "Deck repair, fence, stairs and general repairs across New England. Small jobs done right. Free estimate.",
+      "Repairs, fixes and property upkeep for homeowners in Martha's Vineyard, Cape Cod and the South Shore. Licensed and insured. Call 508-982-9675.",
+    h1: "Handyman services for Massachusetts homeowners.",
+    h2: "What our handyman crew takes on.",
     keywords: "handyman New England, handyman services New England, property repairs New England, general repairs MA",
     breadcrumbs: [
       { name: "Home", url: "https://tonyspaintingmv.com/" },
@@ -251,7 +275,7 @@ const SERVICES: Record<string, ServiceData> = {
     name: "Interior Painting",
     heroTitle: "Interior Painting in Martha's Vineyard",
     description:
-      "Whether you are refreshing a single room or repainting your entire home, our team brings attention to detail that shows in every wall, ceiling and trim. We work cleanly, finish on schedule, and leave your space better than we found it.",
+      "Whether you're repainting a single room or the entire house, we start with proper surface prep — filling holes, sanding rough spots and priming where the finish coat needs a solid base. We protect your floors and furniture before we pick up a brush, keep the work area clean throughout and do a final walkthrough with you before we leave.",
     includes: [
       "Living rooms and bedrooms",
       "Kitchens and bathrooms",
@@ -267,7 +291,7 @@ const SERVICES: Record<string, ServiceData> = {
     name: "Exterior Painting",
     heroTitle: "Exterior Painting in Martha's Vineyard",
     description:
-      "The outside of your home tells a story before anyone walks through the door. We prep every surface properly, use only premium paints built for New England weather, and deliver results that hold up season after season.",
+      "The condition of your siding and trim tells you a lot about how a paint job will hold up. We inspect every surface before we start, scrape and sand areas where paint is peeling, and prime bare wood before applying the finish coat. We work around the weather and use exterior paints formulated for New England's climate — cold winters, humid summers and coastal salt air included.",
     includes: [
       "Full exterior walls and siding",
       "Porches and decks",
@@ -283,7 +307,7 @@ const SERVICES: Record<string, ServiceData> = {
     name: "Remodeling",
     heroTitle: "Remodeling in Martha's Vineyard",
     description:
-      "Sometimes a fresh coat of paint is just the beginning. Our team handles flooring, tile, plastering and carpentry so you do not need to coordinate multiple contractors for your project.",
+      "Sometimes a fresh coat of paint is just the beginning. Our remodeling crew handles flooring installation and refinishing, tile work, plastering, carpentry and related trades — so you don't need to manage multiple contractors or coordinate schedules across a project. We've completed kitchen and bathroom updates and larger living space renovations for homeowners in Martha's Vineyard, Cape Cod and the South Shore.",
     includes: [
       "Hardwood and vinyl flooring",
       "Ceramic and porcelain tile",
@@ -297,7 +321,7 @@ const SERVICES: Record<string, ServiceData> = {
     slug: "handyman",
     name: "Handyman Services",
     description:
-      "Small jobs matter just as much as big ones. From fixing a deck to cleaning up after a construction project, we take care of the details that keep your property in great shape.",
+      "Small jobs matter. We handle repairs, fixes and general property upkeep that don't fit neatly into a single trade — deck boards, door hardware, minor carpentry, cleanup after a contractor and similar work. If something's been on your list and you're not sure who to call, we can take a look and give you a straight answer.",
     includes: [
       "Deck and stair repair",
       "Fence installation and repair",
@@ -309,7 +333,7 @@ const SERVICES: Record<string, ServiceData> = {
   "deck-stairs": {
     slug: "deck-stairs",
     name: "Deck and Stairs",
-    description: "Decks and stairs take a beating from New England weather. We prep every surface properly, use premium stains and sealers, and make sure every board and railing is solid before we finish the job. Whether you need a full refinish or targeted repairs, we treat your outdoor space with the same care we bring inside.",
+    description: "Decks and exterior stairs take more abuse than almost anything else on a house. Before we sand or stain anything, we check for soft spots, rot and loose fasteners — because a good finish on structurally sound wood is what makes the project last. We clean the surface, let it dry properly and apply a stain or sealer suited to the wood type and exposure.",
     includes: [
       "Deck staining and sealing",
       "Deck board repair and replacement",
@@ -322,7 +346,7 @@ const SERVICES: Record<string, ServiceData> = {
   "construction-cleaning": {
     slug: "construction-cleaning",
     name: "Construction Cleaning",
-    description: "Construction leaves behind dust, debris and mess that requires more than a regular cleaning. Our team specializes in post-construction cleanup for residential and commercial spaces, working carefully around new finishes and installations to leave every room spotless and ready to show.",
+    description: "Construction leaves behind fine dust, adhesive residue, caulk smears and debris that standard cleaning won't address. We do a complete post-construction clean for residential spaces — surfaces, fixtures, floors and windows — so the space is ready to use when we're done.",
     includes: [
       "Dust and debris removal",
       "Window and glass cleaning",
@@ -335,7 +359,7 @@ const SERVICES: Record<string, ServiceData> = {
   carpentry: {
     slug: "carpentry",
     name: "General Carpentry",
-    description: "Good carpentry is what separates a renovation that looks rushed from one that looks intentional. Our team handles trim, moldings, built-ins, door frames and structural repairs with precision and care. If it involves wood and it needs to be right, we can handle it.",
+    description: "Trim, molding, built-ins and structural wood repairs that are cut to fit and fastened properly. Good carpentry is what separates a renovation that holds together from one that looks rushed six months later. We do the measuring twice.",
     includes: [
       "Interior trim and moldings",
       "Door and window frame repair",
@@ -348,7 +372,7 @@ const SERVICES: Record<string, ServiceData> = {
   flooring: {
     slug: "flooring",
     name: "Flooring",
-    description: "The right floor changes everything about a space. We install and refinish hardwood, vinyl and other flooring types with tight seams, smooth transitions and a finish that holds up over time. We have worked on everything from historic New England homes with original pine floors to modern renovations with engineered hardwood.",
+    description: "We install and refinish hardwood, vinyl plank, laminate and engineered wood floors. Before we start, we assess the subfloor for levelness and moisture issues — because the finish coat is only as good as what's underneath. Sanding is done evenly across the whole floor, not just the visible wear spots.",
     includes: [
       "Hardwood floor installation",
       "Hardwood floor refinishing and staining",
@@ -361,7 +385,7 @@ const SERVICES: Record<string, ServiceData> = {
   "ceramic-tile": {
     slug: "ceramic-tile",
     name: "Ceramic Tile",
-    description: "Tile is one of those finishes where precision matters more than almost anything else. A line that is off by a fraction shows for years. Our team measures carefully, works methodically and groutes cleanly so every tile installation looks exactly as it should and stays that way.",
+    description: "Tile is one of those finishes where being off by an eighth of an inch shows. We lay out the pattern before we set anything, use a flat, properly prepared substrate and apply grout that's sealed against moisture. Bathrooms, kitchens, mudrooms and entryways.",
     includes: [
       "Bathroom floor and wall tile",
       "Kitchen backsplash",
@@ -374,7 +398,7 @@ const SERVICES: Record<string, ServiceData> = {
   fence: {
     slug: "fence",
     name: "Fence",
-    description: "A well-built fence does more than mark a boundary. It adds privacy, curb appeal and value to your property. We handle new fence installation and repairs for wood, vinyl and other materials, working with the same care and quality we bring to every other project.",
+    description: "A fence that lists or has loose posts isn't doing its job. We set posts at the right depth for the soil conditions, make sure the fence is level and plumb, and finish the wood or vinyl to match the property. Repairs and full installations.",
     includes: [
       "Wood fence installation",
       "Vinyl fence installation",
@@ -387,7 +411,7 @@ const SERVICES: Record<string, ServiceData> = {
   plastering: {
     slug: "plastering",
     name: "Plastering",
-    description: "Cracks, holes and uneven walls are more common than most homeowners expect, especially in older New England homes. We repair and skim-coat plaster surfaces so the finish is smooth and paint-ready, with no visible patches or texture differences. The result is a wall that looks like it was never touched.",
+    description: "Cracks, holes and uneven walls are common in older New England homes — and they need to be addressed properly before you paint over them. We repair plaster and drywall, apply skim coats where the wall needs to be evened out and sand to a consistent surface. The goal is a wall that looks right under any lighting.",
     includes: [
       "Crack and hole repair",
       "Skim coating over damaged plaster",
@@ -400,7 +424,7 @@ const SERVICES: Record<string, ServiceData> = {
   countertop: {
     slug: "countertop",
     name: "Countertop",
-    description: "A countertop installation is only as good as the prep behind it. We measure carefully, cut precisely and install with attention to every seam and edge so the finished surface looks clean and professional. Whether you are upgrading a kitchen or finishing a bathroom vanity, we make sure the result is something you will be happy with for years.",
+    description: "A countertop is only as level and tight as the measurement and installation that put it there. We take accurate field measurements, fit the pieces to the actual cabinet run and finish the edges and seams cleanly. Kitchen and bathroom surfaces.",
     includes: [
       "Kitchen countertop installation",
       "Bathroom vanity countertop",
@@ -435,7 +459,7 @@ const ServiceDetail = () => {
       )}
       <InnerHero
         variant="image"
-        title={service.heroTitle || service.name}
+        title={seo?.h1 || service.heroTitle || service.name}
         crumbs={[
           { label: "Home", to: "/" },
           { label: "Services", to: "/services" },
@@ -448,7 +472,7 @@ const ServiceDetail = () => {
           <div className="lg:col-span-2">
             <p className="text-xs uppercase tracking-[0.25em] text-primary mb-4">Overview</p>
             <h2 className="font-display text-3xl md:text-4xl text-foreground leading-tight mb-6">
-              Done with care, finished to last.
+              {seo?.h2}
             </h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
               {service.description}
@@ -555,14 +579,14 @@ const ServiceDetail = () => {
       <section className="bg-dark">
         <div className="container py-16 md:py-24 text-center">
           <h2 className="font-display text-3xl md:text-5xl text-background leading-tight max-w-2xl mx-auto">
-            Ready to get started?
+            Interested in this service?
           </h2>
           <Button
             asChild
             size="lg"
             className="mt-8 bg-primary text-primary-foreground hover:bg-primary-dark rounded-sm h-12 px-10"
           >
-            <Link to="/#contact">Request a Consultation</Link>
+            <Link to="/#contact">Request a Free Estimate</Link>
           </Button>
         </div>
       </section>
