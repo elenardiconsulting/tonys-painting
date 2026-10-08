@@ -47,7 +47,7 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; h1: stri
   "exterior-painting": {
     title: "Exterior House Painting in Massachusetts | Tony's Painting",
     description:
-      "Exterior painting for homes in Martha's Vineyard, Cape Cod and the South Shore. Proper prep, New England–rated coatings and clean results. Free estimates. Call 508-982-9675.",
+      "Exterior painting for homes in Martha's Vineyard, Cape Cod and the South Shore. Proper prep, Massachusetts-rated coatings and clean results. Free estimates. Call 508-982-9675.",
     h1: "Exterior house painting in Massachusetts.",
     h2: "How we approach exterior painting projects.",
     keywords:
@@ -68,8 +68,8 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; h1: stri
     ],
     faqs: [
       { question: "How much does exterior painting cost in Massachusetts?", answer: "Exterior painting costs depend on the size of the home, siding material and condition. Most homes range from $2,500 to $8,000. We provide free on-site estimates." },
-      { question: "What is the best time of year to paint exterior in New England?", answer: "Late spring through early fall is ideal. We paint when temperatures are consistently above 50 degrees Fahrenheit and conditions are dry. We work within safe weather windows year-round." },
-      { question: "How long does exterior paint last in New England?", answer: "With proper preparation and premium paint, exterior paint lasts 7 to 10 years in New England. Proper surface prep is the most important factor in paint longevity." },
+      { question: "What is the best time of year to paint exterior in Massachusetts?", answer: "Late spring through early fall is ideal. We paint when temperatures are consistently above 50 degrees Fahrenheit and conditions are dry. We work within safe weather windows year-round." },
+      { question: "How long does exterior paint last in Massachusetts?", answer: "With proper preparation and premium paint, exterior paint lasts 7 to 10 years in Massachusetts. Proper surface prep is the most important factor in paint longevity." },
       { question: "Do you pressure wash before exterior painting?", answer: "Yes. Power washing and surface preparation are included in every exterior project. Clean, properly prepped surfaces are essential for paint to bond and last." },
     ],
   },
@@ -107,15 +107,15 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; h1: stri
       "Deck and stair cleaning, sanding, staining and repair for homes in Martha's Vineyard, Cape Cod and the South Shore. Free estimates. Call 508-982-9675.",
     h1: "Deck and stair work in Massachusetts.",
     h2: "What we check and do before we stain.",
-    keywords: "deck staining New England, deck repair New England, deck sealing New England, outdoor deck refinishing MA",
+    keywords: "deck staining Massachusetts, deck repair Massachusetts, deck sealing Massachusetts, outdoor deck refinishing MA",
     breadcrumbs: [
       { name: "Home", url: "https://tonyspaintingmv.com/" },
       { name: "Services", url: "https://tonyspaintingmv.com/services" },
       { name: "Deck and Stairs", url: "https://tonyspaintingmv.com/services/deck-stairs" },
     ],
     faqs: [
-      { question: "How much does deck staining cost in New England?", answer: "Deck staining costs vary based on the size and condition of the deck. Most residential decks range from $800 to $3,000. We provide free on-site estimates before any work begins." },
-      { question: "How long does deck stain last in New England?", answer: "With proper preparation and a quality stain, deck finish typically lasts 2 to 4 years in New England's climate. Power washing and light sanding before each coat extends the life significantly." },
+      { question: "How much does deck staining cost in Massachusetts?", answer: "Deck staining costs vary based on the size and condition of the deck. Most residential decks range from $800 to $3,000. We provide free on-site estimates before any work begins." },
+      { question: "How long does deck stain last in Massachusetts?", answer: "With proper preparation and a quality stain, deck finish typically lasts 2 to 4 years in Massachusetts' climate. Power washing and light sanding before each coat extends the life significantly." },
       { question: "Do you repair deck boards before staining?", answer: "Yes. We inspect every board before staining and replace any that are cracked, warped or unsafe. Repairs are quoted separately and can be included in the same project." },
     ],
   },
@@ -125,7 +125,7 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; h1: stri
       "Hardwood, vinyl plank and engineered wood flooring for homes in Martha's Vineyard, Cape Cod and the South Shore. Subfloor assessment included. Free estimates. Call 508-982-9675.",
     h1: "Flooring installation and refinishing in Massachusetts.",
     h2: "What goes into a flooring project.",
-    keywords: "flooring installation New England, hardwood floors New England, vinyl flooring New England, floor refinishing MA",
+    keywords: "flooring installation Massachusetts, hardwood floors Massachusetts, vinyl flooring Massachusetts, floor refinishing MA",
     breadcrumbs: [
       { name: "Home", url: "https://tonyspaintingmv.com/" },
       { name: "Services", url: "https://tonyspaintingmv.com/services" },
@@ -143,7 +143,7 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; h1: stri
       "Bathroom and kitchen tile installation for homes in Martha's Vineyard, Cape Cod and the South Shore. Level lines, sealed grout. Free estimates. Call 508-982-9675.",
     h1: "Ceramic tile installation in Massachusetts.",
     h2: "How we set tile on every project.",
-    keywords: "tile installation New England, ceramic tile New England, bathroom tile New England, kitchen backsplash MA",
+    keywords: "tile installation Massachusetts, ceramic tile Massachusetts, bathroom tile Massachusetts, kitchen backsplash MA",
     breadcrumbs: [
       { name: "Home", url: "https://tonyspaintingmv.com/" },
       { name: "Services", url: "https://tonyspaintingmv.com/services" },
@@ -160,14 +160,14 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; h1: stri
       "Plaster repair, skim coating and drywall patching for homes in Martha's Vineyard, Cape Cod and the South Shore. Smooth finish ready for paint. Free estimates. Call 508-982-9675.",
     h1: "Plastering and wall repair in Massachusetts.",
     h2: "What we address before we leave the wall.",
-    keywords: "plastering New England, skim coating New England, plaster repair New England, drywall patching MA",
+    keywords: "plastering Massachusetts, skim coating Massachusetts, plaster repair Massachusetts, drywall patching MA",
     breadcrumbs: [
       { name: "Home", url: "https://tonyspaintingmv.com/" },
       { name: "Services", url: "https://tonyspaintingmv.com/services" },
       { name: "Plastering", url: "https://tonyspaintingmv.com/services/plastering" },
     ],
     faqs: [
-      { question: "Do you repair plaster walls in historic homes?", answer: "Yes. We have extensive experience with older New England homes that have original plaster walls. We match textures and finish surfaces ready for paint without visible patches." },
+      { question: "Do you repair plaster walls in historic homes?", answer: "Yes. We have extensive experience with older Massachusetts homes that have original plaster walls. We match textures and finish surfaces ready for paint without visible patches." },
       { question: "What is skim coating and when do I need it?", answer: "Skim coating is a thin layer of plaster applied over damaged or uneven walls to create a smooth, paint-ready surface. It is ideal when walls have extensive cracking, previous texture removal or multiple layers of old paint." },
     ],
   },
@@ -177,7 +177,7 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; h1: stri
       "Trim, moldings, built-ins and wood repairs for homes in Martha's Vineyard, Cape Cod and the South Shore. Proper cuts and fastening. Free estimates. Call 508-982-9675.",
     h1: "General carpentry for Massachusetts homeowners.",
     h2: "What we build and repair.",
-    keywords: "carpentry New England, trim moldings New England, general carpentry New England, built-in shelving MA",
+    keywords: "carpentry Massachusetts, trim moldings Massachusetts, general carpentry Massachusetts, built-in shelving MA",
     breadcrumbs: [
       { name: "Home", url: "https://tonyspaintingmv.com/" },
       { name: "Services", url: "https://tonyspaintingmv.com/services" },
@@ -194,14 +194,14 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; h1: stri
       "Wood and vinyl fence installation and repair for homes in Martha's Vineyard, Cape Cod and the South Shore. Properly set posts, level finish. Free estimates. Call 508-982-9675.",
     h1: "Fence installation and repair in Massachusetts.",
     h2: "How we build and repair fences.",
-    keywords: "fence installation New England, fence repair New England, wood vinyl fence New England, fence contractor MA",
+    keywords: "fence installation Massachusetts, fence repair Massachusetts, wood vinyl fence Massachusetts, fence contractor MA",
     breadcrumbs: [
       { name: "Home", url: "https://tonyspaintingmv.com/" },
       { name: "Services", url: "https://tonyspaintingmv.com/services" },
       { name: "Fence", url: "https://tonyspaintingmv.com/services/fence" },
     ],
     faqs: [
-      { question: "What types of fence do you install in New England?", answer: "We install wood, vinyl and cedar fences. We also repair existing fences including post replacement, board repair and gate adjustment." },
+      { question: "What types of fence do you install in Massachusetts?", answer: "We install wood, vinyl and cedar fences. We also repair existing fences including post replacement, board repair and gate adjustment." },
       { question: "How long does fence installation take?", answer: "A standard residential fence installation takes one to two days. Larger projects or those requiring post-hole digging in rocky soil may take longer. We provide a timeline with your estimate." },
     ],
   },
@@ -211,7 +211,7 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; h1: stri
       "Kitchen and bathroom countertop installation for homes in Martha's Vineyard, Cape Cod and the South Shore. Accurate measurements, clean finish. Free estimates. Call 508-982-9675.",
     h1: "Countertop installation in Massachusetts.",
     h2: "How we measure and install countertops.",
-    keywords: "countertop installation New England, kitchen countertop New England, bathroom vanity countertop New England",
+    keywords: "countertop installation Massachusetts, kitchen countertop Massachusetts, bathroom vanity countertop Massachusetts",
     breadcrumbs: [
       { name: "Home", url: "https://tonyspaintingmv.com/" },
       { name: "Services", url: "https://tonyspaintingmv.com/services" },
@@ -228,7 +228,7 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; h1: stri
       "Post-construction cleaning for residential spaces in Martha's Vineyard, Cape Cod and the South Shore. We get the space ready to use. Free estimates. Call 508-982-9675.",
     h1: "Post-construction cleaning in Massachusetts.",
     h2: "What a post-construction clean covers.",
-    keywords: "construction cleaning New England, post construction cleanup New England, construction cleaning New England",
+    keywords: "construction cleaning Massachusetts, post construction cleanup Massachusetts, construction cleaning Massachusetts",
     breadcrumbs: [
       { name: "Home", url: "https://tonyspaintingmv.com/" },
       { name: "Services", url: "https://tonyspaintingmv.com/services" },
@@ -245,7 +245,7 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; h1: stri
       "Repairs, fixes and property upkeep for homeowners in Martha's Vineyard, Cape Cod and the South Shore. Licensed and insured. Call 508-982-9675.",
     h1: "Handyman services for Massachusetts homeowners.",
     h2: "What our handyman crew takes on.",
-    keywords: "handyman New England, handyman services New England, property repairs New England, general repairs MA",
+    keywords: "handyman Massachusetts, handyman services Massachusetts, property repairs Massachusetts, general repairs MA",
     breadcrumbs: [
       { name: "Home", url: "https://tonyspaintingmv.com/" },
       { name: "Services", url: "https://tonyspaintingmv.com/services" },
@@ -291,7 +291,7 @@ const SERVICES: Record<string, ServiceData> = {
     name: "Exterior Painting",
     heroTitle: "Exterior Painting in Martha's Vineyard",
     description:
-      "The condition of your siding and trim tells you a lot about how a paint job will hold up. We inspect every surface before we start, scrape and sand areas where paint is peeling, and prime bare wood before applying the finish coat. We work around the weather and use exterior paints formulated for New England's climate — cold winters, humid summers and coastal salt air included.",
+      "The condition of your siding and trim tells you a lot about how a paint job will hold up. We inspect every surface before we start, scrape and sand areas where paint is peeling, and prime bare wood before applying the finish coat. We work around the weather and use exterior paints formulated for Massachusetts' climate, cold winters, humid summers and coastal salt air included.",
     includes: [
       "Full exterior walls and siding",
       "Porches and decks",
@@ -411,7 +411,7 @@ const SERVICES: Record<string, ServiceData> = {
   plastering: {
     slug: "plastering",
     name: "Plastering",
-    description: "Cracks, holes and uneven walls are common in older New England homes — and they need to be addressed properly before you paint over them. We repair plaster and drywall, apply skim coats where the wall needs to be evened out and sand to a consistent surface. The goal is a wall that looks right under any lighting.",
+    description: "Cracks, holes and uneven walls are common in older Massachusetts homes, and they need to be addressed properly before you paint over them. We repair plaster and drywall, apply skim coats where the wall needs to be evened out and sand to a consistent surface. The goal is a wall that looks right under any lighting.",
     includes: [
       "Crack and hole repair",
       "Skim coating over damaged plaster",
