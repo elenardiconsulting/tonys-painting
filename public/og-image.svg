@@ -1,9 +1,51 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#1A1A1A"/>
-  <rect x="0" y="0" width="8" height="630" fill="#C4291C"/>
-  <text x="80" y="260" font-family="Georgia, serif" font-size="72" font-weight="bold" fill="#F5F1EB" letter-spacing="-2">Tony's Painting</text>
-  <text x="80" y="340" font-family="Georgia, serif" font-size="72" font-weight="bold" fill="#F5F1EB" letter-spacing="-2">and Remodeling</text>
-  <text x="80" y="420" font-family="Arial, sans-serif" font-size="28" fill="#C4291C" letter-spacing="2">MARTHA'S VINEYARD · CAPE COD · SOUTH SHORE</text>
-  <text x="80" y="480" font-family="Arial, sans-serif" font-size="22" fill="rgba(245,241,235,0.5)">Licensed and Insured · Since 2004 · Free Estimates</text>
-  <text x="80" y="560" font-family="Arial, sans-serif" font-size="22" fill="rgba(245,241,235,0.4)">tonyspaintingmv.com</text>
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#111111"/>
+  
+  <!-- Decorative gold diagonal accent -->
+  <polygon points="0,0 300,0 0,200" fill="#C9A84C" opacity="0.15"/>
+  <polygon points="1200,630 900,630 1200,430" fill="#C9A84C" opacity="0.15"/>
+  
+  <!-- Left gold bar -->
+  <rect x="0" y="0" width="6" height="630" fill="#C9A84C"/>
+  
+  <!-- Paint brush icon -->
+  <g transform="translate(90, 100)">
+    <rect x="18" y="0" width="8" height="55" rx="4" fill="#C9A84C"/>
+    <rect x="14" y="50" width="16" height="10" rx="2" fill="#999"/>
+    <ellipse cx="22" cy="72" rx="11" ry="16" fill="#C9A84C"/>
+  </g>
+  
+  <!-- Company name -->
+  <text x="160" y="145" font-family="Georgia, serif" font-size="52" font-weight="bold" fill="#FFFFFF" letter-spacing="1">Tony's Painting</text>
+  <text x="160" y="195" font-family="Georgia, serif" font-size="32" fill="#C9A84C" letter-spacing="2">&amp; Remodeling</text>
+  
+  <!-- Divider line -->
+  <line x1="90" y1="230" x2="1110" y2="230" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+  
+  <!-- Main headline -->
+  <text x="600" y="320" font-family="Georgia, serif" font-size="58" font-weight="bold" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">Martha's Vineyard's</text>
+  <text x="600" y="390" font-family="Georgia, serif" font-size="56" font-weight="bold" fill="#C9A84C" text-anchor="middle">Most Trusted Painters</text>
+  
+  <!-- Divider line 2 -->
+  <line x1="90" y1="420" x2="1110" y2="420" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+  
+  <!-- Stats row -->
+  <text x="220" y="490" font-family="Georgia, serif" font-size="44" font-weight="bold" fill="#C9A84C" text-anchor="middle">20+</text>
+  <text x="220" y="525" font-family="Arial, sans-serif" font-size="18" fill="#AAAAAA" text-anchor="middle">Years Experience</text>
+  
+  <line x1="400" y1="458" x2="400" y2="540" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+  
+  <text x="600" y="490" font-family="Georgia, serif" font-size="44" font-weight="bold" fill="#C9A84C" text-anchor="middle">★★★★★</text>
+  <text x="600" y="525" font-family="Arial, sans-serif" font-size="18" fill="#AAAAAA" text-anchor="middle">5-Star Google Rating</text>
+  
+  <line x1="800" y1="458" x2="800" y2="540" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+  
+  <text x="980" y="490" font-family="Georgia, serif" font-size="44" font-weight="bold" fill="#C9A84C" text-anchor="middle">500+</text>
+  <text x="980" y="525" font-family="Arial, sans-serif" font-size="18" fill="#AAAAAA" text-anchor="middle">Projects Completed</text>
+  
+  <!-- Bottom URL bar -->
+  <rect x="0" y="575" width="1200" height="55" fill="#C9A84C" opacity="0.15"/>
+  <rect x="0" y="575" width="6" height="55" fill="#C9A84C"/>
+  <text x="600" y="611" font-family="Arial, sans-serif" font-size="22" fill="#C9A84C" text-anchor="middle" letter-spacing="2">tonyspaintingmv.com</text>
 </svg>
