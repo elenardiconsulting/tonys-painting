@@ -105,6 +105,11 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
       { name: "Services", url: "https://tonyspaintingmv.com/services" },
       { name: "Deck and Stairs", url: "https://tonyspaintingmv.com/services/deck-stairs" },
     ],
+    faqs: [
+      { question: "How much does deck staining cost in New England?", answer: "Deck staining costs vary based on the size and condition of the deck. Most residential decks range from $800 to $3,000. We provide free on-site estimates before any work begins." },
+      { question: "How long does deck stain last in New England?", answer: "With proper preparation and a quality stain, deck finish typically lasts 2 to 4 years in New England's climate. Power washing and light sanding before each coat extends the life significantly." },
+      { question: "Do you repair deck boards before staining?", answer: "Yes. We inspect every board before staining and replace any that are cracked, warped or unsafe. Repairs are quoted separately and can be included in the same project." },
+    ],
   },
   flooring: {
     title: "Flooring Installation in New England",
@@ -115,6 +120,11 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
       { name: "Home", url: "https://tonyspaintingmv.com/" },
       { name: "Services", url: "https://tonyspaintingmv.com/services" },
       { name: "Flooring", url: "https://tonyspaintingmv.com/services/flooring" },
+    ],
+    faqs: [
+      { question: "What types of flooring do you install in Martha's Vineyard?", answer: "We install hardwood, engineered hardwood and luxury vinyl plank. We also refinish and stain existing hardwood floors. We work on both new construction and renovation projects." },
+      { question: "How long does hardwood floor installation take?", answer: "A typical room takes one to two days. A full home floor installation usually takes three to five days depending on square footage and subfloor condition." },
+      { question: "Do you refinish existing hardwood floors?", answer: "Yes. We sand, stain and apply multiple finish coats. Most refinishing projects are completed in two to three days and can transform worn floors without full replacement." },
     ],
   },
   "ceramic-tile": {
@@ -127,6 +137,10 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
       { name: "Services", url: "https://tonyspaintingmv.com/services" },
       { name: "Ceramic Tile", url: "https://tonyspaintingmv.com/services/ceramic-tile" },
     ],
+    faqs: [
+      { question: "Do you install tile in bathrooms and kitchens in Martha's Vineyard?", answer: "Yes. We handle floor tile, wall tile, shower surrounds, kitchen backsplashes and entryway installations throughout Martha's Vineyard and Cape Cod." },
+      { question: "How long does a tile installation project take?", answer: "A bathroom floor typically takes one day. A full bathroom tile with walls and shower takes two to four days. Kitchen backsplash projects are usually done in one day." },
+    ],
   },
   plastering: {
     title: "Plastering and Skim Coating in New England",
@@ -137,6 +151,10 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
       { name: "Home", url: "https://tonyspaintingmv.com/" },
       { name: "Services", url: "https://tonyspaintingmv.com/services" },
       { name: "Plastering", url: "https://tonyspaintingmv.com/services/plastering" },
+    ],
+    faqs: [
+      { question: "Do you repair plaster walls in historic homes?", answer: "Yes. We have extensive experience with older New England homes that have original plaster walls. We match textures and finish surfaces ready for paint without visible patches." },
+      { question: "What is skim coating and when do I need it?", answer: "Skim coating is a thin layer of plaster applied over damaged or uneven walls to create a smooth, paint-ready surface. It is ideal when walls have extensive cracking, previous texture removal or multiple layers of old paint." },
     ],
   },
   carpentry: {
@@ -149,6 +167,10 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
       { name: "Services", url: "https://tonyspaintingmv.com/services" },
       { name: "Carpentry", url: "https://tonyspaintingmv.com/services/carpentry" },
     ],
+    faqs: [
+      { question: "Do you install crown molding and trim in Martha's Vineyard?", answer: "Yes. We install interior trim, baseboards, crown molding, door casings and custom built-ins throughout Martha's Vineyard and Cape Cod." },
+      { question: "Can you match existing trim on historic homes?", answer: "Yes. We source matching profiles and work carefully to blend new trim with existing millwork on historic homes. We have worked on a number of period properties on Martha's Vineyard." },
+    ],
   },
   fence: {
     title: "Fence Installation and Repair in New England",
@@ -159,6 +181,10 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
       { name: "Home", url: "https://tonyspaintingmv.com/" },
       { name: "Services", url: "https://tonyspaintingmv.com/services" },
       { name: "Fence", url: "https://tonyspaintingmv.com/services/fence" },
+    ],
+    faqs: [
+      { question: "What types of fence do you install in New England?", answer: "We install wood, vinyl and cedar fences. We also repair existing fences including post replacement, board repair and gate adjustment." },
+      { question: "How long does fence installation take?", answer: "A standard residential fence installation takes one to two days. Larger projects or those requiring post-hole digging in rocky soil may take longer. We provide a timeline with your estimate." },
     ],
   },
   countertop: {
@@ -171,6 +197,10 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
       { name: "Services", url: "https://tonyspaintingmv.com/services" },
       { name: "Countertop", url: "https://tonyspaintingmv.com/services/countertop" },
     ],
+    faqs: [
+      { question: "Do you remove and dispose of old countertops?", answer: "Yes. Old countertop removal and disposal is included in our countertop installation service. We handle the entire process from removal to final installation and cleanup." },
+      { question: "What countertop materials do you install?", answer: "We install laminate, solid surface, butcher block and prefabricated stone countertops. For custom stone such as granite or quartz, we coordinate with local fabricators." },
+    ],
   },
   "construction-cleaning": {
     title: "Construction Cleaning Services in New England",
@@ -181,6 +211,10 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
       { name: "Home", url: "https://tonyspaintingmv.com/" },
       { name: "Services", url: "https://tonyspaintingmv.com/services" },
       { name: "Construction Cleaning", url: "https://tonyspaintingmv.com/services/construction-cleaning" },
+    ],
+    faqs: [
+      { question: "What is included in post-construction cleaning?", answer: "We remove dust, debris, paint splatter and adhesive residue from all surfaces. We clean windows, wipe down cabinets, clean floors and do a final walk-through to ensure the space is move-in ready." },
+      { question: "How soon after construction can you clean?", answer: "We can schedule within one to two days after construction is complete. For large projects, we can stage the cleaning as work is finished in each area." },
     ],
   },
   handyman: {
@@ -193,6 +227,10 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
       { name: "Services", url: "https://tonyspaintingmv.com/services" },
       { name: "Handyman Services", url: "https://tonyspaintingmv.com/services/handyman" },
     ],
+    faqs: [
+      { question: "What types of handyman services do you offer?", answer: "We handle deck repair, fence repair, stair repair, door and window trim, construction cleaning and general property repairs throughout Martha's Vineyard and Cape Cod." },
+      { question: "Do you take on small jobs or only large projects?", answer: "We take both. No job is too small. Many of our clients start with a small repair and return for larger painting or remodeling projects." },
+    ],
   },
 };
 
@@ -200,6 +238,7 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; keywords
 interface ServiceData {
   slug: string;
   name: string;
+  heroTitle?: string;
   description: string;
   includes: string[];
 }
@@ -210,6 +249,7 @@ const SERVICES: Record<string, ServiceData> = {
   "interior-painting": {
     slug: "interior-painting",
     name: "Interior Painting",
+    heroTitle: "Interior Painting in Martha's Vineyard",
     description:
       "Whether you are refreshing a single room or repainting your entire home, our team brings attention to detail that shows in every wall, ceiling and trim. We work cleanly, finish on schedule, and leave your space better than we found it.",
     includes: [
@@ -225,6 +265,7 @@ const SERVICES: Record<string, ServiceData> = {
   "exterior-painting": {
     slug: "exterior-painting",
     name: "Exterior Painting",
+    heroTitle: "Exterior Painting in Martha's Vineyard",
     description:
       "The outside of your home tells a story before anyone walks through the door. We prep every surface properly, use only premium paints built for New England weather, and deliver results that hold up season after season.",
     includes: [
@@ -240,6 +281,7 @@ const SERVICES: Record<string, ServiceData> = {
   remodeling: {
     slug: "remodeling",
     name: "Remodeling",
+    heroTitle: "Remodeling in Martha's Vineyard",
     description:
       "Sometimes a fresh coat of paint is just the beginning. Our team handles flooring, tile, plastering and carpentry so you do not need to coordinate multiple contractors for your project.",
     includes: [
@@ -393,7 +435,7 @@ const ServiceDetail = () => {
       )}
       <InnerHero
         variant="image"
-        title={service.name}
+        title={service.heroTitle || service.name}
         crumbs={[
           { label: "Home", to: "/" },
           { label: "Services", to: "/services" },

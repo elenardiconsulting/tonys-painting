@@ -116,6 +116,26 @@ const Footer = () => {
         </div>
 
         <div>
+          <div className="text-xs uppercase tracking-[0.2em] text-background/50 mb-4">Areas We Serve</div>
+          <ul className="space-y-2 text-sm">
+            {[
+              { label: "Martha's Vineyard", href: "/painting-contractor-edgartown" },
+              { label: "Edgartown, MA", href: "/painting-contractor-edgartown" },
+              { label: "Falmouth, MA", href: "/painting-contractor-falmouth" },
+              { label: "Hyannis, MA", href: "/painting-contractor-hyannis" },
+              { label: "Chilmark, MA", href: "/painting-contractor-chilmark" },
+              { label: "West Tisbury, MA", href: "/painting-contractor-west-tisbury" },
+            ].map((l) => (
+              <li key={l.label}>
+                <a href={l.href} className="text-background/80 hover:text-primary transition-colors">
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
           <div className="text-xs uppercase tracking-[0.2em] text-background/50 mb-4">Contact</div>
           <ul className="space-y-2 text-sm text-background/80">
             <li>11 Cook Rd, Vineyard Haven, MA 02568</li>
@@ -340,10 +360,11 @@ const Footer = () => {
         }
         @media (min-width: 1024px) {
           .footer-grid {
-            grid-template-columns: 1.5fr 1fr 1fr 400px;
+            grid-template-columns: 1.2fr 1fr 1fr 1fr 320px;
           }
           .footer-grid > div:nth-child(2),
-          .footer-grid > div:nth-child(3) {
+          .footer-grid > div:nth-child(3),
+          .footer-grid > div:nth-child(4) {
             justify-self: end;
           }
         }

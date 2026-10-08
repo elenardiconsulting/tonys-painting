@@ -33,8 +33,10 @@ const Index = () => {
           founder: { "@type": "Person", name: "Otoniel Santos" },
           address: {
             "@type": "PostalAddress",
-            addressLocality: "New England",
+            streetAddress: "11 Cook Rd",
+            addressLocality: "Vineyard Haven",
             addressRegion: "MA",
+            postalCode: "02568",
             addressCountry: "US",
           },
           geo: {

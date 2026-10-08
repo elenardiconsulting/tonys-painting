@@ -50,7 +50,7 @@ export const AnimatedRoutes = () => {
 
   return (
     <>
-      {/* {isPublicPage && <ReviewButton />} */}
+      {isPublicPage && <ReviewButton />}
       <AnimatePresence mode="wait">
 
       <motion.div
