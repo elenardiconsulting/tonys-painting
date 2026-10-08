@@ -1,7 +1,8 @@
 ## Abertas
-- (nenhuma no momento)
+- Responsive images remaining: using rounded-aspect variants on auto-sized logos and non-exact-ratio masonry originals requires permission for an explicit aspect-ratio style or subpixel size changes; currently preserve originals for these images to honor unchanged styles/layout.
 
 ## Concluídas
+- Responsive images: generated WebP variants and static manifest/map idempotently; updated requested components and removed only dead Hero import; original fallback URLs and existing styles/copy/videos/tracking preserved. Five resolver tests pass; automatic build log reports OK. Ten Chromium screenshot pairs and paired same-session photo-only comparisons captured; all measured image/heading/section/footer bounds unchanged; lightbox open/next/close works desktop/mobile. No deploy. Manual build/typecheck prohibited by environment instructions; no exit codes claimed.
 - Portfolio content expansion: exact supplied details added to nine collections and index; existing classes/images/animations/data preserved; service links confirmed including deck-stairs; zero New England matches; paragraph word counts reported; all nine pages and filter/lightbox/service-link flow verified in Firefox, mobile overflow check passed, automatic build OK. No deploy. Manual typecheck not run under environment restrictions.
 - Pre-deploy fixes: homepage aggregateRating removed; Hero form heading changed h3 to h2; 38 ServiceDetail regional references and two paragraph dashes corrected; exact public/llms.txt added. Public-file handling verified and tsgo exited 0. No deploy. Browser heading verification could not complete.
 - Requested SEO copy updated in 18 source files. Syntax, exact service values and unchanged styles/classes/URLs/images verified; existing test passed and build logs show success. Browser verification was attempted but Chromium crashed.

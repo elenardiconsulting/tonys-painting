@@ -1,1 +1,2 @@
 Portfolio collection detail content is stored with its collection in the shared portfolio data model and rendered conditionally on collection pages, keeping gallery data and project copy in one source of truth.
+Responsive image variants and their static TypeScript map are generated together by the idempotent Python script; the resolver preserves original fallback URLs and uses imported asset identities so production filename hashing cannot break lookup.

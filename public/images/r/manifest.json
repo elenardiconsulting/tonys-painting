@@ -1,0 +1,122 @@
+{
+  "project-01": {
+    "width": 2042,
+    "height": 2560
+  },
+  "project-02": {
+    "width": 1919,
+    "height": 2560
+  },
+  "project-03": {
+    "width": 2042,
+    "height": 2560
+  },
+  "project-04": {
+    "width": 2560,
+    "height": 2043
+  },
+  "project-05": {
+    "width": 2560,
+    "height": 2043
+  },
+  "project-06": {
+    "width": 2043,
+    "height": 2560
+  },
+  "project-07": {
+    "width": 2560,
+    "height": 2560
+  },
+  "project-08": {
+    "width": 1920,
+    "height": 2560
+  },
+  "project-09": {
+    "width": 2043,
+    "height": 2560
+  },
+  "project-10": {
+    "width": 1440,
+    "height": 2560
+  },
+  "project-11": {
+    "width": 2042,
+    "height": 2560
+  },
+  "project-12": {
+    "width": 1500,
+    "height": 2000
+  },
+  "project-13": {
+    "width": 1024,
+    "height": 768
+  },
+  "project-14": {
+    "width": 768,
+    "height": 1024
+  },
+  "project-15": {
+    "width": 768,
+    "height": 1024
+  },
+  "project-16": {
+    "width": 768,
+    "height": 1024
+  },
+  "interior-01": {
+    "width": 900,
+    "height": 1600
+  },
+  "interior-02": {
+    "width": 1440,
+    "height": 1800
+  },
+  "interior-03": {
+    "width": 1440,
+    "height": 1800
+  },
+  "interior-04": {
+    "width": 1440,
+    "height": 1800
+  },
+  "interior-05": {
+    "width": 900,
+    "height": 1600
+  },
+  "flooring-01": {
+    "width": 900,
+    "height": 1600
+  },
+  "flooring-02": {
+    "width": 900,
+    "height": 1600
+  },
+  "flooring-03": {
+    "width": 1440,
+    "height": 1800
+  },
+  "remodeling-02": {
+    "width": 1126,
+    "height": 2000
+  },
+  "co_ceo": {
+    "width": 858,
+    "height": 866
+  },
+  "otoniel-santos-founder": {
+    "width": 1080,
+    "height": 1080
+  },
+  "tonys-logo": {
+    "width": 1187,
+    "height": 317
+  },
+  "elenardi-midia-logo": {
+    "width": 1146,
+    "height": 336
+  },
+  "partners-logos": {
+    "width": 600,
+    "height": 140
+  }
+}

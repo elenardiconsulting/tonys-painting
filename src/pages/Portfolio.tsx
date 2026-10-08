@@ -1,3 +1,4 @@
+import { responsiveSource } from "@/lib/responsiveImage";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
@@ -89,7 +90,8 @@ const Portfolio = () => {
               >
                 <div className="relative aspect-[4/3] overflow-hidden rounded-[10px]">
                   <img
-                    src={featured.cover}
+                    {...responsiveSource(featured.cover)}
+                    sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
                     alt={featured.images[0]?.alt ?? featured.title}
                     loading="eager"
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -125,7 +127,8 @@ const Portfolio = () => {
                 <Link to={`/portfolio/${c.slug}`} className="group block">
                   <div className="relative aspect-[4/3] overflow-hidden rounded-[10px]">
                     <img
-                      src={c.cover}
+                      {...responsiveSource(c.cover)}
+                      sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
                       alt={c.images[0]?.alt ?? c.title}
                       loading="lazy"
                       className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"

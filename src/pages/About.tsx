@@ -1,3 +1,4 @@
+import { responsiveSource } from "@/lib/responsiveImage";
 import { Check, Wrench, Handshake } from "lucide-react";
 import SEO from "@/components/SEO";
 import PageLayout from "@/components/site/PageLayout";
@@ -90,7 +91,8 @@ const About = () => {
             <FadeUpSection className="flex flex-col items-center text-center gap-4">
               <div className="w-[160px] h-[200px] md:w-[260px] md:h-[320px] overflow-hidden rounded-[6px]">
                 <img
-                  src={otonielSantos}
+                  {...responsiveSource(otonielSantos)}
+                  sizes="(max-width: 767px) 200px, 300px"
                   alt="Otoniel Santos, Founder and CEO of Tony's Painting"
                   className="block w-full h-full object-cover object-[top_center]"
                 />

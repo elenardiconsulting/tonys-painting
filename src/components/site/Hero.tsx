@@ -4,7 +4,6 @@ import { Shield, Star, CheckCircle2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import heroBg from "@/assets/hero-bg.jpg";
 import heroBgDesktop from "@/assets/hero-bg-desktop.jpg";
 import heroBgMobile from "@/assets/hero-bg-mobile.jpg";
 

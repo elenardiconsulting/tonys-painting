@@ -1,3 +1,4 @@
+import { responsive } from "@/lib/responsiveImage";
 import { useEffect, useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useLocation } from "react-router-dom";
@@ -73,7 +74,8 @@ const Navbar = () => {
           <div className="flex-1 flex justify-start">
             <a href="/" className="flex items-center" aria-label="Tony's Remodeling home">
               <img
-                src={tonysLogo}
+                {...responsive(tonysLogo)}
+                sizes="210px"
                 alt="Tony's Remodeling - Painting and Carpentry"
                 className="h-[46px] md:h-[56px] w-auto object-contain"
               />
