@@ -4,11 +4,11 @@ const Chilmark = () => (
     city="Chilmark"
     region="MA"
     slug="painting-contractor-chilmark"
-    headline="Painting contractor in Chilmark, MA."
-    description="Premium interior and exterior painting for Chilmark homeowners on Martha's Vineyard. Experienced crews, clean finishes and free estimates since 2004."
-    seoTitle="Painting Contractor in Chilmark MA | Tony's Painting and Remodeling"
-    seoDescription="Licensed painting contractor serving Chilmark, Martha's Vineyard MA since 2004. Interior painting, exterior painting and remodeling. Free estimates. Call 508-982-9675."
-    keywords="painting contractor Chilmark MA, interior painting Chilmark, exterior painting Chilmark, house painters Chilmark Martha's Vineyard"
+    headline="House painters and remodeling contractor in Chilmark, MA."
+    description="Tony's Painting & Remodeling serves Chilmark and up-island Martha's Vineyard. Interior painting, exterior painting and remodeling for residential properties. Free estimates since 2004."
+    seoTitle="House Painters in Chilmark MA | Tony's Painting & Remodeling"
+    seoDescription="Interior and exterior painting and remodeling for homeowners in Chilmark, MA. Licensed contractor serving Martha's Vineyard since 2004. Free estimates. Call 508-982-9675."
+    keywords="house painters Chilmark MA, interior painting Chilmark, exterior painting Chilmark, painting contractor Chilmark Massachusetts, up-island Martha's Vineyard painter"
     nearby={["Edgartown", "West Tisbury", "Falmouth", "Hyannis"]}
   />
 );

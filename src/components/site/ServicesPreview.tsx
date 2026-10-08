@@ -4,37 +4,37 @@ import FadeUpSection from "@/components/site/FadeUpSection";
 const services = [
   {
     name: 'Interior Painting',
-    description: 'Refined interior finishes for every room, from a single accent wall to your entire home.',
+    description: "Wall, ceiling and trim painting for every room. We protect your floors and furniture, clean up completely and walk you through the finished work.",
     href: '/services/interior-painting',
     image: '/images/interior-05.jpg',
   },
   {
     name: 'Exterior Painting',
-    description: 'Premium coatings built to handle New England weather, applied with proper prep and care.',
+    description: "Siding, trim and surface prep for New England homes. We plan around the weather and use coatings built to hold up through the seasons.",
     href: '/services/exterior-painting',
     image: '/images/project-13.jpg',
   },
   {
     name: 'Remodeling',
-    description: 'Full-scope remodeling for kitchens, bathrooms and living spaces across New England.',
+    description: "Kitchens, bathrooms and living spaces — we handle flooring, tile, plastering and carpentry so you work with one contractor from start to finish.",
     href: '/services/remodeling',
     image: '/images/project-15.jpg',
   },
   {
     name: 'Flooring',
-    description: 'Hardwood installation, refinishing and restoration that transforms any space.',
+    description: "Hardwood installation, refinishing and restoration. We assess the subfloor first and sand to a consistent finish before applying the final coat.",
     href: '/services/flooring',
     image: '/images/flooring-02.jpg',
   },
   {
     name: 'Ceramic Tile',
-    description: 'Precision tile work for bathrooms, kitchens and floors. Clean lines, lasting results.',
+    description: "Bathroom and kitchen tile set with level lines and sealed grout. Precision matters on every installation, large or small.",
     href: '/services/ceramic-tile',
     image: '/images/project-04.jpg',
   },
   {
     name: 'Deck and Stairs',
-    description: 'Staining, sealing and repair for decks and stairs built to withstand New England winters.',
+    description: "Cleaning, sanding and staining for decks and stairs that take a beating from New England winters. We check for rot and structural wear before we start.",
     href: '/services/deck-stairs',
     image: '/images/project-07.jpg',
   },
@@ -110,9 +110,9 @@ const ServicesPreview = () => {
     <section id="services" className="bg-background">
       <div className="container py-20 md:py-28">
         <FadeUpSection className="max-w-2xl">
-          <p className="text-xs uppercase tracking-[0.25em] text-primary mb-4">What We Do</p>
+          <p className="text-xs uppercase tracking-[0.25em] text-primary mb-4">Our Services</p>
           <h2 className="font-display text-3xl md:text-5xl text-foreground leading-tight">
-            Craftsmanship for homes that deserve more.
+            Painting and remodeling services across Massachusetts.
           </h2>
         </FadeUpSection>
 

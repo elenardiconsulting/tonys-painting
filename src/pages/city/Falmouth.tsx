@@ -4,11 +4,11 @@ const Falmouth = () => (
     city="Falmouth"
     region="MA"
     slug="painting-contractor-falmouth"
-    headline="Painting contractor in Falmouth, MA."
-    description="Trusted interior and exterior painters serving Falmouth and Cape Cod. Free estimates, clean work and reliable crews since 2004."
-    seoTitle="Painting Contractor in Falmouth MA | Tony's Painting and Remodeling"
-    seoDescription="Licensed painting contractor serving Falmouth, MA since 2004. Interior painting, exterior painting, remodeling and deck work. Free estimates. Call 508-982-9675."
-    keywords="painting contractor Falmouth MA, interior painting Falmouth, exterior painting Falmouth, house painters Falmouth Massachusetts, Cape Cod painting contractor"
+    headline="House painters and remodeling contractor in Falmouth, MA."
+    description="Tony's Painting & Remodeling serves Falmouth and the surrounding Cape Cod area. Interior painting, exterior painting, deck staining and remodeling for homeowners. Free estimates since 2004."
+    seoTitle="House Painters in Falmouth MA | Tony's Painting & Remodeling"
+    seoDescription="Interior and exterior painting, deck staining and remodeling for homeowners in Falmouth, MA. Licensed contractor serving Cape Cod since 2004. Free estimates. Call 508-982-9675."
+    keywords="house painters Falmouth MA, interior painting Falmouth, exterior painting Falmouth, painting contractor Falmouth MA, Cape Cod painting contractor Falmouth"
     nearby={["Edgartown", "Hyannis", "Chilmark", "West Tisbury"]}
   />
 );

@@ -101,7 +101,7 @@ const GlassForm = () => {
             margin: "0 0 4px 0",
           }}
         >
-          Request a Consultation
+          Request a Free Estimate
         </h3>
         <p
           style={{
@@ -113,7 +113,7 @@ const GlassForm = () => {
             margin: 0,
           }}
         >
-          No commitment. We respond within one business day.
+          No commitment. We'll respond within one business day.
         </p>
       </div>
 
@@ -210,7 +210,7 @@ const GlassForm = () => {
         onMouseEnter={(e) => !submitting && (e.currentTarget.style.background = "#8B1A10")}
         onMouseLeave={(e) => !submitting && (e.currentTarget.style.background = "#C4291C")}
       >
-        {submitting ? "Sending..." : "Send My Request →"}
+        {submitting ? "Sending..." : "Send My Request"}
       </button>
 
       <p
@@ -223,7 +223,7 @@ const GlassForm = () => {
           margin: 0,
         }}
       >
-        Licensed and Insured. Serving New England since 2004.
+        Licensed and insured. Serving MA since 2004.
       </p>
     </form>
   );
@@ -265,9 +265,9 @@ const Hero = () => {
       };
 
   const stats = [
-    { icon: <Shield size={20} />, title: "20+ Years", desc: "Experience" },
-    { icon: <Star size={20} />, title: "5-Star Rated", desc: "Local Company" },
-    { icon: <CheckCircle2 size={20} />, title: "Quality Work", desc: "You Can Trust" },
+    { icon: <Shield size={20} />, title: "Licensed & Insured", desc: "Since 2004" },
+    { icon: <Star size={20} />, title: "5-Star Rated", desc: "Google Reviews" },
+    { icon: <CheckCircle2 size={20} />, title: "Free Estimates", desc: "No Commitment" },
   ];
 
   return (
@@ -299,14 +299,14 @@ const Hero = () => {
         <div className="hero-content">
           <h1 className="hero-headline">
             <span className="desktop-only">
-              Transforming homes<br />
-              with intention and detail.
+              Professional House Painting<br />
+              & Remodeling in Massachusetts.
             </span>
             <span className="mobile-only">
-              Transforming<br />
-              homes with<br />
-              intention<br />
-              and detail.
+              Professional<br />
+              House Painting<br />
+              & Remodeling<br />
+              in Massachusetts.
             </span>
           </h1>
 
@@ -314,7 +314,7 @@ const Hero = () => {
             {...fadeUp(0.3)}
             className="hero-subline"
           >
-            Since 2004, Tony's team has brought precision and care to every project in the region.
+            Serving Martha's Vineyard, Cape Cod and the South Shore since 2004. Interior painting, exterior painting, remodeling and more — licensed, insured and free estimates.
           </motion.p>
 
           {/* Mobile CTA */}
@@ -323,7 +323,7 @@ const Hero = () => {
             href="/contact"
             className="mobile-only hero-mobile-btn"
           >
-            Request a Consultation
+            Request a Free Estimate
           </motion.a>
 
           {/* Stats Container */}

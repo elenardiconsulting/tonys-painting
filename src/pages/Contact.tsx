@@ -26,17 +26,17 @@ const contactBlocks = [
 const trustItems = [
   "Licensed and Insured",
   "Free Estimates",
-  "20 Years of Transforming Homes & Experiences",
+  "Serving Massachusetts Since 2004",
 ];
 
 const Contact = () => {
   return (
     <PageLayout>
       <SEO
-        title="Get a Free Painting Estimate in New England"
-        description="Contact Tony's Painting and Remodeling for a free estimate. Serving New England. Call 508 982 9675 or fill out the form."
+        title="Request a Free Painting Estimate | Tony's Painting & Remodeling"
+        description="Contact Tony's Painting & Remodeling for a free estimate. Interior and exterior painting, remodeling and more. Serving Martha's Vineyard, Cape Cod and the South Shore. Call 508-982-9675."
         canonical="/contact"
-        keywords="free painting estimate New England, painting quote New England, contact painters New England, hire painting contractor MA"
+        keywords="free painting estimate Massachusetts, painting quote Martha's Vineyard, contact painting contractor Cape Cod, hire painters South Shore MA"
         schema={{
           "@context": "https://schema.org",
           "@type": "ContactPage",
@@ -57,8 +57,8 @@ const Contact = () => {
         }}
       />
       <InnerHero
-        title="Let's talk about your project."
-        subtitle="Tell us what you need and we will get back to you within one business day."
+        title="Request a free estimate."
+        subtitle="Tell us about your project and we'll follow up within one business day to schedule a visit."
         crumbs={[{ label: "Home", to: "/" }, { label: "Contact" }]}
       />
 
@@ -93,7 +93,7 @@ const Contact = () => {
                 margin: 0,
               }}
             >
-              Request a Consultation
+              Request a Free Estimate
             </h2>
             <p
               style={{
@@ -103,7 +103,7 @@ const Contact = () => {
                 color: "#6B6560",
               }}
             >
-              No commitment. We will review your request and reach out to schedule a visit.
+              No commitment. We review every request and typically reach out within one business day.
             </p>
             <div style={{ marginTop: 16 }}>
               <ContactForm compact />

@@ -43,8 +43,8 @@ const About = () => {
   return (
     <PageLayout>
       <SEO
-        title="About Tony's Painting and Remodeling | Est. 2004"
-        description="Founded in 2004 by Otoniel Santos in New England. 20 years serving New England with professionalism, hard work and honesty."
+        title="About Tony's Painting & Remodeling | Licensed MA Contractor Since 2004"
+        description="Tony's Painting & Remodeling was founded in 2004 by Otoniel Santos. We serve Martha's Vineyard, Cape Cod and the South Shore with interior and exterior painting, remodeling and more."
         canonical="/about"
         keywords="Tony's Painting history, painting company New England, Otoniel Santos painter, painting remodeling New England since 2004"
         schema={{
@@ -62,8 +62,8 @@ const About = () => {
         }}
       />
       <InnerHero
-        title="20 years of doing the work right."
-        subtitle="Tony started this company with a simple belief: that the quality of your work is the only thing that matters."
+        title="Painting and remodeling in Massachusetts since 2004."
+        subtitle="Otoniel Santos started this company with a straightforward goal: do the work right and treat every home with respect."
         crumbs={[{ label: "Home", to: "/" }, { label: "About Us" }]}
       />
 
@@ -199,7 +199,7 @@ const About = () => {
 
           <div className="max-w-2xl">
             <p className="text-base md:text-lg text-foreground leading-relaxed">
-              We serve clients across New England, taking on residential and commercial projects throughout the region.
+              We serve homeowners in Martha's Vineyard, Cape Cod and the South Shore of Massachusetts. Most of our work is residential — interior painting, exterior painting, remodeling and related trades.
             </p>
           </div>
         </div>
