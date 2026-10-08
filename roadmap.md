@@ -1,5 +1,5 @@
 ## Abertas
-- (nenhuma no momento)
+- Update the specified SEO metadata and copy across the 18 requested files, preserving presentation and functionality; verify service headings and page metadata.
 
 ## Concluídas
 - 5 páginas de cidade criadas (Edgartown, Falmouth, Hyannis, Chilmark, West Tisbury) com componente reutilizável src/pages/city/CityPainting.tsx, rotas no App.tsx e entrada no sitemap gerado (agora 32 páginas)
