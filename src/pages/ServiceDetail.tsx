@@ -29,7 +29,7 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; h1: stri
       name: "Interior Painting",
       provider: { "@type": "LocalBusiness", name: "Tony's Painting and Remodeling", telephone: "+15089829675" },
       areaServed: "Massachusetts, USA",
-      description: "Interior painting for residential and commercial spaces across New England. Walls, ceilings, trim, accent walls and more.",
+      description: "Interior painting for residential and commercial spaces across Massachusetts. Walls, ceilings, trim, accent walls and more.",
       offers: { "@type": "Offer", availability: "https://schema.org/InStock", priceCurrency: "USD" },
     },
     breadcrumbs: [
@@ -58,7 +58,7 @@ const SEO_BY_SLUG: Record<string, { title: string; description: string; h1: stri
       name: "Exterior Painting",
       provider: { "@type": "LocalBusiness", name: "Tony's Painting and Remodeling", telephone: "+15089829675" },
       areaServed: "Massachusetts, USA",
-      description: "Exterior painting with premium paints built for New England weather. Siding, trim, decks, fences and more.",
+      description: "Exterior painting with premium paints built for Massachusetts weather. Siding, trim, decks, fences and more.",
       offers: { "@type": "Offer", availability: "https://schema.org/InStock", priceCurrency: "USD" },
     },
     breadcrumbs: [
