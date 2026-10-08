@@ -66,12 +66,6 @@ const Index = () => {
             opens: "07:00",
             closes: "18:00",
           },
-          aggregateRating: {
-            "@type": "AggregateRating",
-            ratingValue: "5",
-            reviewCount: "7",
-            bestRating: "5",
-          },
           priceRange: "$$",
           image: "https://tonyspaintingmv.com/og-image.jpg",
           sameAs: [
