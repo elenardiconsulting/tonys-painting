@@ -451,7 +451,7 @@ const About = () => {
           We have earned it.
         </h2>
         <a
-          href=\"https://www.google.com/maps/place/?q=place_id:0x89e529970477bc27:0x3d37406d51e5cec&action=write-review\"
+          href=\"https://g.page/r/CRCRcjd7niVbEBM/review\"
           target=\"_blank\"
           rel=\"noopener noreferrer\"
           style={{
