@@ -49,10 +49,9 @@ for (const url of privateRoutes) {
   console.log("página privada (vazia):", url);
 }
 
-const today = new Date().toISOString().slice(0, 10);
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${sitemapRoutes.map((u) => `  <url><loc>${siteUrl}${u === "/" ? "/" : u}</loc><lastmod>${today}</lastmod></url>`).join("\n")}
+${sitemapRoutes.map((u) => `  <url><loc>${siteUrl}${u === "/" ? "/" : u}</loc></url>`).join("\n")}
 </urlset>
 `;
 fs.writeFileSync(path.join(dist, "sitemap.xml"), sitemap);
